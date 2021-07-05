@@ -313,7 +313,4 @@
 //   left: 80%;
 //   top: -6px;
 // }
-.ivu-layout-sider{
-  min-width: 260px !important;
-}
 </style>
