@@ -24,7 +24,7 @@ let pubics=[
                 path: '/Home/business',
                 name: 'publicsbusiness',
                 component: ()=>import("@/views/publics/Home/business"),
-                meta:{breadnav:[{path:'',name:'HOME11'}],name:'HOME11'}//机构数据
+                meta:{breadnav:[{path:'',name:'投诉降压'}],name:'投诉降压'}//机构数据
             },
             {
                 path: '/Home/cliniclist',
