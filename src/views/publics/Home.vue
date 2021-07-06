@@ -1,7 +1,8 @@
 <template>
   <div class="index">
     <Layout>
-      <Header>
+      <commonTitle/>
+      <!-- <Header>
         <Menu
           mode="horizontal"
           theme="light"
@@ -37,7 +38,7 @@
             </DropdownMenu>
           </Dropdown>
         </Menu>
-      </Header>
+      </Header> -->
       <Layout >
         <Sider
           ref="side1"
@@ -124,6 +125,7 @@
   </div>
 </template>
 <script>
+import commonTitle from "./components/commonTitle.vue"
 export default {
   inject: ["tag_go"],
   data() {
@@ -237,6 +239,7 @@ export default {
   },
   components: {
     // navTop,
+    commonTitle,
   },
   watch: {
     $route(to) {

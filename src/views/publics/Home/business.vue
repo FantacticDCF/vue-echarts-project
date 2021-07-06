@@ -16,7 +16,6 @@
             <div>达标值</div>
             <div>已发生</div>
           </div>
-          
         </div>
       </div>
       <div class="box1">
