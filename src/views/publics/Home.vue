@@ -309,4 +309,7 @@ export default {
 .menu-item span{
   width: 7rem !important;
 }
+.ivu-layout.ivu-layout-has-sider{
+  padding: 0 !important;
+}
 </style>
