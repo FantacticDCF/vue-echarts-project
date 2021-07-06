@@ -54,15 +54,12 @@
             theme="light"
             width="90"
             :class="menuitemClasses"
-             
           >
             <MenuItem
               :name="item.name"
               v-for="(item, index) in leftlist"
               :key="index"
               @click.native="leftclick(item)"
-             
-              v-show="item.id == activeid ? 'show' : ''"
             >
               <Icon :type="item.icon" />
               <span>{{ item.label }}</span>
@@ -166,11 +163,53 @@ export default {
           to: "/Home/business",
         },
         {
-          label: "HOME2",
-          name: "HOME2",
+          label: "压降目标",
+          name: "压降目标",
           icon: "ios-paper",
           id: "2",
-          to: "/Home/cliniclist",
+          to: "",
+        },
+        {
+          label: "查询",
+          name: "查询",
+          icon: "ios-paper",
+          id: "2",
+          to: "",
+        },
+        {
+          label: "监管报送",
+          name: "监管报送",
+          icon: "ios-paper",
+          id: "2",
+          to: "",
+        },
+        {
+          label: "投诉分析报告模版",
+          name: "投诉分析报告模版",
+          icon: "ios-paper",
+          id: "2",
+          to: "",
+        },
+        {
+          label: "消保审核",
+          name: "消保审核",
+          icon: "ios-paper",
+          id: "2",
+          to: "",
+        },
+        {
+          label: "投诉预警",
+          name: "投诉预警",
+          icon: "ios-paper",
+          id: "2",
+          to: "",
+        },
+        {
+          label: "投诉管理驾驶舱",
+          name: "投诉管理驾驶舱",
+          icon: "ios-paper",
+          id: "2",
+          to: "",
         },
       ],
       breadnav: [],
