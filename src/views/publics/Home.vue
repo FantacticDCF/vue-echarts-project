@@ -1,73 +1,5 @@
 <template>
-  <div class="index">
-    <Layout>
-      <Header>
-        <Menu
-          mode="horizontal"
-          theme="light"
-          :active-name="topactive"
-          class="meum"
-        >
-          <h3>xxxx平台管理</h3>
-          <Icon
-            @click.native="collapsedSider"
-            :class="rotateIcon"
-            type="md-menu"
-            size="24"
-            style="margin: 0rem 1.875rem 0rem 3.125rem"
-          ></Icon>
-          <div class="layout-nav">
-            <MenuItem
-              :name="item.label"
-              v-for="(item, index) in toplist"
-              :key="index"
-            >
-              <span @click="topclick(item)" class="block">{{
-                item.label
-              }}</span>
-            </MenuItem>
-          </div>
-          <div class="imy">
-            <div style="cursor: pointer">HOME3</div>
-          </div>
-          <Dropdown @on-click="quit" trigger="click">
-            <Avatar :src="avatar_img" />
-            <DropdownMenu slot="list">
-              <DropdownItem name="1">退出登录</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </Menu>
-      </Header>
-      <Layout >
-        <Sider
-          ref="side1"
-          hide-trigger
-          collapsible
-          :collapsed-width="90"
-          v-model="isCollapsed"
-         
-          
-        >
-          <Menu
-            :active-name="leftactive"
-            theme="light"
-            width="90"
-            :class="menuitemClasses"
-             
-          >
-            <MenuItem
-              :name="item.name"
-              v-for="(item, index) in leftlist"
-              :key="index"
-              @click.native="leftclick(item)"
-             
-              v-show="item.id == activeid ? 'show' : ''"
-            >
-              <Icon :type="item.icon" />
-              <span>{{ item.label }}</span>
-            </MenuItem>
-          </Menu>
-        </Sider>
+    <div class="index">
         <Layout>
             <CommonTitle/>          
             <Layout>
@@ -149,9 +81,7 @@
                 </Layout>
             </Layout>
         </Layout>
-      </Layout>
-    </Layout>
-  </div>
+    </div>
 </template>
 <script>
   import CommonTitle from './common/commonTitle.vue'
@@ -233,19 +163,13 @@
       this.activeid = JSON.parse(sessionStorage.getItem("routername")).activeid;
       // this.getDates()
     },
-  
-  methods: {
-    leftclick(item) {
-      this.leftactive = item.name;
-      this.$router.push({ path: item.to });
-      sessionStorage.setItem(
-        "routername",
-        JSON.stringify({
-          topactive: item.label,
-          leftactive: item.name,
-          activeid: item.id,
-        })
-      );
+    computed: {
+      rotateIcon() {
+        return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
+      },
+      menuitemClasses() {
+        return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+      },
     },
     methods: {
       // 获取当前的日期
@@ -309,36 +233,84 @@
         sessionStorage.setItem("count", JSON.stringify(this.count));
       },
     },
-    //退出登录
-    quit(name) {
-      if (name == 1) {
-        sessionStorage.clear();
-        this.$router.push("/");
-      }
-    },
-  },
-
-  watch: {
-    $route(to) {
-      this.breadnav = to.meta.breadnav;
-      // 跳转到平台库中修改面包屑
-      if (to.query.type === "serviceLibrary") {
-        this.breadnav = this.serviceNav;
-      } else if (to.query.type === "productdetail") {
-        this.breadnav = this.proNav;
-      }
-      if (to.meta.name != undefined)
-        this.count.unshift({ name: to.meta.name, path: to.path });
-      let hash = {};
-      this.count = this.count.reduce((item, next) => {
-        hash[next.name] ? "" : (hash[next.name] = true && item.push(next));
-        return item;
-      }, []);
-      sessionStorage.setItem("count", JSON.stringify(this.count));
-    },
-  },
-};
+  };
 </script>
 <style lang="less" scoped>
 @import url("../../assets/less/Home.less");
+// .commonTitle{
+//   width: 100%;
+//   height: 60px;
+//   background: #11172F;
+//   text-align: center;
+//   overflow: hidden;
+//   background-image: url("../../assets/images/commonTitle/bg04.png");
+//   background-size: 100% 100%;
+//   background-repeat: no-repeat;
+// }
+// .commonLogo{
+//   width: 30%;
+//   height: 60px;
+//   float: left;
+//   // background-image: url("../../assets/images/commonTitle/bg01.png");
+//   // background-size: 100% 100%;
+//   // background-repeat: no-repeat;
+//   display: flex;
+//   justify-content: space-around;
+// }
+// .commonLogo img{
+//   display: inline-block;
+//   width: 140px;
+//   height: 45px;
+//   margin-top: 5px;
+// }
+// .commonLogo .commonTitleres{
+//   display: inline-block;
+//   font-size: 16px;
+//   line-height: 60px;
+//   background: linear-gradient(#6bf6fd, #4facfe);
+//   -webkit-background-clip: text;
+//   color: transparent;
+//   margin-left: 43px;
+// }
+// .commonTitleS{
+//   width: 40%;
+//   height: 60px;
+//   margin-left: -20px;
+//   float: left;
+//   // background-image: url("../../assets/images/commonTitle/bg02.png");
+//   // background-size: 100% 100%;
+//   // background-repeat: no-repeat;
+// }
+// .commonTitleS span{
+//   font-size: 24px;
+//   line-height: 66px;
+//   font-weight: bold;
+//   background: linear-gradient(#6bf6fd, #4facfe);
+//   -webkit-background-clip: text;
+//   color: transparent;
+// }
+// .commonTime{
+//   width: 30%;
+//   float: left;
+//   margin-left: -25px;
+//   // background-image: url("../../assets/images/commonTitle/bg03.png");
+//   // background-size: 100% 100%;
+//   // background-repeat: no-repeat;
+//   justify-content: space-around;
+//   position: relative;
+// }
+// .commonTime .times{
+//   display: inline-block;
+//   margin-left: 53px;
+//   line-height: 50px;
+//   background: linear-gradient(#6bf6fd, #4facfe);
+//   -webkit-background-clip: text;
+//   color: transparent;
+// }
+// .commonTime .names{
+//   color: #6bf6fd;
+//   position: absolute;
+//   left: 80%;
+//   top: -6px;
+// }
 </style>
