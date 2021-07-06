@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="height: 60px">
     <Header class="header" style="height:60px">
         <div class="commonTitle">
             <div class="commonLogo">

@@ -10,6 +10,11 @@ let pubics=[
         component: ()=>import("@/views/publics/register")//注册
     },
     {
+        path: '/bigData',
+        name: 'bigData',
+        component: ()=>import("@/views/publics/bigData/bigData")//注册
+    },
+    {
         path: '/Home',
         name: 'publicsHome',
         component: ()=>import("@/views/publics/Home"),//后台

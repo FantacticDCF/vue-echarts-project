@@ -61,7 +61,7 @@
               :key="index"
               @click.native="leftclick(item)"
             >
-              <Icon :type="item.icon" />
+              <i :class="item.icon"></i>
               <span>{{ item.label }}</span>
             </MenuItem>
           </Menu>
@@ -172,7 +172,7 @@ export default {
         {
           label: "查询",
           name: "查询",
-          icon: "ios-paper",
+          icon: "el-icon-search",
           id: "2",
           to: "",
         },
@@ -193,7 +193,7 @@ export default {
         {
           label: "消保审核",
           name: "消保审核",
-          icon: "ios-paper",
+          icon: "el-icon-circle-check",
           id: "2",
           to: "",
         },
@@ -303,6 +303,10 @@ export default {
 </script>
 <style lang="less" scoped>
 @import url("../../assets/less/Home.less");
-
-
+.ivu-menu-item{
+  text-align: left !important;
+}
+.menu-item span{
+  width: 7rem !important;
+}
 </style>
