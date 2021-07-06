@@ -126,5 +126,5 @@ export default {
   left: 80%;
   top: -6px;
 }
-</style>>
+</style>
     
