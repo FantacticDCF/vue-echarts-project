@@ -112,14 +112,14 @@
 .formInfo .box .desc .descTitle1 .jindu .num {
   position: absolute;
   top: -2px;
-  right: 27px;
+  right: 14px;
   color: #55d4f8;
   font-size: 12px;
 }
 .formInfo .box .desc .descTitle1 .jindu .numRed {
   position: absolute;
   top: -2px;
-  right: 19px;
+  right: 7px;
   color: #fb543e;
   background-image: -webkit-linear-gradient(bottom, #fb543e, #f58659);
   -webkit-background-clip: text;
@@ -194,14 +194,14 @@
 .formInfo .box1 .desc .descTitle1 .jindu .num {
   position: absolute;
   top: -2px;
-  right: 27px;
+  right: 14px;
   color: #55d4f8;
   font-size: 12px;
 }
 .formInfo .box1 .desc .descTitle1 .jindu .numRed {
   position: absolute;
   top: -2px;
-  right: 27px;
+  right: 13px;
   color: #fb543e;
   background-image: -webkit-linear-gradient(bottom, #fb543e, #f58659);
   -webkit-background-clip: text;
