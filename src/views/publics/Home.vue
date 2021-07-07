@@ -156,8 +156,8 @@ export default {
         //   to: "/Home/index",
         // },
         {
-          label: "投诉降压",
-          name: "投诉降压",
+          label: "投诉压降",
+          name: "投诉压降",
           img: require('../../assets/images/commonTitle/tsjy.png'),
           id: "1",
           to: "/Home/business",
