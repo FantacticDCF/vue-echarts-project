@@ -79,7 +79,7 @@ export default {
 }
 .commonLogo .commonTitleres{
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 60px;
   position: relative;
   margin-left: 50px;
@@ -96,7 +96,7 @@ export default {
   float: left;
 }
 .commonTitleS .commonTitles{
-  font-size: 26px;
+  font-size: 22px;
   line-height: 66px;
   font-weight: 500;
   position: relative;
@@ -118,19 +118,22 @@ export default {
 }
 .commonTime .times{
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   margin-left: 53px;
   line-height: 50px;
-  position: relative;
+  color: #6bf6fd;
+  position: absolute;
+    left: 33%;
+    top: 2px;
 }
-.commonTime .timed{ 
+/* .commonTime .timed{ 
   background-image:-webkit-linear-gradient(bottom,#4392d6,#57c9d5);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-}
+} */
 
 .commonTime .names{
-  font-size: 14px;
+  font-size: 10px;
   color: #6bf6fd;
   position: absolute;
   left: 76%;

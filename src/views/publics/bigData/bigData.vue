@@ -21,13 +21,14 @@ body {
   overflow: hidden;
 }
 .panel {
-  position: relative;
-  /*height: 3.875rem;*/
-  height: 48%;
-  border: 1px solid rgba(25, 186, 139, 0.17);
-  background: rgba(255, 255, 255, 0.04) url("../../../assets/images/line.png");
-  padding: 0 0.1875rem 0.5rem;
-  margin-bottom: 0.1875rem;
+    position: relative;
+    /* height: 3.875rem; */
+    height: 330px;
+    /* border: 1px solid rgba(25, 186, 139, 0.17); */
+    background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
+       padding: 21px 10px;
+    background-size: 100% 100%;
+    margin-bottom: 5px;
 }
 .panel::before {
   position: absolute;
@@ -36,8 +37,8 @@ body {
   content: "";
   width: 10px;
   height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
+  /* border-top: 2px solid #02a6b5;
+  border-left: 2px solid #02a6b5; */
   border-radius: 20%;
 }
 .panel::after {
@@ -47,8 +48,8 @@ body {
   content: "";
   width: 10px;
   height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
+  /* border-top: 2px solid #02a6b5;
+  border-right: 2px solid #02a6b5; */
   border-radius: 20%;
 }
 .panel .panel-footer {
@@ -64,8 +65,8 @@ body {
   content: "";
   width: 10px;
   height: 10px;
-  border-bottom: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
+  /* border-bottom: 2px solid #02a6b5;
+  border-left: 2px solid #02a6b5; */
   border-radius: 20%;
 }
 .panel .panel-footer::after {
@@ -75,17 +76,19 @@ body {
   content: "";
   width: 10px;
   height: 10px;
-  border-bottom: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
+  /* border-bottom: 2px solid #02a6b5; */
+  /* border-right: 2px solid #02a6b5; */
   border-radius: 20%;
 }
 .panel h2 {
-  height: 0.6rem;
-  line-height: 0.6rem;
-  text-align: left;
-  color: #02d1f4;
-  font-size: 0.25rem;
-  font-weight: 400;
+  height: 4px;
+  margin-top: -10px;
+    line-height: 3px;
+    text-align: left;
+    color: #02d1f4;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0 5px;
 }
 .panel h2 a {
   margin: 0 0.1875rem;
@@ -98,11 +101,20 @@ body {
 .panel .chart2 {
   height: 3rem;
 }
+.panel .sub1 {
+  margin-top: 32px;
+}
+.panel .sub2 {
+  margin-top: 16px;
+}
 .bar1 .chart,.bar1 .chart2 ,.bar1 .chart3,.bar1 .chart4 {
   height:120px
 }
 .bar2 .chart{
-  height:240px
+  height:300px;
+  padding:10px;
+  margin: 10px -10px;
+
 }
 .ts-index {
   width: 49%;
@@ -131,6 +143,7 @@ body {
 .ts-index p{
   color: white;
   text-align: center;
+  font-size: 12px;
 }
 .no {
   background: rgba(101, 132, 226, 0.1);
@@ -138,18 +151,20 @@ body {
   text-align: center;
 }
 .no .no-hd {
-  width: 23%;
-  display: inline-block;
-  position: relative;
-  border: 1px solid rgba(25, 186, 139, 0.17);
+  width: 25%;
+    height: 79px;
+    display: inline-block;
+    position: relative;
+    /* border: 1px solid rgba(25, 186, 139, 0.17); */
+    background: url(../../../assets/images/bg-info.png) no-repeat 0/cover;
 }
 .no .no-hd::before {
   content: "";
   position: absolute;
   width: 30px;
   height: 10px;
-  border-top: 2px solid #02a6b5;
-  border-left: 2px solid #02a6b5;
+  /* border-top: 2px solid #02a6b5; */
+  /* border-left: 2px solid #02a6b5; */
   top: 0;
   left: 0;
 }
@@ -158,8 +173,8 @@ body {
   position: absolute;
   width: 30px;
   height: 10px;
-  border-bottom: 2px solid #02a6b5;
-  border-right: 2px solid #02a6b5;
+  /* border-bottom: 2px solid #02a6b5; */
+  /* border-right: 2px solid #02a6b5; */
   right: 0;
   bottom: 0;
 }
@@ -170,18 +185,19 @@ body {
   text-align: center;
   color: white;
   margin: 10px;
+  font-size: 12px;
 }
 .no .no-hd ul li {
-  position: relative;
-  flex: 1;
-  text-align: center;
-  height: 1rem;
-  line-height: 1rem;
-  font-size: 32px;
-  color: #ffeb7b;
-  padding: 0.05rem 0;
-  font-family: electronicFont;
-  font-weight: bold;
+      position: relative;
+    flex: 1;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #02ade3;
+    padding: 20px;
+    font-family: electronicFont;
+    font-weight: bold;
 }
 /*.no .no-hd ul li:first-child::after {*/
 /*  content: "";*/
@@ -192,28 +208,34 @@ body {
 /*  right: 0;*/
 /*  top: 25%;*/
 /*}*/
+.no .no-bd  {
+  height:50px;
+      background: url(../../../assets/images/bg-info2.png) no-repeat 0/cover;
+
+}
 .no .no-bd ul {
   display: flex;
 }
 .no .no-bd ul li {
   flex: 1;
-  height: 0.5rem;
-  line-height: 0.5rem;
+  height: 20px;
+  line-height:20px;
   text-align: center;
-  font-size: 0.225rem;
-  color: rgba(255, 255, 255, 0.7);
-  padding-top: 0.125rem;
+  font-size: 20px;
+  color: rgb(1, 179, 233);
+  padding-top: 20px;
+  font-weight:bold;
 }
 .map {
   position: relative;
-  height: 10.125rem;
+  height: 800px;
 }
 .map .chart {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 5;
-  height: 10.125rem;
+  height: 500px;
   width: 100%;
 }
 .map .map1,
@@ -307,25 +329,25 @@ body {
         <div class="no">
           <div class="no-hd">
             <ul>
-              <li>125811</li>
+              <li>{{orgName}}</li>
             </ul>
             <p>机构名称</p>
           </div>
           <div class="no-hd">
             <ul>
-              <li>125811</li>
+              <li>{{dnAll}}</li>
             </ul>
             <p>当年投诉总量</p>
           </div>
           <div class="no-hd">
             <ul>
-              <li>125811</li>
+              <li>{{jgAll}}</li>
             </ul>
             <p>监管投诉数量</p>
           </div>
           <div class="no-hd">
             <ul>
-              <li>125811</li>
+              <li>{{hnAll}}</li>
             </ul>
             <p>行内投诉数量</p>
           </div>
@@ -340,27 +362,24 @@ body {
         </div>
         <div class="map">
           <div class="chart"></div>
-          <!--                <div class="map1"></div>-->
-          <!--                <div class="map2"></div>-->
-          <!--                <div class="map3"></div>-->
         </div>
       </div>
       <div class="column">
         <div class="panel bar1">
           <h2>各维度投诉数据表</h2>
-          <h2>客群投诉排名</h2>
+          <h2 class="sub1">客群投诉排名</h2>
           <div class="chart" id="chart"></div>
           <div class="panel-footer"></div>
-          <h2>全行实时投诉排名</h2>
+          <h2 class="sub2">全行实时投诉排名</h2>
           <div class="chart2"></div>
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar1">
           <h2>投诉预警</h2>
-          <h2>区域预警</h2>
+          <h2 class="sub1">区域预警</h2>
           <div class="chart3"></div>
           <div class="panel-footer"></div>
-          <h2>产品预警</h2>
+          <h2 class="sub2"> 产品预警</h2>
           <div class="chart4"></div>
           <div class="panel-footer"></div>
         </div>
@@ -373,19 +392,28 @@ import commonTitle from "../components/commonTitle.vue"
 import '@/assets/utils/china'
 export default {
   data() {
-    return {};
+    return {
+      orgName:"北京分行",
+      dnAll:550,
+      jgAll:137,
+      hnAll:32
+
+    };
   },
   components:{
       commonTitle
   },
   mounted() {
+    
     this.getData();
     this.tousu();
     this.quyuyujing();
     this.tousupm();
+    this.tousuyujing();
     this.chinamap()
   },
   methods: {
+    
     getData() {
       var that = this;
       this.myChart = this.$echarts.init(document.getElementById("chart"));
@@ -415,7 +443,7 @@ export default {
             axisLine: { show: false },
             axisLabel: {
               color: "black",
-              fontSize: 14,
+              fontSize: 12,
               textStyle: {
                 color: "#fff",
               },
@@ -430,7 +458,7 @@ export default {
             axisLine: { show: false },
             axisLabel: {
               color: "black",
-              fontSize: 14,
+              fontSize: 12,
               textStyle: {
                 color: "#fff",
               },
@@ -448,7 +476,7 @@ export default {
             symbolMargin: 2,
             symbol: "rect",
             symbolClip: true,
-            symbolSize: [10, 12],
+            symbolSize: [6, 8],
             data: data,
             z: 2,
             // barCategoryGap:0,
@@ -499,7 +527,7 @@ export default {
             color: "#2e5384",
             itemStyle: {
               normal: {
-                // barBorderRadius:10,
+                barBorderRadius:4,
               },
             },
           },
@@ -538,7 +566,7 @@ export default {
             axisLine: { show: false },
             axisLabel: {
               color: "black",
-              fontSize: 14,
+              fontSize: 12,
               textStyle: {
                 color: "#fff",
               },
@@ -553,7 +581,7 @@ export default {
             axisLine: { show: false },
             axisLabel: {
               color: "black",
-              fontSize: 14,
+              fontSize: 12,
               textStyle: {
                 color: "#fff",
               },
@@ -571,7 +599,7 @@ export default {
             symbolMargin: 2,
             symbol: "rect",
             symbolClip: true,
-            symbolSize: [10, 12],
+            symbolSize: [6, 8],
             data: data,
             z: 2,
             // barCategoryGap:0,
@@ -622,7 +650,7 @@ export default {
             color: "#2e5384",
             itemStyle: {
               normal: {
-                // barBorderRadius:10,
+                barBorderRadius:4,
               },
             },
           },
@@ -661,7 +689,7 @@ export default {
             axisLine: { show: false },
             axisLabel: {
               color: "black",
-              fontSize: 14,
+              fontSize: 12,
               textStyle: {
                 color: "#fff",
               },
@@ -676,7 +704,7 @@ export default {
             axisLine: { show: false },
             axisLabel: {
               color: "black",
-              fontSize: 14,
+              fontSize: 12,
               textStyle: {
                 color: "#fff",
               },
@@ -694,7 +722,7 @@ export default {
             symbolMargin: 2,
             symbol: "rect",
             symbolClip: true,
-            symbolSize: [10, 12],
+            symbolSize: [6, 8],
             data: data,
             z: 2,
             // barCategoryGap:0,
@@ -745,7 +773,7 @@ export default {
             color: "#2e5384",
             itemStyle: {
               normal: {
-                // barBorderRadius:10,
+                barBorderRadius:4,
               },
             },
           },
@@ -754,6 +782,128 @@ export default {
       myChart.setOption(option);
     },
 
+    tousuyujing() {
+        var that = this;
+      var myChart = that.$echarts.init(document.querySelector(".bar1 .chart4"));
+
+      var data = [66, 59, 57];
+      var titlename = ["个人开户", "场景贷", "中信安全险"];
+
+      var option = {
+        // backgroundColor:"#17326b",
+        grid: {
+          left: "0",
+          top: "0",
+          right: "0",
+          bottom: "0",
+          containLabel: true,
+        },
+        xAxis: {
+          type: "value",
+          splitLine: { show: false },
+          axisLabel: { show: false },
+          axisTick: { show: false },
+          axisLine: { show: false },
+        },
+        yAxis: [
+          {
+            type: "category",
+            axisTick: { show: false },
+            axisLine: { show: false },
+            axisLabel: {
+              color: "black",
+              fontSize: 12,
+              textStyle: {
+                color: "#fff",
+              },
+            },
+            data: titlename,
+            // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
+            inverse: true,
+          },
+          {
+            type: "category",
+            axisTick: { show: false },
+            axisLine: { show: false },
+            axisLabel: {
+              color: "black",
+              fontSize: 12,
+              textStyle: {
+                color: "#fff",
+              },
+            },
+            data: data,
+            // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
+            inverse: true,
+          },
+        ],
+        series: [
+          {
+            name: "条",
+            type: "pictorialBar",
+            symbolRepeat: "fixed",
+            symbolMargin: 2,
+            symbol: "rect",
+            symbolClip: true,
+            symbolSize: [6, 8],
+            data: data,
+            z: 2,
+            // barCategoryGap:0,
+
+            itemStyle: {
+              normal: {
+                barBorderRadius: 7,
+                //柱体的颜色
+                //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
+                color: function (params) {
+                  //   console.log(params);
+                  var colorList = [
+                    ["#02f0fe", "#02B8EC"],
+                    ["#02f0fe", "#02B8EC"],
+                    ["#02f0fe", "#02B8EC"],
+                    ["#02f0fe", "#02B8EC"],
+                    ["#02f0fe", "#02B8EC"],
+                  ];
+                  var colorItem = colorList[params.dataIndex];
+                  return new that.$echarts.graphic.LinearGradient(
+                    1,
+                    0,
+                    0,
+                    0,
+                    [
+                      {
+                        offset: 0,
+                        color: colorItem[0],
+                      },
+                      {
+                        offset: 1,
+                        color: colorItem[1],
+                      },
+                    ],
+                    false
+                  );
+                },
+              },
+            },
+            zlevel: 1,
+          },
+          {
+            name: "进度条背景",
+            type: "bar",
+            barGap: "-100%",
+            barWidth: 16,
+            data: [100, 100, 100],
+            color: "#2e5384",
+            itemStyle: {
+              normal: {
+                barBorderRadius:4,
+              },
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    },
     tousupm(){
         var that = this;
         var myChart = that.$echarts.init(document.querySelector(".bar2 .chart"));
@@ -767,7 +917,7 @@ export default {
     grid:{
       left:"10",
       top:"10",
-      right:"0",
+      right:"10",
       bottom:"10",
       containLabel:true
     },
@@ -785,7 +935,7 @@ export default {
         axisLine:{show:false},
         axisLabel:{
           color:"black",
-          fontSize:14,
+          fontSize:12,
           textStyle: {
             color: '#fff'
           }
@@ -800,7 +950,7 @@ export default {
         axisLine:{show:false},
         axisLabel:{
           color:"black",
-          fontSize:14,
+          fontSize:12,
           textStyle: {
             color: '#fff'
           }
@@ -814,9 +964,9 @@ export default {
       {
         name:"条",
         type:"bar",
-        barWidth:15,
+        barWidth:10,
         data:[80,40,60,10,80,50,70],
-        barCategoryGap:40,
+        barCategoryGap:60,
         itemStyle:{
           normal:{
             barBorderRadius:10,
@@ -835,7 +985,7 @@ export default {
         name:"进度条背景",
         type:"bar",
         barGap:"-100%",
-        barWidth:15,
+        barWidth:10,
         data:[100,100,100,100,100,100,100],
         color:"#2e5384",
         itemStyle:{
@@ -854,145 +1004,29 @@ export default {
   myChart.setOption(option);
     },
 
-    chinamap(){
+  chinamap(){
         var that = this;
-var myChart = that.$echarts.init(document.querySelector(".map .chart"));
-  // 2. 指定配置和数据
-  // 2. 指定配置和数据
-//   var geoCoordMap = {
-//     上海: [121.4648, 31.2891],
-//     东莞: [113.8953, 22.901],
-//     东营: [118.7073, 37.5513],
-//     中山: [113.4229, 22.478],
-//     临汾: [111.4783, 36.1615],
-//     临沂: [118.3118, 35.2936],
-//     丹东: [124.541, 40.4242],
-//     丽水: [119.5642, 28.1854],
-//     乌鲁木齐: [87.9236, 43.5883],
-//     佛山: [112.8955, 23.1097],
-//     保定: [115.0488, 39.0948],
-//     兰州: [103.5901, 36.3043],
-//     包头: [110.3467, 41.4899],
-//     北京: [116.4551, 40.2539],
-//     北海: [109.314, 21.6211],
-//     南京: [118.8062, 31.9208],
-//     南宁: [108.479, 23.1152],
-//     南昌: [116.0046, 28.6633],
-//     南通: [121.1023, 32.1625],
-//     厦门: [118.1689, 24.6478],
-//     台州: [121.1353, 28.6688],
-//     合肥: [117.29, 32.0581],
-//     呼和浩特: [111.4124, 40.4901],
-//     咸阳: [108.4131, 34.8706],
-//     哈尔滨: [127.9688, 45.368],
-//     唐山: [118.4766, 39.6826],
-//     嘉兴: [120.9155, 30.6354],
-//     大同: [113.7854, 39.8035],
-//     大连: [122.2229, 39.4409],
-//     天津: [117.4219, 39.4189],
-//     太原: [112.3352, 37.9413],
-//     威海: [121.9482, 37.1393],
-//     宁波: [121.5967, 29.6466],
-//     宝鸡: [107.1826, 34.3433],
-//     宿迁: [118.5535, 33.7775],
-//     常州: [119.4543, 31.5582],
-//     广州: [113.5107, 23.2196],
-//     廊坊: [116.521, 39.0509],
-//     延安: [109.1052, 36.4252],
-//     张家口: [115.1477, 40.8527],
-//     徐州: [117.5208, 34.3268],
-//     德州: [116.6858, 37.2107],
-//     惠州: [114.6204, 23.1647],
-//     成都: [103.9526, 30.7617],
-//     扬州: [119.4653, 32.8162],
-//     承德: [117.5757, 41.4075],
-//     拉萨: [91.1865, 30.1465],
-//     无锡: [120.3442, 31.5527],
-//     日照: [119.2786, 35.5023],
-//     昆明: [102.9199, 25.4663],
-//     杭州: [119.5313, 29.8773],
-//     枣庄: [117.323, 34.8926],
-//     柳州: [109.3799, 24.9774],
-//     株洲: [113.5327, 27.0319],
-//     武汉: [114.3896, 30.6628],
-//     汕头: [117.1692, 23.3405],
-//     江门: [112.6318, 22.1484],
-//     沈阳: [123.1238, 42.1216],
-//     沧州: [116.8286, 38.2104],
-//     河源: [114.917, 23.9722],
-//     泉州: [118.3228, 25.1147],
-//     泰安: [117.0264, 36.0516],
-//     泰州: [120.0586, 32.5525],
-//     济南: [117.1582, 36.8701],
-//     济宁: [116.8286, 35.3375],
-//     海口: [110.3893, 19.8516],
-//     淄博: [118.0371, 36.6064],
-//     淮安: [118.927, 33.4039],
-//     深圳: [114.5435, 22.5439],
-//     清远: [112.9175, 24.3292],
-//     温州: [120.498, 27.8119],
-//     渭南: [109.7864, 35.0299],
-//     湖州: [119.8608, 30.7782],
-//     湘潭: [112.5439, 27.7075],
-//     滨州: [117.8174, 37.4963],
-//     潍坊: [119.0918, 36.524],
-//     烟台: [120.7397, 37.5128],
-//     玉溪: [101.9312, 23.8898],
-//     珠海: [113.7305, 22.1155],
-//     盐城: [120.2234, 33.5577],
-//     盘锦: [121.9482, 41.0449],
-//     石家庄: [114.4995, 38.1006],
-//     福州: [119.4543, 25.9222],
-//     秦皇岛: [119.2126, 40.0232],
-//     绍兴: [120.564, 29.7565],
-//     聊城: [115.9167, 36.4032],
-//     肇庆: [112.1265, 23.5822],
-//     舟山: [122.2559, 30.2234],
-//     苏州: [120.6519, 31.3989],
-//     莱芜: [117.6526, 36.2714],
-//     菏泽: [115.6201, 35.2057],
-//     营口: [122.4316, 40.4297],
-//     葫芦岛: [120.1575, 40.578],
-//     衡水: [115.8838, 37.7161],
-//     衢州: [118.6853, 28.8666],
-//     西宁: [101.4038, 36.8207],
-//     西安: [109.1162, 34.2004],
-//     贵阳: [106.6992, 26.7682],
-//     连云港: [119.1248, 34.552],
-//     邢台: [114.8071, 37.2821],
-//     邯郸: [114.4775, 36.535],
-//     郑州: [113.4668, 34.6234],
-//     鄂尔多斯: [108.9734, 39.2487],
-//     重庆: [107.7539, 30.1904],
-//     金华: [120.0037, 29.1028],
-//     铜川: [109.0393, 35.1947],
-//     银川: [106.3586, 38.1775],
-//     镇江: [119.4763, 31.9702],
-//     长春: [125.8154, 44.2584],
-//     长沙: [113.0823, 28.2568],
-//     长治: [112.8625, 36.4746],
-//     阳泉: [113.4778, 38.0951],
-//     青岛: [120.4651, 36.3373],
-//     韶关: [113.7964, 24.7028]
-//   };
+        var myChart = that.$echarts.init(document.querySelector(".map .chart"));
+
   var mydata = [
-    {name: '北京',value: '100' },{name: '天津',value: randomData() },
-    {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
-    {name: '河北',value: randomData() },{name: '河南',value: randomData() },
-    {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
-    {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
-    {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
-    {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
-    {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
-    {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
-    {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
-    {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
-    {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
-    {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
-    {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
-    {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
-    {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
-    {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
+    {name: '北京',value: '100',dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+    {name: '天津',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+    {name: '上海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '重庆',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+    {name: '河北',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '河南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+    {name: '云南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '辽宁',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+    {name: '黑龙江',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '湖南',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '安徽',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '新疆',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江苏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '浙江',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '湖北',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '甘肃',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '内蒙古',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '陕西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+    {name: '吉林',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '福建',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '贵州',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '青海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '西藏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '四川',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '宁夏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '海南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '台湾',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+    {name: '香港',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '澳门',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()}
   ];
 
   function randomData() {
@@ -1083,7 +1117,19 @@ var myChart = that.$echarts.init(document.querySelector(".map .chart"));
     }]
   };
   myChart.setOption(option);
-    }
+  myChart.on('click',  (params) =>{
+        console.log(params.data.name);
+        // params.data
+        this.orgName = params.data.name + '分行';
+        this.dnAll = params.data.dnAll;
+        this.jgAll = params.data.jgAll;
+        this.hnAll = params.data.hnAll;
+
+
+  });
+
+  }
+    
   },
 };
 </script>

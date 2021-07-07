@@ -33,7 +33,6 @@
 </template>
 
 <script>
-// import moduleName from '../../../assets/images/d6b5454bf1812dfb2692d8a62299809.png'
 export default {
   data() {
     return {
@@ -93,7 +92,7 @@ export default {
     width: 50%;
     // height: 430px;
     margin-right: 10px;
-    background-image: url(../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png);
+    // background-image: url(../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png);
     // background-size:100% 100%;
     background-repeat: repeat;
     position: relative;
@@ -125,7 +124,7 @@ export default {
     border: 1px solid black;
     width: 50%;
     height: 430px;
-    background-image: url(../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png);
+    // background-image: url(../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png);
     // background-size:100% 100%;
     background-repeat: repeat;
     position: relative;
