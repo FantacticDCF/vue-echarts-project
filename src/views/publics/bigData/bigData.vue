@@ -1,6 +1,5 @@
 <template>
   <div>
-    <commonTitle/>
     <section class="mainbox">
       <div class="column">
         <div class="panel bar">
@@ -95,21 +94,20 @@
   </div>
 </template>
 <script>
-  import commonTitle from "../components/commonTitle.vue";
   import TableProcess from "./TableProcess.vue";
   import '@/assets/utils/china';
   export default {
+    name : "bigData",
     data() {
       return {
+        isShowHead:true,
         orgName:"北京分行",
         dnAll:550,
         jgAll:137,
         hnAll:32
-
       };
     },
     components:{
-        commonTitle,
         TableProcess
     },
     mounted() {
@@ -870,10 +868,12 @@ body {
   display: flex;
 }
 .mainbox .column {
-  flex: 3;
+  /*flex: 3;*/
+  width:30%
 }
 .mainbox .column:nth-child(2) {
-  flex: 5;
+  /*flex: 5;*/
+  width: 40%;
   margin: 0 4px;
   overflow: hidden;
 }
@@ -1010,7 +1010,8 @@ body {
   display: inline-block;
   position: relative;
   /* border: 1px solid rgba(25, 186, 139, 0.17); */
-  background: url(../../../assets/images/bg-info.png) no-repeat 0/cover;
+  background: url(../../../assets/images/bg-info.png) no-repeat  100% 100%;
+  background-size: contain;
 }
 .no .no-hd::before {
   content: "";
@@ -1065,7 +1066,7 @@ body {
 .no .no-bd  {
   height:45px;
   background: url(../../../assets/images/bg-info2.png) no-repeat center;
-  background-size: cover;
+  background-size: contain;
 }
 .no .no-bd ul {
   display: flex;

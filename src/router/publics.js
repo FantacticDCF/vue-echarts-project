@@ -12,7 +12,7 @@ let pubics=[
     {
         path: '/bigData',
         name: 'bigData',
-        component: ()=>import("@/views/publics/bigData/bigData")//注册
+        component: ()=>import("@/views/publics/bigData/bigDataIndex")//注册
     },
     {
         path: '/Home',
