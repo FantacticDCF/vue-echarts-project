@@ -241,4 +241,7 @@ input::-webkit-input-placeholder {
     color: #409EFF;
     cursor: default;
 }
+/deep/.el-table .cell{
+    line-height: 16px;
+}
 </style>
