@@ -230,7 +230,7 @@ export default {
             this.$Message.success(res.msg);
             sessionStorage.setItem("userid",res.data.userid)
             setTimeout(() => {
-               this.$router.push({ path: "/bigData"});
+               this.$router.push({ path: "/index"});
             }, 1500);
             }else  this.$Message.error(res.msg);
           })

@@ -22,7 +22,7 @@
             <div>达标值</div>
             <div>已发生</div>
           </div>
-          <div class="descTitle1" v-for="(item, index) in info" :key="index">
+          <div class="descTitle1" v-for="(item, index) in info" :key="index" >
             <div :class="item.classname">{{ item.name }}</div>
             <div class="jindu">
               <Jindutiao
@@ -30,7 +30,7 @@
                 :name="item.namecolor"
                 class="jindutiao"
               ></Jindutiao>
-              <div class="num">{{ item.num1 }}</div>
+              <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
             </div>
             <div class="jindu">
               <Jindutiao
@@ -40,7 +40,7 @@
               ></Jindutiao>
               <!-- <div class="num">{{ item.num2 }}</div> -->
               <div
-                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
+                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
               >
                 <i :class="item.colorid < 1 ? '' : item.icon"></i>
                 {{ item.num2 }}
@@ -72,7 +72,7 @@
                 :name="item.namecolor"
                 class="jindutiao"
               ></Jindutiao>
-              <div class="num">{{ item.num1 }}</div>
+              <div class="num"  @click="numPushHandle">{{ item.num1 }}</div>
             </div>
             <div class="jindu">
               <Jindutiao
@@ -81,7 +81,7 @@
                 class="jindutiao"
               ></Jindutiao>
               <div
-                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
+                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
               >
                 <i :class="item.colorid < 1 ? '' : item.icon"></i>
                 {{ item.num2 }}
@@ -391,8 +391,14 @@ export default {
   components: {
     Jindutiao,
   },
-  methods: {},
-  mounted() {},
+  methods: {
+     numPushHandle(){
+      this.$router.push({path:'/Home/plan'})
+    }
+  },
+  mounted() {
+   
+  },
 };
 </script>
 

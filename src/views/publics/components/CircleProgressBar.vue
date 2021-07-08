@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 显示图表容器 -->
-    <div class="main" ref="main"></div>
+    <div class="main1" ref="main1"></div>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
     draw() {
       var that = this;
       // 基于准备好的dom，初始化echarts实例
-      var myChart = this.$echarts.init(this.$refs.main);
+      var myChart = this.$echarts.init(this.$refs.main1);
       // this.charts = echarts.init(this.$refs.echarts);
       // 指定图表的配置项和数据
       var option = {
@@ -75,6 +75,19 @@ export default {
             itemStyle: {
               normal: {
                 barBorderRadius: 20,
+                label: {
+                  show: true,
+                  position: "insideRight",
+                  formatter: "   ",
+                  backgroundColor: "#94f6ff",
+                  distance: 0,
+                  borderColor: "#ffff",
+                  borderWidth: 2,
+                  borderRadius: 10,
+                  color: "#94f6ff",
+                  width:5,
+                  height:5,
+                },
                 color: function (params) {
                   // console.log(params);
                   if (params.seriesName == "蓝色") {
@@ -90,7 +103,6 @@ export default {
                         { offset: 1, color: "#4FC8EC" },
                       ]
                     );
-                
                   } else {
                     return new that.$echarts.graphic.LinearGradient(
                       0,
@@ -105,7 +117,6 @@ export default {
                       ]
                     );
                   }
-                     
                 },
               },
             },
@@ -134,7 +145,6 @@ export default {
               barBorderRadius: 40,
             },
           },
-          
         ],
       };
 
@@ -146,13 +156,13 @@ export default {
 </script>
 
 <style>
-#main2 {
+#main1 {
   height: 15px;
-  width: 150px;
+  width: 250px;
 }
-.main {
+.main1 {
   height: 15px;
-  width: 150px;
+  width: 250px;
   margin-left: 10px;
 }
 </style>
