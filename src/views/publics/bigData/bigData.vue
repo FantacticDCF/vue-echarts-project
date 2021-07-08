@@ -114,16 +114,17 @@
     },
     mounted() {
 
-      this.getData();
-      this.tousu();
-      this.quyuyujing();
-      // this.tousupm();
-      this.tousuyujing();
-      this.chinamap()
+      // this.tousupm();//全行实时投诉排名
+      this.kqtousu();//客群投诉排名
+      this.beitousu();//被投诉业务排名
+      this.quyuyujing();//区域预警
+      this.chanpinyujing();//产品预警
+      this.chinamap()//中国地图
     },
     methods: {
 
-      getData() {
+      //右1
+      kqtousu() {
         var that = this;
         this.myChart = this.$echarts.init(document.getElementById("chart"));
         var data = [66, 59, 57];
@@ -243,9 +244,12 @@
           ],
         };
         this.myChart.setOption(option);
+        window.addEventListener("resize", () => { this.myChart.resize();});
+
       },
 
-      tousu() {
+      //右2
+      beitousu() {
         var that = this;
         var myChart = this.$echarts.init(document.querySelector(".bar1 .chart2"));
 
@@ -366,8 +370,11 @@
           ],
         };
         myChart.setOption(option);
+        window.addEventListener("resize", () => { myChart.resize();});
+
       },
 
+      //右3
       quyuyujing() {
           var that = this;
         var myChart = that.$echarts.init(document.querySelector(".bar1 .chart3"));
@@ -489,9 +496,12 @@
           ],
         };
         myChart.setOption(option);
+        window.addEventListener("resize", () => { myChart.resize();});
+
       },
 
-      tousuyujing() {
+      //右4
+      chanpinyujing() {
           var that = this;
         var myChart = that.$echarts.init(document.querySelector(".bar1 .chart4"));
 
@@ -612,108 +622,112 @@
           ],
         };
         myChart.setOption(option);
-      },
-      tousupm(){
-          var that = this;
-          var myChart = that.$echarts.init(document.querySelector(".bar2 .chart"));
+        window.addEventListener("resize", () => { myChart.resize();});
 
-    var data = [66,59,57,48,42,35,29];
-    var titlename = ["北京分行", "上海分行", "广州分行", "深圳分行", "郑州分行", "成都分行", "武汉分行"];
-
-
-    var option = {
-      // backgroundColor:"#17326b",
-      grid:{
-        left:"10",
-        top:"10",
-        right:"10",
-        bottom:"10",
-        containLabel:true
-      },
-      xAxis: {
-        type: 'value',
-        splitLine:{show:false},
-        axisLabel:{show:false},
-        axisTick:{show:false},
-        axisLine:{show:false}
-      },
-      yAxis:[
-        {
-          type: 'category',
-          axisTick:{show:false},
-          axisLine:{show:false},
-          axisLabel:{
-            color:"black",
-            fontSize:12,
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          data:titlename,
-          // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-          inverse:true
-        },
-        {
-          type: 'category',
-          axisTick:{show:false},
-          axisLine:{show:false},
-          axisLabel:{
-            color:"black",
-            fontSize:12,
-            textStyle: {
-              color: '#fff'
-            }
-          },
-          data:data,
-          // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-          inverse:true
-        }
-      ],
-      series: [
-        {
-          name:"条",
-          type:"bar",
-          barWidth:10,
-          data:[80,40,60,10,80,50,70],
-          barCategoryGap:60,
-          itemStyle:{
-            normal:{
-              barBorderRadius:10,
-              color: new that.$echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                offset: 0,
-                color: '#22b6ed'
-              }, {
-                offset: 1,
-                color: '#3fE279'
-              }]),
-            }
-          },
-          zlevel:1
-
-        },{
-          name:"进度条背景",
-          type:"bar",
-          barGap:"-100%",
-          barWidth:10,
-          data:[100,100,100,100,100,100,100],
-          color:"#2e5384",
-          itemStyle:{
-            normal:{
-              barBorderRadius:10,
-
-            }
-          },
-        }
-      ]
-    };
-
-
-
-
-    myChart.setOption(option);
       },
 
-    chinamap(){
+      //左2
+      // tousupm(){
+      //   var that = this;
+      //   var myChart = that.$echarts.init(document.querySelector(".bar2 .chart"));
+      //
+      //   var data = [66,59,57,48,42,35,29];
+      //   var titlename = ["北京分行", "上海分行", "广州分行", "深圳分行", "郑州分行", "成都分行", "武汉分行"];
+      //
+      //
+      //   var option = {
+      //     // backgroundColor:"#17326b",
+      //     grid:{
+      //       left:"10",
+      //       top:"10",
+      //       right:"10",
+      //       bottom:"10",
+      //       containLabel:true
+      //     },
+      //     xAxis: {
+      //       type: 'value',
+      //       splitLine:{show:false},
+      //       axisLabel:{show:false},
+      //       axisTick:{show:false},
+      //       axisLine:{show:false}
+      //     },
+      //     yAxis:[
+      //       {
+      //         type: 'category',
+      //         axisTick:{show:false},
+      //         axisLine:{show:false},
+      //         axisLabel:{
+      //           color:"black",
+      //           fontSize:12,
+      //           textStyle: {
+      //             color: '#fff'
+      //           }
+      //         },
+      //         data:titlename,
+      //         // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
+      //         inverse:true
+      //       },
+      //       {
+      //         type: 'category',
+      //         axisTick:{show:false},
+      //         axisLine:{show:false},
+      //         axisLabel:{
+      //           color:"black",
+      //           fontSize:12,
+      //           textStyle: {
+      //             color: '#fff'
+      //           }
+      //         },
+      //         data:data,
+      //         // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
+      //         inverse:true
+      //       }
+      //     ],
+      //     series: [
+      //       {
+      //         name:"条",
+      //         type:"bar",
+      //         barWidth:10,
+      //         data:[80,40,60,10,80,50,70],
+      //         barCategoryGap:60,
+      //         itemStyle:{
+      //           normal:{
+      //             barBorderRadius:10,
+      //             color: new that.$echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+      //               offset: 0,
+      //               color: '#22b6ed'
+      //             }, {
+      //               offset: 1,
+      //               color: '#3fE279'
+      //             }]),
+      //           }
+      //         },
+      //         zlevel:1
+      //
+      //       },{
+      //         name:"进度条背景",
+      //         type:"bar",
+      //         barGap:"-100%",
+      //         barWidth:10,
+      //         data:[100,100,100,100,100,100,100],
+      //         color:"#2e5384",
+      //         itemStyle:{
+      //           normal:{
+      //             barBorderRadius:10,
+      //
+      //           }
+      //         },
+      //       }
+      //     ]
+      //   };
+      //
+      //
+      //
+      //
+      //   myChart.setOption(option);
+      // },
+
+      chinamap(){
           var that = this;
           var myChart = that.$echarts.init(document.querySelector(".map .chart"));
 
@@ -833,10 +847,8 @@
           this.dnAll = params.data.dnAll;
           this.jgAll = params.data.jgAll;
           this.hnAll = params.data.hnAll;
-
-
     });
-
+    window.addEventListener("resize", () => { myChart.resize();});
     }
 
     },
@@ -853,7 +865,7 @@ body {
 .mainbox {
   /*min-width: 1024px;*/
   /*max-width: 1920px;*/
-  height: 90vh;
+  height: 680px;
   padding: 5px;
   display: flex;
 }
@@ -862,12 +874,11 @@ body {
 }
 .mainbox .column:nth-child(2) {
   flex: 5;
-  margin: 0 0.125rem 0.1875rem;
+  margin: 0 4px;
   overflow: hidden;
 }
 .panel {
   position: relative;
-  /* height: 3.875rem; */
   height: 330px;
   /* border: 1px solid rgba(25, 186, 139, 0.17); */
   background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
@@ -936,16 +947,15 @@ body {
   padding: 0 5px;
 }
 .panel h2 a {
-  margin: 0 0.1875rem;
   color: #fff;
   text-decoration: underline;
 }
-.panel .chart {
-  height: 3rem;
-}
-.panel .chart2 {
-  height: 3rem;
-}
+/*.panel .chart {*/
+/*  height: 3rem;*/
+/*}*/
+/*.panel .chart2 {*/
+/*  height: 3rem;*/
+/*}*/
 .panel .sub1 {
   margin-top: 32px;
 }
@@ -992,7 +1002,6 @@ body {
 }
 .no {
   background: rgba(101, 132, 226, 0.1);
-  padding: 0.1875rem;
   text-align: center;
 }
 .no .no-hd {
@@ -1054,9 +1063,9 @@ body {
 /*  top: 25%;*/
 /*}*/
 .no .no-bd  {
-  height:50px;
-  background: url(../../../assets/images/bg-info2.png) no-repeat 0/cover;
-
+  height:45px;
+  background: url(../../../assets/images/bg-info2.png) no-repeat center;
+  background-size: cover;
 }
 .no .no-bd ul {
   display: flex;
@@ -1068,7 +1077,7 @@ body {
   text-align: center;
   font-size: 20px;
   color: rgb(1, 179, 233);
-  padding-top: 20px;
+  padding-top: 14px;
   font-weight:bold;
 }
 .map {
@@ -1083,33 +1092,7 @@ body {
   height: 500px;
   width: 100%;
 }
-.map .map1,
-.map .map2,
-.map .map3 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 6.475rem;
-  height: 6.475rem;
-  /* background: url(../image/map.png) no-repeat; */
-  background-size: 100% 100%;
-  opacity: 0.3;
-}
-.map .map2 {
-  width: 8.0375rem;
-  height: 8.0375rem;
-  /* background-image: url(../image/lbx.png); */
-  opacity: 0.6;
-  animation: rotate 15s linear infinite;
-  z-index: 2;
-}
-.map .map3 {
-  width: 7.075rem;
-  height: 7.075rem;
-  /* background-image: url(../image/jt.png); */
-  animation: rotate1 10s linear infinite;
-}
+
 @keyframes rotate {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
