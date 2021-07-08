@@ -286,11 +286,7 @@ body {
     font-size: 42px !important;
   }
 }
-@media screen and (min-width: 1920) {
-  html {
-    font-size: 80px !important;
-  }
-}
+
 </style>    
 <template>
   <div>
@@ -316,12 +312,13 @@ body {
             <div class="ts-bg"><h3>40%</h3></div>
             <p>零售客户投诉发生率</p>
           </div>
-          <!-- <div class="chart"></div> -->
+           <div class="chart"></div>
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar2">
           <h2>全行实时投诉排名</h2>
-          <div class="chart"></div>
+<!--          <div class="chart"></div>-->
+          <TableProcess></TableProcess>
           <div class="panel-footer"></div>
         </div>
       </div>
@@ -388,8 +385,9 @@ body {
   </div>
 </template>
 <script>
-import commonTitle from "../components/commonTitle.vue"
-import '@/assets/utils/china'
+import commonTitle from "../components/commonTitle.vue";
+import TableProcess from "./TableProcess.vue";
+import '@/assets/utils/china';
 export default {
   data() {
     return {
@@ -401,14 +399,15 @@ export default {
     };
   },
   components:{
-      commonTitle
+      commonTitle,
+      TableProcess
   },
   mounted() {
     
     this.getData();
     this.tousu();
     this.quyuyujing();
-    this.tousupm();
+    // this.tousupm();
     this.tousuyujing();
     this.chinamap()
   },
