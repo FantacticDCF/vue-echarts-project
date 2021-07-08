@@ -146,10 +146,7 @@ export default {
 </script>
 
 <style>
-#main2 {
-  height: 15px;
-  width: 150px;
-}
+
 .main {
   height: 15px;
   width: 150px;
