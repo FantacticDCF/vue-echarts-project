@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import echarts from "echarts";
+// import echarts from "echarts";
 export default {
   data() {
     return {
@@ -32,8 +32,10 @@ export default {
 
   
     draw() {
+      // console.log(echarts,111)
       // 基于准备好的dom，初始化echarts实例
-      var myChart =echarts.init(this.$refs.bar);
+      var that = this;
+      var myChart =this.$echarts.init(this.$refs.bar);
           // this.charts = echarts.init(this.$refs.echarts);
       // 指定图表的配置项和数据
       var option = {
@@ -81,7 +83,7 @@ export default {
                 color:function(params){
                   // console.log(params);
           if(params.seriesName=='蓝色'){
-            return   new echarts.graphic.LinearGradient(
+            return   new that.$echarts.graphic.LinearGradient(
                  0, 0, 1, 0,
                  [{offset: 0, color: '#0499D4'},
                    {offset: 0.4, color: '#1AA5DB'},
@@ -89,7 +91,7 @@ export default {
                 {offset: 1, color: '#4FC8EC'}]
             )
           }else{
-          return  new echarts.graphic.LinearGradient(
+          return  new that.$echarts.graphic.LinearGradient(
                  0, 0, 1, 0,
                  [{offset: 0, color: '#E53232'},
                    {offset: 0.4, color: '#E84040'},

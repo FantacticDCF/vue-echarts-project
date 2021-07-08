@@ -1,44 +1,23 @@
 <template>
   <div class="index">
     <Layout>
-      <commonTitle/>
-      <!-- <Header>
-        <Menu
-          mode="horizontal"
-          theme="light"
-          :active-name="topactive"
-          class="meum"
-        >
-          <h3>xxxx平台管理</h3>
-          <Icon
-            @click.native="collapsedSider"
-            :class="rotateIcon"
-            type="md-menu"
-            size="24"
-            style="margin: 0rem 1.875rem 0rem 3.125rem"
-          ></Icon>
-          <div class="layout-nav">
-            <MenuItem
-              :name="item.label"
-              v-for="(item, index) in toplist"
-              :key="index"
-            >
-              <span @click="topclick(item)" class="block">{{
-                item.label
-              }}</span>
-            </MenuItem>
-          </div>
-          <div class="imy">
-            <div style="cursor: pointer">HOME3</div>
-          </div>
-          <Dropdown @on-click="quit" trigger="click">
-            <Avatar :src="avatar_img" />
-            <DropdownMenu slot="list">
-              <DropdownItem name="1">退出登录</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </Menu>
-      </Header> -->
+      <!-- <commonTitle />
+      <div class="maskTips" @jumpHome ='jumpHome'></div> -->
+      <Header>
+        <div class="commonTitle">
+            <div class="commonLogo">
+                <img src="../../assets/images/commonTitle/logo.png"/>
+                <span class="commonTitleres commonTitleres_one" @click="jumpHome">返回首页</span>
+            </div>
+            <div class="commonTitleS">
+                <span class="commonTitles commonTitleS_one">数字化投诉分析管理系统</span>
+            </div>
+            <div class="commonTime">
+                <span class="times timed">{{nowDates}}</span>
+                <span class="names">王一博</span>
+            </div>
+        </div>
+      </Header>
       <Layout >
         <Sider
           ref="side1"
@@ -122,14 +101,14 @@
   </div>
 </template>
 <script>
-import commonTitle from "./components/commonTitle.vue"
+// import commonTitle from "./components/commonTitle.vue"
 export default {
   inject: ["tag_go"],
   data() {
     return {
       avatar_img: require("@/assets/images/avatar.jpg"),
       isCollapsed: false,
-      count: [{ name: "HOME1", path: "/Home/index" }],
+      count: [{ name: "投诉压降", path: "/Home/business" }],
       activeid: 1,
       toplist: [
         {
@@ -167,52 +146,53 @@ export default {
           name: "压降目标",
           img: require('../../assets/images/commonTitle/yjmb.png'),
           id: "2",
-          to: "",
+          to: "/Home/losspressure",
         },
         {
           label: "查询",
           name: "查询",
           img: require('../../assets/images/commonTitle/cx.png'),
           id: "2",
-          to: "",
+          to: "/Home/serch",
         },
         {
           label: "监管报送",
           name: "监管报送",
           img: require('../../assets/images/commonTitle/jgbs.png'),
           id: "2",
-          to: "",
+          to: "/Home/regulatorySubmitted",
         },
         {
           label: "投诉分析报告模版",
           name: "投诉分析报告模版",
           img: require('../../assets/images/commonTitle/tsfx.png'),
           id: "2",
-          to: "",
+          to: "/Home/complaintAnalysis",
         },
         {
           label: "消保审核",
           name: "消保审核",
           img: require('../../assets/images/commonTitle/xbsh.png'),
           id: "2",
-          to: "",
+          to: "/Home/fromAudit",
         },
         {
           label: "投诉预警",
           name: "投诉预警",
           img: require('../../assets/images/commonTitle/tsyj.png'),
           id: "2",
-          to: "",
+          to: "/Home/complaintsWarning",
         },
         {
           label: "投诉管理驾驶舱",
           name: "投诉管理驾驶舱",
           img: require('../../assets/images/commonTitle/tsgl.png'),
           id: "2",
-          to: "",
+          to: "/Home/complaintCockpit",
         },
       ],
       breadnav: [],
+      nowDates: ''
     };
   },
   created() {
@@ -234,6 +214,16 @@ export default {
     },
   },
   methods: {
+    jumpHome(){
+      this.$router.push({path: '/bigData'})
+    },
+    // 获取当前日期
+    getDates(){
+      var day2 = new Date();
+      day2.setTime(day2.getTime());
+      var s2 = day2.getFullYear()+"年" + (day2.getMonth()+1) + "月" + day2.getDate() + '日';
+      this.nowDates = s2;
+    },
     leftclick(item) {
       this.leftactive = item.name;
       this.$router.push({ path: item.to });
@@ -278,7 +268,7 @@ export default {
   },
   components: {
     // navTop,
-    commonTitle,
+    // commonTitle,
   },
   watch: {
     $route(to) {
@@ -309,9 +299,6 @@ export default {
 .menu-item span{
   width: 7rem !important;
 }
-.ivu-layout.ivu-layout-has-sider{
-  padding: 0 !important;
-}
 .ivu-layout-sider{
   min-width: 230px !important;
   max-width: 230px !important;
@@ -323,5 +310,103 @@ export default {
   width: 16px;
   height: 16px;
   margin-right: 8px;
+}
+.header{
+    background: none;
+    padding: 0rem;
+    height: 3.75rem;
+    line-height: 3.75rem;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+.commonTitle{
+  width: 100%;
+  height: 60px;
+  background: #11172F;
+  text-align: center;
+  overflow: hidden;
+  background-image: url("../../assets/images/commonTitle/bg04.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.commonLogo{
+  width: 30%;
+  height: 60px;
+  float: left;
+   /* background-image: url("../../assets/images/commonTitle/bg01.png");
+   background-size: 100% 100%;
+   background-repeat: no-repeat; */
+  display: flex;
+  justify-content: space-around;
+}
+.commonLogo img{
+  display: inline-block;
+  width: 140px;
+  height: 45px;
+  margin-top: 5px;
+}
+.commonLogo .commonTitleres{
+  display: inline-block;
+  font-size: 12px;
+  line-height: 60px;
+  position: relative;
+  margin-left: 50px;
+  cursor: pointer;
+}
+.commonLogo .commonTitleres_one{ 
+  background-image:-webkit-linear-gradient(bottom,#51aefe,#89f5fc);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.commonTitleS{
+  width: 40%;
+  height: 60px;
+  /* margin-left: -20px; */
+  float: left;
+}
+.commonTitleS .commonTitles{
+  font-size: 22px;
+  line-height: 66px;
+  font-weight: 500;
+  position: relative;
+}
+.commonTitleS .commonTitleS_one{ 
+  background-image:-webkit-linear-gradient(bottom,#51aefe,#89f5fc);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.commonTime{
+  width: 30%;
+  float: left;
+  margin-left: -25px;
+   /* background-image: url("../../assets/images/commonTitle/bg03.png");
+   background-size: 100% 100%;
+   background-repeat: no-repeat; */
+  justify-content: space-around;
+  position: relative;
+}
+.commonTime .times{
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 53px;
+  line-height: 50px;
+  color: #6bf6fd;
+  position: absolute;
+    left: 33%;
+    top: 2px;
+}
+/* .commonTime .timed{ 
+  background-image:-webkit-linear-gradient(bottom,#4392d6,#57c9d5);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+} */
+
+.commonTime .names{
+  font-size: 10px;
+  color: #6bf6fd;
+  position: absolute;
+  left: 76%;
+  top: -6px;
 }
 </style>

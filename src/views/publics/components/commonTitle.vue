@@ -20,11 +20,6 @@
 
 <script>
 export default {
-  // props:{
-  //     commonTitleres: {
-  //       default : '我的工作'
-  //     }
-  // },
     data(){
         return {
             commonTitleres: '我的工作',
@@ -33,7 +28,9 @@ export default {
     },
     created() {
         this.getDates();
-        // this.getRouteParams()
+    },
+    mounted(){
+        
     },
     methods: {
       // 获取当前的日期
@@ -45,17 +42,9 @@ export default {
       },
       //跳转首页
       jumpHome(){
-        this.$route.push({path: '/Home/business' , query: {commonTitleres: '投诉降压'}})
+        this.$router.push({path: '/Home/business'})
       },
-      // 展示头部文字
-      // getRouteParams(){
-      //   console.log(this.$route)
-      //   if(this.$route.query.commonTitleres == '' || this.$route.query.commonTitleres == undefined){
-      //     this.commonTitleres = '我的工作'
-      //   }else{ 
-      //     this.commonTitleres = this.$route.query.commonTitleres
-      //   }
-      // }
+      
     }
 }
 </script>
@@ -102,6 +91,7 @@ export default {
   line-height: 60px;
   position: relative;
   margin-left: 50px;
+  cursor: pointer;
 }
 .commonLogo .commonTitleres_one{ 
   background-image:-webkit-linear-gradient(bottom,#51aefe,#89f5fc);
