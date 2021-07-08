@@ -15,7 +15,7 @@
           class="image"
         />
 
-        <div class="title">投诉管理目标分解表</div>
+        <div class="title">{{titleName}}</div>
         <div class="desc">
           <div class="descTitle">
             <div>机构</div>
@@ -57,7 +57,7 @@
           alt=""
           class="image"
         />
-        <div class="title">监管投诉管理目标</div>
+        <div class="title">{{titleName1}}</div>
         <div class="desc">
           <div class="descTitle">
             <div>机构</div>
@@ -99,6 +99,8 @@ import Jindutiao from "../components/jindutiao.vue";
 export default {
   data() {
     return {
+      titleName:'投诉管理目标分解表',
+      titleName1:'监管投诉管理目标',
       info: [
         {
           id: 1001,
