@@ -204,6 +204,7 @@ export default {
       sessionStorage.getItem("routername")
     ).leftactive;
     this.activeid = JSON.parse(sessionStorage.getItem("routername")).activeid;
+    this.getDates();
   },
   computed: {
     rotateIcon() {
