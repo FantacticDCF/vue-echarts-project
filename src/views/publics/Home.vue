@@ -215,7 +215,7 @@ export default {
   },
   methods: {
     jumpHome(){
-      this.$router.push({path: '/bigData'})
+      this.$router.push({path: '/index'})
     },
     // 获取当前日期
     getDates(){
