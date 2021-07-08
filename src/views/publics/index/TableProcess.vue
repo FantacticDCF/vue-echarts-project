@@ -1,41 +1,4 @@
-<style>
-  .el-table td, .el-table th {
-     padding: 5px 0;
-  }
-  /*.el-table tr:hover {*/
-  /*   background: transparent;*/
-  /*}*/
-  .el-table td, .el-table th.is-leaf {
-    border-bottom: 0;
-  }
-  .el-table {
-    background: transparent;
-    margin-top: 20px;
-  }
-  .el-table th, .el-table tr {
-    background-color: transparent;
-  }
-  .el-table--enable-row-hover .el-table__body tr:hover>td {
-    background-color: #081b56;
-  }
-  .el-table td, .el-table th {
-    padding: 5px 0;
-    text-align: center;
-  }
-  .el-table--border::after, .el-table--group::after, .el-table::before {
-    background-color: transparent;
-  }
-  .el-table .cell{
-    /*color: #12abe2;*/
-    font-size: 12px;
-  }
-  .color-blue {
-    color: #12abe2;
-  }
-  .color-white {
-    color: white;
-  }
-</style>
+
 <template>
   <div>
     <el-table :data="tableData" width="100%">
@@ -228,6 +191,41 @@ export default {
 </script>
 
 
-<style scoped>
-
+<style >
+.el-table td, .el-table th {
+  padding: 5px 0;
+}
+/*.el-table tr:hover {*/
+/*   background: transparent;*/
+/*}*/
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 0;
+}
+.el-table {
+  background: transparent;
+  margin-top: 20px;
+}
+.el-table th, .el-table tr {
+  background-color: transparent;
+}
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+  background-color: #081b56;
+}
+.el-table td, .el-table th {
+  padding: 5px 0;
+  text-align: center;
+}
+.el-table--border::after, .el-table--group::after, .el-table::before {
+  background-color: transparent;
+}
+.el-table .cell{
+  /*color: #12abe2;*/
+  font-size: 12px;
+}
+.color-blue {
+  color: #12abe2;
+}
+.color-white {
+  color: white;
+}
 </style>
