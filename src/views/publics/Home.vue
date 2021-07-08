@@ -84,8 +84,12 @@
                 >
                   <!-- <Icon type="ios-home-outline"></Icon> -->
                   <div class="icon1"></div>
+                   <!-- <span v-html="item.name==='降压目标' ?'降压目标投诉发生率考核目标':item.name"></span> -->
+
                   <!-- <i class="el-icon-caret-bottom icon1"></i> -->
-                  {{ item.name }}
+                   {{item.name}}
+                  <!-- {{item.name !='降压目标'? item.name :'降压目标'+ <div class="icon1"></div>+'投诉发生率考核目标'}} -->
+                    
                   <div class="icon2"></div>
                   <!-- <i class="el-icon-caret-top icon2"></i> -->
                 </BreadcrumbItem>
@@ -106,6 +110,7 @@ export default {
   inject: ["tag_go"],
   data() {
     return {
+      info:`降压目标${ <div class="icon1"></div>}'投诉发生率考核目标`,
       avatar_img: require("@/assets/images/avatar.jpg"),
       isCollapsed: false,
       count: [{ name: "投诉压降", path: "/Home/business" }],
@@ -143,7 +148,8 @@ export default {
         },
         {
           label: "压降目标",
-          name: "压降目标",
+          // name: "压降目标",
+           name: "压降目标",
           img: require('../../assets/images/commonTitle/yjmb.png'),
           id: "2",
           to: "/Home/losspressure",
@@ -197,6 +203,8 @@ export default {
   },
   created() {
     this.breadnav = this.$route.meta.breadnav;
+   
+    console.log(this.$route.meta.breadnav[0].name);
     if (JSON.parse(sessionStorage.getItem("count")) == null) return false;
     else this.count = JSON.parse(sessionStorage.getItem("count"));
     this.topactive = JSON.parse(sessionStorage.getItem("routername")).topactive;

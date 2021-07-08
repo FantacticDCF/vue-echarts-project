@@ -29,7 +29,14 @@ let pubics=[
                 path: '/Home/business',
                 name: 'publicsbusiness',
                 component: ()=>import("@/views/publics/Home/business"),
-                meta:{breadnav:[{path:'/Home/business',name:'投诉压降'}],name:'投诉压降'}//投诉压降
+                meta:{breadnav:[{path:'/Home/business',name:'投诉压降'}],name:'投诉压降'},//投诉压降
+                // children:[
+                //     {
+                //         path:"/business/plan",
+                //         name:"plan",
+                //         component: ()=>import("@/views/publics/Home/plan"),
+                //     }
+                // ]
             },
             {
                 path: '/Home/plan',
@@ -42,6 +49,7 @@ let pubics=[
                 name: 'losspressure',
                 component: ()=>import("@/views/publics/losspressure/losspressure"),
                 meta:{breadnav:[{path:'/Home/losspressure',name:'压降目标'}],name:'压降目标'}//压降目标
+                // meta:{breadnav:[{path:'/Home/losspressure',name: `降压目标${<div class="icon1"></div>+'投诉发生率考核目标'}`}],name:'压降目标'}//压降目标
             },
             {
                 path: '/Home/serch',
