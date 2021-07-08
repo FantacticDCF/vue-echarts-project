@@ -4,7 +4,7 @@
         <div class="commonTitle">
             <div class="commonLogo">
                 <img src="../../../assets/images/commonTitle/logo.png"/>
-                <span class="commonTitleres commonTitleres_one">{{commonTitleres}}</span>
+                <span class="commonTitleres commonTitleres_one" @click="jumpHome">{{commonTitleres}}</span>
             </div>
             <div class="commonTitleS">
                 <span class="commonTitles commonTitleS_one">数字化投诉分析管理系统</span>
@@ -20,6 +20,11 @@
 
 <script>
 export default {
+  // props:{
+  //     commonTitleres: {
+  //       default : '我的工作'
+  //     }
+  // },
     data(){
         return {
             commonTitleres: '我的工作',
@@ -27,7 +32,8 @@ export default {
         }
     },
     created() {
-        this.getDates()
+        this.getDates();
+        // this.getRouteParams()
     },
     methods: {
       // 获取当前的日期
@@ -37,6 +43,19 @@ export default {
         var s2 = day2.getFullYear()+"年" + (day2.getMonth()+1) + "月" + day2.getDate() + '日';
         this.nowDates = s2;
       },
+      //跳转首页
+      jumpHome(){
+        this.$route.push({path: '/Home/business' , query: {commonTitleres: '投诉降压'}})
+      },
+      // 展示头部文字
+      // getRouteParams(){
+      //   console.log(this.$route)
+      //   if(this.$route.query.commonTitleres == '' || this.$route.query.commonTitleres == undefined){
+      //     this.commonTitleres = '我的工作'
+      //   }else{ 
+      //     this.commonTitleres = this.$route.query.commonTitleres
+      //   }
+      // }
     }
 }
 </script>

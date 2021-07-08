@@ -61,7 +61,7 @@
               :key="index"
               @click.native="leftclick(item)"
             >
-              <i :class="item.icon"></i>
+              <img class="iconimg" :src="item.img"/>
               <span>{{ item.label }}</span>
             </MenuItem>
           </Menu>
@@ -145,69 +145,69 @@ export default {
           to: "/Home/cliniclist",
         },
       ],
-      topactive: "HOME1",
-      leftactive: "HOME1",
+      topactive: "投诉降压",
+      leftactive: "投诉降压",
       leftlist: [
+        // {
+        //   label: "HOME1",
+        //   name: "HOME1",
+        //   icon: "ios-paper",
+        //   id: "1",
+        //   to: "/Home/index",
+        // },
         {
-          label: "HOME1",
-          name: "HOME1",
-          icon: "ios-paper",
-          id: "1",
-          to: "/Home/index",
-        },
-        {
-          label: "投诉降压",
-          name: "投诉降压",
-          icon: "ios-paper",
+          label: "投诉压降",
+          name: "投诉压降",
+          img: require('../../assets/images/commonTitle/tsjy.png'),
           id: "1",
           to: "/Home/business",
         },
         {
           label: "压降目标",
           name: "压降目标",
-          icon: "ios-paper",
+          img: require('../../assets/images/commonTitle/yjmb.png'),
           id: "2",
           to: "",
         },
         {
           label: "查询",
           name: "查询",
-          icon: "el-icon-search",
+          img: require('../../assets/images/commonTitle/cx.png'),
           id: "2",
           to: "",
         },
         {
           label: "监管报送",
           name: "监管报送",
-          icon: "ios-paper",
+          img: require('../../assets/images/commonTitle/jgbs.png'),
           id: "2",
           to: "",
         },
         {
           label: "投诉分析报告模版",
           name: "投诉分析报告模版",
-          icon: "ios-paper",
+          img: require('../../assets/images/commonTitle/tsfx.png'),
           id: "2",
           to: "",
         },
         {
           label: "消保审核",
           name: "消保审核",
-          icon: "el-icon-circle-check",
+          img: require('../../assets/images/commonTitle/xbsh.png'),
           id: "2",
           to: "",
         },
         {
           label: "投诉预警",
           name: "投诉预警",
-          icon: "ios-paper",
+          img: require('../../assets/images/commonTitle/tsyj.png'),
           id: "2",
           to: "",
         },
         {
           label: "投诉管理驾驶舱",
           name: "投诉管理驾驶舱",
-          icon: "ios-paper",
+          img: require('../../assets/images/commonTitle/tsgl.png'),
           id: "2",
           to: "",
         },
@@ -311,5 +311,17 @@ export default {
 }
 .ivu-layout.ivu-layout-has-sider{
   padding: 0 !important;
+}
+.ivu-layout-sider{
+  min-width: 230px !important;
+  max-width: 230px !important;
+  margin: 10px !important;
+}
+
+.iconimg{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
 }
 </style>
