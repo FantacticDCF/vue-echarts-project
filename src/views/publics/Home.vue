@@ -25,8 +25,6 @@
           collapsible
           :collapsed-width="90"
           v-model="isCollapsed"
-         
-          
         >
           <Menu
             :active-name="leftactive"
@@ -129,8 +127,8 @@ export default {
           to: "/Home/cliniclist",
         },
       ],
-      topactive: "投诉降压",
-      leftactive: "投诉降压",
+      topactive: "投诉压降",
+      leftactive: "投诉压降",
       leftlist: [
         // {
         //   label: "HOME1",
@@ -202,16 +200,15 @@ export default {
     };
   },
   created() {
-    this.breadnav = this.$route.meta.breadnav;
-   
-    console.log(this.$route.meta.breadnav[0].name);
+//  this.breadnav = this.$route.meta.breadnav;
     if (JSON.parse(sessionStorage.getItem("count")) == null) return false;
     else this.count = JSON.parse(sessionStorage.getItem("count"));
     this.topactive = JSON.parse(sessionStorage.getItem("routername")).topactive;
-    this.leftactive = JSON.parse(
-      sessionStorage.getItem("routername")
-    ).leftactive;
-    this.activeid = JSON.parse(sessionStorage.getItem("routername")).activeid;
+    this.leftactive = "投诉压降"
+    // this.leftactive = JSON.parse(
+    //   sessionStorage.getItem("routername")
+    // ).leftactive;
+    // this.activeid = JSON.parse(sessionStorage.getItem("routername")).activeid;
     this.getDates();
   },
   computed: {
@@ -281,7 +278,7 @@ export default {
   },
   watch: {
     $route(to) {
-      this.breadnav = to.meta.breadnav;
+//    this.breadnav = to.meta.breadnav;
       // 跳转到平台库中修改面包屑
       if (to.query.type === "serviceLibrary") {
         this.breadnav = this.serviceNav;

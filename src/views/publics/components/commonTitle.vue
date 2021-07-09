@@ -42,9 +42,10 @@ export default {
       },
       //跳转首页
       jumpHome(){
+        // var routernames = JSON.parse(sessionStorage.getItem("routername")).leftactive // eslint-disable-line no-unused-vars
+        // console.log(routernames)
         this.$router.push({path: '/Home/business'})
       },
-      
     }
 }
 </script>

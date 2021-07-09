@@ -1,4 +1,14 @@
 <template>
+	<div>
+	<div class="bus-bread">
+		<span class="color-black" @click="goToBack">投诉压降</span>
+		<span class="bus-bread-child">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉压降措施制定</span>
+	</div>
+	<div class="aborder" :style="setBackgroundBg2">
+		<span>投诉案例查询</span>
+		<input type="text" class="input-border" placeholder="输入关键词查询" :style="setBackgroundBg2" />
+		<i class="el-icon-search iconSearch"></i>
+	</div>
 	<div class="bas-bac" :style="setBackground">
 		<div class="bus-top-text">
 			投诉压降计划
@@ -141,6 +151,7 @@
 			</div>
 		</div>
 	</div>
+	</div>
 </template>
 
 <script>
@@ -150,8 +161,8 @@
 				setBackground: {
 					backgroundImage: "url(" + require("../../../assets/images/bus/bus-bg.png") + ")",
 					backgroundRepeat: "no-repeat",
-//					backgroundSize: "100% auto",
-                    backgroundSize: "100% 100%",
+					//					backgroundSize: "100% auto",
+					backgroundSize: "100% 100%",
 					backgroundPosition: "center"
 				},
 				setBackgroundBg: {
@@ -159,17 +170,30 @@
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "100% 100%",
 					backgroundPosition: "center"
+				},
+				setBackgroundBg2: {
+					backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "100% 100%",
+					backgroundPosition: "center"
 				}
 			}
 		},
+		methods: {
+			goToBack() {
+				this.$router.push({
+					path: '/Home/business'
+				})
+			}
+		}
 	}
 </script>
 
 <style lang="less" scoped>
 	.bas-bac {
 		width: 100%;
-		height: 100%;
-		margin-top: 10px;
+		height: 510px;
+		margin-top: 15px;
 	}
 	
 	.bus-top-text {
@@ -179,23 +203,23 @@
 	}
 	
 	.bus-content {
-		margin-top: 30px;
+		margin-top: 10px;
 		width: 100%;
 	}
 	
 	.bus-left-content {
-		margin-left: 35px;
+		margin: 20px 0 2% 3%;
 		float: left;
 		width: 45%;
-		height: 348px;
+		height: 400px;
 		padding-bottom: 13px;
 	}
 	
 	.bus-right-content {
-		margin-left: 20px;
+		margin: 20px 0 2% 3%;
 		float: left;
 		width: 45%;
-		height: 348px;
+		height: 400px;
 		padding-bottom: 16px;
 		position: relative;
 	}
@@ -220,13 +244,13 @@
 	}
 	
 	.aline-right-bg {
-		width: 116px;
+		/*width: 116px;*/
 		height: 28px;
 		line-height: 28px;
 		text-align: center;
 		color: #69a8e1;
 		background: #1b3e69;
-		margin-left: 15px;
+		margin-left: 13%;
 		font-size: 12px;
 	}
 	.bus-content-text {
@@ -236,22 +260,23 @@
 	.color-ff {
 		color: #ffffff;
 		font-size: 12px;
-		padding: 0 15px 10px 0;
+		padding: 0 15px 20px 0;
 		
 	}
 	.color-ff-right {
+		margin-right: 8%;
 		padding-left: 8px;
 		font-size: 10px;
 		color: #ffffff;
 		font-size: 12px;
-		width: 240px;
-		height: 28px;
-		line-height: 28px;
+		/*width: 240px;*/
+		height: 32px;
+		line-height: 32px;
 		background: #122d59;
 		margin-bottom: 6px;
 	}
 	#aline-ce {
-		line-height: 14px;
+		line-height: 16px;
 		font-size: 10px;
 	}
 	.color-blue {
@@ -263,7 +288,7 @@
 	}
 	.bus-content-btn {
 		position: absolute;
-		bottom: -2%;
+		bottom: -1%;
 		right: 30%;
 		.cancle-btn {
 			width: 80px;
@@ -285,4 +310,67 @@
 			cursor: pointer;
 		}
 	}
+	.bus-bread {
+		position: relative;
+		text-indent: 16px;
+		color: #69a8e1;
+		&:before {
+			position: absolute;
+			content: "";
+			left: 0;
+			top: 0;
+			border-bottom: 7px solid #1A83C0;
+			border-left: 9px solid transparent;
+			border-top: 9px solid transparent;
+			/*border-left和border-right换成透明色 不然是长方形*/
+		}
+		&:after {
+			position: absolute;
+			content: "";
+			right: 92.5%;
+			top: -1%;
+			border-bottom: 7px solid #1A83C0;
+			border-left: 9px solid transparent;
+			border-top: 9px solid transparent;
+			/*border-left和border-right换成透明色 不然是长方形*/
+		}
+		.bus-bread-child {
+			position: relative;
+				&:after {
+				position: absolute;
+				content: "";
+				right: -10%;
+				top: -13%;
+				border-bottom: 7px solid #1A83C0;
+				border-left: 9px solid transparent;
+				border-top: 9px solid transparent;
+				/*border-left和border-right换成透明色 不然是长方形*/
+			}
+		}
+	}
+.aborder {
+	text-indent: 30px;
+	color: #1A83C0;
+	margin-top: 10px;
+	width: 55%;
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+}
+.input-border {
+	margin-left: 30px;
+	border: none;
+	color: #1A83C0;
+	width: 63%;
+	height: 70%;
+	text-indent: 15px;
+	font-size: 10px;
+}
+input::-webkit-input-placeholder {
+      color: #59dfff;
+    }
+.color-black {
+	color: rgba(34, 82, 128, 1);
+	cursor: pointer;
+}
 </style>

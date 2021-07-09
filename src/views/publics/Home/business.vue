@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div class="info">
-      <span class="work">工单查询</span>
-      <input type="text" class="inp" placeholder="输入关键词查询" />
-      <!-- <div class="iconSearch"> -->
-      <i class="el-icon-search iconSearch"></i>
-      <!-- </div> -->
-    </div>
+    <div class="bus-bread">
+				投诉压降
+		</div>
+		<div class="aborder" :style="setBackgroundBg">
+			<span>工单查询</span>
+			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
+			<!-- <div class="iconSearch"> -->
+			<i class="el-icon-search iconSearch"></i>
+		</div>
     <div class="formInfo">
       <div class="box">
         <img
@@ -18,9 +20,9 @@
         <div class="title">{{titleName}}</div>
         <div class="desc">
           <div class="descTitle">
-            <div>机构</div>
-            <div>达标值</div>
-            <div>已发生</div>
+            <div class="left-div">机构</div>
+            <div class="middle-div">达标值</div>
+            <div class="right-div">已发生</div>
           </div>
           <div class="descTitle1" v-for="(item, index) in info" :key="index" >
             <div :class="item.classname">{{ item.name }}</div>
@@ -60,9 +62,9 @@
         <div class="title">{{titleName1}}</div>
         <div class="desc">
           <div class="descTitle">
-            <div>机构</div>
-            <div>达标值</div>
-            <div>已发生</div>
+            <div class="left-div">机构</div>
+            <div class="middle-div">达标值</div>
+            <div class="right-div">已发生</div>
           </div>
           <div class="descTitle1" v-for="(item, index) in info1" :key="index">
             <div :class="item.classname">{{ item.name }}</div>
@@ -101,6 +103,12 @@ export default {
     return {
       titleName:'投诉管理目标分解表',
       titleName1:'监管投诉管理目标',
+      setBackgroundBg: {
+				backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "100% 100%",
+				backgroundPosition: "center"
+			},
       info: [
         {
           id: 1001,
@@ -404,4 +412,50 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/business.less");
+.bus-bread {
+	position: relative;
+	text-indent: 16px;
+	color: #69a8e1;
+	&:before {
+		position: absolute;
+		content: "";
+		left: 0;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+	&:after {
+		position: absolute;
+		content: "";
+		right: 92.5%;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+}
+.aborder {
+	text-indent: 30px;
+	color: #1A83C0;
+	margin-top: 10px;
+	width: 55%;
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+}
+.input-border {
+	margin-left: 30px;
+	border: none;
+	color: #1A83C0;
+	width: 70%;
+	height: 70%;
+	text-indent: 15px;
+	font-size: 10px;
+}
+input::-webkit-input-placeholder {
+      color: #59dfff;
+    }
 </style>
