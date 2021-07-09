@@ -771,7 +771,6 @@
           { gte: 10000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
           { gte: 1000, lte: 9999, label: '25%-50%'},
           { gte: 500, lte: 999, label: '50%-75%'},
-          { gte: 100, lte: 499, label: '100-499人'},
           { gte: 10, lte: 99, label: '75%-100%'},
         ],
         inRange: {
