@@ -200,9 +200,7 @@ export default {
     };
   },
   created() {
-    this.breadnav = this.$route.meta.breadnav;
-   
-    console.log(this.$route.meta.breadnav[0].name);
+//  this.breadnav = this.$route.meta.breadnav;
     if (JSON.parse(sessionStorage.getItem("count")) == null) return false;
     else this.count = JSON.parse(sessionStorage.getItem("count"));
     this.topactive = JSON.parse(sessionStorage.getItem("routername")).topactive;
@@ -280,7 +278,7 @@ export default {
   },
   watch: {
     $route(to) {
-      this.breadnav = to.meta.breadnav;
+//    this.breadnav = to.meta.breadnav;
       // 跳转到平台库中修改面包屑
       if (to.query.type === "serviceLibrary") {
         this.breadnav = this.serviceNav;
