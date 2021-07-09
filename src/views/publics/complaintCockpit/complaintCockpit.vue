@@ -38,9 +38,9 @@ export default {
 .cockpit .no .no-hd p {
   margin: 5px 10px;
 }
-.cockpit .no .no-bd {
+/*.cockpit .no .no-bd {*/
 
-}
+/*}*/
 .cockpit .no .no-bd ul {
   font-size: 18px;
 }
