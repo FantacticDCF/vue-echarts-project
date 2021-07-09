@@ -198,7 +198,7 @@ input::-webkit-input-placeholder {
 }
 .searchTable{
     width: 98%;
-    /* height: 300px; */
+    height: 520px;
     /* background: #ccc; */
     margin-top: 10px;
     padding: 1%;
