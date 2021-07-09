@@ -8,6 +8,9 @@
        <div class="bus-bread">
 				查询
 		</div>
+        <div class="bus-bread1">
+				待处理工单 
+		</div>
 		<div class="aborder" :style="setBackgroundBg">
 			<span>工单查询</span>
 			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
@@ -207,7 +210,24 @@ input::-webkit-input-placeholder {
     text-align: right;
 }
 
+.bus-bread1 {
+	position: relative;
+	text-indent: 16px;
+	color: #69a8e1;
+  top: -20px;
+    left: 56px;
 
+	&:after {
+		position: absolute;
+		content: "";
+		right: 91%;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+}
 .bus-bread {
 	position: relative;
 	text-indent: 16px;
