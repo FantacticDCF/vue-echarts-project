@@ -10,9 +10,9 @@ let pubics=[
         component: ()=>import("@/views/publics/register")//注册
     },
     {
-        path: '/bigData',
+        path: '/index',
         name: 'bigData',
-        component: ()=>import("@/views/publics/bigData/bigDataIndex")//注册
+        component: ()=>import("@/views/publics/index/bigDataIndex")//首页
     },
     {
         path: '/Home',

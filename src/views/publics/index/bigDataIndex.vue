@@ -6,7 +6,7 @@
 </template>
 <script>
   import commonTitle from "../components/commonTitle.vue";
-  import bigData from "./bigData";
+  import bigData from "./index";
 
   export default {
     data() {

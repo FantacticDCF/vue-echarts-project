@@ -1010,8 +1010,9 @@ body {
   display: inline-block;
   position: relative;
   /* border: 1px solid rgba(25, 186, 139, 0.17); */
-  background: url(../../../assets/images/bg-info.png) no-repeat  100% 100%;
-  background-size: contain;
+  background: url(../../../assets/images/bg-info.png) no-repeat center;
+  /*background-size: cover;*/
+  background-size: 100% 99.9%;
 }
 .no .no-hd::before {
   content: "";
@@ -1066,7 +1067,8 @@ body {
 .no .no-bd  {
   height:45px;
   background: url(../../../assets/images/bg-info2.png) no-repeat center;
-  background-size: contain;
+  /*background-size: cover;*/
+  background-size: 100% 99.9%;
 }
 .no .no-bd ul {
   display: flex;

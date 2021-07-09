@@ -1,11 +1,11 @@
 
 <template>
   <div>
-    <el-table :data="tableData">
+    <el-table :data="tableData" width="100%">
       <el-table-column
           prop="top"
           label="排名"
-          width=""
+          width="45"
           className="color-blue">
       </el-table-column>
       <el-table-column
@@ -14,7 +14,7 @@
           width=""
           className="color-white">
       </el-table-column>
-      <el-table-column prop="ts-num">
+      <el-table-column prop="ts-num" width="">
         <template slot-scope="scope">
           <div style="width:100%;height: 10px;" :ref="'echarts'+scope.row.id"></div>
         </template>
@@ -22,7 +22,7 @@
       <el-table-column
           prop="num"
           label="投诉数量"
-          width=""
+          width="80"
           className="color-blue">
       </el-table-column>
     </el-table>
