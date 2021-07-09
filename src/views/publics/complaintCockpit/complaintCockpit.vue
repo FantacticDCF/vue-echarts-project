@@ -39,7 +39,7 @@ export default {
   margin: 5px 10px;
 }
 .cockpit .no .no-bd {
-  /*height: 6vh;*/
+
 }
 .cockpit .no .no-bd ul {
   font-size: 18px;
