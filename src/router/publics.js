@@ -11,8 +11,8 @@ let pubics=[
     },
     {
         path: '/index',
-        name: 'index',
-        component: ()=>import("@/views/publics/index/index")//注册
+        name: 'bigData',
+        component: ()=>import("@/views/publics/index/bigDataIndex")//首页
     },
     {
         path: '/Home',
