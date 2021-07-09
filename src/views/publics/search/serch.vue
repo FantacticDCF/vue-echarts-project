@@ -1,10 +1,22 @@
 <template>
   <div>
-    <div class="info">
+    <!-- <div class="info">
       <span class="work">工单查询</span>
       <input type="text" class="inp" placeholder="输入关键词查询" />
       <i class="el-icon-search iconSearch"></i>
-    </div>
+    </div> -->
+       <div class="bus-bread">
+				查询
+		</div>
+        <div class="bus-bread1">
+				待处理工单 
+		</div>
+		<div class="aborder" :style="setBackgroundBg">
+			<span>工单查询</span>
+			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
+			<!-- <div class="iconSearch"> -->
+			<i class="el-icon-search iconSearch"></i>
+		</div>
     <div class="searchTable">
         <div class="table-wrapper">
             <el-table
@@ -72,6 +84,12 @@
 export default {
   data() {
     return {
+         setBackgroundBg: {
+				backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "100% 100%",
+				backgroundPosition: "center"
+			},
         tableData: [{
             date: '2016-05-02',
             bank: '北京分行',
@@ -191,6 +209,71 @@ input::-webkit-input-placeholder {
     width: 100%;
     text-align: right;
 }
+
+.bus-bread1 {
+	position: relative;
+	text-indent: 16px;
+	color: #69a8e1;
+  top: -20px;
+    left: 56px;
+
+	&:after {
+		position: absolute;
+		content: "";
+		right: 91%;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+}
+.bus-bread {
+	position: relative;
+	text-indent: 16px;
+	color: #69a8e1;
+	&:before {
+		position: absolute;
+		content: "";
+		left: 0;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+	&:after {
+		position: absolute;
+		content: "";
+		right: 95.1%;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+}
+.aborder {
+	text-indent: 30px;
+	color: #1A83C0;
+	margin-top: 10px;
+	width: 55%;
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+}
+.input-border {
+	margin-left: 30px;
+	border: none;
+	color: #1A83C0;
+	width: 70%;
+	height: 70%;
+	text-indent: 15px;
+	font-size: 10px;
+}
+input::-webkit-input-placeholder {
+      color: #59dfff;
+    }
 /deep/ .el-table{
     background:  transparent;
 }

@@ -1085,7 +1085,6 @@ body {
 }
 .map {
   position: relative;
-  height: 800px;
 }
 .map .chart {
   position: absolute;
