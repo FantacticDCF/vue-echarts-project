@@ -1,12 +1,26 @@
 <template>
   <div>
-    <div class="info">
+    <!-- <div class="info">
       <span class="work">工单查询</span>
       <input type="text" class="inp" placeholder="输入关键词查询" />
-      <!-- <div class="iconSearch"> -->
+      
       <i class="el-icon-search iconSearch"></i>
-      <!-- </div> -->
-    </div>
+    
+    </div> -->
+     <div class="bus-bread">
+				压降目标 
+		</div>
+       <div class="bus-bread1">
+				投诉发生率考核目标 
+		</div>
+		<div class="aborder" :style="setBackgroundBg">
+			<span>工单查询</span>
+			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
+			<!-- <div class="iconSearch"> -->
+			<i class="el-icon-search iconSearch"></i>
+		</div>
+
+
     <div class="formInfo">
       <div class="box">
         <img
@@ -75,6 +89,12 @@ export default {
   data() {
     return {
       arr: [50],
+      setBackgroundBg: {
+				backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "100% 100%",
+				backgroundPosition: "center"
+			},
       titleName: "年度机构目标分解",
       titleName1: "年度业务目标分解",
       info: [
@@ -355,4 +375,69 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/losspressure.less");
+
+.bus-bread {
+	position: relative;
+	text-indent: 16px;
+	color: #69a8e1;
+	&:before {
+		position: absolute;
+		content: "";
+		left: 0;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+	&:after {
+		position: absolute;
+		content: "";
+		right: 92.5%;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+}
+.bus-bread1 {
+	position: relative;
+	text-indent: 16px;
+	color: #69a8e1;
+  top: -20px;
+    left: 83px;
+
+	&:after {
+		position: absolute;
+		content: "";
+		right: 87%;
+		top:0;
+		border-bottom: 7px solid #1A83C0;
+		border-left: 9px solid transparent;
+		border-top: 9px solid transparent;
+		/*border-left和border-right换成透明色 不然是长方形*/
+	}
+}
+.aborder {
+	text-indent: 30px;
+	color: #1A83C0;
+	// margin-top: 10px;
+	width: 55%;
+	height: 32px;
+	line-height: 32px;
+	overflow: hidden;
+}
+.input-border {
+	margin-left: 30px;
+	border: none;
+	color: #1A83C0;
+	width: 70%;
+	height: 70%;
+	text-indent: 15px;
+	font-size: 10px;
+}
+input::-webkit-input-placeholder {
+      color: #59dfff;
+    }
 </style>
