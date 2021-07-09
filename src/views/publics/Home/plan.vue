@@ -2,7 +2,7 @@
 	<div>
 	<div class="bus-bread">
 		<span class="color-black" @click="goToBack">投诉压降</span>
-		<span class="bus-bread-child">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉压降措施制定</span>
+		<span class="bus-bread-child">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉压降措施制定</span>
 	</div>
 	<div class="aborder" :style="setBackgroundBg2">
 		<span>投诉案例查询</span>
