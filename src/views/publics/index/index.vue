@@ -10,15 +10,15 @@
             <p>总投诉发生率</p>
           </div>
           <div class="ts-index">
-            <div class="ts-bg"><h3>40%</h3></div>
+            <div class="ts-bg"><h3>30%</h3></div>
             <p>对公客户投诉发生率</p>
           </div>
           <div class="ts-index">
-            <div class="ts-bg"><h3>40%</h3></div>
+            <div class="ts-bg"><h3>20%</h3></div>
             <p>月度投诉发生率</p>
           </div>
           <div class="ts-index">
-            <div class="ts-bg"><h3>40%</h3></div>
+            <div class="ts-bg"><h3>10%</h3></div>
             <p>零售客户投诉发生率</p>
           </div>
            <div class="chart"></div>

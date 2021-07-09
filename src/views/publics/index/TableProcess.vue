@@ -1,4 +1,4 @@
-
+<!--表格进度条组件-->
 <template>
   <div>
     <el-table :data="tableData" width="100%">
