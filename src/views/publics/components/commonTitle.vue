@@ -3,8 +3,8 @@
     <Header class="header" style="height:60px">
         <div class="commonTitle">
             <div class="commonLogo">
-                <img src="../../../assets/images/commonTitle/logo.png"/>
                 <span class="commonTitleres commonTitleres_one" @click="jumpHome">{{commonTitleres}}</span>
+                <img src="../../../assets/images/commonTitle/logo.png"/>
             </div>
             <div class="commonTitleS">
                 <span class="commonTitles commonTitleS_one">数字化投诉分析管理系统</span>
@@ -74,25 +74,22 @@ export default {
   width: 30%;
   height: 60px;
   float: left;
-   /* background-image: url("../../assets/images/commonTitle/bg01.png");
-   background-size: 100% 100%;
-   background-repeat: no-repeat; */
-  display: flex;
-  justify-content: space-around;
 }
 .commonLogo img{
   display: inline-block;
   width: 140px;
   height: 45px;
   margin-top: 5px;
+  float: right;
 }
 .commonLogo .commonTitleres{
   display: inline-block;
   font-size: 12px;
   line-height: 60px;
-  position: relative;
+  width: 38%;
   margin-left: 50px;
   cursor: pointer;
+  float: right;
 }
 .commonLogo .commonTitleres_one{ 
   background-image:-webkit-linear-gradient(bottom,#51aefe,#89f5fc);
