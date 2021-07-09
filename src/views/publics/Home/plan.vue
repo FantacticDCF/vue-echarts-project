@@ -1,7 +1,7 @@
 <template>
 	<div>
 	<div class="bus-bread">
-		<span class="color-black">投诉压降</span>
+		<span class="color-black" @click="goToBack">投诉压降</span>
 		<span class="bus-bread-child">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉压降措施制定</span>
 	</div>
 	<div class="aborder" :style="setBackgroundBg2">
@@ -161,8 +161,8 @@
 				setBackground: {
 					backgroundImage: "url(" + require("../../../assets/images/bus/bus-bg.png") + ")",
 					backgroundRepeat: "no-repeat",
-//					backgroundSize: "100% auto",
-                    backgroundSize: "100% 100%",
+					//					backgroundSize: "100% auto",
+					backgroundSize: "100% 100%",
 					backgroundPosition: "center"
 				},
 				setBackgroundBg: {
@@ -179,6 +179,13 @@
 				}
 			}
 		},
+		methods: {
+			goToBack() {
+				this.$router.push({
+					path: '/Home/business'
+				})
+			}
+		}
 	}
 </script>
 
@@ -364,5 +371,6 @@ input::-webkit-input-placeholder {
     }
 .color-black {
 	color: rgba(34, 82, 128, 1);
+	cursor: pointer;
 }
 </style>
