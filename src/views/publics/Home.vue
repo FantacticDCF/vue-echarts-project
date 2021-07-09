@@ -6,8 +6,8 @@
       <Header>
         <div class="commonTitle">
             <div class="commonLogo">
-                <img src="../../assets/images/commonTitle/logo.png"/>
                 <span class="commonTitleres commonTitleres_one" @click="jumpHome">返回首页</span>
+                <img src="../../assets/images/commonTitle/logo.png"/>
             </div>
             <div class="commonTitleS">
                 <span class="commonTitles commonTitleS_one">数字化投诉分析管理系统</span>
@@ -343,22 +343,24 @@ export default {
    /* background-image: url("../../assets/images/commonTitle/bg01.png");
    background-size: 100% 100%;
    background-repeat: no-repeat; */
-  display: flex;
-  justify-content: space-around;
+  // display: flex;
+  // justify-content: space-around;
 }
 .commonLogo img{
   display: inline-block;
   width: 140px;
   height: 45px;
   margin-top: 5px;
+  float: right;
 }
 .commonLogo .commonTitleres{
   display: inline-block;
   font-size: 12px;
+  width: 38%;
   line-height: 60px;
-  position: relative;
   margin-left: 50px;
   cursor: pointer;
+  float: right;
 }
 .commonLogo .commonTitleres_one{ 
   background-image:-webkit-linear-gradient(bottom,#51aefe,#89f5fc);
