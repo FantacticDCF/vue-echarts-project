@@ -1,8 +1,9 @@
 <template>
 	<div>
 	<div class="bus-bread">
-		<span class="color-black" @click="goToBack">投诉压降</span>
-		<span class="bus-bread-child">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投诉压降措施制定</span>
+		<span class="empty-box"></span>
+		<span class="first-content" @click="goToBack">&nbsp;投诉压降&nbsp;&nbsp;</span>
+		<span class="second-content">&nbsp;&nbsp;投诉压降措施制定&nbsp;</span>
 	</div>
 	<div class="aborder" :style="setBackgroundBg2">
 		<span>投诉案例查询</span>
@@ -311,36 +312,42 @@
 		}
 	}
 	.bus-bread {
-		position: relative;
+		/*position: relative;*/
 		text-indent: 16px;
 		color: #69a8e1;
-		&:before {
-			position: absolute;
-			content: "";
-			left: 0;
-			top: 0;
-			border-bottom: 7px solid #1A83C0;
-			border-left: 9px solid transparent;
-			border-top: 9px solid transparent;
-			/*border-left和border-right换成透明色 不然是长方形*/
-		}
-		&:after {
-			position: absolute;
-			content: "";
-			right: 92.5%;
-			top: -1%;
-			border-bottom: 7px solid #1A83C0;
-			border-left: 9px solid transparent;
-			border-top: 9px solid transparent;
-			/*border-left和border-right换成透明色 不然是长方形*/
-		}
-		.bus-bread-child {
+		.empty-box {
 			position: relative;
-				&:after {
+			&:before {
 				position: absolute;
 				content: "";
-				right: -10%;
-				top: -13%;
+				right: 0;
+				top: -6%;
+				border-bottom: 7px solid #1A83C0;
+				border-left: 9px solid transparent;
+				border-top: 9px solid transparent;
+				/*border-left和border-right换成透明色 不然是长方形*/
+			}
+		}
+		.first-content {
+			position: relative;
+			&:after {
+				position: absolute;
+				content: "";
+				right: -3%;
+				top: -6%;
+				border-bottom: 7px solid #1A83C0;
+				border-left: 9px solid transparent;
+				border-top: 9px solid transparent;
+				/*border-left和border-right换成透明色 不然是长方形*/
+			}
+		}
+		.second-content {
+			position: relative;
+			&:after {
+				position: absolute;
+				content: "";
+				right: -5%;
+				top: -6%;
 				border-bottom: 7px solid #1A83C0;
 				border-left: 9px solid transparent;
 				border-top: 9px solid transparent;
