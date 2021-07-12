@@ -200,6 +200,11 @@ export default {
     };
   },
   created() {
+    // 获取当前日期
+    var day2 = new Date();
+    day2.setTime(day2.getTime());
+    var s2 = day2.getFullYear()+"年" + (day2.getMonth()+1) + "月" + day2.getDate() + '日';
+    this.nowDates = s2;
 //  this.breadnav = this.$route.meta.breadnav;
     if (JSON.parse(sessionStorage.getItem("count")) == null) return false;
     else this.count = JSON.parse(sessionStorage.getItem("count"));
@@ -209,11 +214,9 @@ export default {
     //   sessionStorage.getItem("routername")
     // ).leftactive;
     // this.activeid = JSON.parse(sessionStorage.getItem("routername")).activeid;
-    // 获取当前日期
-    var day2 = new Date();
-    day2.setTime(day2.getTime());
-    var s2 = day2.getFullYear()+"年" + (day2.getMonth()+1) + "月" + day2.getDate() + '日';
-    this.nowDates = s2;
+  },
+  mounted(){
+
   },
   computed: {
     rotateIcon() {
