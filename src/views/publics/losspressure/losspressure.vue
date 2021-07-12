@@ -15,7 +15,7 @@
 		</div> -->
     <div class="bus-bread">
 		<span class="empty-box"></span>
-		<span class="first-content" >&nbsp;投诉压降&nbsp;&nbsp;</span>
+		<span class="first-content color-black" >&nbsp;投诉压降&nbsp;&nbsp;</span>
 		<span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
 	</div>
 		<div class="aborder" :style="setBackgroundBg">
