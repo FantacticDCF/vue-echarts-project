@@ -245,8 +245,8 @@
 	
 	.aline-right-bg {
 		/*width: 116px;*/
-		height: 28px;
-		line-height: 28px;
+		height: 32px;
+		line-height: 32px;
 		text-align: center;
 		color: #69a8e1;
 		background: #1b3e69;
