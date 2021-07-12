@@ -12,7 +12,7 @@
           prop="name"
           label="分行"
           width=""
-          className="color-white">
+          className="color-blue">
       </el-table-column>
       <el-table-column prop="ts-num" width="">
         <template slot-scope="scope">
@@ -149,7 +149,7 @@ export default {
               {
                 name:"条",
                 type:"bar",
-                barWidth:10,
+                barWidth:20,
                 data:[e.num],
                 barCategoryGap:20,
                 itemStyle:{
@@ -170,7 +170,7 @@ export default {
                 name:"进度条背景",
                 type:"bar",
                 barGap:"-100%",
-                barWidth:10,
+                barWidth:20,
                 data:[100],
                 color:"#2e5384",
                 itemStyle:{
@@ -226,6 +226,6 @@ export default {
   color: #12abe2;
 }
 .tableProcess .color-white {
-  color: white;
+  /*color: white;*/
 }
 </style>

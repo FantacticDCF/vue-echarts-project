@@ -1,5 +1,5 @@
 <template>
-  <bigData class="cockpit"></bigData>
+  <bigData class="cockpit" :is-show="true"></bigData>
 
 </template>
 <script>

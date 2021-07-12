@@ -3,7 +3,7 @@
     <section class="mainbox">
       <div class="column">
         <div class="panel bar">
-          <h2>全行投诉指标一览</h2>
+          <h2>全行投诉指标一览<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
 
           <div class="ts-index">
             <div class="ts-bg"><h3>40%</h3></div>
@@ -25,7 +25,7 @@
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar2">
-          <h2>全行实时投诉排名</h2>
+          <h2>全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
 <!--          <div class="chart"></div>-->
           <TableProcess></TableProcess>
           <div class="panel-footer"></div>
@@ -35,7 +35,7 @@
         <div class="no">
           <div class="no-hd">
             <ul>
-              <li>{{orgName}}</li>
+              <li>{{orgName}}<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></li>
             </ul>
             <p>机构名称</p>
           </div>
@@ -72,20 +72,20 @@
       </div>
       <div class="column">
         <div class="panel bar1">
-          <h2>各维度投诉数据表</h2>
-          <h2 class="sub1">客群投诉排名</h2>
+          <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart" id="chart"></div>
           <div class="panel-footer"></div>
-          <h2 class="sub2">全行实时投诉排名</h2>
+          <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart2"></div>
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar1">
-          <h2>投诉预警</h2>
-          <h2 class="sub1">区域预警</h2>
+          <h2>投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart3"></div>
           <div class="panel-footer"></div>
-          <h2 class="sub2"> 产品预警</h2>
+          <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart4"></div>
           <div class="panel-footer"></div>
         </div>
@@ -100,7 +100,7 @@
     name : "bigData",
     data() {
       return {
-        isShowHead:true,
+        // isShow:false,
         orgName:"北京分行",
         dnAll:550,
         jgAll:137,
@@ -109,6 +109,9 @@
     },
     components:{
         TableProcess
+    },
+    props: {
+      isShow:Boolean
     },
     mounted() {
 
@@ -181,10 +184,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -230,7 +234,8 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
@@ -307,10 +312,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -356,7 +362,8 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
@@ -433,10 +440,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -482,7 +490,8 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
@@ -559,10 +568,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -608,7 +618,8 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
@@ -751,33 +762,50 @@
     ];
 
     function randomData() {
-      return Math.round(Math.random()*500);
+      return Math.round(Math.random()*150);
     }
 
 
     var option = {
+      // backgroundColor: '',
+      title: {
+        text: '',
+        left: 'center',
+        textStyle: {
+          color: '#fff',
+          fontSize:25
+        }
+      },
       //左侧小导航图标
       visualMap: {
         show : true,
-        title : "各地区销量排名",
+        // title : "各地区销量排名",
+
+        // 组件上的文本
+        // text: ['各地区销量排名'],
         x: 'left',
         y: 'bottom',
         textStyle: {
           fontSize: 10,
           fontWeight: 'normal',
-          color: 'white'
+          color: 'white',
+          textAlign:'left'
         },
+        left: "5%", //组件离容器左侧的距离,‘left’, ‘center’, ‘right’,‘20%’
+        // top: "40% ", //组件离容器上侧的距离,‘top’, ‘middle’, ‘bottom’,‘20%’
+        right: "auto", //组件离容器右侧的距离,‘20%’
+        bottom: "2%", //组件离容器下侧的距离,‘20%’
+
         pieces: [      // 自定义每一段的范围，以及每一段的文字
-          { gte: 10000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
-          { gte: 1000, lte: 9999, label: '25%-50%'},
-          { gte: 500, lte: 999, label: '50%-75%'},
-          { gte: 10, lte: 99, label: '75%-100%'},
+          { gte: 15000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
+          { gte: 9000, lte: 14999, label: '25%-50%'},
+          { gte: 500, lte: 8999, label: '50%-75%'},
+          { gte: 0, lte: 99, label: '75%-100%'},
         ],
         inRange: {
           // 渐变颜色，从小到大
-          color: ['#d1d4da', '#bacae8', '#96b5ef', '#6797ef', '#3375e4', '#035cf5']
+          color: [ '#9ac8e5', '#68a9de', '#378ad6', '#0253a2']
         }
-        // color: ['#5475f5', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']
       },
 
       geo: {
@@ -788,9 +816,9 @@
             color: "#fff"
           }
         },
-        roam: false,
-        //   放大我们的地图
-        // zoom: 1,
+        zoom: 1.1,
+        roam : false, //是否可移动
+        hoverable : false, //是否有鼠标滑过效果,
         itemStyle: {
           normal: {
             areaColor: "rgba(43, 196, 243, 0.42)",
@@ -798,7 +826,7 @@
             borderWidth: 1
           },
           emphasis: {
-            areaColor: "#2B91B7"
+            areaColor: "#68A8DE"
           }
         }
       },
@@ -822,7 +850,7 @@
         },
         roam: false,
         //   放大我们的地图
-        // zoom: 1,
+        zoom: 1.1,
         itemStyle: {
           normal: {
             areaColor: "rgba(43, 196, 243, 0.42)",
@@ -830,7 +858,7 @@
             borderWidth: 1
           },
           emphasis: {
-            areaColor: "#2B91B7"
+            areaColor: "#68A8DE"
           }
         },
         data:mydata  //数据
@@ -855,7 +883,7 @@
 
 body {
   background-repeat: no-repeat;
-  background-color: #06164A;
+  background-color: #131B35;
   background-size: cover;
 }
 
@@ -875,6 +903,22 @@ body {
   width: 40%;
   margin: 0 4px;
   overflow: hidden;
+}
+.cockp_arrow {
+  width: 12px;
+  height: 11px;
+  margin-left: 2px;
+  /*top: 7px;*/
+  margin-top: -4px;
+  position: absolute;
+}
+.no-hd .cockp_arrow{
+  width: 15px;
+  height: 16px;
+  margin-left: 2px;
+  /* top: 7px; */
+  margin-top: 3px;
+  position: absolute;
 }
 .panel {
   position: relative;
@@ -1084,6 +1128,9 @@ body {
 }
 .map {
   position: relative;
+  background: url(../../../assets/images/map_bg.png);
+  background-size: 100% 100%;
+  height: 530px;
 }
 .map .chart {
   position: absolute;
