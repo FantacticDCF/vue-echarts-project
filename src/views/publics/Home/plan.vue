@@ -2,7 +2,7 @@
 	<div>
 	<div class="bus-bread">
 		<span class="empty-box"></span>
-		<span class="first-content" @click="goToBack">&nbsp;投诉压降&nbsp;&nbsp;</span>
+		<span class="first-content color-black" @click="goToBack">&nbsp;投诉压降&nbsp;&nbsp;</span>
 		<span class="second-content">&nbsp;&nbsp;投诉压降措施制定&nbsp;</span>
 	</div>
 	<div class="aborder" :style="setBackgroundBg2">
