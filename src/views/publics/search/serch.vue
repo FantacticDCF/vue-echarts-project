@@ -188,14 +188,14 @@ export default {
 input::-webkit-input-placeholder {
     color: #59dfff;
 }
-.iconSearch {
-    font-size: 17px;
-    position: relative;
-    left: 20px;
-    top: 2px;
-    font-weight: 700;
-    color: #59dfff;
-}
+// .iconSearch {
+//     font-size: 17px;
+//     position: relative;
+//     left: 0;
+//     top: 2px;
+//     font-weight: 700;
+//     color: #59dfff;
+// }
 .searchTable{
     width: 98%;
     height: 520px;
