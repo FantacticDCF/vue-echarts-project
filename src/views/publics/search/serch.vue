@@ -209,13 +209,13 @@ input::-webkit-input-placeholder {
 	position: relative;
 	text-indent: 16px;
 	color: #69a8e1;
-  top: -20px;
-    left: 56px;
+    top: -20px;
+    left: 4.5%;
 
 	&:after {
 		position: absolute;
 		content: "";
-		right: 91%;
+		left: 7.8%;
 		top:0;
 		border-bottom: 7px solid #1A83C0;
 		border-left: 9px solid transparent;
@@ -240,7 +240,7 @@ input::-webkit-input-placeholder {
 	&:after {
 		position: absolute;
 		content: "";
-		right: 95.1%;
+		left: 4.2%;
 		top:0;
 		border-bottom: 7px solid #1A83C0;
 		border-left: 9px solid transparent;
