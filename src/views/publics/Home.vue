@@ -209,7 +209,11 @@ export default {
     //   sessionStorage.getItem("routername")
     // ).leftactive;
     // this.activeid = JSON.parse(sessionStorage.getItem("routername")).activeid;
-    this.getDates();
+    // 获取当前日期
+    var day2 = new Date();
+    day2.setTime(day2.getTime());
+    var s2 = day2.getFullYear()+"年" + (day2.getMonth()+1) + "月" + day2.getDate() + '日';
+    this.nowDates = s2;
   },
   computed: {
     rotateIcon() {
@@ -222,13 +226,6 @@ export default {
   methods: {
     jumpHome(){
       this.$router.push({path: '/index'})
-    },
-    // 获取当前日期
-    getDates(){
-      var day2 = new Date();
-      day2.setTime(day2.getTime());
-      var s2 = day2.getFullYear()+"年" + (day2.getMonth()+1) + "月" + day2.getDate() + '日';
-      this.nowDates = s2;
     },
     leftclick(item) {
       this.leftactive = item.name;
