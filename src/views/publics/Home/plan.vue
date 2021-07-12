@@ -114,7 +114,7 @@
 							<div class="aline-right-bg">投诉压降对策</div>
 						</el-col>
 						<el-col :span="16">
-							<div class="color-ff-right" id="aline-ce">提升大堂经理的自助机具的推荐能力与推荐 力度
+							<div class="color-ff-right">提升大堂经理的自助机具的推荐能力与推荐 力度
 							</div>
 						</el-col>
 					</el-row>
@@ -123,7 +123,7 @@
 							<div class="aline-right-bg">投诉压降工作节点1</div>
 						</el-col>
 						<el-col :span="16">
-							<div class="color-ff-right" id="aline-ce">3月4日，由行内培训师开展自助机具推荐 技巧培训
+							<div class="color-ff-right">3月4日，由行内培训师开展自助机具推荐 技巧培训
 							</div>
 						</el-col>
 					</el-row>
