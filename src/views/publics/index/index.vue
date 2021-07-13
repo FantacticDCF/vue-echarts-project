@@ -73,7 +73,7 @@
       <div class="column">
         <div class="panel bar1">
           <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1 bg-m">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart" id="chart"></div>
           <div class="panel-footer"></div>
           <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
@@ -81,11 +81,11 @@
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar1">
-          <h2>投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="bg-s">投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1 bg-s">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart3"></div>
           <div class="panel-footer"></div>
-          <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub2 bg-s"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart4"></div>
           <div class="panel-footer"></div>
         </div>
@@ -909,7 +909,7 @@ body {
   height: 11px;
   margin-left: 2px;
   /*top: 7px;*/
-  margin-top: -4px;
+  margin-top: 5px;
   position: absolute;
 }
 .no-hd .cockp_arrow{
@@ -922,7 +922,7 @@ body {
 }
 .panel {
   position: relative;
-  height: 330px;
+  height: 340px;
   /* border: 1px solid rgba(25, 186, 139, 0.17); */
   background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
   padding: 21px 10px;
@@ -980,14 +980,19 @@ body {
   border-radius: 20%;
 }
 .panel h2 {
-  height: 4px;
-  margin-top: -10px;
-  line-height: 3px;
+  height: 20px;
+  margin-top: -8px;
+  line-height: 20px;
   text-align: left;
+  display: block;
+  max-width: 170px;
   color: #02d1f4;
+  background: url(../../../assets/images/title_bg.png) no-repeat;
+  background-size:100% 100%;
   font-size: 12px;
   font-weight: 400;
   padding: 0 5px;
+
 }
 .panel h2 a {
   color: #fff;
@@ -1000,10 +1005,16 @@ body {
 /*  height: 3rem;*/
 /*}*/
 .panel .sub1 {
-  margin-top: 32px;
+  margin-top: 20px;
 }
 .panel .sub2 {
-  margin-top: 16px;
+  margin-top: 6px;
+}
+.panel .bg-m {
+  max-width: 130px;
+}
+.panel .bg-s {
+  max-width: 105px;
 }
 .bar1 .chart,.bar1 .chart2 ,.bar1 .chart3,.bar1 .chart4 {
   height:120px

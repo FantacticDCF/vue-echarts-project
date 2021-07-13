@@ -1,6 +1,7 @@
 <template>
+  <div class="cockpit_container">
   <bigData class="cockpit" :is-show="true"></bigData>
-
+  </div>
 </template>
 <script>
 import bigData from "../index";
@@ -16,6 +17,9 @@ export default {
 }
 </script>
 <style >
+.cockpit_container .ivu-layout {
+  background: #11172f;
+}
 .content {
   padding: 7px!important;
 }
