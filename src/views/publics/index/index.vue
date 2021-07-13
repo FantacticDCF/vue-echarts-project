@@ -73,7 +73,7 @@
       <div class="column">
         <div class="panel bar1">
           <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <h2 class="sub1 bg-m">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart" id="chart"></div>
           <div class="panel-footer"></div>
           <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
@@ -82,10 +82,10 @@
         </div>
         <div class="panel bar1">
           <h2 class="bg-s">投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <h2 class="sub1 bg-s">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart3"></div>
           <div class="panel-footer"></div>
-          <h2 class="sub2 bg-s"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart4"></div>
           <div class="panel-footer"></div>
         </div>
@@ -240,7 +240,7 @@
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -262,10 +262,10 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "0",
-            top: "0",
+            left: "10",
+            top: "10",
             right: "0",
-            bottom: "0",
+            bottom: "10",
             containLabel: true,
           },
           xAxis: {
@@ -368,7 +368,7 @@
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -390,10 +390,10 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "0",
-            top: "0",
+            left: "10",
+            top: "10",
             right: "0",
-            bottom: "0",
+            bottom: "10",
             containLabel: true,
           },
           xAxis: {
@@ -496,7 +496,7 @@
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -624,7 +624,7 @@
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -1006,9 +1006,11 @@ body {
 /*}*/
 .panel .sub1 {
   margin-top: 20px;
+  background: none;
 }
 .panel .sub2 {
   margin-top: 6px;
+  background: none;
 }
 .panel .bg-m {
   max-width: 130px;

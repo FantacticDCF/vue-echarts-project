@@ -11,7 +11,7 @@
       <el-table-column
           prop="name"
           label="分行"
-          width=""
+          width="75"
           className="color-blue">
       </el-table-column>
       <el-table-column prop="ts-num" width="">
@@ -22,7 +22,7 @@
       <el-table-column
           prop="num"
           label="投诉数量"
-          width="80"
+          width="70"
           className="color-blue">
       </el-table-column>
     </el-table>
@@ -220,7 +220,7 @@ export default {
 }
 .tableProcess .el-table .cell{
   /*color: #12abe2;*/
-  font-size: 12px;
+  font-size: 10px;
 }
 .tableProcess .color-blue {
   color: #12abe2;

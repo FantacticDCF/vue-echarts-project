@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <style >
-.cockpit_container .ivu-layout {
+ .ivu-layout {
   background: #11172f;
 }
 .content {
@@ -27,10 +27,10 @@ export default {
   display: none;
 }
 .mainbox .column {
-  width:28%
+  width:30%
 }
 .mainbox .column:nth-child(2) {
-  width: 44%;
+  width: 40%;
 }
 .cockpit .no .no-hd {
   /*height: 10vh;*/
