@@ -1,10 +1,5 @@
 <template>
   <div>
-    <!-- <div class="info">
-      <span class="work">工单查询</span>
-      <input type="text" class="inp" placeholder="输入关键词查询" />
-      <i class="el-icon-search iconSearch"></i>
-    </div> -->
        <div class="bus-bread">
 				查询
 		</div>
@@ -17,7 +12,7 @@
 			<!-- <div class="iconSearch"> -->
 			<i class="el-icon-search iconSearch"></i>
 		</div>
-    <div class="searchTable">
+        <div class="searchTable">
         <div class="table-wrapper">
             <el-table
                 class="customer-table"
@@ -188,19 +183,19 @@ export default {
 input::-webkit-input-placeholder {
     color: #59dfff;
 }
-.iconSearch {
-    font-size: 17px;
-    position: relative;
-    left: 20px;
-    top: 2px;
-    font-weight: 700;
-    color: #59dfff;
-}
+// .iconSearch {
+//     font-size: 17px;
+//     position: relative;
+//     left: 0;
+//     top: 2px;
+//     font-weight: 700;
+//     color: #59dfff;
+// }
 .searchTable{
     width: 98%;
-    height: 520px;
+    height: 510px;
     /* background: #ccc; */
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 1%;
     background: url('../../../assets/images/commonTitle/searchbg.png');
     background-size: 100% 100%;
@@ -214,13 +209,13 @@ input::-webkit-input-placeholder {
 	position: relative;
 	text-indent: 16px;
 	color: #69a8e1;
-  top: -20px;
-    left: 56px;
+    top: -20px;
+    left: 4.5%;
 
 	&:after {
 		position: absolute;
 		content: "";
-		right: 91%;
+		left: 7.8%;
 		top:0;
 		border-bottom: 7px solid #1A83C0;
 		border-left: 9px solid transparent;
@@ -245,7 +240,7 @@ input::-webkit-input-placeholder {
 	&:after {
 		position: absolute;
 		content: "";
-		right: 95.1%;
+		left: 4.2%;
 		top:0;
 		border-bottom: 7px solid #1A83C0;
 		border-left: 9px solid transparent;
@@ -256,7 +251,7 @@ input::-webkit-input-placeholder {
 .aborder {
 	text-indent: 30px;
 	color: #1A83C0;
-	margin-top: 10px;
+	// margin-top: 10px;
 	width: 55%;
 	height: 32px;
 	line-height: 32px;
