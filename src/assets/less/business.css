@@ -1,0 +1,230 @@
+.info {
+  width: 465px;
+  height: 45px;
+  border: 1px solid #8b9096;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#131B35), to(#1E426B));
+}
+.info .work {
+  width: 100px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  color: #59dfff;
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 700;
+}
+.info .inp {
+  background-color: #131c36;
+  width: 300px;
+  height: 27px;
+  text-align: left;
+  text-indent: 8px;
+  line-height: 27px;
+  display: inline-block;
+  border: 1px solid #5097d3;
+  margin-left: 10px;
+  border-radius: 6px;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#131B35), to(#1E426B));
+}
+.info input::-webkit-input-placeholder {
+  color: #639FD7;
+}
+.info .iconSearch {
+  font-size: 17px;
+  position: relative;
+  left: 9px;
+  top: 2px;
+  font-weight: 700;
+  color: #59dfff;
+}
+.formInfo {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.formInfo .box {
+  flex-grow: 1;
+  width: 50%;
+  height: 510px;
+  overflow: hidden;
+  margin-right: 10px;
+  position: relative;
+}
+.formInfo .box .image {
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  position: absolute;
+}
+.formInfo .box .title {
+  position: absolute;
+  top: 7px;
+  left: 17px;
+  color: #55d4f8;
+  font-size: 14px;
+}
+.formInfo .box .desc {
+  width: 100%;
+  height: 30px;
+  margin-top: 33px;
+}
+.formInfo .box .desc .descTitle {
+  display: flex;
+}
+.formInfo .box .desc .descTitle div {
+  font-size: 12px;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 30px;
+  color: #55d4f8;
+}
+.formInfo .box .desc .descTitle .left-div {
+  text-indent: -25%;
+}
+.formInfo .box .desc .descTitle .middle-div {
+  text-indent: -74%;
+}
+.formInfo .box .desc .descTitle .right-div {
+  text-indent: -42%;
+}
+.formInfo .box .desc .descTitle1 {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-bottom: 2.5%;
+}
+.formInfo .box .desc .descTitle1 .blue {
+  font-size: 12px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  color: #55d4f8;
+  margin-left: 10px;
+}
+.formInfo .box .desc .descTitle1 .write {
+  font-size: 12px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  margin-left: 10px;
+}
+.formInfo .box .desc .descTitle1 .jindu {
+  flex-grow: 1;
+  margin-top: 7.5px;
+  position: relative;
+}
+.formInfo .box .desc .descTitle1 .jindu .num {
+  position: absolute;
+  top: -2px;
+  right: 38px;
+  color: #55d4f8;
+  font-size: 12px;
+  cursor: pointer;
+}
+.formInfo .box .desc .descTitle1 .jindu .numRed {
+  position: absolute;
+  top: -2px;
+  right: 36px;
+  color: #fb543e;
+  background-image: -webkit-linear-gradient(bottom, #fb543e, #f58659);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 12px;
+}
+.formInfo .box1 {
+  flex-grow: 1;
+  width: 50%;
+  height: 510px;
+  position: relative;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.formInfo .box1 .image {
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  position: absolute;
+}
+.formInfo .box1 .title {
+  position: absolute;
+  top: 7px;
+  left: 17px;
+  color: #55d4f8;
+  font-size: 14px;
+}
+.formInfo .box1 .desc {
+  width: 100%;
+  height: 30px;
+  margin-top: 33px;
+}
+.formInfo .box1 .desc .descTitle {
+  display: flex;
+}
+.formInfo .box1 .desc .descTitle div {
+  font-size: 12px;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 30px;
+  color: #55d4f8;
+}
+.formInfo .box1 .desc .descTitle .left-div {
+  text-indent: -25%;
+}
+.formInfo .box1 .desc .descTitle .middle-div {
+  text-indent: -74%;
+}
+.formInfo .box1 .desc .descTitle .right-div {
+  text-indent: -42%;
+}
+.formInfo .box1 .desc .descTitle1 {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-bottom: 2.5%;
+}
+.formInfo .box1 .desc .descTitle1 .blue {
+  font-size: 12px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  color: #55d4f8;
+  margin-left: 10px;
+}
+.formInfo .box1 .desc .descTitle1 .write {
+  font-size: 12px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  margin-left: 10px;
+}
+.formInfo .box1 .desc .descTitle1 .jindu {
+  flex-grow: 1;
+  margin-top: 7.5px;
+  position: relative;
+}
+.formInfo .box1 .desc .descTitle1 .jindu .num {
+  position: absolute;
+  top: -2px;
+  right: 38px;
+  color: #55d4f8;
+  font-size: 12px;
+}
+.formInfo .box1 .desc .descTitle1 .jindu .numRed {
+  position: absolute;
+  top: -2px;
+  right: 36px;
+  color: #fb543e;
+  background-image: -webkit-linear-gradient(bottom, #fb543e, #f58659);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 12px;
+}
