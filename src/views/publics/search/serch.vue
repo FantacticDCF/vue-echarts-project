@@ -134,6 +134,27 @@ export default {
             remark: 'xxxxxxxxxxxxxxx',
             identify: 'xxxxxxxxx',
             name: '王一博'
+        }, {
+            date: '2016-05-04',
+            bank: '北京分行',
+            address: '上海市普陀区金沙江路 1517 弄',
+            remark: 'xxxxxxxxxxxxxxx',
+            identify: 'xxxxxxxxx',
+            name: '邓伦'
+        }, {
+            date: '2016-05-01',
+            bank: '北京分行',
+            address: '上海市普陀区金沙江路 1519 弄',
+            remark: 'xxxxxxxxxxxxxxx',
+            identify: 'xxxxxxxxx',
+            name: '王一博'
+        }, {
+            date: '2016-05-03',
+            bank: '北京分行',
+            address: '上海市普陀区金沙江路 1516 弄',
+            remark: 'xxxxxxxxxxxxxxx',
+            identify: 'xxxxxxxxx',
+            name: '王一博'
         }],
         currentPage1: 1,
     };
@@ -193,7 +214,7 @@ input::-webkit-input-placeholder {
 // }
 .searchTable{
     width: 98%;
-    height: 510px;
+    // height: 510px;
     /* background: #ccc; */
     margin-top: 20px;
     padding: 1%;

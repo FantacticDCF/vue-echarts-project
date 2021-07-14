@@ -3,7 +3,7 @@
     <section class="mainbox">
       <div class="column">
         <div class="panel bar">
-          <h2>全行投诉指标一览</h2>
+          <h2>全行投诉指标一览<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
 
           <div class="ts-index">
             <div class="ts-bg"><h3>40%</h3></div>
@@ -25,7 +25,7 @@
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar2">
-          <h2>全行实时投诉排名</h2>
+          <h2>全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
 <!--          <div class="chart"></div>-->
           <TableProcess></TableProcess>
           <div class="panel-footer"></div>
@@ -35,7 +35,7 @@
         <div class="no">
           <div class="no-hd">
             <ul>
-              <li>{{orgName}}</li>
+              <li>{{orgName}}<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></li>
             </ul>
             <p>机构名称</p>
           </div>
@@ -72,20 +72,20 @@
       </div>
       <div class="column">
         <div class="panel bar1">
-          <h2>各维度投诉数据表</h2>
-          <h2 class="sub1">客群投诉排名</h2>
+          <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart" id="chart"></div>
           <div class="panel-footer"></div>
-          <h2 class="sub2">全行实时投诉排名</h2>
+          <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart2"></div>
           <div class="panel-footer"></div>
         </div>
         <div class="panel bar1">
-          <h2>投诉预警</h2>
-          <h2 class="sub1">区域预警</h2>
+          <h2 class="bg-s">投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+          <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart3"></div>
           <div class="panel-footer"></div>
-          <h2 class="sub2"> 产品预警</h2>
+          <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
           <div class="chart4"></div>
           <div class="panel-footer"></div>
         </div>
@@ -96,11 +96,12 @@
 <script>
   import TableProcess from "./TableProcess.vue";
   import '@/assets/utils/china';
+  import axios from 'axios';
   export default {
     name : "bigData",
     data() {
       return {
-        isShowHead:true,
+        // isShow:false,
         orgName:"北京分行",
         dnAll:550,
         jgAll:137,
@@ -110,8 +111,12 @@
     components:{
         TableProcess
     },
+    props: {
+      isShow:Boolean
+    },
     mounted() {
 
+      this.getData();
       // this.tousupm();//全行实时投诉排名
       this.kqtousu();//客群投诉排名
       this.beitousu();//被投诉业务排名
@@ -120,6 +125,20 @@
       this.chinamap()//中国地图
     },
     methods: {
+
+      //获取数据
+      getData(url) {
+        axios
+            .get(url)
+            .then(response => {
+              this.info = response;
+              console.log('response',response)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+            .finally(() => this.loading = false)
+      },
 
       //右1
       kqtousu() {
@@ -181,10 +200,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -230,12 +250,13 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+              barWidth:16,
+              symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -257,10 +278,10 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "0",
-            top: "0",
+            left: "10",
+            top: "10",
             right: "0",
-            bottom: "0",
+            bottom: "10",
             containLabel: true,
           },
           xAxis: {
@@ -307,10 +328,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -356,12 +378,13 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -383,10 +406,10 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "0",
-            top: "0",
+            left: "10",
+            top: "10",
             right: "0",
-            bottom: "0",
+            bottom: "10",
             containLabel: true,
           },
           xAxis: {
@@ -433,10 +456,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -482,12 +506,13 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -559,10 +584,11 @@
               name: "条",
               type: "pictorialBar",
               symbolRepeat: "fixed",
-              symbolMargin: 2,
+              symbolMargin: 1,
               symbol: "rect",
               symbolClip: true,
               symbolSize: [6, 8],
+              symbolOffset: [5,0],//柱子的位置
               data: data,
               z: 2,
               // barCategoryGap:0,
@@ -608,12 +634,13 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-              barWidth: 16,
+        barWidth:16,
+        symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
                 normal: {
-                  barBorderRadius:4,
+                  barBorderRadius:8,
                 },
               },
             },
@@ -624,162 +651,67 @@
 
       },
 
-      //左2
-      // tousupm(){
-      //   var that = this;
-      //   var myChart = that.$echarts.init(document.querySelector(".bar2 .chart"));
-      //
-      //   var data = [66,59,57,48,42,35,29];
-      //   var titlename = ["北京分行", "上海分行", "广州分行", "深圳分行", "郑州分行", "成都分行", "武汉分行"];
-      //
-      //
-      //   var option = {
-      //     // backgroundColor:"#17326b",
-      //     grid:{
-      //       left:"10",
-      //       top:"10",
-      //       right:"10",
-      //       bottom:"10",
-      //       containLabel:true
-      //     },
-      //     xAxis: {
-      //       type: 'value',
-      //       splitLine:{show:false},
-      //       axisLabel:{show:false},
-      //       axisTick:{show:false},
-      //       axisLine:{show:false}
-      //     },
-      //     yAxis:[
-      //       {
-      //         type: 'category',
-      //         axisTick:{show:false},
-      //         axisLine:{show:false},
-      //         axisLabel:{
-      //           color:"black",
-      //           fontSize:12,
-      //           textStyle: {
-      //             color: '#fff'
-      //           }
-      //         },
-      //         data:titlename,
-      //         // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-      //         inverse:true
-      //       },
-      //       {
-      //         type: 'category',
-      //         axisTick:{show:false},
-      //         axisLine:{show:false},
-      //         axisLabel:{
-      //           color:"black",
-      //           fontSize:12,
-      //           textStyle: {
-      //             color: '#fff'
-      //           }
-      //         },
-      //         data:data,
-      //         // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-      //         inverse:true
-      //       }
-      //     ],
-      //     series: [
-      //       {
-      //         name:"条",
-      //         type:"bar",
-      //         barWidth:10,
-      //         data:[80,40,60,10,80,50,70],
-      //         barCategoryGap:60,
-      //         itemStyle:{
-      //           normal:{
-      //             barBorderRadius:10,
-      //             color: new that.$echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-      //               offset: 0,
-      //               color: '#22b6ed'
-      //             }, {
-      //               offset: 1,
-      //               color: '#3fE279'
-      //             }]),
-      //           }
-      //         },
-      //         zlevel:1
-      //
-      //       },{
-      //         name:"进度条背景",
-      //         type:"bar",
-      //         barGap:"-100%",
-      //         barWidth:10,
-      //         data:[100,100,100,100,100,100,100],
-      //         color:"#2e5384",
-      //         itemStyle:{
-      //           normal:{
-      //             barBorderRadius:10,
-      //
-      //           }
-      //         },
-      //       }
-      //     ]
-      //   };
-      //
-      //
-      //
-      //
-      //   myChart.setOption(option);
-      // },
-
+      //地图
       chinamap(){
           var that = this;
           var myChart = that.$echarts.init(document.querySelector(".map .chart"));
 
-    var mydata = [
-      {name: '北京',value: '100',dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '天津',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '上海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '重庆',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '河北',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '河南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '云南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '辽宁',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '黑龙江',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '湖南',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '安徽',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '新疆',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江苏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '浙江',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '湖北',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '甘肃',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '内蒙古',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '陕西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '吉林',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '福建',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '贵州',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '青海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '西藏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '四川',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '宁夏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '海南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '台湾',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '香港',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '澳门',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()}
-    ];
+          var mydata = [
+            {name: '北京',value: '100',dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '天津',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '上海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '重庆',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '河北',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '河南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '云南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '辽宁',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '黑龙江',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '湖南',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '安徽',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '新疆',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江苏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '浙江',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '湖北',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '甘肃',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '内蒙古',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '陕西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '吉林',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '福建',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '贵州',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '青海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '西藏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '四川',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '宁夏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '海南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '台湾',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '香港',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '澳门',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()}
+          ];
 
-    function randomData() {
-      return Math.round(Math.random()*500);
-    }
+          function randomData() {
+            return Math.round(Math.random()*150);
+          }
 
+          var option = {
+            // backgroundColor: '',
+            title: {
+              text: '',
+              left: 'center',
+              textStyle: {
+                color: '#fff',
+                fontSize:25
+              }
+            },
+            //左侧小导航图标
+            visualMap: {
+              show : true,
+              // title : "各地区销量排名",
 
-    var option = {
-      //左侧小导航图标
-      visualMap: {
-        show : true,
-        title : "各地区销量排名",
-        x: 'left',
-        y: 'bottom',
-        textStyle: {
-          fontSize: 10,
-          fontWeight: 'normal',
-          color: 'white'
-        },
-        pieces: [      // 自定义每一段的范围，以及每一段的文字
-          { gte: 10000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
-          { gte: 1000, lte: 9999, label: '25%-50%'},
-          { gte: 500, lte: 999, label: '50%-75%'},
-          { gte: 10, lte: 99, label: '75%-100%'},
-        ],
-        inRange: {
-          // 渐变颜色，从小到大
-          color: ['#d1d4da', '#bacae8', '#96b5ef', '#6797ef', '#3375e4', '#035cf5']
-        }
-        // color: ['#5475f5', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']
-      },
+              // 组件上的文本
+              // text: ['各地区销量排名'],
+              x: 'left',
+              y: 'bottom',
+              textStyle: {
+                fontSize: 10,
+                fontWeight: 'normal',
+                color: 'white',
+                textAlign:'left'
+              },
+              left: "5%", //组件离容器左侧的距离,‘left’, ‘center’, ‘right’,‘20%’
+              // top: "40% ", //组件离容器上侧的距离,‘top’, ‘middle’, ‘bottom’,‘20%’
+              right: "auto", //组件离容器右侧的距离,‘20%’
+              bottom: "2%", //组件离容器下侧的距离,‘20%’
 
+<<<<<<< HEAD
       geo: {
         map: "china",
         label: {
@@ -845,6 +777,84 @@
           this.hnAll = params.data.hnAll;
     });
     window.addEventListener("resize", () => { myChart.resize();});
+=======
+              pieces: [      // 自定义每一段的范围，以及每一段的文字
+                { gte: 15000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
+                { gte: 9000, lte: 14999, label: '25%-50%'},
+                { gte: 500, lte: 8999, label: '50%-75%'},
+                { gte: 0, lte: 99, label: '75%-100%'},
+              ],
+              inRange: {
+                // 渐变颜色，从小到大
+                color: [ '#9ac8e5', '#68a9de', '#378ad6', '#0253a2']
+              }
+            },
+
+            geo: {
+              map: "china",
+              label: {
+                emphasis: {
+                  show: true,
+                  color: "#fff"
+                }
+              },
+              zoom: 1.1,
+              roam : false, //是否可移动
+              hoverable : false, //是否有鼠标滑过效果,
+              itemStyle: {
+                normal: {
+                  areaColor: "rgba(43, 196, 243, 0.42)",
+                  borderColor: "rgba(43, 196, 243, 1)",
+                  borderWidth: 1
+                },
+                emphasis: {
+                  areaColor: "#68A8DE"
+                }
+              }
+            },
+            series: [{
+              name: '数据',
+              type: 'map',
+              mapType: 'china',
+              // roam: true,
+              label: {
+                normal: {
+                  show: true , //省份名称
+                  textStyle: {
+                    fontSize: 10,
+                    fontWeight: 'normal',
+                    color: 'white'
+                  }
+                },
+                emphasis: {
+                  show: false
+                }
+              },
+              roam: false,
+              //   放大我们的地图
+              zoom: 1.1,
+              itemStyle: {
+                normal: {
+                  areaColor: "rgba(43, 196, 243, 0.42)",
+                  borderColor: "rgba(43, 196, 243, 1)",
+                  borderWidth: 1
+                },
+                emphasis: {
+                  areaColor: "#68A8DE"
+                }
+              },
+              data:mydata  //数据
+            }]
+          };
+          myChart.setOption(option);
+          myChart.on('click',  (params) =>{
+                this.orgName = params.data.name + '分行';
+                this.dnAll = params.data.dnAll;
+                this.jgAll = params.data.jgAll;
+                this.hnAll = params.data.hnAll;
+          });
+          window.addEventListener("resize", () => { myChart.resize();});
+>>>>>>> 7858abab91692ab6ad7c29e3b2e1dae0db8fa7fd
     }
 
     },
@@ -854,7 +864,7 @@
 
 body {
   background-repeat: no-repeat;
-  background-color: #06164A;
+  background-color: #131B35;
   background-size: cover;
 }
 
@@ -875,9 +885,25 @@ body {
   margin: 0 4px;
   overflow: hidden;
 }
+.cockp_arrow {
+  width: 12px;
+  height: 11px;
+  margin-left: 2px;
+  /*top: 7px;*/
+  margin-top: 5px;
+  position: absolute;
+}
+.no-hd .cockp_arrow{
+  width: 15px;
+  height: 16px;
+  margin-left: 2px;
+  /* top: 7px; */
+  margin-top: 3px;
+  position: absolute;
+}
 .panel {
   position: relative;
-  height: 330px;
+  height: 340px;
   /* border: 1px solid rgba(25, 186, 139, 0.17); */
   background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
   padding: 21px 10px;
@@ -935,14 +961,19 @@ body {
   border-radius: 20%;
 }
 .panel h2 {
-  height: 4px;
-  margin-top: -10px;
-  line-height: 3px;
+  height: 20px;
+  margin-top: -8px;
+  line-height: 20px;
   text-align: left;
+  display: block;
+  max-width: 170px;
   color: #02d1f4;
+  background: url(../../../assets/images/title_bg.png) no-repeat;
+  background-size:100% 100%;
   font-size: 12px;
   font-weight: 400;
   padding: 0 5px;
+
 }
 .panel h2 a {
   color: #fff;
@@ -955,10 +986,18 @@ body {
 /*  height: 3rem;*/
 /*}*/
 .panel .sub1 {
-  margin-top: 32px;
+  margin-top: 20px;
+  background: none;
 }
 .panel .sub2 {
-  margin-top: 16px;
+  margin-top: 6px;
+  background: none;
+}
+.panel .bg-m {
+  max-width: 130px;
+}
+.panel .bg-s {
+  max-width: 105px;
 }
 .bar1 .chart,.bar1 .chart2 ,.bar1 .chart3,.bar1 .chart4 {
   height:120px
@@ -1083,6 +1122,9 @@ body {
 }
 .map {
   position: relative;
+  background: url(../../../assets/images/map_bg.png);
+  background-size: 100% 100%;
+  height: 530px;
 }
 .map .chart {
   position: absolute;
