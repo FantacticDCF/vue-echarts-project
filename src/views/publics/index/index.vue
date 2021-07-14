@@ -151,9 +151,9 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "10",
+            left: "15",
             top: "10",
-            right: "0",
+            right: "15",
             bottom: "10",
             containLabel: true,
           },
@@ -279,9 +279,9 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "10",
+            left: "15",
             top: "10",
-            right: "0",
+            right: "15",
             bottom: "10",
             containLabel: true,
           },
@@ -407,9 +407,9 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "10",
+            left: "15",
             top: "10",
-            right: "0",
+            right: "15",
             bottom: "10",
             containLabel: true,
           },
@@ -535,10 +535,10 @@
         var option = {
           // backgroundColor:"#17326b",
           grid: {
-            left: "0",
-            top: "0",
-            right: "0",
-            bottom: "0",
+            left: "5",
+            top: "10",
+            right: "15",
+            bottom: "10",
             containLabel: true,
           },
           xAxis: {
