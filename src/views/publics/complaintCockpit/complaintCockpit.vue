@@ -1,6 +1,7 @@
 <template>
-  <bigData class="cockpit"></bigData>
-
+  <div class="cockpit_container">
+  <bigData class="cockpit" :is-show="true"></bigData>
+  </div>
 </template>
 <script>
 import bigData from "../index";
@@ -16,6 +17,9 @@ export default {
 }
 </script>
 <style >
+ .ivu-layout {
+  background: #11172f;
+}
 .content {
   padding: 7px!important;
 }
@@ -23,10 +27,10 @@ export default {
   display: none;
 }
 .mainbox .column {
-  width:28%
+  width:30%
 }
 .mainbox .column:nth-child(2) {
-  width: 44%;
+  width: 40%;
 }
 .cockpit .no .no-hd {
   /*height: 10vh;*/

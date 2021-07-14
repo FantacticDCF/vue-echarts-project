@@ -2,7 +2,7 @@
 <template>
   <div>
     <commonTitle></commonTitle>
-    <bigData></bigData>
+    <bigData :isShow="false"></bigData>
   </div>
 </template>
 <script>

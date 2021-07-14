@@ -11,8 +11,8 @@
       <el-table-column
           prop="name"
           label="分行"
-          width=""
-          className="color-white">
+          width="75"
+          className="color-blue">
       </el-table-column>
       <el-table-column prop="ts-num" width="">
         <template slot-scope="scope">
@@ -22,7 +22,7 @@
       <el-table-column
           prop="num"
           label="投诉数量"
-          width="80"
+          width="70"
           className="color-blue">
       </el-table-column>
     </el-table>
@@ -149,7 +149,7 @@ export default {
               {
                 name:"条",
                 type:"bar",
-                barWidth:10,
+                barWidth:20,
                 data:[e.num],
                 barCategoryGap:20,
                 itemStyle:{
@@ -170,7 +170,7 @@ export default {
                 name:"进度条背景",
                 type:"bar",
                 barGap:"-100%",
-                barWidth:10,
+                barWidth:20,
                 data:[100],
                 color:"#2e5384",
                 itemStyle:{
@@ -220,12 +220,12 @@ export default {
 }
 .tableProcess .el-table .cell{
   /*color: #12abe2;*/
-  font-size: 12px;
+  font-size: 10px;
 }
 .tableProcess .color-blue {
   color: #12abe2;
 }
 .tableProcess .color-white {
-  color: white;
+  /*color: white;*/
 }
 </style>
