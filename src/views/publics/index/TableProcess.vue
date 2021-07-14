@@ -16,7 +16,7 @@
       </el-table-column>
       <el-table-column prop="ts-num" width="">
         <template slot-scope="scope">
-          <div style="width:100%;height: 10px;" :ref="'echarts'+scope.row.id"></div>
+          <div style="width:105%;height: 16px;" :ref="'echarts'+scope.row.id"></div>
         </template>
       </el-table-column>
       <el-table-column
@@ -94,16 +94,15 @@ export default {
       var that = this;
       setTimeout(() => {
         this.tableData.forEach(e => {
-          console.log(e);
-          console.log(e.num);
+          // console.log(e);
           let myChart = this.$echarts.init(this.$refs['echarts' + e.id]);
           myChart.setOption({
             // backgroundColor:"#17326b",
             grid:{
-              left:"10",
-              top:"10",
+              left:"0",
+              top:"0",
               right:"0",
-              bottom:"10",
+              bottom:"0",
               containLabel:true
             },
             xAxis: {
@@ -120,7 +119,7 @@ export default {
                 axisLine:{show:false},
                 axisLabel:{
                   color:"black",
-                  fontSize:12,
+                  fontSize:10,
                   textStyle: {
                     color: '#fff'
                   }
@@ -135,13 +134,13 @@ export default {
                 axisLine:{show:false},
                 axisLabel:{
                   color:"black",
-                  fontSize:12,
+                  fontSize:10,
                   textStyle: {
                     color: '#fff'
                   }
                 },
                 data:[],//右侧数据
-                max:10, // 关键：设置y刻度最大值，相当于设置总体行高
+                max:20, // 关键：设置y刻度最大值，相当于设置总体行高
                 inverse:true
               }
             ],
@@ -149,9 +148,9 @@ export default {
               {
                 name:"条",
                 type:"bar",
-                barWidth:20,
+                barCategoryGap: 0,
+                barWidth: 25,
                 data:[e.num],
-                barCategoryGap:20,
                 itemStyle:{
                   normal:{
                     barBorderRadius:10,
@@ -170,7 +169,10 @@ export default {
                 name:"进度条背景",
                 type:"bar",
                 barGap:"-100%",
-                barWidth:20,
+                // 柱子之间的间距
+                barCategoryGap: 1,
+                // 柱子之间的宽度
+                barWidth: 25,
                 data:[100],
                 color:"#2e5384",
                 itemStyle:{

@@ -96,6 +96,7 @@
 <script>
   import TableProcess from "./TableProcess.vue";
   import '@/assets/utils/china';
+  import axios from 'axios';
   export default {
     name : "bigData",
     data() {
@@ -115,6 +116,7 @@
     },
     mounted() {
 
+      this.getData();
       // this.tousupm();//全行实时投诉排名
       this.kqtousu();//客群投诉排名
       this.beitousu();//被投诉业务排名
@@ -123,6 +125,20 @@
       this.chinamap()//中国地图
     },
     methods: {
+
+      //获取数据
+      getData(url) {
+        axios
+            .get(url)
+            .then(response => {
+              this.info = response;
+              console.log('response',response)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+            .finally(() => this.loading = false)
+      },
 
       //右1
       kqtousu() {
@@ -234,8 +250,8 @@
               name: "进度条背景",
               type: "bar",
               barGap: "-100%",
-        barWidth:16,
-        symbolOffset: [5, 0],//柱子的位置
+              barWidth:16,
+              symbolOffset: [5, 0],//柱子的位置
               data: [100, 100, 100],
               color: "#2e5384",
               itemStyle: {
@@ -635,245 +651,142 @@
 
       },
 
-      //左2
-      // tousupm(){
-      //   var that = this;
-      //   var myChart = that.$echarts.init(document.querySelector(".bar2 .chart"));
-      //
-      //   var data = [66,59,57,48,42,35,29];
-      //   var titlename = ["北京分行", "上海分行", "广州分行", "深圳分行", "郑州分行", "成都分行", "武汉分行"];
-      //
-      //
-      //   var option = {
-      //     // backgroundColor:"#17326b",
-      //     grid:{
-      //       left:"10",
-      //       top:"10",
-      //       right:"10",
-      //       bottom:"10",
-      //       containLabel:true
-      //     },
-      //     xAxis: {
-      //       type: 'value',
-      //       splitLine:{show:false},
-      //       axisLabel:{show:false},
-      //       axisTick:{show:false},
-      //       axisLine:{show:false}
-      //     },
-      //     yAxis:[
-      //       {
-      //         type: 'category',
-      //         axisTick:{show:false},
-      //         axisLine:{show:false},
-      //         axisLabel:{
-      //           color:"black",
-      //           fontSize:12,
-      //           textStyle: {
-      //             color: '#fff'
-      //           }
-      //         },
-      //         data:titlename,
-      //         // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-      //         inverse:true
-      //       },
-      //       {
-      //         type: 'category',
-      //         axisTick:{show:false},
-      //         axisLine:{show:false},
-      //         axisLabel:{
-      //           color:"black",
-      //           fontSize:12,
-      //           textStyle: {
-      //             color: '#fff'
-      //           }
-      //         },
-      //         data:data,
-      //         // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-      //         inverse:true
-      //       }
-      //     ],
-      //     series: [
-      //       {
-      //         name:"条",
-      //         type:"bar",
-      //         barWidth:10,
-      //         data:[80,40,60,10,80,50,70],
-      //         barCategoryGap:60,
-      //         itemStyle:{
-      //           normal:{
-      //             barBorderRadius:10,
-      //             color: new that.$echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-      //               offset: 0,
-      //               color: '#22b6ed'
-      //             }, {
-      //               offset: 1,
-      //               color: '#3fE279'
-      //             }]),
-      //           }
-      //         },
-      //         zlevel:1
-      //
-      //       },{
-      //         name:"进度条背景",
-      //         type:"bar",
-      //         barGap:"-100%",
-      //         barWidth:10,
-      //         data:[100,100,100,100,100,100,100],
-      //         color:"#2e5384",
-      //         itemStyle:{
-      //           normal:{
-      //             barBorderRadius:10,
-      //
-      //           }
-      //         },
-      //       }
-      //     ]
-      //   };
-      //
-      //
-      //
-      //
-      //   myChart.setOption(option);
-      // },
-
+      //地图
       chinamap(){
           var that = this;
           var myChart = that.$echarts.init(document.querySelector(".map .chart"));
 
-    var mydata = [
-      {name: '北京',value: '100',dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '天津',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '上海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '重庆',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '河北',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '河南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '云南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '辽宁',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '黑龙江',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '湖南',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '安徽',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '新疆',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江苏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '浙江',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '湖北',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '甘肃',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '内蒙古',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '陕西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
-      {name: '吉林',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '福建',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '贵州',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '青海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '西藏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '四川',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '宁夏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '海南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '台湾',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
-      {name: '香港',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '澳门',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()}
-    ];
+          var mydata = [
+            {name: '北京',value: '100',dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '天津',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '上海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '重庆',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '河北',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '河南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '云南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '辽宁',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '黑龙江',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '湖南',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '安徽',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '新疆',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江苏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '浙江',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '江西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '湖北',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '甘肃',value: randomData() ,dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '山西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '内蒙古',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },{name: '陕西',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData() },
+            {name: '吉林',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '福建',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '贵州',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '广东',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '青海',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '西藏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '四川',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '宁夏',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '海南',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '台湾',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},
+            {name: '香港',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()},{name: '澳门',value: randomData(),dnAll:randomData(),jgAll:randomData(),hnAll:randomData()}
+          ];
 
-    function randomData() {
-      return Math.round(Math.random()*150);
-    }
-
-
-    var option = {
-      // backgroundColor: '',
-      title: {
-        text: '',
-        left: 'center',
-        textStyle: {
-          color: '#fff',
-          fontSize:25
-        }
-      },
-      //左侧小导航图标
-      visualMap: {
-        show : true,
-        // title : "各地区销量排名",
-
-        // 组件上的文本
-        // text: ['各地区销量排名'],
-        x: 'left',
-        y: 'bottom',
-        textStyle: {
-          fontSize: 10,
-          fontWeight: 'normal',
-          color: 'white',
-          textAlign:'left'
-        },
-        left: "5%", //组件离容器左侧的距离,‘left’, ‘center’, ‘right’,‘20%’
-        // top: "40% ", //组件离容器上侧的距离,‘top’, ‘middle’, ‘bottom’,‘20%’
-        right: "auto", //组件离容器右侧的距离,‘20%’
-        bottom: "2%", //组件离容器下侧的距离,‘20%’
-
-        pieces: [      // 自定义每一段的范围，以及每一段的文字
-          { gte: 15000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
-          { gte: 9000, lte: 14999, label: '25%-50%'},
-          { gte: 500, lte: 8999, label: '50%-75%'},
-          { gte: 0, lte: 99, label: '75%-100%'},
-        ],
-        inRange: {
-          // 渐变颜色，从小到大
-          color: [ '#9ac8e5', '#68a9de', '#378ad6', '#0253a2']
-        }
-      },
-
-      geo: {
-        map: "china",
-        label: {
-          emphasis: {
-            show: true,
-            color: "#fff"
+          function randomData() {
+            return Math.round(Math.random()*150);
           }
-        },
-        zoom: 1.1,
-        roam : false, //是否可移动
-        hoverable : false, //是否有鼠标滑过效果,
-        itemStyle: {
-          normal: {
-            areaColor: "rgba(43, 196, 243, 0.42)",
-            borderColor: "rgba(43, 196, 243, 1)",
-            borderWidth: 1
-          },
-          emphasis: {
-            areaColor: "#68A8DE"
-          }
-        }
-      },
-      series: [{
-        name: '数据',
-        type: 'map',
-        mapType: 'china',
-        // roam: true,
-        label: {
-          normal: {
-            show: true , //省份名称
-            textStyle: {
-              fontSize: 10,
-              fontWeight: 'normal',
-              color: 'white'
-            }
-          },
-          emphasis: {
-            show: false
-          }
-        },
-        roam: false,
-        //   放大我们的地图
-        zoom: 1.1,
-        itemStyle: {
-          normal: {
-            areaColor: "rgba(43, 196, 243, 0.42)",
-            borderColor: "rgba(43, 196, 243, 1)",
-            borderWidth: 1
-          },
-          emphasis: {
-            areaColor: "#68A8DE"
-          }
-        },
-        data:mydata  //数据
-      }]
-    };
-    myChart.setOption(option);
-    myChart.on('click',  (params) =>{
-          console.log(params.data.name);
-          // params.data
-          this.orgName = params.data.name + '分行';
-          this.dnAll = params.data.dnAll;
-          this.jgAll = params.data.jgAll;
-          this.hnAll = params.data.hnAll;
-    });
-    window.addEventListener("resize", () => { myChart.resize();});
+
+          var option = {
+            // backgroundColor: '',
+            title: {
+              text: '',
+              left: 'center',
+              textStyle: {
+                color: '#fff',
+                fontSize:25
+              }
+            },
+            //左侧小导航图标
+            visualMap: {
+              show : true,
+              // title : "各地区销量排名",
+
+              // 组件上的文本
+              // text: ['各地区销量排名'],
+              x: 'left',
+              y: 'bottom',
+              textStyle: {
+                fontSize: 10,
+                fontWeight: 'normal',
+                color: 'white',
+                textAlign:'left'
+              },
+              left: "5%", //组件离容器左侧的距离,‘left’, ‘center’, ‘right’,‘20%’
+              // top: "40% ", //组件离容器上侧的距离,‘top’, ‘middle’, ‘bottom’,‘20%’
+              right: "auto", //组件离容器右侧的距离,‘20%’
+              bottom: "2%", //组件离容器下侧的距离,‘20%’
+
+              pieces: [      // 自定义每一段的范围，以及每一段的文字
+                { gte: 15000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
+                { gte: 9000, lte: 14999, label: '25%-50%'},
+                { gte: 500, lte: 8999, label: '50%-75%'},
+                { gte: 0, lte: 99, label: '75%-100%'},
+              ],
+              inRange: {
+                // 渐变颜色，从小到大
+                color: [ '#9ac8e5', '#68a9de', '#378ad6', '#0253a2']
+              }
+            },
+
+            geo: {
+              map: "china",
+              label: {
+                emphasis: {
+                  show: true,
+                  color: "#fff"
+                }
+              },
+              zoom: 1.1,
+              roam : false, //是否可移动
+              hoverable : false, //是否有鼠标滑过效果,
+              itemStyle: {
+                normal: {
+                  areaColor: "rgba(43, 196, 243, 0.42)",
+                  borderColor: "rgba(43, 196, 243, 1)",
+                  borderWidth: 1
+                },
+                emphasis: {
+                  areaColor: "#68A8DE"
+                }
+              }
+            },
+            series: [{
+              name: '数据',
+              type: 'map',
+              mapType: 'china',
+              // roam: true,
+              label: {
+                normal: {
+                  show: true , //省份名称
+                  textStyle: {
+                    fontSize: 10,
+                    fontWeight: 'normal',
+                    color: 'white'
+                  }
+                },
+                emphasis: {
+                  show: false
+                }
+              },
+              roam: false,
+              //   放大我们的地图
+              zoom: 1.1,
+              itemStyle: {
+                normal: {
+                  areaColor: "rgba(43, 196, 243, 0.42)",
+                  borderColor: "rgba(43, 196, 243, 1)",
+                  borderWidth: 1
+                },
+                emphasis: {
+                  areaColor: "#68A8DE"
+                }
+              },
+              data:mydata  //数据
+            }]
+          };
+          myChart.setOption(option);
+          myChart.on('click',  (params) =>{
+                this.orgName = params.data.name + '分行';
+                this.dnAll = params.data.dnAll;
+                this.jgAll = params.data.jgAll;
+                this.hnAll = params.data.hnAll;
+          });
+          window.addEventListener("resize", () => { myChart.resize();});
     }
 
     },
