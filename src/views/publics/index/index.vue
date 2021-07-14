@@ -711,73 +711,6 @@
               right: "auto", //组件离容器右侧的距离,‘20%’
               bottom: "2%", //组件离容器下侧的距离,‘20%’
 
-<<<<<<< HEAD
-      geo: {
-        map: "china",
-        label: {
-          emphasis: {
-            show: true,
-            color: "#fff"
-          }
-        },
-        roam: false,
-        //   放大我们的地图
-        // zoom: 1,
-        itemStyle: {
-          normal: {
-            areaColor: "rgba(43, 196, 243, 0.42)",
-            borderColor: "rgba(43, 196, 243, 1)",
-            borderWidth: 1
-          },
-          emphasis: {
-            areaColor: "#2B91B7"
-          }
-        }
-      },
-      series: [{
-        name: '数据',
-        type: 'map',
-        mapType: 'china',
-        // roam: true,
-        label: {
-          normal: {
-            show: true , //省份名称
-            textStyle: {
-              fontSize: 10,
-              fontWeight: 'normal',
-              color: 'white'
-            }
-          },
-          emphasis: {
-            show: false
-          }
-        },
-        roam: false,
-        //   放大我们的地图
-        // zoom: 1,
-        itemStyle: {
-          normal: {
-            areaColor: "rgba(43, 196, 243, 0.42)",
-            borderColor: "rgba(43, 196, 243, 1)",
-            borderWidth: 1
-          },
-          emphasis: {
-            areaColor: "#2B91B7"
-          }
-        },
-        data:mydata  //数据
-      }]
-    };
-    myChart.setOption(option);
-    myChart.on('click',  (params) =>{
-          // params.data
-          this.orgName = params.data.name + '分行';
-          this.dnAll = params.data.dnAll;
-          this.jgAll = params.data.jgAll;
-          this.hnAll = params.data.hnAll;
-    });
-    window.addEventListener("resize", () => { myChart.resize();});
-=======
               pieces: [      // 自定义每一段的范围，以及每一段的文字
                 { gte: 15000, label: 'top25%'}, // 不指定 max，表示 max 为无限大（Infinity）。
                 { gte: 9000, lte: 14999, label: '25%-50%'},
@@ -854,7 +787,6 @@
                 this.hnAll = params.data.hnAll;
           });
           window.addEventListener("resize", () => { myChart.resize();});
->>>>>>> 7858abab91692ab6ad7c29e3b2e1dae0db8fa7fd
     }
 
     },
