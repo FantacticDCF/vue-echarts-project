@@ -117,7 +117,7 @@
     },
     mounted() {
 
-      this.getData();
+
       // this.tousupm();//全行实时投诉排名
       this.kqtousu();//客群投诉排名
       this.beitousu();//被投诉业务排名
