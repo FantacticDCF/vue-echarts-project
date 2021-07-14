@@ -1,4 +1,4 @@
-<template>
+<template style="overflow: hidden;">
   <div>
     <div class="bus-bread">投诉压降</div>
     <div class="bus-bread1">节点成果提交</div>
