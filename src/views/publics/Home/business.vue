@@ -40,7 +40,6 @@
                 :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
                 class="jindutiao"
               ></Jindutiao>
-              <!-- <div class="num">{{ item.num2 }}</div> -->
               <div
                 :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
               >
@@ -93,6 +92,10 @@
         </div>
       </div>
     </div>
+  <!-- <el-row>
+    <el-col :span="12" ></el-col>
+    <el-col :span="12"></el-col>
+  </el-row> -->
   </div>
 </template>
 
@@ -412,6 +415,10 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/business.less");
+.el-col {
+  height: 500px;
+  background: red;
+}
 .bus-bread {
 	position: relative;
 	text-indent: 16px;
