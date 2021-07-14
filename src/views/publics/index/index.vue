@@ -103,6 +103,7 @@
       return {
         // isShow:false,
         orgName:"北京分行",
+        loading: false,
         dnAll:550,
         jgAll:137,
         hnAll:32
