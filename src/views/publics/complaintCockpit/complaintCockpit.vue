@@ -32,6 +32,9 @@ export default {
 .mainbox .column:nth-child(2) {
   width: 40%;
 }
+.cockpit {
+  margin-left: -10px;
+}
 .cockpit .no .no-hd {
   /*height: 10vh;*/
 }

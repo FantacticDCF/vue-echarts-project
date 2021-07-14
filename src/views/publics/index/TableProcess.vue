@@ -5,24 +5,24 @@
       <el-table-column
           prop="top"
           label="排名"
-          width="45"
+          width="28"
           className="color-blue">
       </el-table-column>
       <el-table-column
           prop="name"
           label="分行"
-          width="75"
+          width="72"
           className="color-blue">
       </el-table-column>
       <el-table-column prop="ts-num" width="">
         <template slot-scope="scope">
-          <div style="width:105%;height: 16px;" :ref="'echarts'+scope.row.id"></div>
+          <div style="height: 16px;" :ref="'echarts'+scope.row.id"></div>
         </template>
       </el-table-column>
       <el-table-column
           prop="num"
           label="投诉数量"
-          width="70"
+          width="58"
           className="color-blue">
       </el-table-column>
     </el-table>
@@ -223,6 +223,7 @@ export default {
 .tableProcess .el-table .cell{
   /*color: #12abe2;*/
   font-size: 10px;
+  padding: 0 2px;
 }
 .tableProcess .color-blue {
   color: #12abe2;
