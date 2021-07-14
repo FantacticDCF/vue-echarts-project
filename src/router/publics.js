@@ -87,6 +87,12 @@ let pubics=[
                 component: ()=>import("@/views/publics/complaintCockpit/complaintCockpit"),
                 meta:{breadnav:[{path:'/Home/complaintCockpit',name:'投诉管理驾驶舱'}],name:'投诉管理驾驶舱'}//投诉管理驾驶舱
             },
+            {
+                path: '/Home/businessUpload',
+                name: 'businessUpload',
+                component: () => import("@/views/publics/businessUpload/businessUpload"),
+                meta: {breadnav: [{path: '/Home/businessUpload', name: '节点成果提交'}],name: '节点成果提交'}
+            }
        ]
     }
 ]

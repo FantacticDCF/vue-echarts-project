@@ -46,4 +46,13 @@ Mock.mock('/admin/Clinic/sys_hot_data','get', ()=>{
         
     }
 })
-//找回密码
+//上传图片
+Mock.mock('/admin/Clinic/uploadImg','post', ()=>{
+    return {
+        info:{
+            data: {
+              url: 'https://img2.baidu.com/it/u=2951542358,3634590085&fm=11&fmt=auto&gp=0.jpg'
+            }
+        }
+    }
+})
