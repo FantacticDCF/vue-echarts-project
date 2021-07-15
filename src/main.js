@@ -5,7 +5,7 @@ import store from './store';
 import axios from "axios";
 import ViewUI from 'view-design';
 import ElementUI from 'element-ui';
-import '../node_modules/lement-ui/lib/theme-chalk/index.css';
+import '../node_modules/element-ui/lib/theme-chalk/index.css';
 import 'view-design/dist/styles/iview.css';
 import * as echarts from 'echarts';
 import VueQuillEditor from 'vue-quill-editor';
@@ -14,6 +14,10 @@ import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
 import Base64 from './assets/utils/Base64';
 import './mock/mock'
+// import './views/publics/bigData/static/js/flexible'
+import Observer from "./assets/utils/observer";
+
+Vue.prototype.Observer = Observer;
 Vue.prototype.$Base64 = Base64;
 Vue.use(VueQuillEditor);
 Vue.prototype.$echarts = echarts;

@@ -7,7 +7,7 @@ module.exports = {
       entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html',
-      title: 'xxxx管理后台',
+      title: '数字化投诉分析管理系统',
       chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
   },
