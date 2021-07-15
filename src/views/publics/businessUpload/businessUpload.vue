@@ -184,12 +184,12 @@ export default {
   },
   watch: {
     'screenHeight': function (val) { //监听屏幕高度变化
-      var oIframe = document.getElementById('divId')
+      let oIframe = document.getElementById('divId')
       oIframe.style.height = Number(val) + 'px'
     }  
   },
   mounted () {
-    var _this = this
+    let _this = this
     window.onresize = function () {
       _this.screenHeight = document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15
     }
