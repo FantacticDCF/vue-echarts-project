@@ -1,4 +1,4 @@
-<template>
+<template style="overflow: hidden;">
   <div>
     <div class="bus-bread">投诉压降</div>
     <div class="bus-bread1">节点成果提交</div>
@@ -126,6 +126,7 @@ export default {
   },
   methods: {
     projectSelectFun (e) {
+       console.log(e)
        let _dom = document.querySelector('.selected')
        if (_dom) {
          _dom.classList.toggle('selected') // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
@@ -143,16 +144,18 @@ export default {
     },
     changeImg (index) {
       this.index = index
-      if(this.list[index].imgsrc !== require("../../../assets/images/businessUpload/image.png")) {
+      if(this.list[index].imgsrc !== require("../../../assets/images/businessUpload/image.png") && index == 0) {
         this.dialogVisible = true
-      } else {
+      } else if (index == 0) {
         this.$message.error('您目前还没上传图片')
       }
     },
     startChangeImage () {
-      this.list[this.index].imgsrc = require("../../../assets/images/businessUpload/image.png")
-      this.list[this.index].haveimg = 0
-      this.dialogVisible = false
+      if (this.index == 0) {
+        this.list[this.index].imgsrc = require("../../../assets/images/businessUpload/image.png")
+        this.list[this.index].haveimg = 0
+        this.dialogVisible = false
+      }
     }
   }
 };

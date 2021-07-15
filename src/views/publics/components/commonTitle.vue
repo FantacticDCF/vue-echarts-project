@@ -77,9 +77,9 @@ export default {
 }
 .commonLogo img{
   display: inline-block;
-  width: 140px;
-  height: 45px;
-  margin-top: 5px;
+  width: 120px;
+  height: 40px;
+  margin-top: 9px;
   float: right;
 }
 .commonLogo .commonTitleres{
