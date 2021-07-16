@@ -19,7 +19,13 @@
         <el-row class="content" :style="{width: '100%', height: (screenHeight - 75) + 'px'}">
           <el-col :span="12">
             <div>投诉压降第一阶段工作情况汇报</div>
-            <div>{{contextfont}}</div>
+            <el-input
+              type="textarea"
+              v-model="textcontent"
+              resize="none"
+              :placeholder="contextfont"
+              :style="{height: (screenHeight - 235) + 'px'}"
+            ></el-input>
           </el-col>
           <el-col :span="12">
             <ol>
@@ -74,52 +80,6 @@
         </el-row>
       </el-col>
     </el-row>
-    <!-- <div class="formInfo">
-      <div class="box">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-        <div class="title">{{ titleName }}</div>
-        <div class="content-box">
-          <img src="../../../assets/images/businessUpload/content-box.png" alt="">
-          <div class="content-box-title">投诉压降第一阶段工作情况汇报</div>
-          <ol>
-            <li v-for="(item, index) in list" :key="index" id="listLi" @click.stop="projectSelectFun($event, index)">
-              <div>
-                <img :src="item.imgsrc" alt="" class="imgsrc" @click.stop="changeImg(index)">
-                <div>
-                    <div>{{item.title}}</div>
-                    <ul>
-                        <li>{{item.warning}}</li>
-                        <li>{{item.warning1}}</li>
-                    </ul>
-                </div>
-              </div>
-              <el-upload
-                action="#"
-                :auto-upload="false"
-                :show-file-list="false"
-                :on-change="onchange"
-                v-if="item.haveimg == 0"
-              >
-                <img :src="item.uploadimg" alt="" class="uplood-img">
-              </el-upload>
-              <div class="uploadSuceess" v-if="item.haveimg == 1">
-                <i class="el-icon-circle-check" style="font-size: 40px; color: #55d4f8;font-weight: bold;"></i>
-                <div>上传成功</div>
-              </div>
-              <div class="uploadError" v-if="item.haveimg == 2">
-                <i class="el-icon-circle-close" style="font-size: 40px; color: #55d4f8;font-weight: bold;"></i>
-                <div>上传失败</div>
-              </div>
-            </li>
-          </ol>
-          <div class="submit">确定/提交</div>
-        </div>
-      </div>
-    </div> -->
     <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
       <span>您是否想要更改此图片</span>
       <span slot="footer" class="dialog-footer">
@@ -145,6 +105,7 @@ export default {
       },
       dialogVisible: false,
       index: "",
+      textcontent: '',
       list: [
         {
           imgsrc: require("../../../assets/images/businessUpload/image.png"),
@@ -377,10 +338,13 @@ input::-webkit-input-placeholder {
   }
   & > div:nth-child(2) {
     color: #fff;
+    width: 95%;
+    display: flex;
+    justify-content: center;
     font-size: 14px;
-    text-align: center;
+    padding-left: 26px;
     font-weight: 500;
-    padding-top: 120px;
+    padding-top: 20px;
   }
 }
 .el-col-12:nth-child(2) {
@@ -448,5 +412,12 @@ ol {
   padding-top: 1.9%;
   color: #131B3D;
   font-weight: 500;
+}
+/deep/ .el-textarea__inner{
+    background: #0E1E53 !important;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 }
 </style>
