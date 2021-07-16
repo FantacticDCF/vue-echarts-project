@@ -19,7 +19,7 @@
         <el-row class="content" :style="{width: '100%', height: (screenHeight - 75) + 'px'}">
           <el-col :span="12">
             <div>投诉压降第一阶段工作情况汇报</div>
-            <div>此处为文本内容</div>
+            <div>{{contextfont}}</div>
           </el-col>
           <el-col :span="12">
             <ol>
@@ -132,6 +132,7 @@
 
 <script>
 import { uploadImg } from "@/axios/publics";
+import { getheight } from '../../../plugin/getheight.js'
 export default {
   data() {
     return {
@@ -152,6 +153,7 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
+          contextfont: '成果图片上传'
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/file.png"),
@@ -160,6 +162,7 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
+          contextfont: '成果文档上传'
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/veodio.png"),
@@ -168,6 +171,7 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
+          contextfont: '成果视频上传'
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/other.png"),
@@ -176,32 +180,29 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
+          contextfont: '成果相关其他文件上传'
         },
       ],
-      screenHeight: document.documentElement.clientHeight,
+      contextfont: '文本内容',
+      screenHeight: document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15,
       titleName: "投诉压降节点1 工作成果汇报",
     };
   },
-  watch: {
-    'screenHeight': function (val) { //监听屏幕高度变化
-      var oIframe = document.getElementById('divId')
-      oIframe.style.height = Number(val) + 'px'
-    }  
-  },
   mounted () {
-    var _this = this
+    let _this = this
     window.onresize = function () {
-      _this.screenHeight = document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15
+      _this.screenHeight = getheight('divId') - 60 - 21 - 32 - 32 - 20 - 15
     }
   },
   methods: {
-    projectSelectFun(e) {
-      console.log(e);
-      let _dom = document.querySelector(".selected");
+    projectSelectFun(e, index) {
+      console.log(index)
+      let _dom = document.querySelector(".selected")
       if (_dom) {
-        _dom.classList.toggle("selected"); // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
+        _dom.classList.toggle("selected") // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
       }
-      e.target.classList.toggle("selected");
+      e.target.classList.toggle("selected")
+      this.contextfont = this.list[index].contextfont
     },
     onchange(e) {
       const data = {
