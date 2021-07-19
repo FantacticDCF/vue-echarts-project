@@ -2,22 +2,22 @@
 	<div>
 	<div class="bus-bread">
 		<span class="empty-box"></span>
-		<span class="first-content color-black" @click="goToBack">&nbsp;投诉压降&nbsp;&nbsp;</span>
-		<span class="second-content">&nbsp;&nbsp;投诉压降措施制定&nbsp;</span>
+		<span class="first-content color-black pdlr-10" @click="goToBack">投诉压降</span>
+		<span class="second-content pdl-10 pdr-5">投诉压降措施制定</span>
 	</div>
 	<div class="aborder" :style="setBackgroundBg2">
 		<span>投诉案例查询</span>
 		<input type="text" class="input-border" placeholder="输入关键词查询" :style="setBackgroundBg2" />
 		<i class="el-icon-search iconSearch"></i>
 	</div>
-	<div class="bas-bac" :style="setBackground">
-		<div class="bus-top-text">
+	<el-row class="bas-bac" :style="setBackground" id="bigBox">
+		<el-row class="bus-top-text">
 			投诉压降计划
-		</div>
-		<div class="bus-content">
-			<div class="bus-left-content" :style="setBackgroundBg">
-				<div class="color-blue">投诉压降计划模版</div>
-				<div class="bus-content-text">
+		</el-row>
+		<el-row class="bus-content">
+			<el-row class="bus-left-content" :style="setBackgroundBg">
+				<el-row class="color-blue">投诉压降计划模版</el-row>
+				<el-row class="bus-content-text">
 					<el-row>
 						<el-col :span="9">
 							<div class="aline-right">投诉压降目标：</div>
@@ -68,11 +68,11 @@
 							</div>
 						</el-col>
 					</el-row>
-				</div>
-			</div>
-			<div class="bus-right-content" :style="setBackgroundBg">
-				<div class="color-blue">投诉压降计划</div>
-				<div class="bus-content-text">
+				</el-row>
+			</el-row>
+			<el-row class="bus-right-content" :style="setBackgroundBg">
+				<el-row class="color-blue">投诉压降计划</el-row>
+				<el-row class="bus-content-text">
 					<el-row>
 						<el-col :span="8">
 							<div class="aline-right-bg">投诉压降目标</div>
@@ -144,21 +144,22 @@
 							<div class="color-ff-right">3月7日开始每日夕会开展自查与总结工作</div>
 						</el-col>
 					</el-row>
-				</div>
+				</el-row>
 				<div class="bus-content-btn">
 					<button class="cancle-btn">确定/保存</button>
 					<button class="prin-btn">打印</button>
 				</div>
-			</div>
-		</div>
-	</div>
+			</el-row>
+		</el-row>
+	</el-row>
 	</div>
 </template>
-
 <script>
+	import { getheight } from '../../../plugin/getheight.js'
 	export default {
 		data() {
 			return {
+				screenHeight: document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15,
 				setBackground: {
 					backgroundImage: "url(" + require("../../../assets/images/bus/bus-bg.png") + ")",
 					backgroundRepeat: "no-repeat",
@@ -180,6 +181,13 @@
 				}
 			}
 		},
+		mounted() {
+			let _this = this
+			window.onresize = function() {
+				debugger
+				_this.screenHeight = getheight('bigBox') - 60 - 21 - 32 - 32 - 20 - 15
+			}
+		},
 		methods: {
 			goToBack() {
 				this.$router.push({
@@ -193,7 +201,8 @@
 <style lang="less" scoped>
 	.bas-bac {
 		width: 100%;
-		height: 510px;
+		/*height: 510px;*/
+		height: calc(100vh - 170px);     
 		margin-top: 15px;
 	}
 	
@@ -379,5 +388,14 @@ input::-webkit-input-placeholder {
 .color-black {
 	color: rgba(34, 82, 128, 1);
 	cursor: pointer;
+}
+.pdlr-10 {
+	padding: 0 10px;
+}
+.pdl-10 {
+	padding-left: 10px;
+}
+.pdr-5 {
+	padding-right: 5px;
 }
 </style>
