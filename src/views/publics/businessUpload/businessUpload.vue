@@ -22,10 +22,11 @@
             <el-input
               type="textarea"
               v-model="textcontent"
+              @input="exetareaInput"
               resize="none"
-              :placeholder="contextfont"
-              :style="{height: (screenHeight - 235) + 'px'}"
+              :style="{height: (screenHeight - 225) + 'px'}"
             ></el-input>
+            <div class="war" v-show="showThis">{{contextfont}}</div>
           </el-col>
           <el-col :span="12">
             <ol>
@@ -106,6 +107,7 @@ export default {
       dialogVisible: false,
       index: "",
       textcontent: '',
+      showThis: true,
       list: [
         {
           imgsrc: require("../../../assets/images/businessUpload/image.png"),
@@ -164,6 +166,8 @@ export default {
       }
       e.target.classList.toggle("selected")
       this.contextfont = this.list[index].contextfont
+      this.textcontent = ''
+      this.showThis = true
     },
     onchange(e) {
       const data = {
@@ -195,8 +199,14 @@ export default {
         this.dialogVisible = false;
       }
     },
-  },
-};
+    exetareaInput () {
+      this.showThis = false
+      if (this.textcontent == '') {
+        this.showThis = true
+      }
+    }
+  }
+}
 </script>
 
 <style lang='less' scoped>
@@ -419,5 +429,15 @@ ol {
     color: #fff;
     font-size: 14px;
     font-weight: 500;
+    position: relative;
+}
+.war{
+  width: 48%;
+  position: absolute;
+  top: 48%;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
 }
 </style>
