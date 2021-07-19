@@ -155,11 +155,11 @@
 	</div>
 </template>
 <script>
-	import { getheight } from '../../../plugin/getheight.js'
+//	import { getheight } from '../../../plugin/getheight.js'
 	export default {
 		data() {
 			return {
-				screenHeight: document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15,
+//				screenHeight: document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15,
 				setBackground: {
 					backgroundImage: "url(" + require("../../../assets/images/bus/bus-bg.png") + ")",
 					backgroundRepeat: "no-repeat",
@@ -182,11 +182,11 @@
 			}
 		},
 		mounted() {
-			let _this = this
-			window.onresize = function() {
-				debugger
-				_this.screenHeight = getheight('bigBox') - 60 - 21 - 32 - 32 - 20 - 15
-			}
+//			let _this = this
+//			window.onresize = function() {
+//				debugger
+//				_this.screenHeight = getheight('bigBox') - 60 - 21 - 32 - 32 - 20 - 15
+//			}
 		},
 		methods: {
 			goToBack() {
