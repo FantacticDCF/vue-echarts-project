@@ -96,7 +96,7 @@ export default {
         }
         e.target.classList.toggle("selected")
         this.customer_id = this.tabs[index].id
-        this.currentComponent = name // 复制并调用components里的方法进行注册组件
+        this.currentComponent = name // 赋值并调用components里的方法进行注册组件
       }
     }
 }
@@ -162,6 +162,7 @@ input::-webkit-input-placeholder {
     width: 20%;
     text-align: center;
     height: auto;
+    font-weight: 500;
   }
   &>.selected{
     background: url(../../../assets/images/complaintAnalysis/tabBg.png) no-repeat;
@@ -170,6 +171,7 @@ input::-webkit-input-placeholder {
     background-position-x: -4px;
     height: auto;
     height: 100%;
+    color: #65D0EA;
   }
 }
 </style>
