@@ -9,92 +9,9 @@
         placeholder="输入关键词查询"
         :style="setBackgroundBg"
       />
-      <!-- <div class="iconSearch"> -->
       <i class="el-icon-search iconSearch"></i>
     </div>
-    <!-- <div class="formInfo">
-      <div class="box">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-
-        <div class="title">{{titleName}}</div>
-        <div class="desc">
-          <div class="descTitle">
-            <div class="left-div">机构</div>
-            <div class="middle-div">达标值</div>
-            <div class="right-div">已发生</div>
-          </div>
-          <div class="descTitle1" v-for="(item, index) in info" :key="index" >
-            <div :class="item.classname">{{ item.name }}</div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.namecolor"
-                class="jindutiao"
-              ></Jindutiao>
-              <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
-            </div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
-                class="jindutiao"
-              ></Jindutiao>
-              <div
-                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
-              >
-                <i :class="item.colorid < 1 ? '' : item.icon"></i>
-                {{ item.num2 }}
-              </div>
-            </div>
-          </div>
-
-          <div class="descTitle"></div>
-        </div>
-      </div>
-      <div class="box1">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-        <div class="title">{{titleName1}}</div>
-        <div class="desc">
-          <div class="descTitle">
-            <div class="left-div">机构</div>
-            <div class="middle-div">达标值</div>
-            <div class="right-div">已发生</div>
-          </div>
-          <div class="descTitle1" v-for="(item, index) in info1" :key="index">
-            <div :class="item.classname">{{ item.name }}</div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.namecolor"
-                class="jindutiao"
-              ></Jindutiao>
-              <div class="num"  @click="numPushHandle">{{ item.num1 }}</div>
-            </div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
-                class="jindutiao"
-              ></Jindutiao>
-              <div
-                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
-              >
-                <i :class="item.colorid < 1 ? '' : item.icon"></i>
-                {{ item.num2 }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+  
     <el-row>
       <el-col :span="11">
         <div class="title">投诉管理目标分解表</div>
