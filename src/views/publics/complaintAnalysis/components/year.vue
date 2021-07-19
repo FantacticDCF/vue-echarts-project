@@ -8,6 +8,7 @@
         v-for="(item, index) in menus" :key="index"
         :style="{width: '100%', height: (screenHeight - 250) + 'px'}"
         :class="activeClass == index?'selected':''"
+        @click="IsActive(index)"
       >
         <div @click="IsActive(index)">
           <img :src="item.image" alt="">
