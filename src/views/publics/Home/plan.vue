@@ -31,12 +31,14 @@
 				<el-row class="bus-right-content" :style="setBackgroundBg">
 					<el-row class="color-blue">投诉压降计划</el-row>
 					<el-row class="bus-content-text1" v-for="(item,index) in form.countermeasures" :key="index">
-						<el-col :span="8">
-							<div class="aline-right-bg">{{item.label}}</div>
-						</el-col>
-						<el-col :span="16">
-							<div :class="item.type > 0 ? 'beyond' : 'color-ff-right'">{{item.value}}</div>
-						</el-col>
+						<el-row>
+							<el-col :span="8">
+								<div class="aline-right-bg" @click="goToNode">{{item.label}}</div>
+							</el-col>
+							<el-col :span="16">
+								<div :class="item.type > 0 ? 'beyond' : 'color-ff-right'">{{item.value}}</div>
+							</el-col>
+						</el-row>
 					</el-row>
 					<div class="bus-content-btn">
 						<button class="cancle-btn">确定/保存</button>
@@ -155,6 +157,11 @@
 				this.$router.push({
 					path: '/Home/business'
 				})
+			},
+			goToNode(){
+				this.$router.push({ ///Home/businessUploa
+					path: '/Home/businessUpload'
+				})
 			}
 		}
 	}
@@ -216,6 +223,7 @@
 	}
 	
 	.aline-right-bg {
+		cursor: pointer;
 		/*width: 116px;*/
 		height: 32px;
 		line-height: 32px;
