@@ -71,7 +71,7 @@ export default {
       }
       this.currentComponent = this.tabs[0].componentName
     },
-    components: {
+    components: { // 以函数的形式进行注册组件并引用组件
       lookMonth (resolve) {
         require(["./components/month.vue"], resolve)
       },
@@ -89,14 +89,14 @@ export default {
       handleClick(tab) {
         console.log(tab)
       },
-      projectSelectFun(e, index, name) {
+      projectSelectFun(e, index, name) { // name必须为components里的方法名
         let _dom = document.querySelector(".selected")
         if (_dom) {
           _dom.classList.toggle("selected") // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
         }
         e.target.classList.toggle("selected")
         this.customer_id = this.tabs[index].id
-        this.currentComponent = name
+        this.currentComponent = name // 复制并调用components里的方法进行注册组件
       }
     }
 }
