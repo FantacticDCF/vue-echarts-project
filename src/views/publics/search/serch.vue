@@ -43,6 +43,10 @@
               align="center"
               header-align="center"
               label="涉事网点"
+              style="white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              word-break: break-all"
             >
             </el-table-column>
             <el-table-column
@@ -317,14 +321,6 @@ input::-webkit-input-placeholder {
 /deep/ .el-table {
   background: transparent;
 }
-/deep/ .el-table tr {
-  background: transparent;
-  color: #ebebed;
-}
-/deep/ .has-gutter tr th {
-  background: transparent;
-  color: #ebebed;
-}
 /deep/.table-wrapper .el-table--enable-row-hover .el-table__body tr:hover > td {
   background-color: #29597c;
 }
@@ -332,21 +328,18 @@ input::-webkit-input-placeholder {
   color: #ebebed;
 }
 /deep/.el-pager .number,
-/deep/.el-icon {
-  background: transparent;
-  color: #ebebed;
-}
+/deep/.el-icon,
 /deep/.el-pagination .btn-next,
-/deep/ .el-pagination .btn-prev {
+/deep/ .el-pagination .btn-prev,
+/deep/ .has-gutter tr th,
+/deep/ .el-table tr {
   background: transparent;
   color: #ebebed;
 }
 /deep/th,
-/deep/td {
-  border: none;
-}
+/deep/td,
 /deep/.el-table td,
-/deep/.el-table th.is-leaf {
+/deep/.el-table th.is-leaf{
   border: none;
 }
 /deep/.el-table--border::after,
@@ -360,11 +353,9 @@ input::-webkit-input-placeholder {
 /deep/.el-pager li.btn-quickprev {
   color: #ebebed;
 }
-.customer-table::before {
-  width: 0;
-}
+
 .customer-table .el-table__fixed-right::before,
-.el-table__fixed::before {
+.el-table__fixed::before, .customer-table::before {
   width: 0;
 }
 /deep/.el-pager li.active {
@@ -373,5 +364,11 @@ input::-webkit-input-placeholder {
 }
 /deep/.el-table .cell {
   line-height: 16px;
+}
+/deep/.el-table__row td div{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
 }
 </style>
