@@ -6,7 +6,7 @@
     >
       <div
         v-for="(item, index) in menus" :key="index"
-        :style="{width: '100%', height: (screenHeight - 350) + 'px'}"
+        :style="{width: '100%', height: (screenHeight - 330) + 'px'}"
         :class="activeClass == index?'selected':''"
         @click="IsActive(index)"
       >
@@ -85,13 +85,18 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      &>img{
-        width: 70%;
-      }
       &>div{
-        font-weight: 500;
-        font-size: 16px;
-        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &>img{
+          width: 80%;
+        }
+        &>div{
+          font-weight: 500;
+          font-size: 16px;
+        }
       }
     }
     &>div:nth-child(2){
@@ -118,7 +123,6 @@ export default {
       &>div{
         font-weight: 500;
         font-size: 16px;
-        padding-top: 20px;
       }
     }
     &>div:nth-child(4){
@@ -145,7 +149,6 @@ export default {
       &>div{
         font-weight: 500;
         font-size: 16px;
-        padding-top: 20px;
       }
     }
   }
@@ -156,16 +159,16 @@ export default {
   }
   .btn1{
     position: absolute;
-    bottom: 2.2%;
-    left: 33.5%;
+    bottom: 0.8%;
+    left: 33%;
     color: #000047;
     font-size: 15px;
     font-weight: 500;
   }
   .btn2{
     position: absolute;
-    bottom: 2.2%;
-    right: 33.5%;
+    bottom: 1.2%;
+    right: 33.8%;
     color: #000047;
     font-size: 15px;
     font-weight: 500;
