@@ -1,35 +1,38 @@
 <template>
   <div>
     <div class="bus-bread">
-		<span class="empty-box"></span>
-		<span class="first-content color-black" >&nbsp;投诉压降&nbsp;&nbsp;</span>
-		<span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
-	</div>
-  
-		<div class="aborder" :style="setBackgroundBg">
-			<span>工单查询</span>
-			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
-			<i class="el-icon-search iconSearch"></i>
-		</div>
+      <span class="empty-box"></span>
+      <span class="first-content color-black">&nbsp;投诉压降&nbsp;&nbsp;</span>
+      <span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
+    </div>
 
+    <div class="aborder" :style="setBackgroundBg">
+      <span>工单查询</span>
+      <input
+        type="text"
+        class="input-border"
+        placeholder="输入关键词查询"
+        :style="setBackgroundBg"
+      />
+      <i class="el-icon-search iconSearch"></i>
+    </div>
 
-
-<el-row>
+    <el-row>
       <el-col :span="11">
-        <div class="title">{{titleName}}</div>
+        <div class="title">{{ titleName }}</div>
         <div class="descTitle">
           <div class="left-div">指标</div>
           <div class="middle-div">达标值</div>
         </div>
-         <div class="fromContent" v-for="(item, index) in info" :key="index">
-          <div :class="item.classname">{{item.name}}</div>
+        <div class="fromContent" v-for="(item, index) in info" :key="index">
+          <div :class="item.classname">{{ item.name }}</div>
           <div class="jindu">
             <CircleProgressBar
               :progress="item.jindu"
               :name="item.namecolor"
               class="jindutiao"
             />
-            <div class="num" >{{item.num1}}%</div>
+            <div class="num">{{ item.num1 }}%</div>
           </div>
         </div>
       </el-col>
@@ -40,22 +43,19 @@
           <div class="left-div">指标</div>
           <div class="middle-div">达标值</div>
         </div>
-       <div class="fromContent" v-for="(item, index) in info1" :key="index">
-          <div :class="item.classname">{{item.name}}</div>
+        <div class="fromContent" v-for="(item, index) in info1" :key="index">
+          <div :class="item.classname">{{ item.name }}</div>
           <div class="jindu">
             <CircleProgressBar
               :progress="item.jindu"
               :name="item.namecolor"
               class="jindutiao"
             />
-            <div class="num" >{{item.num1}}%</div>
+            <div class="num">{{ item.num1 }}%</div>
           </div>
         </div>
       </el-col>
     </el-row>
-   
-
-
   </div>
 </template>
 
@@ -65,11 +65,12 @@ export default {
   data() {
     return {
       setBackgroundBg: {
-				backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "100% 100%",
-				backgroundPosition: "center"
-			},
+        backgroundImage:
+          "url(" + require("../../../assets/images/big-border.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      },
       titleName: "年度机构目标分解",
       titleName1: "年度业务目标分解",
       info: [
@@ -108,7 +109,6 @@ export default {
           namecolor: "蓝色",
           namecolor1: "红色",
           classname: "write",
-
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
@@ -350,5 +350,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/losspressure.less");
-
 </style>

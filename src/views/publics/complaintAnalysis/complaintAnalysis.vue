@@ -90,6 +90,7 @@ export default {
         console.log(tab)
       },
       projectSelectFun(e, index, name) { // name必须为components里的方法名
+         console.log(e);
         let _dom = document.querySelector(".selected")
         if (_dom) {
           _dom.classList.toggle("selected") // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
