@@ -1,17 +1,129 @@
 <template>
+  <div>
     <div>
-        消保审核
+      <div class="bus-bread">消保审核</div>
+      <div class="aborder" :style="setBackgroundBg">
+        <span>工单查询</span>
+        <input
+          type="text"
+          class="input-border"
+          placeholder="输入关键词查询"
+          :style="setBackgroundBg"
+        />
+        <i class="el-icon-search iconSearch"></i>
+      </div>
     </div>
+    <el-row>
+      <el-col :span="24">
+          <div class="grid-content bg-purple-dark">
+          <div class="middle_square">
+              <div class="desc_image" id="001" ref="img">1</div>
+              <div class="desc_image">2</div>
+              <div class="desc_image">3</div>
+              <div class="desc_image">4</div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 <script>
 export default {
-    data(){
-        return{
-
-        }
-    }
-}
+  data() {
+    return {
+        
+      setBackgroundBg: {
+        backgroundImage:
+          "url(" + require("../../../assets/images/big-border.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      },
+    };
+  },
+  mounted(){
+    console.log(this.$refs.img.id);
+    // this.$emit('')
+  }
+};
 </script>
-<style scoped>
-    
+<style lang='less' scoped>
+.el-row {
+  margin-top: 1.5%;
+  .el-col-24 {
+    height: 520px;
+
+    .grid-content {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .middle_square{
+          height: 80%;
+          width: 40%;
+          display: flex;
+          flex-wrap: wrap;//允许换行排列
+          
+       .desc_image{
+        width: 48%;
+        height: 48%;
+        margin-left: 1.5%;
+        // margin-top: 1%;
+        //   margin: 2%;
+        background-color: aqua;
+        justify-content:space-evenly;
+        //  justify-content:space-between;
+        flex-direction: column;
+       }   
+      }
+    }
+  }
+}
+
+.bus-bread {
+  position: relative;
+  text-indent: 16px;
+  color: #69a8e1;
+  &:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    border-bottom: 7px solid #1a83c0;
+    border-left: 9px solid transparent;
+    border-top: 9px solid transparent;
+    /*border-left和border-right换成透明色 不然是长方形*/
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    right: 92.5%;
+    top: 0;
+    border-bottom: 7px solid #1a83c0;
+    border-left: 9px solid transparent;
+    border-top: 9px solid transparent;
+    /*border-left和border-right换成透明色 不然是长方形*/
+  }
+}
+.aborder {
+  text-indent: 30px;
+  color: #1a83c0;
+  margin-top: 10px;
+  width: 55%;
+  height: 32px;
+  line-height: 32px;
+  overflow: hidden;
+}
+.input-border {
+  margin-left: 30px;
+  border: none;
+  color: #1a83c0;
+  width: 70%;
+  height: 70%;
+  text-indent: 15px;
+  font-size: 10px;
+}
+input::-webkit-input-placeholder {
+  color: #59dfff;
+}
 </style>
