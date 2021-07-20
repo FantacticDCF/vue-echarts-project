@@ -15,12 +15,16 @@
     </div>
     <el-row>
       <el-col :span="24">
-          <div class="grid-content bg-purple-dark">
+        <div class="grid-content bg-purple-dark">
           <div class="middle_square">
-              <div class="desc_image" id="001" ref="img">1</div>
-              <div class="desc_image">2</div>
-              <div class="desc_image">3</div>
-              <div class="desc_image">4</div>
+            <div
+              class="desc_image"
+              @click="idHandle(item.id)"
+              v-for="(item, index) in shuju"
+              :key="index"
+            >
+              {{ index + 1 }}
+            </div>
           </div>
         </div>
       </el-col>
@@ -31,7 +35,20 @@
 export default {
   data() {
     return {
-        
+      shuju: [
+        {
+          id: "001",
+        },
+        {
+          id: "002",
+        },
+        {
+          id: "003",
+        },
+        {
+          id: "004",
+        },
+      ],
       setBackgroundBg: {
         backgroundImage:
           "url(" + require("../../../assets/images/big-border.png") + ")",
@@ -41,10 +58,18 @@ export default {
       },
     };
   },
-  mounted(){
-    console.log(this.$refs.img.id);
-    // this.$emit('')
-  }
+  mounted() {},
+  methods: {
+    idHandle(val) {
+      console.log(val);
+    //   this.$router.push({
+    //     name: "",
+    //     params: {
+    //       id: val,
+    //     },
+    //   });
+    },
+  },
 };
 </script>
 <style lang='less' scoped>
@@ -58,23 +83,20 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      .middle_square{
-          height: 80%;
-          width: 40%;
-          display: flex;
-          flex-wrap: wrap;//允许换行排列
-          
-       .desc_image{
-        width: 48%;
-        height: 48%;
-        margin-left: 1.5%;
-        // margin-top: 1%;
-        //   margin: 2%;
-        background-color: aqua;
-        justify-content:space-evenly;
-        //  justify-content:space-between;
-        flex-direction: column;
-       }   
+      .middle_square {
+        height: 80%;
+        width: 40%;
+        display: flex;
+        flex-wrap: wrap; //允许换行排列
+
+        .desc_image {
+          width: 48%;
+          height: 48%;
+          margin-left: 1.5%;
+          background-color: aqua;
+          justify-content: space-evenly;
+          flex-direction: column;
+        }
       }
     }
   }
