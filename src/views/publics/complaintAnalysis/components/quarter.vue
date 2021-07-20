@@ -1,12 +1,12 @@
 <template>
   <div id="divId">
     <div
-      :style="{width: '100%', height: (screenHeight - 100) + 'px'}"
+      :style="{width: '100%', height: (screenHeight - 240) + 'px'}"
       class="content"
     >
       <div
         v-for="(item, index) in menus" :key="index"
-        :style="{width: '100%', height: (screenHeight - 250) + 'px'}"
+        :style="{width: '100%', height: (screenHeight - 350) + 'px'}"
         :class="activeClass == index?'selected':''"
         @click="IsActive(index)"
       >
@@ -75,8 +75,8 @@ export default {
     display: flex;
     justify-content: space-between;
     padding-top: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
     position: relative;
     &>div:nth-child(1){
       background: url(../../../../assets/images/complaintAnalysis/boxBg.png) no-repeat;
@@ -99,6 +99,11 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center; 
+      &>div{
+        &>img{
+          width: 50%;
+        }
+      }
     }
     &>div:nth-child(3){
       background: url(../../../../assets/images/complaintAnalysis/boxBg.png) no-repeat;
@@ -120,7 +125,12 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; 
+      justify-content: center;
+      &>div{
+        &>img{
+        width: 50%;
+        }
+      }
     }
     &>div:nth-child(5){
       background: url(../../../../assets/images/complaintAnalysis/boxBg.png) no-repeat;
