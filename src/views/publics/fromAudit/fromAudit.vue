@@ -2,20 +2,20 @@
   <div>
     <div>
       <div class="bus-bread">消保审核</div>
-      <div class="aborder" :style="setBackgroundBg">
+      <div class="aborder" :style="info.setBackgroundBg">
         <span>工单查询</span>
         <input
           type="text"
           class="input-border"
           placeholder="输入关键词查询"
-          :style="setBackgroundBg"
+          :style="info.setBackgroundBg"
         />
         <i class="el-icon-search iconSearch"></i>
       </div>
     </div>
     <el-row>
       <el-col :span="24">
-        <div class="grid-content bg-purple-dark">
+        <div class="grid-content bg-purple-dark" :style="info.setBackgroundBg1">
           <div class="middle_square">
             <div
               class="desc_image"
@@ -49,12 +49,23 @@ export default {
           id: "004",
         },
       ],
-      setBackgroundBg: {
-        backgroundImage:
-          "url(" + require("../../../assets/images/big-border.png") + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
+      info: {
+        setBackgroundBg: {
+          backgroundImage:
+            "url(" + require("../../../assets/images/big-border.png") + ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+        },
+        setBackgroundBg1: {
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/commonTitle/searchbg.png") +
+            ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+        },
       },
     };
   },
@@ -62,12 +73,12 @@ export default {
   methods: {
     idHandle(val) {
       console.log(val);
-    //   this.$router.push({
-    //     name: "",
-    //     params: {
-    //       id: val,
-    //     },
-    //   });
+      //   this.$router.push({
+      //     name: "",
+      //     params: {
+      //       id: val,
+      //     },
+      //   });
     },
   },
 };
