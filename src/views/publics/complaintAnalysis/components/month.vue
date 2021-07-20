@@ -15,8 +15,11 @@
           <div style="text-align: center;">{{item.name}}</div>
         </div>
       </div>
-      <div class="btn1">报告模版 下载/保存</div>
-      <div class="btn2">报告模版 上传/邮件</div>
+      <div class="btn">
+        <div class="btn1">报告模版 下载/保存</div>
+        <div class="btnkong"></div>
+        <div class="btn2">报告模版 上传/邮件</div>
+      </div>
     </div>
   </div>
 </template>
@@ -157,18 +160,25 @@ export default {
     background-size: 100% 100% !important;
     color: #00FBFF;
   }
-  .btn1{
+  .btn{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 9.5%;
     position: absolute;
-    bottom: 0.8%;
-    left: 33%;
+    bottom: 2.9%;
+    z-index: 100000;
+  }
+  .btn1{
     color: #000047;
     font-size: 15px;
     font-weight: 500;
   }
+  .btnkong{
+    width: 13.4%;
+  }
   .btn2{
-    position: absolute;
-    bottom: 1.2%;
-    right: 33.8%;
     color: #000047;
     font-size: 15px;
     font-weight: 500;
