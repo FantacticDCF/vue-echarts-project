@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="bus-bread">消保审核</div>
+      <div class="bus-bread">{{title}}</div>
       <div class="aborder" :style="info.setBackgroundBg">
         <span>工单查询</span>
         <input
@@ -40,6 +40,7 @@ import audit4 from '../../../assets/images/audit4.png'
 export default {
   data() {
     return {
+      title:'消保审核',
       shuju: [
         {
           id: "001",
