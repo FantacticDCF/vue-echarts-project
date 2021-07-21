@@ -1,5 +1,6 @@
 <template>
     <div>
+    监管送报
     </div>
 </template>
 <script>
