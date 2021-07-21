@@ -2,7 +2,7 @@
    <div class="submission">
       <div class="bus-bread">
         <span class="empty-box"></span>
-        <span class="first-content color-black" >&nbsp;消保审核&nbsp;&nbsp;</span>
+        <span class="first-content color-black" @click="goBack" >&nbsp;消保审核&nbsp;&nbsp;</span>
         <span class="second-content">&nbsp;报送&nbsp;</span>
       </div>
   
@@ -80,7 +80,11 @@ export default {
     };
   },
   methods: {
-    
+    goBack(){
+      this.$router.push({
+        path: '/Home/fromAudit'
+      })
+    }
   },
   mounted() {
     console.log(this.$route.params.id);
@@ -111,6 +115,7 @@ export default {
       display: inline-block;
       width: 88px;
       line-height: 14px;
+      cursor: pointer;
       &:after {
         position: absolute;
         content: "";
