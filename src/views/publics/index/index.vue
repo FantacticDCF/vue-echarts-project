@@ -26,7 +26,6 @@
       </div>
       <div class="panel bar2">
         <h2>全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-        <!--          <div class="chart"></div>-->
         <TableProcess></TableProcess>
         <div class="panel-footer"></div>
       </div>

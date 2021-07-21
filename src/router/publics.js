@@ -92,6 +92,12 @@ let pubics=[
                 name: 'businessUpload',
                 component: () => import("@/views/publics/businessUpload/businessUpload"),
                 meta: {breadnav: [{path: '/Home/businessUpload', name: '节点成果提交'}],name: '节点成果提交'}
+            },
+            {
+                path: '/Home/submission',
+                name: 'submission',
+                component: () => import("@/views/publics/fromAudit/submission/submission"),
+                // meta: {breadnav: [{path: '/Home/submission', name: '节点成果提交'}],name: '节点成果提交'}
             }
        ]
     }
