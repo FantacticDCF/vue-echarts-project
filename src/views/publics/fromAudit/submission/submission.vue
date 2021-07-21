@@ -2,8 +2,8 @@
    <div class="submission">
       <div class="bus-bread">
         <span class="empty-box"></span>
-        <span class="first-content color-black" >&nbsp;&nbsp;&nbsp;消保审核&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="second-content">&nbsp;&nbsp;报送&nbsp;&nbsp;&nbsp;</span>
+        <span class="first-content color-black" >&nbsp;消保审核&nbsp;&nbsp;</span>
+        <span class="second-content">&nbsp;报送&nbsp;</span>
       </div>
   
 		<div class="aborder" :style="setBackgroundBg">
@@ -233,6 +233,8 @@ export default {
   .submission .arrow {
     text-align: center;
     display: list-item;
+    color:transparent;
+
   }
   .submission .arrow img{
     width:20px;
