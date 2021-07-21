@@ -15,8 +15,11 @@
           <div style="text-align: center;">{{item.name}}</div>
         </div>
       </div>
-      <div class="btn1">报告模版 下载/保存</div>
-      <div class="btn2">报告模版 上传/邮件</div>
+      <div class="btn">
+        <div class="btn1">报告模版 下载/保存</div>
+        <div class="btnkong"></div>
+        <div class="btn2">报告模版 上传/邮件</div>
+      </div>
     </div>
   </div>
 </template>
@@ -78,6 +81,7 @@ export default {
     padding-left: 100px;
     padding-right: 100px;
     position: relative;
+    color: #4273AA;
     &>div:nth-child(1){
       background: url(../../../../assets/images/complaintAnalysis/boxBg.png) no-repeat;
       background-size: 100% 100%;
@@ -92,6 +96,7 @@ export default {
         justify-content: center;
         &>img{
           width: 80%;
+          height: 119px;
         }
         &>div{
           font-weight: 500;
@@ -117,12 +122,19 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      &>img{
-        width: 70%;
-      }
       &>div{
-        font-weight: 500;
-        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &>img{
+          width: 80%;
+          height: 119px;
+        }
+        &>div{
+          font-weight: 500;
+          font-size: 16px;
+        }
       }
     }
     &>div:nth-child(4){
@@ -132,7 +144,7 @@ export default {
       justify-content: center;
       &>div{
         &>img{
-        width: 50%;
+          width: 50%;
         }
       }
     }
@@ -143,32 +155,46 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      &>img{
-        width: 70%;
-      }
       &>div{
-        font-weight: 500;
-        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &>img{
+          width: 80%;
+          height: 119px;
+        }
+        &>div{
+          font-weight: 500;
+          font-size: 16px;
+        }
       }
     }
   }
-  .selected{
+  /deep/ .selected{
     background: url(../../../../assets/images/complaintAnalysis/box.png) no-repeat !important;
     background-size: 100% 100% !important;
-    color: #00FBFF;
+    color: #00FBFF !important;
+  }
+  .btn{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 14.4%;
+    position: absolute;
+    bottom: 2%;
+    z-index: 100000;
   }
   .btn1{
-    position: absolute;
-    bottom: 0.8%;
-    left: 33%;
     color: #000047;
     font-size: 15px;
     font-weight: 500;
   }
+  .btnkong{
+    width: 16%;
+  }
   .btn2{
-    position: absolute;
-    bottom: 1.2%;
-    right: 33.8%;
     color: #000047;
     font-size: 15px;
     font-weight: 500;
