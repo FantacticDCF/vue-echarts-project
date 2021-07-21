@@ -79,8 +79,12 @@ export default {
 
     };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    
+  },
+  mounted() {
+    console.log(this.$route.params.id);
+  },
 };
 </script>
 

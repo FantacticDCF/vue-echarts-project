@@ -37,7 +37,7 @@ import audit1 from '../../../assets/images/audit1.png'
 import audit2 from '../../../assets/images/audit2.png'
 import audit3 from '../../../assets/images/audit3.png'
 import audit4 from '../../../assets/images/audit4.png'
-export default {
+export default {  
   data() {
     return {
       title:'消保审核',
@@ -78,13 +78,14 @@ export default {
   mounted() {},
   methods: {
     idHandle(val) {
-      console.log(val);
-      //   this.$router.push({
-      //     name: "",
-      //     params: {
-      //       id: val,
-      //     },
-      //   });
+      // console.log(this);
+      // console.log(val);
+        this.$router.push({
+          name: "submission",
+          params: {
+            id: val,
+          },
+        });
     },
   },
 };
