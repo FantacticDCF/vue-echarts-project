@@ -81,6 +81,7 @@ export default {
     padding-left: 100px;
     padding-right: 100px;
     position: relative;
+    color: #4273AA;
     &>div:nth-child(1){
       background: url(../../../../assets/images/complaintAnalysis/boxBg.png) no-repeat;
       background-size: 100% 100%;
@@ -95,6 +96,7 @@ export default {
         justify-content: center;
         &>img{
           width: 80%;
+          height: 119px;
         }
         &>div{
           font-weight: 500;
@@ -120,12 +122,19 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      &>img{
-        width: 70%;
-      }
       &>div{
-        font-weight: 500;
-        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &>img{
+          width: 80%;
+          height: 119px;
+        }
+        &>div{
+          font-weight: 500;
+          font-size: 16px;
+        }
       }
     }
     &>div:nth-child(4){
@@ -135,7 +144,7 @@ export default {
       justify-content: center;
       &>div{
         &>img{
-        width: 50%;
+          width: 50%;
         }
       }
     }
@@ -146,28 +155,35 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      &>img{
-        width: 70%;
-      }
       &>div{
-        font-weight: 500;
-        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &>img{
+          width: 80%;
+          height: 119px;
+        }
+        &>div{
+          font-weight: 500;
+          font-size: 16px;
+        }
       }
     }
   }
-  .selected{
+  /deep/ .selected{
     background: url(../../../../assets/images/complaintAnalysis/box.png) no-repeat !important;
     background-size: 100% 100% !important;
-    color: #00FBFF;
+    color: #00FBFF !important;
   }
   .btn{
-    width: 80%;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 9.5%;
+    left: 14.4%;
     position: absolute;
-    bottom: 2.9%;
+    bottom: 2%;
     z-index: 100000;
   }
   .btn1{
@@ -176,7 +192,7 @@ export default {
     font-weight: 500;
   }
   .btnkong{
-    width: 13.4%;
+    width: 16%;
   }
   .btn2{
     color: #000047;

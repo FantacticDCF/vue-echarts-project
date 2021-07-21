@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="bus-bread">消保审核</div>
+      <div class="bus-bread">{{title}}</div>
       <div class="aborder" :style="info.setBackgroundBg">
         <span>工单查询</span>
         <input
@@ -22,8 +22,9 @@
               @click="idHandle(item.id)"
               v-for="(item, index) in shuju"
               :key="index"
+              :style="{'backgroundImage':'url('+item.src+')','backgroundSize':'100% 100%','backgroundRepeat':'no-repeat','backgroundPosition':'center'} "
             >
-              {{ index + 1 }}
+              <!-- {{ index + 1 }} -->
             </div>
           </div>
         </div>
@@ -32,36 +33,41 @@
   </div>
 </template>
 <script>
+import audit1 from '../../../assets/images/audit1.png'
+import audit2 from '../../../assets/images/audit2.png'
+import audit3 from '../../../assets/images/audit3.png'
+import audit4 from '../../../assets/images/audit4.png'
 export default {
   data() {
     return {
+      title:'消保审核',
       shuju: [
         {
           id: "001",
+          src:audit1
         },
         {
           id: "002",
+           src:audit2
         },
         {
           id: "003",
+           src:audit3
         },
         {
           id: "004",
+           src:audit4
         },
       ],
       info: {
         setBackgroundBg: {
-          backgroundImage:
-            "url(" + require("../../../assets/images/big-border.png") + ")",
+          backgroundImage:"url(" + require("../../../assets/images/big-border.png") + ")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
         setBackgroundBg1: {
-          backgroundImage:
-            "url(" +
-            require("../../../assets/images/commonTitle/searchbg.png") +
-            ")",
+          backgroundImage:"url(" + require("../../../assets/images/commonTitle/searchbg.png") +")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
@@ -104,9 +110,12 @@ export default {
           width: 48%;
           height: 48%;
           margin-left: 1.5%;
-          background-color: aqua;
+          // background-color: aqua;
           justify-content: space-evenly;
           flex-direction: column;
+          background-repeat: "no-repeat";
+          background-size: "100% 100%";
+          background-position: "center";
         }
       }
     }
