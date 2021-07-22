@@ -18,6 +18,8 @@
         <div class="grid-content bg-purple-dark" :style="info.setBackgroundBg1">
           <div class="middle_square">
             <div
+            @mouseover="mouseOver(index)"
+            @mouseleave="mouseleave(index)"
               class="desc_image"
               @click="idHandle(item.id)"
               v-for="(item, index) in shuju"
@@ -25,6 +27,7 @@
               :style="{'backgroundImage':'url('+item.src+')','backgroundSize':'100% 100%','backgroundRepeat':'no-repeat','backgroundPosition':'center'} "
             >
               <!-- {{ index + 1 }} -->
+              <span>{{item.title}}</span>
             </div>
           </div>
         </div>
@@ -33,30 +36,54 @@
   </div>
 </template>
 <script>
-import audit1 from '../../../assets/images/audit1.png'
-import audit2 from '../../../assets/images/audit2.png'
-import audit3 from '../../../assets/images/audit3.png'
-import audit4 from '../../../assets/images/audit4.png'
+import audit1 from '../../../assets/images/audit/audit5.png'
+import audit2 from '../../../assets/images/audit/audit6.png'
+import audit3 from '../../../assets/images/audit/audit7.png'
+import audit4 from '../../../assets/images/audit/audit8.png'
+import audit5 from '../../../assets/images/audit/audit1.png'
+import audit6 from '../../../assets/images/audit/audit2.png'
+import audit7 from '../../../assets/images/audit/audit3.png'
+import audit8 from '../../../assets/images/audit/audit4.png'
+
 export default {  
   data() {
     return {
+      // hover: false,
       title:'消保审核',
+      img:[
+          { src:audit7},
+        { src:audit8},
+        { src:audit5},
+        { src:audit6},
+      
+      ],
+        img1:[
+        { src:audit3},
+        { src:audit4}, 
+        { src:audit1},
+        { src:audit2},
+         
+      ],
       shuju: [
         {
           id: "001",
-          src:audit1
+          src:audit3,
+          title:"报送"
         },
         {
           id: "002",
-           src:audit2
+           src:audit4,
+           title:"审核"
         },
         {
           id: "003",
-           src:audit3
+           src:audit1,
+           title:"查询"
         },
         {
           id: "004",
-           src:audit4
+           src:audit2,
+           title:"返回"
         },
       ],
       info: {
@@ -75,11 +102,21 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+    
+  },
   methods: {
+    //鼠标悬停
+    mouseOver(index){
+     console.log(index);
+     console.log(this.shuju[index].src);
+      this.shuju[index].src=this.img[index].src
+    },
+    mouseleave(index){
+        console.log(index);
+     this.shuju[index].src=this.img1[index].src
+    },
     idHandle(val) {
-      // console.log(this);
-      // console.log(val);
         this.$router.push({
           name: "submission",
           params: {
@@ -114,14 +151,50 @@ export default {
           // background-color: aqua;
           justify-content: space-evenly;
           flex-direction: column;
-          background-repeat: "no-repeat";
-          background-size: "100% 100%";
-          background-position: "center";
+          font-size:19px;
+          position: relative;
+          // bottom:10%
+          span{
+            position: absolute;
+            bottom: 12.2%;
+            left: 41.8%;
+            color: #59dfff;
+          }
         }
       }
     }
   }
 }
+//  .desc_image:nth-child(1):hover {
+//     // background: rgba(255, 255, 255, 0.04) url(../../../assets/images/audit/audit1.png) no-repeat;
+//     background-image: url(../../../assets/images/audit/audit1.png) !important;
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
+
+//    .desc_image:nth-child(2):hover {
+//     background-image: url(../../../assets/images/audit/audit2.png);
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
+//    .desc_image:nth-child(3):hover {
+//      background-image: url(../../../assets/images/audit/audit3.png);
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
+//    .desc_image:nth-child(4):hover {
+//       background-image: url(../../../assets/images/audit/audit4.png);
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
 
 .bus-bread {
   position: relative;
