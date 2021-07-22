@@ -16,7 +16,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
  .ivu-layout {
   background: #11172f;
 }
@@ -40,7 +40,7 @@ export default {
 }
 .cockpit .no .no-hd ul li {
   padding: 14px 0 20px 0;
-  font-size: 18px;
+  font-size: 16px;
 }
 .cockpit .no .no-hd p {
   margin: 5px 10px;
