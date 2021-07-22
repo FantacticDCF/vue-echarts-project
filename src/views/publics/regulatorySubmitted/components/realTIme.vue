@@ -89,19 +89,24 @@ export default {
               show: false,
             },
             data: [
-              "南京市",
-              "淮安市",
-              "常州市",
-              "徐州市",
-              "南通市",
-              "宿迁市",
-              "无锡市",
-              "扬州市",
-              "盐城市",
-              "苏州市",
-              "泰州市",
-              "镇江市",
-              "连云港市",
+              "北京",
+              "上海",
+              "深圳",
+              "大连",
+              "南京",
+              "杭州",
+              "广州",
+              "成都",
+              "郑州",
+              "重庆",
+              "福州",
+              "沈阳",
+              "武汉",
+              "天津",
+              "长沙",
+              "昆明",
+              "石家庄",
+              "西安"
             ],
             axisLine: {
               lineStyle: {
@@ -137,7 +142,7 @@ export default {
           {
             type: "bar",
             data: [
-              200, 190, 180, 170, 160, 150, 140, 130, 120, 115, 110, 105, 100,
+              200, 190, 180, 170, 160, 150, 140, 130, 120, 115, 110, 105, 100,100,100,100,100,100,
             ],
             barWidth: "15px",
             // barCategoryGap: 10,
@@ -207,19 +212,23 @@ export default {
               show: false,
             },
             data: [
-              "南京市",
-              "淮安市",
-              "常州市",
-              "徐州市",
-              "南通市",
-              "宿迁市",
-              "无锡市",
-              "扬州市",
-              "盐城市",
-              "苏州市",
-              "泰州市",
-              "镇江市",
-              "连云港市",
+              "苏州",
+              "济南",
+              "合肥",
+              "宁波",
+              "厦门",
+              "太原",
+              "呼和浩特",
+              "南宁",
+              "哈尔滨",
+              "长春",
+              "乌鲁木齐",
+              "贵阳",
+              "兰州",
+              "海口",
+              "西宁",
+              "银川",
+              "拉萨"
             ],
             axisLine: {
               lineStyle: {
@@ -232,6 +241,39 @@ export default {
               textStyle: {
                 fontSize: 14,
               },
+              formatter : function(params){
+                  var newParamsName = "";// 最终拼接成的字符串
+                  var paramsNameNumber = params.length;// 实际标签的个数
+                  var provideNumber = 4;// 每行能显示的字的个数
+                  var rowNumber = Math.ceil(paramsNameNumber / provideNumber);// 换行的话，需要显示几行，向上取整
+                  /**
+                   * 判断标签的个数是否大于规定的个数， 如果大于，则进行换行处理 如果不大于，即等于或小于，就返回原标签
+                   */
+                  // 条件等同于rowNumber>1
+                  if (paramsNameNumber > provideNumber) {
+                      /** 循环每一行,p表示行 */
+                      for (var p = 0; p < rowNumber; p++) {
+                          var tempStr = "";// 表示每一次截取的字符串
+                          var start = p * provideNumber;// 开始截取的位置
+                          var end = start + provideNumber;// 结束截取的位置
+                          // 此处特殊处理最后一行的索引值
+                          if (p == rowNumber - 1) {
+                              // 最后一次不换行
+                              tempStr = params.substring(start, paramsNameNumber);
+                          } else {
+                              // 每一次拼接字符串并换行
+                              tempStr = params.substring(start, end) + "\n";
+                          }
+                          newParamsName += tempStr;// 最终拼成的字符串
+                      }
+
+                  } else {
+                      // 将旧标签的值赋给新标签
+                      newParamsName = params;
+                  }
+                  //将最终的字符串返回
+                  return newParamsName
+                }
             },
           },
         ],
@@ -255,7 +297,7 @@ export default {
           {
             type: "bar",
             data: [
-              100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 20, 10,
+              100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 20, 10,10,10,10,10,
             ],
             barWidth: "15px",
             // barCategoryGap: 10,
