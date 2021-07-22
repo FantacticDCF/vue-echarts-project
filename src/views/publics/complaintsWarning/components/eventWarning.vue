@@ -22,6 +22,20 @@
             style="width: 100%"
           >
             <el-table-column
+              header-align="center"
+              align="center"
+              width="30"
+              type="expand"
+            >
+            <template slot-scope="props">
+              <el-form label-position="left" inline class="demo-table-expand">
+                <el-form-item label="详情">
+                  <span>{{ props.row.detail }}</span>
+                </el-form-item>
+              </el-form>
+            </template>
+            </el-table-column>
+            <el-table-column
               prop="date"
               label="时间"
               header-align="center"
@@ -109,6 +123,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-04",
@@ -117,6 +132,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-01",
@@ -125,6 +141,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-03",
@@ -133,6 +150,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-04",
@@ -141,6 +159,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-01",
@@ -149,6 +168,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-03",
@@ -157,6 +177,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-04",
@@ -165,6 +186,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-01",
@@ -173,6 +195,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-03",
@@ -181,6 +204,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
       ],
       currentPage1: 1,
@@ -274,7 +298,8 @@ input::-webkit-input-placeholder {
   width: 100%;
   text-align: right;
 }
-/deep/ .el-table {
+/deep/ .el-table,
+/deep/ .el-table__expanded-cell{
   background: transparent;
 }
 /deep/.table-wrapper .el-table--enable-row-hover .el-table__body tr:hover > td {
@@ -326,5 +351,11 @@ input::-webkit-input-placeholder {
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-all;
+}
+/deep/.el-form-item__label{
+  color: #fff;
+}
+/deep/.el-table__expanded-cell[class*=cell]{
+  padding: 0 50px;
 }
 </style>
