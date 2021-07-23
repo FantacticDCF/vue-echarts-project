@@ -57,6 +57,7 @@
                   :show-file-list="false"
                   :on-change="onchange"
                   v-if="item.haveimg == 0"
+                  :limit="item.limit"
                 >
                   <img :src="item.uploadimg" alt="" class="uplood-img" />
                 </el-upload>
@@ -116,7 +117,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果图片上传'
+          contextfont: '成果图片上传',
+          limt: 100
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/file.png"),
@@ -125,7 +127,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果文档上传'
+          contextfont: '成果文档上传',
+          limit: 100
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/veodio.png"),
@@ -134,7 +137,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果视频上传'
+          contextfont: '成果视频上传',
+          limit: 100
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/other.png"),
@@ -143,7 +147,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果相关其他文件上传'
+          contextfont: '成果相关其他文件上传',
+          limit: 100
         },
       ],
       contextfont: '文本内容',
