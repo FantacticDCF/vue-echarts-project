@@ -57,6 +57,7 @@
                   :show-file-list="false"
                   :on-change="onchange"
                   v-if="item.haveimg == 0"
+                  :disabled="item.disabled"
                 >
                   <img :src="item.uploadimg" alt="" class="uplood-img" />
                 </el-upload>
@@ -116,7 +117,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果图片上传'
+          contextfont: '成果图片上传',
+          disabled: false
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/file.png"),
@@ -125,7 +127,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果文档上传'
+          contextfont: '成果文档上传',
+          disabled: false
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/veodio.png"),
@@ -134,7 +137,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果视频上传'
+          contextfont: '成果视频上传',
+          disabled: false
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/other.png"),
@@ -143,7 +147,8 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果相关其他文件上传'
+          contextfont: '成果相关其他文件上传',
+          disabled: false
         },
       ],
       contextfont: '文本内容',
@@ -159,7 +164,6 @@ export default {
   },
   methods: {
     projectSelectFun(e, index) {
-      console.log(index)
       let _dom = document.querySelector(".selected")
       if (_dom) {
         _dom.classList.toggle("selected") // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
@@ -169,7 +173,7 @@ export default {
       this.textcontent = ''
       this.showThis = true
     },
-    onchange(e) {
+    onchange(e, file) {
       const data = {
         file: e.raw,
       };
@@ -177,6 +181,18 @@ export default {
         this.list[0].imgsrc = res.info.data.url;
         this.list[0].haveimg = 1;
       });
+      if(file[0].name.split('.')[1] == 'zip') {
+		this.list[3].disabled = false
+		this.list[0].disabled = true
+		this.list[1].disabled = true
+		this.list[2].disabled = true
+      }
+      if(file[0].name.split('.')[1] == 'png') {
+		this.list[0].disabled = false
+		this.list[3].disabled = true
+		this.list[1].disabled = true
+		this.list[2].disabled = true
+      }
     },
     changeImg(index) {
       this.index = index;
