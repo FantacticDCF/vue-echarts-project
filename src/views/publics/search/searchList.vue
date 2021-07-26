@@ -15,19 +15,59 @@
     <!-- 中间信息 -->
     <el-row type="flex" class="row-bg" justify="space-between">
       <el-col :span="6">
-          <div class='title'>待处理工单</div>
-          <div class="col-top"></div>
-          <div class="col-down"></div>
+        <div class="title">待处理工单</div>
+        <div class="col-top" :style="info.setBackgroundBg1">
+          <div class="img">
+            <img src="../../../assets/images/searchList/search.png" alt="" />
+            <!-- <div class="div-img" :style="info.setBackgroundBg2"></div> -->
+          </div>
+          <div class="titleDesc">
+            <div class="numDesc">
+              <div class="desc1">
+                <span class="desc1-num">29</span>
+                <span class="desc1-bi">笔</span>
+              </div>
+              <div class="desc2">待处理工单</div>
+            </div>
+          </div>
+          <div class="icon">
+            <i class="el-icon-arrow-right"></i>
+          </div>
+        </div>
+        <div class="col-down" :style="info.setBackgroundBg1">
+          <div class="left">
+            <div>
+                <div class="desc1">
+                <span class="desc1-num">29</span>
+                <span class="desc1-bi">笔</span>
+                </div>
+                <div class="desc2">待处理工单</div>
+            </div>
+           <div class="left-icon"> <i class="el-icon-arrow-right"></i></div>
+          </div>
+          <div class="left-dingwei" :style="info.setBackgroundBg2"></div>
+          <div class="right">
+
+               <div>
+                <div class="desc1">
+                <span class="desc1-num">29</span>
+                <span class="desc1-bi">笔</span>
+                </div>
+                <div class="desc2">待处理工单</div>
+            </div>
+           <div class="left-icon"> <i class="el-icon-arrow-right"></i></div>
+          </div>
+        </div>
       </el-col>
       <el-col :span="6">
-          <div class='title'>以处理订单</div>
-          <div class="col-top"></div>
-          <div class="col-down"></div>
+        <div class="title">以处理订单</div>
+        <div class="col-top"></div>
+        <div class="col-down"></div>
       </el-col>
       <el-col :span="6">
-          <div class='title'>督办查询</div>
-          <div class="col-top"></div>
-          <div class="col-down"></div>
+        <div class="title">督办查询</div>
+        <div class="col-top"></div>
+        <div class="col-down"></div>
       </el-col>
     </el-row>
     <!-- 底部echars -->
@@ -40,21 +80,32 @@ export default {
     return {
       info: {
         setBackgroundBg: {
+            //上方搜索
           backgroundImage:
             "url(" + require("../../../assets/images/big-border.png") + ")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
-        // setBackgroundBg1: {
-        //   backgroundImage:
-        //     "url(" +
-        //     require("../../../assets/images/commonTitle/searchbg.png") +
-        //     ")",
-        //   backgroundRepeat: "no-repeat",
-        //   backgroundSize: "100% 100%",
-        //   backgroundPosition: "center",
-        // },
+        setBackgroundBg1: {
+            //中间背景图
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/searchList/topListdesc.png") +
+            ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+        },
+        setBackgroundBg2: {
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/searchList/xian.png") +
+            ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          //   backgroundPosition:"2% 0",
+        },
       },
     };
   },
@@ -117,29 +168,170 @@ input::-webkit-input-placeholder {
   margin-top: 1.5%;
   .el-col-6 {
     width: 32.8%;
-    background: blue;
-    // background-image: url("../../../assets/images/businessborder.png");
-    // background-size: 100% 100%;
-    // background-repeat: no-repeat;
-    // background-position: center;
-    .title{
-     margin-left: 3%;
-      margin-top: 1.8%;
+    // background: blue;
+    background-image: url(../../../assets/images/searchList/topList.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    .title {
+      margin-left: 3%;
+      margin-top: 2.5%;
       color: #55d4f8;
       font-size: 14px;
     }
-    .col-top{
-        // margin-top: 10%;
-        width: 94%;
-        margin: 2% auto;
-        height: 40%;
-        background-color: red;
+    .col-top {
+      // margin-top: 10%;
+      width: 94%;
+      margin: 2% auto;
+      height: 37%;
+      //   background-color: red;
+      display: flex;
+      .img {
+        width: 40%;
+        height: 100%;
+        // margin-right: 20px;
+        //  justify-content: center;
+        //     .div-img {
+        //          width: 66%;
+        // height: 74%;
+        // margin: 5% 29%;
+        //     }
+        img {
+          width: 66%;
+          height: 74%;
+          margin: 5% 29%;
+        }
+      }
+      .titleDesc {
+        width: 40%;
+        height: 100%;
+        text-align: center;
+        // line-height: ;
+        .numDesc {
+          width: 100%;
+          height: 100%;
+          .desc1 {
+            width: 100%;
+            height: 65%;
+            //   margin-bottom: 5%;
+            text-align: center;
+            line-height: 452%;
+            .desc1-num {
+              font-size: 250%;
+              color: #55d4f8;
+            }
+            .desc1-bi {
+              font-size: 130%;
+              color: #55d4f8;
+            }
+          }
+          .desc2 {
+            width: 100%;
+            height: 35%;
+            text-align: center;
+            color: #fff;
+            font-size: 100%;
+          }
+        }
+      }
+      .icon {
+        flex-grow: 1;
+        font-size: 400%;
+        text-align: center;
+        line-height: 1.7;
+        // margin: 0 auto;
+        color: #55d4f8;
+      }
     }
-    .col-down{
-        width: 94%;
-        margin: 2% auto;
-        height: 40%;
-        background-color: red;
+    .col-down {
+      width: 94%;
+      margin: 2% auto;
+      height: 38%;
+      //   background-color: red;
+      display: flex;
+      justify-content: center;
+      .left {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        .desc1 {
+          padding-left: 60px;
+          height: 65%;
+          //   margin-bottom: 5%;
+          text-align: center;
+          line-height: 452%;
+          .desc1-num {
+            font-size: 250%;
+            color: #55d4f8;
+          }
+          .desc1-bi {
+            font-size: 130%;
+            color: #55d4f8;
+          }
+          
+        }
+        .desc2 {
+             padding-left: 60px;
+        //   height: 35%;
+          color: #fff;
+          font-size: 80%;
+          text-align: center;
+          overflow: hidden;
+        }
+       
+        .left-icon{
+            width: 20%;
+            height: 100%;
+            display: flex;
+            font-size: 30px;
+            align-items:center;
+            color: #55d4f8;
+        }
+      }
+      .left-dingwei {
+        width: 1px;
+        height: 100%;
+      }
+      .right {
+       width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+          .desc1 {
+          padding-left: 60px;
+          height: 65%;
+          //   margin-bottom: 5%;
+          text-align: center;
+          line-height: 452%;
+          .desc1-num {
+            font-size: 250%;
+            color: #55d4f8;
+          }
+          .desc1-bi {
+            font-size: 130%;
+            color: #55d4f8;
+          }
+          
+        }
+        .desc2 {
+             padding-left: 60px;
+        //   height: 35%;
+          color: #fff;
+          font-size: 80%;
+          text-align: center;
+          overflow: hidden;
+        }
+       
+        .left-icon{
+            width: 20%;
+            height: 100%;
+            display: flex;
+            font-size: 30px;
+            align-items:center;
+            color: #55d4f8;
+        }
+      }
     }
   }
 }
