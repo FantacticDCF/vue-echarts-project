@@ -1001,12 +1001,12 @@ body {
   font-size: 12px;
 }
 .no .no-hd ul li {
+  font-size: 17px;
   position: relative;
   flex: 1;
   text-align: center;
   height: 20px;
   line-height: 20px;
-  font-size: 20px;
   color: #02ade3;
   padding: 20px;
   font-family: electronicFont;
@@ -1035,7 +1035,7 @@ body {
   height: 20px;
   line-height:20px;
   text-align: center;
-  font-size: 20px;
+  font-size: 17px;
   color: rgb(1, 179, 233);
   padding-top: 14px;
   font-weight:bold;

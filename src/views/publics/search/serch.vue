@@ -23,6 +23,20 @@
             style="width: 100%"
           >
             <el-table-column
+              header-align="center"
+              align="center"
+              width="30"
+              type="expand"
+            >
+            <template slot-scope="props">
+              <el-form label-position="left" inline class="demo-table-expand">
+                <el-form-item label="详情">
+                  <span>{{ props.row.detail }}</span>
+                </el-form-item>
+              </el-form>
+            </template>
+            </el-table-column>
+            <el-table-column
               prop="date"
               label="时间"
               header-align="center"
@@ -110,6 +124,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-04",
@@ -118,6 +133,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-01",
@@ -126,6 +142,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-03",
@@ -134,6 +151,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-04",
@@ -142,6 +160,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-01",
@@ -150,6 +169,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-03",
@@ -158,6 +178,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-04",
@@ -166,6 +187,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "邓伦",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-01",
@@ -174,6 +196,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
         {
           date: "2016-05-03",
@@ -182,6 +205,7 @@ export default {
           remark: "xxxxxxxxxxxxxxx",
           identify: "xxxxxxxxx",
           name: "王一博",
+          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         },
       ],
       currentPage1: 1,
@@ -198,37 +222,18 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-.info {
-  width: 480px;
-  height: 45px;
-  border: 1px solid #4c8ed3;
-  border-radius: 10px;
-}
-.work {
-  width: 100px;
-  height: 45px;
-  text-align: center;
-  line-height: 45px;
-  color: #59dfff;
-  display: inline-block;
-  margin-left: 10px;
-  font-weight: 700;
-}
-.inp {
-  background-color: #131c36;
-  width: 300px;
-  height: 27px;
-  text-align: left;
-  text-indent: 8px;
-  line-height: 27px;
-  display: inline-block;
-  border: 1px solid #5097d3;
-  margin-left: 10px;
-  border-radius: 6px;
-  background: linear-gradient(#ffff);
-  outline: none;
-  color: #59dfff;
-}
+.demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
@@ -318,7 +323,8 @@ input::-webkit-input-placeholder {
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
-/deep/ .el-table {
+/deep/ .el-table,
+/deep/ .el-table__expanded-cell{
   background: transparent;
 }
 /deep/.table-wrapper .el-table--enable-row-hover .el-table__body tr:hover > td {
@@ -370,5 +376,11 @@ input::-webkit-input-placeholder {
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-all;
+}
+/deep/.el-form-item__label{
+  color: #fff;
+}
+/deep/.el-table__expanded-cell[class*=cell]{
+  padding: 0 50px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="divId">
     <div
-      :style="{width: '100%', height: (screenHeight - 220) + 'px'}"
+      :style="{width: '100%', height: (screenHeight - 210) + 'px'}"
       class="content"
     >
       <div

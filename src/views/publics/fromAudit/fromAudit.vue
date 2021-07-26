@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="bus-bread">{{title}}</div>
+      <div class="bus-bread">{{ title }}</div>
       <div class="aborder" :style="info.setBackgroundBg">
         <span>工单查询</span>
         <input
@@ -18,13 +18,21 @@
         <div class="grid-content bg-purple-dark" :style="info.setBackgroundBg1">
           <div class="middle_square">
             <div
+              @mouseover="mouseOver(index, $event)"
+              @mouseleave="mouseleave(index, $event)"
               class="desc_image"
               @click="idHandle(item.id)"
               v-for="(item, index) in shuju"
               :key="index"
-              :style="{'backgroundImage':'url('+item.src+')','backgroundSize':'100% 100%','backgroundRepeat':'no-repeat','backgroundPosition':'center'} "
+              :style="{
+                backgroundImage: 'url(' + item.src + ')',
+                backgroundSize: '100% 100%',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+              }"
+              v-html="item.title"
             >
-              <!-- {{ index + 1 }} -->
+           
             </div>
           </div>
         </div>
@@ -33,41 +41,58 @@
   </div>
 </template>
 <script>
-import audit1 from '../../../assets/images/audit1.png'
-import audit2 from '../../../assets/images/audit2.png'
-import audit3 from '../../../assets/images/audit3.png'
-import audit4 from '../../../assets/images/audit4.png'
-export default {  
+import audit1 from "../../../assets/images/audit/audit5.png";
+import audit2 from "../../../assets/images/audit/audit6.png";
+import audit3 from "../../../assets/images/audit/audit7.png";
+import audit4 from "../../../assets/images/audit/audit8.png";
+import audit5 from "../../../assets/images/audit/audit1.png";
+import audit6 from "../../../assets/images/audit/audit2.png";
+import audit7 from "../../../assets/images/audit/audit3.png";
+import audit8 from "../../../assets/images/audit/audit4.png";
+
+export default {
   data() {
     return {
-      title:'消保审核',
+      title: "消保审核",
       shuju: [
         {
           id: "001",
-          src:audit1
+          src: audit3,
+          title: "报送",
+          src1: audit7
         },
         {
           id: "002",
-           src:audit2
+          src: audit4,
+          title: "审核",
+          src1: audit8
         },
         {
           id: "003",
-           src:audit3
+          src: audit1,
+          title: "查询",
+          src1: audit5,
         },
         {
           id: "004",
-           src:audit4
+          src: audit2,
+          title: "返回",
+          src1: audit6
         },
       ],
       info: {
         setBackgroundBg: {
-          backgroundImage:"url(" + require("../../../assets/images/big-border.png") + ")",
+          backgroundImage:
+            "url(" + require("../../../assets/images/big-border.png") + ")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
         setBackgroundBg1: {
-          backgroundImage:"url(" + require("../../../assets/images/commonTitle/searchbg.png") +")",
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/commonTitle/searchbg.png") +
+            ")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
@@ -77,15 +102,25 @@ export default {
   },
   mounted() {},
   methods: {
+    //鼠标悬停
+ 
+    mouseOver(index, e) {
+      console.log(index, e);
+      e.target.style.background = "url(" + this.shuju[index].src1 + ")";
+      e.target.style.backgroundSize = "100% 100%";
+    },
+    mouseleave(index, e) {
+      console.log(index, e);
+      e.target.style.background = "url(" + this.shuju[index].src + ")";
+      e.target.style.backgroundSize = "100% 100%";
+    },
     idHandle(val) {
-      // console.log(this);
-      // console.log(val);
-        this.$router.push({
-          name: "submission",
-          params: {
-            id: val,
-          },
-        });
+      this.$router.push({
+        name: "submission",
+        params: {
+          id: val,
+        },
+      });
     },
   },
 };
@@ -114,14 +149,53 @@ export default {
           // background-color: aqua;
           justify-content: space-evenly;
           flex-direction: column;
-          background-repeat: "no-repeat";
-          background-size: "100% 100%";
-          background-position: "center";
+          font-size: 19px;
+          // position: relative;
+          text-align: center;
+          line-height: 327px;
+           color: #59dfff;
+          // bottom:10%
+          // span {
+          //   position: absolute;
+          //   bottom: 12.2%;
+          //   left: 41.8%;
+          //   // color: #59dfff;
+          // }
         }
       }
     }
   }
 }
+//  .desc_image:nth-child(1):hover {
+//     // background: rgba(255, 255, 255, 0.04) url(../../../assets/images/audit/audit1.png) no-repeat;
+//     background-image: url(../../../assets/images/audit/audit1.png) !important;
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
+
+//    .desc_image:nth-child(2):hover {
+//     background-image: url(../../../assets/images/audit/audit2.png);
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
+//    .desc_image:nth-child(3):hover {
+//      background-image: url(../../../assets/images/audit/audit3.png);
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
+//    .desc_image:nth-child(4):hover {
+//       background-image: url(../../../assets/images/audit/audit4.png);
+//     background-size: 100% 100%;
+//     background-repeat: "no-repeat";
+//           // backgroundSize: "100% 100%",
+//      background-position: "center",
+//   }
 
 .bus-bread {
   position: relative;

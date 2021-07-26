@@ -15,19 +15,19 @@
       <div class="box">
         <el-row class="margin">
           <el-col :span="8">
-            <div class="item icon-1">
+            <div class="item icon-1" :class="fininshed[0]?'active':'deflt'">
 <!--              <img src="../../../../assets/images/submission/item1.png">-->
               <p>产品设计说明</p>
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="item icon-2">
+            <div class="item icon-2" :class="fininshed[1]?'active':'deflt'">
 <!--              <img src="../../../../assets/images/submission/item2.png">-->
               <p>投诉点匹配</p>
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="item icon-3">
+            <div class="item icon-3" :class="fininshed[2]?'active':'deflt'">
 <!--              <img src="../../../../assets/images/submission/item3.png">-->
               <p>产品审核结果</p>
             </div>
@@ -44,13 +44,13 @@
         <el-row class="margin">
           <el-col :span="4" class="arrow">&nbsp; </el-col>
           <el-col :span="8">
-            <div class="item2 icon-4">
+            <div class="item2 icon-4" :class="fininshed[3]?'active':'deflt'">
 <!--              <img src="../../../../assets/images/submission/item4.png">-->
               <p>手工标签匹配</p>
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="item2 icon-5">
+            <div class="item2 icon-5" :class="fininshed[4]?'active':'deflt'">
 <!--              <img src="../../../../assets/images/submission/item5.png">-->
               <p>产品修正/文件下载</p>
             </div>
@@ -76,6 +76,7 @@ export default {
 				backgroundSize: "100% 100%",
 				backgroundPosition: "center"
 			},
+      fininshed: []
 
     };
   },
@@ -88,6 +89,9 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id);
+    let status = [1,0,0,0,0];//是否完成，显示高亮状态
+    this.fininshed = status;
+    // console.log(fininshed)
   },
 };
 </script>
@@ -207,23 +211,23 @@ export default {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/item5.png) no-repeat;
     background-size: 100% 100%;
   }
-  .submission .icon-1:hover {
+  .submission .icon-1.active {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/active1.png) no-repeat;
     background-size: 100% 100%;
   }
-  .submission .icon-2:hover {
+  .submission .icon-2.active {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/active2.png) no-repeat;
     background-size: 100% 100%;
   }
-  .submission .icon-3:hover {
+  .submission .icon-3.active {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/active3.png) no-repeat;
     background-size: 100% 100%;
   }
-  .submission .icon-4:hover {
+  .submission .icon-4.active {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/active4.png) no-repeat;
     background-size: 100% 100%;
   }
-  .submission .icon-5:hover {
+  .submission .icon-5.active {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/active5.png) no-repeat;
     background-size: 100% 100%;
   }
