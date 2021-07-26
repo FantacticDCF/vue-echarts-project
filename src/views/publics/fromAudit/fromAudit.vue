@@ -31,9 +31,7 @@
                 backgroundPosition: 'center',
               }"
               v-html="item.title"
-            >
-           
-            </div>
+            ></div>
           </div>
         </div>
       </el-col>
@@ -105,14 +103,15 @@ export default {
     //鼠标悬停
  
     mouseOver(index, e) {
-      console.log(index, e);
       e.target.style.background = "url(" + this.shuju[index].src1 + ")";
       e.target.style.backgroundSize = "100% 100%";
+      e.target.style.backgroundPosition='center'
+
     },
     mouseleave(index, e) {
-      console.log(index, e);
       e.target.style.background = "url(" + this.shuju[index].src + ")";
       e.target.style.backgroundSize = "100% 100%";
+      e.target.style.backgroundPosition='center'
     },
     idHandle(val) {
       this.$router.push({
@@ -146,56 +145,17 @@ export default {
           width: 48%;
           height: 48%;
           margin-left: 1.5%;
-          // background-color: aqua;
           justify-content: space-evenly;
           flex-direction: column;
           font-size: 19px;
-          // position: relative;
           text-align: center;
           line-height: 327px;
-           color: #59dfff;
-          // bottom:10%
-          // span {
-          //   position: absolute;
-          //   bottom: 12.2%;
-          //   left: 41.8%;
-          //   // color: #59dfff;
-          // }
+          color: #59dfff;
         }
       }
     }
   }
 }
-//  .desc_image:nth-child(1):hover {
-//     // background: rgba(255, 255, 255, 0.04) url(../../../assets/images/audit/audit1.png) no-repeat;
-//     background-image: url(../../../assets/images/audit/audit1.png) !important;
-//     background-size: 100% 100%;
-//     background-repeat: "no-repeat";
-//           // backgroundSize: "100% 100%",
-//      background-position: "center",
-//   }
-
-//    .desc_image:nth-child(2):hover {
-//     background-image: url(../../../assets/images/audit/audit2.png);
-//     background-size: 100% 100%;
-//     background-repeat: "no-repeat";
-//           // backgroundSize: "100% 100%",
-//      background-position: "center",
-//   }
-//    .desc_image:nth-child(3):hover {
-//      background-image: url(../../../assets/images/audit/audit3.png);
-//     background-size: 100% 100%;
-//     background-repeat: "no-repeat";
-//           // backgroundSize: "100% 100%",
-//      background-position: "center",
-//   }
-//    .desc_image:nth-child(4):hover {
-//       background-image: url(../../../assets/images/audit/audit4.png);
-//     background-size: 100% 100%;
-//     background-repeat: "no-repeat";
-//           // backgroundSize: "100% 100%",
-//      background-position: "center",
-//   }
 
 .bus-bread {
   position: relative;
