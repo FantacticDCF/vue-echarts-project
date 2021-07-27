@@ -12,7 +12,7 @@
       >
         <div @click="IsActive(index)">
           <img :src="item.image" alt="">
-          <div style="text-align: center;">{{item.name}}</div>
+          <div>{{item.name}}</div>
         </div>
       </div>
       <div class="btn">
