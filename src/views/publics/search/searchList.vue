@@ -61,18 +61,25 @@
       <el-col :span="11" :style="info.setBackgroundBg3">
         <div class="echarstitle">
           <div class="title">已结案投诉客户评价</div>
-          <div class="titleImage"><img src="../../../assets/images/searchList/pingfeng.png" alt="">
-          <div class="titleImage-span">{{echartsAvg(this.echarsAvg)}}</div></div>
+          <div class="titleImage">
+            <img src="../../../assets/images/searchList/pingfeng.png" alt="" />
+            <div class="titleImage-span">{{ echartsAvg(this.echarsAvg) }}</div>
+          </div>
         </div>
-        <div class="echartsDesc"></div>
+        <div class="echartsDesc" id="chartLineBox"></div>
       </el-col>
       <el-col :span="11" :style="info.setBackgroundBg3">
-         <div class="echarstitle">
+        <div class="echarstitle">
           <div class="title">已结案工单</div>
-          <div class="titleImage"><img src="../../../assets/images/searchList/wanjiegongdan.png" alt="">
-          <div class="titleImage-span">{{echartsSum(this.echarsSum)}}</div></div>
+          <div class="titleImage">
+            <img
+              src="../../../assets/images/searchList/wanjiegongdan.png"
+              alt=""
+            />
+            <div class="titleImage-span">{{ echartsSum(this.echarsSum) }}</div>
+          </div>
         </div>
-        <div class="echartsDesc"></div>
+        <div class="echartsDesc" id="chartLineBox1"></div>
       </el-col>
     </el-row>
   </div>
@@ -85,8 +92,8 @@ import search2 from "../../../assets/images/searchList/search2.png";
 export default {
   data() {
     return {
-      echarsAvg:[56,76,98,99,98,100],
-      echarsSum:[12,13,16,21,18,14],
+      echarsAvg: [56, 76, 98, 99, 98, 100],
+      echarsSum: [12, 13, 16, 21, 18, 14],
       info: {
         setBackgroundBg: {
           //上方搜索
@@ -165,32 +172,310 @@ export default {
           icon: "el-icon-arrow-right",
         },
       ],
-    
     };
   },
-  created(){
-    // this.
+  mounted() {
+    this.chartLine = this.$echarts.init(
+      document.getElementById("chartLineBox")
+    );
+    this.chartLine1 = this.$echarts.init(
+      document.getElementById("chartLineBox1")
+    );
+    this.getLineEcharts(this.echarsAvg); // 折线图
+    this.getLineEcharts1(this.echarsSum);
   },
-  methods:{
-    echartsAvg(arr){
-       let avg=0;
+  methods: {
+    echartsAvg(arr) {
+      let avg = 0;
       //  var sun=0
-      for(let i=0;i<arr.length;i++){
-          avg+=arr[i]
+      for (let i = 0; i < arr.length; i++) {
+        avg += arr[i];
       }
-          // console.log(avg);
-     return Math.ceil(avg/arr.length)
-     
-    } ,
-    echartsSum(arr){
-      let sum=0
-      for(var i=0; i<arr.length;i++){
-        sum+=arr[i]
+      // console.log(avg);
+      return Math.ceil(avg / arr.length);
+    },
+    echartsSum(arr) {
+      let sum = 0;
+      for (var i = 0; i < arr.length; i++) {
+        sum += arr[i];
       }
-      return sum
-    }
+      return sum;
+    },
+    getLineEcharts(data) {
+      // 折线图
+      // 指定图表的配置项和数据
+      var option = {
+        grid: {
+          x: "12%",//x 偏移量
+
+          y: "13%", // y 偏移量
+
+          width: "80%", // 宽度
+
+          height: "75%"// 高度
+
+          },
+        xAxis: {
+          type: "category",
+          data: ["1月", "2月", "3月", "4月", "5月", "6月"],
+          //						minInterval: 1, //x轴间距
+          axisTick: {
+            show: false,
+          }, //隐藏刻度标记
+          axisLine: {
+            //x轴刻度线
+            show: false, //这里的show用于设置是否显示x轴那一条线 默认为true
+            //							lineStyle: { //lineStyle里面写y轴那一条线的样式
+            //								color: '#6FC6F3',
+            //								width: 2, //轴线的粗细 我写的是2 最小为0，值为0的时候线隐藏
+            //							}
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: "#598FC1",
+            },
+          },
+          splitLine: {
+            //网格样式
+            show: true,
+            lineStyle: {
+              color: ["#151F5A"],
+              width: 1,
+              type: "solid",
+            },
+          },
+        },
+        yAxis: {
+          type: "value",
+          axisTick: {
+            //隐藏刻度标记
+            show: false,
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: "#598FC1",
+            },
+          },
+          axisLine: {
+            //x轴刻度线
+            show: false, //这里的show用于设置是否显示x轴那一条线 默认为true
+            //							lineStyle: { //lineStyle里面写y轴那一条线的样式
+            //								color: '#6FC6F3',
+            //								width: 2, //轴线的粗细 我写的是2 最小为0，值为0的时候线隐藏
+            //							}
+          },
+          splitLine: {
+            //网格样式
+            show: true,
+            lineStyle: {
+              color: ["#151F3A"],
+              width: 1,
+              // heigh
+              type: "solid",
+            },
+          },
+        },
+        series: [
+          {
+            data,
+            type: "line",
+            smooth: true, //折点是圆弧状的
+            showSymbol: true,
+            symbol: "circle", //折点设定为实心点
+            symbolSize: 8, //设定实心点的大小
+            //                      hoverAnimation: false,
+            itemStyle: {
+              normal: {
+                borderColor: "#ffffff", //折点颜色
+                color: "#639FD6",
+                borderWidth: 2.5,
+                label: {
+                  show: true,
+                  color: "#639FD6",
+                }, // 折点位置显示数值
+                areaStyle: {
+                  type: "default",
+                  //渐变色实现===
+                  color: new this.$echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    //三种由深及浅的颜色
+                    [
+                      {
+                        offset: 0,
+                        color: "#23627F",
+                      },
+                      {
+                        offset: 1,
+                        color: "#132040",
+                      },
+                    ]
+                  ),
+                },
+                lineStyle: {
+                  //线的颜色
+                  color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      offset: 0,
+                      color: "#6184F7",
+                    },
+                    {
+                      offset: 1,
+                      color: "#66D8E6",
+                    },
+                  ]), //线条渐变色
+                  width: 4,
+                },
+              },
+            },
+          },
+        ],
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      this.chartLine.setOption(option);
+    },
+    getLineEcharts1(data) {
+      // 折线图
+      // 指定图表的配置项和数据
+      var option = {
+          grid: {
+          x: "12%",//x 偏移量
+
+          y: "13%", // y 偏移量
+
+          width: "80%", // 宽度
+
+          height: "75%"// 高度
+
+          },
+        xAxis: {
+          type: "category",
+          data: ["1月", "2月", "3月", "4月", "5月", "6月"],
+          //						minInterval: 1, //x轴间距
+          axisTick: {
+            show: false,
+          }, //隐藏刻度标记
+          axisLine: {
+            //x轴刻度线
+            show: false, //这里的show用于设置是否显示x轴那一条线 默认为true
+            //							lineStyle: { //lineStyle里面写y轴那一条线的样式
+            //								color: '#6FC6F3',
+            //								width: 2, //轴线的粗细 我写的是2 最小为0，值为0的时候线隐藏
+            //							}
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: "#598FC1",
+            },
+          },
+          splitLine: {
+            //网格样式
+            show: true,
+            lineStyle: {
+              color: ["#151F5A"],
+              width: 1,
+              type: "solid",
+            },
+          },
+        },
+        yAxis: {
+          type: "value",
+          axisTick: {
+            //隐藏刻度标记
+            show: false,
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: "#598FC1",
+            },
+          },
+          axisLine: {
+            //x轴刻度线
+            show: false, //这里的show用于设置是否显示x轴那一条线 默认为true
+            //							lineStyle: { //lineStyle里面写y轴那一条线的样式
+            //								color: '#6FC6F3',
+            //								width: 2, //轴线的粗细 我写的是2 最小为0，值为0的时候线隐藏
+            //							}
+          },
+          splitLine: {
+            //网格样式
+            show: true,
+            lineStyle: {
+              color: ["#151F3A"],
+              width: 1,
+              type: "solid",
+            },
+          },
+          
+        },
+        series: [
+          {
+            data,
+            type: "line",
+            smooth: true, //折点是圆弧状的
+            showSymbol: true,
+            symbol: "circle", //折点设定为实心点
+            symbolSize: 8, //设定实心点的大小
+            //                      hoverAnimation: false,
+            itemStyle: {
+              normal: {
+                borderColor: "#ffffff", //折点颜色
+                color: "#639FD6",
+                borderWidth: 2.5,
+                label: {
+                  show: true,
+                  color: "#639FD6",
+                }, // 折点位置显示数值
+                areaStyle: {
+                  type: "default",
+                  //渐变色实现===
+                  color: new this.$echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    //三种由深及浅的颜色
+                    [
+                      {
+                        offset: 0,
+                        color: "#23627F",
+                      },
+                      {
+                        offset: 1,
+                        color: "#132040",
+                      },
+                    ]
+                  ),
+                },
+                lineStyle: {
+                  //线的颜色
+                  color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      offset: 0,
+                      color: "#6184F7",
+                    },
+                    {
+                      offset: 1,
+                      color: "#66D8E6",
+                    },
+                  ]), //线条渐变色
+                  width: 4,
+                },
+              },
+            },
+          },
+        ],
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      this.chartLine1.setOption(option);
+    },
   },
-  
 };
 </script>
 
@@ -405,7 +690,7 @@ input::-webkit-input-placeholder {
     position: relative;
     .echarstitle {
       width: 100%;
-      
+
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
@@ -414,43 +699,43 @@ input::-webkit-input-placeholder {
         font-weight: 700;
         letter-spacing: 1.5px;
       }
-      .titleImage{
-        height:17%;
-        width:17%; 
+      .titleImage {
+        height: 17%;
+        width: 17%;
         position: absolute;
         top: 1%;
         right: 3%;
-        img{
+        img {
           height: 100%;
-          width: 100%; 
+          width: 100%;
         }
-        .titleImage-span{
+        .titleImage-span {
           position: absolute;
           top: 25%;
-          right: 23%;;
+          right: 23%;
           font-size: 130%;
           font-weight: 700;
           color: #55d4f8;
         }
       }
     }
-    .echartsDesc{
+    #chartLineBox {
       // margin-top: 2%;
       width: 579px;
       margin: 4% auto;
       height: 209px;
-      background: red;
+      // background: red;
     }
   }
 
-   .el-col-11:nth-child(2) {
+  .el-col-11:nth-child(2) {
     width: 49.5%;
     height: 100%;
     margin-left: 1%;
     position: relative;
     .echarstitle {
       width: 100%;
-      
+
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
@@ -459,34 +744,33 @@ input::-webkit-input-placeholder {
         font-weight: 700;
         letter-spacing: 1.5px;
       }
-      .titleImage{
-        height:17%;
-        width:17%; 
+      .titleImage {
+        height: 17%;
+        width: 17%;
         position: absolute;
         top: 1%;
         right: 3%;
-        img{
+        img {
           height: 100%;
-          width: 100%; 
+          width: 100%;
         }
-        .titleImage-span{
+        .titleImage-span {
           position: absolute;
           top: 25%;
-          right: 23%;;
+          right: 23%;
           font-size: 130%;
           font-weight: 700;
           color: #55d4f8;
         }
       }
     }
-    .echartsDesc{
+    #chartLineBox1 {
       // margin-top: 2%;
-      width: 96%;
+      width: 579px;
       margin: 4% auto;
-      height: 75%;
-      background: red;
+      height: 209px;
+      // background: red;
     }
   }
- 
 }
 </style>

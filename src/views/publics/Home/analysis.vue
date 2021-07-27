@@ -117,7 +117,7 @@
 					xAxis: {
 						type: 'category',
 						data: ['1月', '2月', '3月', '4月', '5月', '6月'],
-						minInterval: 1, //x轴间距
+//						minInterval: 1, //x轴间距
 						axisTick: {
 							show: false
 						}, //隐藏刻度标记
