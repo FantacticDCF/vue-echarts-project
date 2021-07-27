@@ -36,26 +36,32 @@
         </div>
         <div class="col-down" :style="info.setBackgroundBg1">
           <div class="left">
-            <div>
-                <div class="desc1">
-                <span class="desc1-num">29</span>
-                <span class="desc1-bi">笔</span>
-                </div>
-                <div class="desc2">待处理工单</div>
+            <!-- <div> -->
+            <div class="desc1">
+              <span class="desc1-num">29</span>
+              <span class="desc1-bi">笔</span>
+              <div class="left-icon"><i class="el-icon-arrow-right"></i></div>
             </div>
-           <div class="left-icon"> <i class="el-icon-arrow-right"></i></div>
+            <div class="desc2">据结案时间12小时内工单</div>
           </div>
+
+          <!-- </div> -->
           <div class="left-dingwei" :style="info.setBackgroundBg2"></div>
           <div class="right">
-
-               <div>
-                <div class="desc1">
+            <!-- <div>
+              <div class="desc1">
                 <span class="desc1-num">29</span>
                 <span class="desc1-bi">笔</span>
-                </div>
-                <div class="desc2">待处理工单</div>
+              </div>
+              <div class="desc2">待处理工单</div>
             </div>
-           <div class="left-icon"> <i class="el-icon-arrow-right"></i></div>
+            <div class="left-icon"><i class="el-icon-arrow-right"></i></div> -->
+            <div class="desc1">
+              <span class="desc1-num">29</span>
+              <span class="desc1-bi">笔</span>
+              <div class="left-icon"><i class="el-icon-arrow-right"></i></div>
+            </div>
+            <div class="desc2">据结案时间12小时内工单</div>
           </div>
         </div>
       </el-col>
@@ -80,7 +86,7 @@ export default {
     return {
       info: {
         setBackgroundBg: {
-            //上方搜索
+          //上方搜索
           backgroundImage:
             "url(" + require("../../../assets/images/big-border.png") + ")",
           backgroundRepeat: "no-repeat",
@@ -88,7 +94,7 @@ export default {
           backgroundPosition: "center",
         },
         setBackgroundBg1: {
-            //中间背景图
+          //中间背景图
           backgroundImage:
             "url(" +
             require("../../../assets/images/searchList/topListdesc.png") +
@@ -161,14 +167,14 @@ export default {
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
+
+
 // 中部css
 .row-bg {
   height: 240px;
-  // background: red;
   margin-top: 1.5%;
   .el-col-6 {
     width: 32.8%;
-    // background: blue;
     background-image: url(../../../assets/images/searchList/topList.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -180,22 +186,14 @@ input::-webkit-input-placeholder {
       font-size: 14px;
     }
     .col-top {
-      // margin-top: 10%;
       width: 94%;
       margin: 2% auto;
       height: 37%;
-      //   background-color: red;
       display: flex;
       .img {
         width: 40%;
         height: 100%;
-        // margin-right: 20px;
-        //  justify-content: center;
-        //     .div-img {
-        //          width: 66%;
-        // height: 74%;
-        // margin: 5% 29%;
-        //     }
+     
         img {
           width: 66%;
           height: 74%;
@@ -206,14 +204,12 @@ input::-webkit-input-placeholder {
         width: 40%;
         height: 100%;
         text-align: center;
-        // line-height: ;
         .numDesc {
           width: 100%;
           height: 100%;
           .desc1 {
             width: 100%;
             height: 65%;
-            //   margin-bottom: 5%;
             text-align: center;
             line-height: 452%;
             .desc1-num {
@@ -239,7 +235,6 @@ input::-webkit-input-placeholder {
         font-size: 400%;
         text-align: center;
         line-height: 1.7;
-        // margin: 0 auto;
         color: #55d4f8;
       }
     }
@@ -247,20 +242,16 @@ input::-webkit-input-placeholder {
       width: 94%;
       margin: 2% auto;
       height: 38%;
-      //   background-color: red;
       display: flex;
-      justify-content: center;
       .left {
         width: 50%;
         height: 100%;
-        display: flex;
-        justify-content: space-between;
         .desc1 {
-          padding-left: 60px;
+          width: 100%;
           height: 65%;
-          //   margin-bottom: 5%;
           text-align: center;
           line-height: 452%;
+          position: relative;
           .desc1-num {
             font-size: 250%;
             color: #55d4f8;
@@ -269,24 +260,20 @@ input::-webkit-input-placeholder {
             font-size: 130%;
             color: #55d4f8;
           }
-          
+          .left-icon {
+            font-size: 130%;
+            position: absolute;
+            bottom: -11px;
+            right: 29px;
+            color: #55d4f8;
+          }
         }
         .desc2 {
-             padding-left: 60px;
-        //   height: 35%;
+          width: 100%;
+          height: 35%;
+          text-align: center;
           color: #fff;
           font-size: 80%;
-          text-align: center;
-          overflow: hidden;
-        }
-       
-        .left-icon{
-            width: 20%;
-            height: 100%;
-            display: flex;
-            font-size: 30px;
-            align-items:center;
-            color: #55d4f8;
         }
       }
       .left-dingwei {
@@ -294,16 +281,14 @@ input::-webkit-input-placeholder {
         height: 100%;
       }
       .right {
-       width: 50%;
+        width: 50%;
         height: 100%;
-        display: flex;
-        justify-content: space-between;
-          .desc1 {
-          padding-left: 60px;
+        .desc1 {
+          width: 100%;
           height: 65%;
-          //   margin-bottom: 5%;
           text-align: center;
           line-height: 452%;
+          position: relative;
           .desc1-num {
             font-size: 250%;
             color: #55d4f8;
@@ -312,24 +297,20 @@ input::-webkit-input-placeholder {
             font-size: 130%;
             color: #55d4f8;
           }
-          
+          .left-icon {
+            font-size: 130%;
+            position: absolute;
+            bottom: -16%;
+            right: 16%;
+            color: #55d4f8;
+          }
         }
         .desc2 {
-             padding-left: 60px;
-        //   height: 35%;
+          width: 100%;
+          height: 35%;
+          text-align: center;
           color: #fff;
           font-size: 80%;
-          text-align: center;
-          overflow: hidden;
-        }
-       
-        .left-icon{
-            width: 20%;
-            height: 100%;
-            display: flex;
-            font-size: 30px;
-            align-items:center;
-            color: #55d4f8;
         }
       }
     }
