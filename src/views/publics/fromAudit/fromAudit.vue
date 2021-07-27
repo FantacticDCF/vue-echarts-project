@@ -31,8 +31,7 @@
                 backgroundPosition: 'center',
               }"
               v-html="item.title"
-            >
-            </div>
+            ></div>
           </div>
         </div>
       </el-col>
@@ -104,14 +103,15 @@ export default {
     //鼠标悬停
  
     mouseOver(index, e) {
-      console.log(index, e);
       e.target.style.background = "url(" + this.shuju[index].src1 + ")";
       e.target.style.backgroundSize = "100% 100%";
+      e.target.style.backgroundPosition='center'
+
     },
     mouseleave(index, e) {
-      console.log(index, e);
       e.target.style.background = "url(" + this.shuju[index].src + ")";
       e.target.style.backgroundSize = "100% 100%";
+      e.target.style.backgroundPosition='center'
     },
     idHandle(val) {
       this.$router.push({
@@ -150,13 +150,12 @@ export default {
           font-size: 19px;
           text-align: center;
           line-height: 327px;
-           color: #59dfff;
+          color: #59dfff;
         }
       }
     }
   }
 }
-
 
 .bus-bread {
   position: relative;

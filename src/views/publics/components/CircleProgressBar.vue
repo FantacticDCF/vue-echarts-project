@@ -78,15 +78,15 @@ export default {
                 label: {
                   show: true,
                   position: "insideRight",
-                  formatter: "   ",
-                  backgroundColor: "#94f6ff",
+                  formatter: "    ",
+                  // backgroundColor: "#94f6ff",
                   distance: 0,
                   borderColor: "#ffff",
-                  borderWidth: 2,
-                  borderRadius: 10,
-                  color: "#94f6ff",
-                  width:5,
-                  height:5,
+                  borderWidth: 3,
+                  borderRadius: 15,
+                  // color: "#94f6ff",
+                  width:10,
+                  height:9,
                 },
                 color: function (params) {
                   // console.log(params);

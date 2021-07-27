@@ -110,6 +110,12 @@ let pubics=[
                 name: 'eventWarning',
                 component: () => import("@/views/publics/complaintsWarning/components/eventWarning"),
                 meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
+            },
+            {
+                path: '/Home/searchList',
+                name: 'searchList',
+                component: () => import("@/views/publics/search/searchList"),
+                meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
             }
        ]
     }
