@@ -13,77 +13,80 @@
       <i class="el-icon-search iconSearch"></i>
     </div>
     <!-- 中间信息 -->
-    <el-row type="flex" class="row-bg" justify="space-between">
-      <el-col :span="6">
-        <div class="title">待处理工单</div>
+    <el-row type="flex" class="row-bg1" justify="space-between">
+      <el-col :span="6" v-for="(item, index) in topSearch" :key="index">
+        <div class="title">{{ item.title }}</div>
         <div class="col-top" :style="info.setBackgroundBg1">
           <div class="img">
-            <img src="../../../assets/images/searchList/search.png" alt="" />
+            <img :src="item.topImages" alt="" />
             <!-- <div class="div-img" :style="info.setBackgroundBg2"></div> -->
           </div>
           <div class="titleDesc">
             <div class="numDesc">
               <div class="desc1">
-                <span class="desc1-num">29</span>
-                <span class="desc1-bi">笔</span>
+                <span class="desc1-num">{{ item.topTitle }}</span>
+                <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
               </div>
-              <div class="desc2">待处理工单</div>
+              <div class="desc2">{{ item.topWrithDesc }}</div>
             </div>
           </div>
           <div class="icon">
-            <i class="el-icon-arrow-right"></i>
+            <i :class="item.icon"></i>
           </div>
         </div>
         <div class="col-down" :style="info.setBackgroundBg1">
           <div class="left">
-            <!-- <div> -->
             <div class="desc1">
-              <span class="desc1-num">29</span>
-              <span class="desc1-bi">笔</span>
-              <div class="left-icon"><i class="el-icon-arrow-right"></i></div>
+              <span class="desc1-num">{{ item.downTitle1 }}</span>
+              <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
+              <div class="left-icon"><i :class="item.icon"></i></div>
             </div>
-            <div class="desc2">据结案时间12小时内工单</div>
+            <div class="desc2">{{ item.downTitle1DEsc }}</div>
           </div>
-
-          <!-- </div> -->
           <div class="left-dingwei" :style="info.setBackgroundBg2"></div>
           <div class="right">
-            <!-- <div>
-              <div class="desc1">
-                <span class="desc1-num">29</span>
-                <span class="desc1-bi">笔</span>
-              </div>
-              <div class="desc2">待处理工单</div>
-            </div>
-            <div class="left-icon"><i class="el-icon-arrow-right"></i></div> -->
             <div class="desc1">
-              <span class="desc1-num">29</span>
-              <span class="desc1-bi">笔</span>
-              <div class="left-icon"><i class="el-icon-arrow-right"></i></div>
+              <span class="desc1-num">{{ item.downTitle2 }}</span>
+              <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
+              <div class="left-icon"><i :class="item.icon"></i></div>
             </div>
-            <div class="desc2">据结案时间12小时内工单</div>
+            <div class="desc2">{{ item.downTitle1DEsc }}</div>
           </div>
         </div>
       </el-col>
-      <el-col :span="6">
-        <div class="title">以处理订单</div>
-        <div class="col-top"></div>
-        <div class="col-down"></div>
-      </el-col>
-      <el-col :span="6">
-        <div class="title">督办查询</div>
-        <div class="col-top"></div>
-        <div class="col-down"></div>
-      </el-col>
     </el-row>
     <!-- 底部echars -->
+
+    <el-row class="row-echarts">
+      <el-col :span="11" :style="info.setBackgroundBg3">
+        <div class="echarstitle">
+          <div class="title">已结案投诉客户评价</div>
+          <div class="titleImage"><img src="../../../assets/images/searchList/pingfeng.png" alt="">
+          <div class="titleImage-span">{{echartsAvg(this.echarsAvg)}}</div></div>
+        </div>
+        <div class="echartsDesc"></div>
+      </el-col>
+      <el-col :span="11" :style="info.setBackgroundBg3">
+         <div class="echarstitle">
+          <div class="title">已结案工单</div>
+          <div class="titleImage"><img src="../../../assets/images/searchList/wanjiegongdan.png" alt="">
+          <div class="titleImage-span">{{echartsSum(this.echarsSum)}}</div></div>
+        </div>
+        <div class="echartsDesc"></div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import search from "../../../assets/images/searchList/search.png";
+import search1 from "../../../assets/images/searchList/search1.png";
+import search2 from "../../../assets/images/searchList/search2.png";
 export default {
   data() {
     return {
+      echarsAvg:[56,76,98,99,98,100],
+      echarsSum:[12,13,16,21,18,14],
       info: {
         setBackgroundBg: {
           //上方搜索
@@ -103,6 +106,7 @@ export default {
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
+        // 线
         setBackgroundBg2: {
           backgroundImage:
             "url(" +
@@ -112,9 +116,81 @@ export default {
           backgroundSize: "100% 100%",
           //   backgroundPosition:"2% 0",
         },
+        // 下方背景图
+        setBackgroundBg3: {
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/searchList/topList1.png") +
+            ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          //   backgroundPosition:"2% 0",
+        },
       },
+      topSearch: [
+        {
+          title: "待处理订单",
+          topImages: search,
+          topTitle: "29",
+          topTilteDescribe: "笔",
+          topWrithDesc: "待处理工单",
+          downTitle1: "12",
+          downTitle1DEsc: "据结案时间12小时工单",
+          downTitle2: "17",
+          downTitle1DEsc: "据结案时间24小时工单",
+          icon: "el-icon-arrow-right",
+        },
+        {
+          title: "已处理订单",
+          topImages: search2,
+          topTitle: "15",
+          topTilteDescribe: "笔",
+          topWrithDesc: "本月以处理",
+          downTitle1: "6",
+          downTitle1DEsc: "流转工单",
+          downTitle2: "9",
+          downTitle1DEsc: "流转工单",
+          icon: "el-icon-arrow-right",
+        },
+        {
+          title: "督办查询",
+          topImages: search1,
+          topTitle: "27",
+          topTilteDescribe: "笔",
+          topWrithDesc: "监管督办",
+          downTitle1: "14",
+          downTitle1DEsc: "总行督办",
+          downTitle2: "13",
+          downTitle1DEsc: "本级督办",
+          icon: "el-icon-arrow-right",
+        },
+      ],
+    
     };
   },
+  created(){
+    // this.
+  },
+  methods:{
+    echartsAvg(arr){
+       let avg=0;
+      //  var sun=0
+      for(let i=0;i<arr.length;i++){
+          avg+=arr[i]
+      }
+          // console.log(avg);
+     return Math.ceil(avg/arr.length)
+     
+    } ,
+    echartsSum(arr){
+      let sum=0
+      for(var i=0; i<arr.length;i++){
+        sum+=arr[i]
+      }
+      return sum
+    }
+  },
+  
 };
 </script>
 
@@ -138,7 +214,7 @@ export default {
   &:after {
     position: absolute;
     content: "";
-    left: 3.85%;
+    left: 4%;
     top: 0;
     border-bottom: 7px solid #1a83c0;
     border-left: 9px solid transparent;
@@ -168,11 +244,10 @@ input::-webkit-input-placeholder {
   color: #59dfff;
 }
 
-
 // 中部css
-.row-bg {
+.row-bg1 {
   height: 240px;
-  margin-top: 1.5%;
+  margin-top: 1%;
   .el-col-6 {
     width: 32.8%;
     background-image: url(../../../assets/images/searchList/topList.png);
@@ -184,6 +259,8 @@ input::-webkit-input-placeholder {
       margin-top: 2.5%;
       color: #55d4f8;
       font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
     }
     .col-top {
       width: 94%;
@@ -193,10 +270,10 @@ input::-webkit-input-placeholder {
       .img {
         width: 40%;
         height: 100%;
-     
+
         img {
-          width: 66%;
-          height: 74%;
+          width: 52%;
+          height: 82%;
           margin: 5% 29%;
         }
       }
@@ -315,5 +392,101 @@ input::-webkit-input-placeholder {
       }
     }
   }
+}
+
+//底部echars css
+.row-echarts {
+  margin-top: 1%;
+  height: 279px;
+  // background: red;
+  .el-col-11:nth-child(1) {
+    width: 49.5%;
+    height: 100%;
+    position: relative;
+    .echarstitle {
+      width: 100%;
+      
+      .title {
+        margin-left: 3%;
+        margin-top: 2.5%;
+        color: #55d4f8;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+      }
+      .titleImage{
+        height:17%;
+        width:17%; 
+        position: absolute;
+        top: 1%;
+        right: 3%;
+        img{
+          height: 100%;
+          width: 100%; 
+        }
+        .titleImage-span{
+          position: absolute;
+          top: 25%;
+          right: 23%;;
+          font-size: 130%;
+          font-weight: 700;
+          color: #55d4f8;
+        }
+      }
+    }
+    .echartsDesc{
+      // margin-top: 2%;
+      width: 579px;
+      margin: 4% auto;
+      height: 209px;
+      background: red;
+    }
+  }
+
+   .el-col-11:nth-child(2) {
+    width: 49.5%;
+    height: 100%;
+    margin-left: 1%;
+    position: relative;
+    .echarstitle {
+      width: 100%;
+      
+      .title {
+        margin-left: 3%;
+        margin-top: 2.5%;
+        color: #55d4f8;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+      }
+      .titleImage{
+        height:17%;
+        width:17%; 
+        position: absolute;
+        top: 1%;
+        right: 3%;
+        img{
+          height: 100%;
+          width: 100%; 
+        }
+        .titleImage-span{
+          position: absolute;
+          top: 25%;
+          right: 23%;;
+          font-size: 130%;
+          font-weight: 700;
+          color: #55d4f8;
+        }
+      }
+    }
+    .echartsDesc{
+      // margin-top: 2%;
+      width: 96%;
+      margin: 4% auto;
+      height: 75%;
+      background: red;
+    }
+  }
+ 
 }
 </style>
