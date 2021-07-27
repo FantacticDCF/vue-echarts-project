@@ -205,6 +205,16 @@ export default {
       // 折线图
       // 指定图表的配置项和数据
       var option = {
+        grid: {
+          x: "12%",//x 偏移量
+
+          y: "13%", // y 偏移量
+
+          width: "80%", // 宽度
+
+          height: "75%"// 高度
+
+          },
         xAxis: {
           type: "category",
           data: ["1月", "2月", "3月", "4月", "5月", "6月"],
@@ -262,6 +272,7 @@ export default {
             lineStyle: {
               color: ["#151F3A"],
               width: 1,
+              // heigh
               type: "solid",
             },
           },
@@ -331,6 +342,16 @@ export default {
       // 折线图
       // 指定图表的配置项和数据
       var option = {
+          grid: {
+          x: "12%",//x 偏移量
+
+          y: "13%", // y 偏移量
+
+          width: "80%", // 宽度
+
+          height: "75%"// 高度
+
+          },
         xAxis: {
           type: "category",
           data: ["1月", "2月", "3月", "4月", "5月", "6月"],
@@ -391,6 +412,7 @@ export default {
               type: "solid",
             },
           },
+          
         },
         series: [
           {
