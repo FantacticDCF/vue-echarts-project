@@ -40,9 +40,15 @@ let pubics=[
             },
             {
                 path: '/Home/plan',
-                name: 'businessplan',
+                name: 'plan',
                 component: ()=>import("@/views/publics/Home/plan"),
-                meta:{breadnav:[{path:'/Home/plan',name:'投诉压降计划'}],name:'投诉压降计划'}//投诉压降计划
+                meta:{breadnav:[{path:'/Home/plan',name:'投诉压降措施制定'}],name:'投诉压降措施制定'}//投诉压降计划措施制定
+            },
+            {
+                path: '/Home/analysis',
+                name: 'analysis',
+                component: ()=>import("@/views/publics/Home/analysis"),
+                meta:{breadnav:[{path:'/Home/analysis',name:'投诉数据分析'}],name:'投诉数据分析'}//投诉数据分析
             },
             {
                 path: '/Home/losspressure',
