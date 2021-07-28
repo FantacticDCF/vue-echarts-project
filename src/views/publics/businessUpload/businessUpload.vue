@@ -19,14 +19,12 @@
         <el-row class="content" :style="{width: '100%', height: (screenHeight - 75) + 'px'}">
           <el-col :span="12">
             <div>投诉压降第一阶段工作情况汇报</div>
-            <el-input
-              type="textarea"
-              v-model="textcontent"
-              @input="exetareaInput"
-              resize="none"
-              :style="{height: (screenHeight - 225) + 'px'}"
-            ></el-input>
-            <div class="war" v-show="showThis">{{contextfont}}</div>
+            <div
+              class="show-img"
+              :style="{width: '100%', height: (screenHeight - 225) + 'px'}"
+            >
+              <img v-for="(item, index) in imgss" :src="item" alt="" :key="index">
+            </div>
           </el-col>
           <el-col :span="12">
             <ol>
@@ -41,7 +39,6 @@
                     :src="item.imgsrc"
                     alt=""
                     class="imgsrc"
-                    @click.stop="changeImg(index)"
                   />
                   <div>
                     <div>{{ item.title }}</div>
@@ -57,6 +54,9 @@
                   :show-file-list="false"
                   :on-change="onchange"
                   v-if="item.haveimg == 0"
+                  :limit="item.limit"
+                  multiple
+                  :disabled="item.disabled"
                 >
                   <img :src="item.uploadimg" alt="" class="uplood-img" />
                 </el-upload>
@@ -81,13 +81,13 @@
         </el-row>
       </el-col>
     </el-row>
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+    <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
       <span>您是否想要更改此图片</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="startChangeImage">确 定</el-button>
       </span>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -104,10 +104,7 @@ export default {
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
       },
-      dialogVisible: false,
       index: "",
-      textcontent: '',
-      showThis: true,
       list: [
         {
           imgsrc: require("../../../assets/images/businessUpload/image.png"),
@@ -116,7 +113,9 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果图片上传'
+          contextfont: '成果图片上传',
+          disabled: false,
+          limit: 100
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/file.png"),
@@ -125,7 +124,9 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果文档上传'
+          contextfont: '成果文档上传',
+          disabled: false,
+          limit: 100
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/veodio.png"),
@@ -134,7 +135,9 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果视频上传'
+          contextfont: '成果视频上传',
+          disabled: false,
+          limit: 100
         },
         {
           imgsrc: require("../../../assets/images/businessUpload/other.png"),
@@ -143,9 +146,12 @@ export default {
           warning1: "文件不超过2M",
           uploadimg: require("../../../assets/images/businessUpload/upload.png"),
           haveimg: 0,
-          contextfont: '成果相关其他文件上传'
+          contextfont: '成果相关其他文件上传',
+          disabled: false,
+          limit: 100
         },
       ],
+      imgss: [],
       contextfont: '文本内容',
       screenHeight: document.documentElement.clientHeight - 60 - 21 - 32 - 32 - 20 - 15,
       titleName: "投诉压降节点1 工作成果汇报",
@@ -158,51 +164,39 @@ export default {
     }
   },
   methods: {
-    projectSelectFun(e, index) {
-      console.log(index)
+    projectSelectFun(e) {
       let _dom = document.querySelector(".selected")
       if (_dom) {
         _dom.classList.toggle("selected") // 当class为project的元素上没有这个CSS类时，它就新增这个CSS类；如果class为project的元素有了这个CSS类，它就是删除它。就是反转操作。
       }
       e.target.classList.toggle("selected")
-      this.contextfont = this.list[index].contextfont
-      this.textcontent = ''
-      this.showThis = true
     },
-    onchange(e) {
+    onchange(e, file) {
+      this.fileList = []
+      file.map(item => {
+        this.fileList.push(item.raw)
+      })
       const data = {
-        file: e.raw,
+        file: this.fileList,
       };
       uploadImg(data).then((res) => {
-        this.list[0].imgsrc = res.info.data.url;
+        for(let i = 0; i < this.fileList.length; i++) {
+          this.imgss[i] = res.info.data.url
+        }
+        console.log(this.imgss)
         this.list[0].haveimg = 1;
       });
-    },
-    changeImg(index) {
-      this.index = index;
-      if (
-        this.list[index].imgsrc !==
-          require("../../../assets/images/businessUpload/image.png") &&
-        index == 0
-      ) {
-        this.dialogVisible = true;
-      } else if (index == 0) {
-        this.$message.error("您目前还没上传图片");
+      if(file[0].name.split('.')[1] == 'zip') {
+        this.list[3].disabled = false
+        this.list[0].disabled = true
+        this.list[1].disabled = true
+        this.list[2].disabled = true
       }
-    },
-    startChangeImage() {
-      if (this.index == 0) {
-        this.list[
-          this.index
-        ].imgsrc = require("../../../assets/images/businessUpload/image.png");
-        this.list[this.index].haveimg = 0;
-        this.dialogVisible = false;
-      }
-    },
-    exetareaInput () {
-      this.showThis = false
-      if (this.textcontent == '') {
-        this.showThis = true
+      if(file[0].name.split('.')[1] == 'png') {
+        this.list[0].disabled = false
+        this.list[3].disabled = true
+        this.list[1].disabled = true
+        this.list[2].disabled = true
       }
     }
   }
@@ -346,16 +340,6 @@ input::-webkit-input-placeholder {
     font-weight: 500;
     padding-top: 20px;
   }
-  & > div:nth-child(2) {
-    color: #fff;
-    width: 95%;
-    display: flex;
-    justify-content: center;
-    font-size: 14px;
-    padding-left: 26px;
-    font-weight: 500;
-    padding-top: 20px;
-  }
 }
 .el-col-12:nth-child(2) {
   padding-top: 20px;
@@ -439,5 +423,21 @@ ol {
   color: #fff;
   font-weight: bold;
   font-size: 14px;
+}
+.show-img{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  &>img{
+    width: 20%;
+    height: 35%;
+    margin-left: 22px;
+  }
 }
 </style>

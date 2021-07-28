@@ -1,0 +1,106 @@
+.formInfo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.formInfo .box {
+  flex-grow: 1;
+  width: 100%;
+  height: 530px;
+  overflow: hidden;
+  margin-right: 10px;
+  position: relative;
+}
+.formInfo .box .image {
+  height: 90%;
+  width: 100%;
+  opacity: 0.5;
+  position: absolute;
+}
+.formInfo .box .title {
+  position: absolute;
+  top: 7px;
+  left: 17px;
+  color: #55d4f8;
+  font-size: 14px;
+}
+.formInfo .box .content-box {
+  top: 10%;
+  left: 3%;
+  width: 92%;
+  height: 76%;
+  background: url(../../assets/images/businessUpload/bg.png) no-repeat;
+  position: relative;
+  background-size: 100% 100%;
+  display: flex;
+}
+.formInfo .box .content-box > img {
+  position: absolute;
+  width: 50%;
+  height: 85%;
+  top: 5%;
+  left: 3%;
+}
+.formInfo .box .content-box-title {
+  position: absolute;
+  color: #00CDFF;
+  font-size: 16px;
+  font-weight: 500;
+  top: 9%;
+  left: 13.5%;
+}
+.formInfo .box .content-box > ol {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  width: 43%;
+  height: 85%;
+}
+.formInfo .box .content-box > ol > li {
+  list-style: none;
+  width: 100%;
+  padding: 5.5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: url(../../assets/images/businessUpload/list-bg.png);
+  background-size: 100% 99.5%;
+}
+.formInfo .box .content-box > ol > li > div {
+  display: flex;
+  align-items: center;
+}
+.formInfo .box .content-box > ol > li > div > .imgsrc {
+  width: 30%;
+}
+.formInfo .box .content-box > ol > li > div > div {
+  margin-left: 20px;
+}
+.formInfo .box .content-box > ol > li > div > div > div {
+  color: #00CDFF;
+  font-size: 16px;
+  font-weight: 500;
+}
+.formInfo .box .content-box > ol > li > div > div > ul > li {
+  color: #3B6CA5;
+}
+.formInfo .box .content-box > ol > li:not(:first-child) {
+  margin-top: 12px;
+}
+.formInfo .box .content-box > ol > li:nth-child(4) > div > .imgsrc {
+  width: 24% !important;
+}
+.formInfo .box .content-box > ol > li:active {
+  background: url(../../assets/images/businessUpload/list-active.png) no-repeat;
+  background-size: 100% 99.5%;
+}
+.formInfo .box .content-box > .submit {
+  position: absolute;
+  font-size: 16px;
+  bottom: 0.5%;
+  left: 47%;
+  color: #131B3D;
+  font-weight: 500;
+}

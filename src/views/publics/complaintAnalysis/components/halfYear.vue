@@ -1,18 +1,18 @@
 <template>
   <div id="divId">
     <div
-      :style="{width: '100%', height: (screenHeight - 240) + 'px'}"
+      :style="{width: '100%', height: (screenHeight - 210) + 'px'}"
       class="content"
     >
       <div
         v-for="(item, index) in menus" :key="index"
-        :style="{width: '100%', height: (screenHeight - 330) + 'px'}"
+        :style="{width: '100%', height: (screenHeight - 310) + 'px'}"
         :class="activeClass == index?'selected':''"
         @click="IsActive(index)"
       >
         <div @click="IsActive(index)">
           <img :src="item.image" alt="">
-          <div style="text-align: center;">{{item.name}}</div>
+          <div>{{item.name}}</div>
         </div>
       </div>
       <div class="btn">

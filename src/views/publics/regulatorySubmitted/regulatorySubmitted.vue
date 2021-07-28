@@ -198,7 +198,8 @@ input::-webkit-input-placeholder {
   width: 20%;
   text-align: center;
   height: auto;
-  font-weight: 500;
+  // font-weight: 500;
+  color: #5487B7;
 }
 .centertabselected {
   background: url(../../../assets/images/complaintAnalysis/tabBg.png) no-repeat;

@@ -94,6 +94,7 @@ export default {
       info: [
         {
           id: 1001,
+      
           colorid: 0,
           name: "全辖投诉数量控制",
           num1: 4160,
@@ -383,7 +384,7 @@ export default {
   },
   methods: {
      numPushHandle(){
-      this.$router.push({path:'/Home/plan'})
+      this.$router.push({path:'/Home/analysis'})
     }
   },
   mounted() {},
