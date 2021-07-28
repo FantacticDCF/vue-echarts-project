@@ -313,7 +313,7 @@
 						trigger: 'item'
 					},
 					legend: {
-						left: "77%",
+						left: "67%",
 						top: "26%",
 						right: "100%",
 						bottom: "85%",
@@ -323,7 +323,11 @@
 						itemGap: 11.5,
 //						formatter: data,
 						itemWidth: 18,
-						itemHeight: 16,
+						itemHeight: 18,
+						icon: "circle", //左侧图形形状 类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none  也可以自定义图片'image://img/1主页.png' ,
+						formatter: function (name) {
+							return name + '  '+ '36%'+ '    '+'4,544'
+							},
 						textStyle: {
 							color: "#598FC1"
 							}
@@ -332,7 +336,7 @@
 						elements: [{
 								type: "text",
 								left: "30%",
-								top: "43%",
+								top: "46%",
 								style: {
 									text: "总投诉量",
 									textAlign: "center",
@@ -356,7 +360,7 @@
 					series: [{
 						type: 'pie',
 						radius: ['50%', '70%'], // 第一个参数是内圆半径，第二个参数是外圆半径，相对饼图的宿主div大小
-						center: ['35%', '50%'], //饼图位置 x y
+						center: ['35%', '58%'], //饼图位置 x y
 						avoidLabelOverlap: false,
 						label: {
 							show: false,

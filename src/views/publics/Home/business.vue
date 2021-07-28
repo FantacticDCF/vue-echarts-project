@@ -384,7 +384,7 @@ export default {
   },
   methods: {
      numPushHandle(){
-      this.$router.push({path:'/Home/plan'})
+      this.$router.push({path:'/Home/analysis'})
     }
   },
   mounted() {},
