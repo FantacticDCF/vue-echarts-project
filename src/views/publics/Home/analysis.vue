@@ -44,7 +44,20 @@
 			</el-col>
 			<el-col :span="12" class="line-box">
 				<p class="line-text">客群投诉数据</p>
-				<div id="chartRoundBox" style="width: 97%;height: calc(100vh - 400px)">
+				<div id="chartRoundBox" style="width: 97%; height: calc(100vh - 400px)">
+					<div class="chartRoundBoxContent">
+						<div v-for="(item, index) in percentage" :key="index">
+						<el-progress
+							type="circle"
+							class="circle2"
+							:stroke-width="11"
+							:width = '115'
+							:percentage="item.percentage"
+						>
+						</el-progress>
+						<span class="typeDerection">{{item.title}}</span>
+						</div>
+					</div>
 					<!--<div id="chartRoundBox1" style="width: 97%;height:500px;"></div> -->
 				</div>
 				<!--<el-row>
@@ -61,6 +74,15 @@
 				</el-row>-->
 			</el-col>
 		</el-row>
+		<svg width="100%" height="1px">
+			<defs>
+			<linearGradient id="write" x1="0%" y1="0%" x2="100%" y2="0%">
+				<stop offset="0%" style="stop-color:#0973F8" stop-opacity="0.8"></stop>
+				<stop offset="50%" style="stop-color:#07E1F4" stop-opacity="0.8"></stop>
+				<stop offset="100%" style="stop-color:#0973F8" stop-opacity="1"></stop>
+			</linearGradient>
+			</defs>
+		</svg>
 	</div>
 </template>
 <script>
@@ -86,7 +108,16 @@
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "100% 100%",
 					backgroundPosition: "center"
-				}
+				},
+				percentage: [
+					{ title: "类型1", percentage: 90 },
+					{ title: "类型2", percentage: 88 },
+					{ title: "类型3", percentage: 80 },
+					{ title: "类型4", percentage: 90 },
+					{ title: "类型5", percentage: 88 },
+					{ title: "类型6", percentage: 80 },
+				],
+				chartLineData: "",
 			}
 		},
 
@@ -94,11 +125,16 @@
 			this.chartLine = this.$echarts.init(document.getElementById('chartLineBox'));
 			this.chartColum = this.$echarts.init(document.getElementById('chartColumnBox'));
 			this.chartBread = this.$echarts.init(document.getElementById('chartBreadBox'));
-			this.chartRound = this.$echarts.init(document.getElementById('chartRoundBox'));
+			// this.chartRound = this.$echarts.init(document.getElementById('chartRoundBox'));
 			this.getLineEcharts() // 折线图
 			this.getColumEcharts() // 柱状图
 			this.getBreadEcharts() // 饼图
-			this.getRoundEcharts() // 环形进度条
+			// this.getRoundEcharts() // 环形进度条
+		},
+		created(){
+			this.$axios.get('/api/hello').then((res)=>{
+				console.log(res.data,123)
+			})
 		},
 		methods: {
 			goToBack() {
@@ -684,8 +720,46 @@
 	background-size: 100% 100%;
 }
 #chartRoundBox {
-	margin: 15px 0 0 0;
-	background: url(../../../assets/images/analysis/line-bg.png) no-repeat center;
-	background-size: 100% 100%;
+  margin: 15px 0 0 0;
+  background: url(../../../assets/images/analysis/line-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  .chartRoundBoxContent {
+	width: 95%;
+    padding: 8% 0 0 0;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    div {
+      // 每个item
+      flex: 1;
+      //   box-sizing: border-box;
+      width: 33.3%;
+      min-width: 33.3%; // 加入这两个后每个item的宽度就生效了
+      max-width: 33.3%; // 加入这两个后每个item的宽度就生效了
+      text-align: center;
+		position: relative;
+		.typeDerection{
+			position: absolute;
+			right: 26%;
+			top: 30%;
+			color: #5EEEFF;
+		}
+    }
+  }
+}
+/deep/.el-progress--circle .el-progress__text, /deep/.el-progress--dashboard .el-progress__text{
+	position: absolute;
+    top: 60%;
+    left: 28px;
+	color: #5EEEFF;
+	// margin-left: -50%;
+}
+
+.circle2 /deep/ svg>path:nth-child(2) {
+	stroke: url(#write);
+}
+.el-progress-circle__track {
+    stroke: #120D65;
 }
 </style>
