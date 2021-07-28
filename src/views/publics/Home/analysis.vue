@@ -335,8 +335,8 @@
 					graphic: { //环形中间的字
 						elements: [{
 								type: "text",
-								left: "30%",
-								top: "46%",
+								left: "31%",
+								top: "50%",
 								style: {
 									text: "总投诉量",
 									textAlign: "center",
@@ -346,8 +346,8 @@
 							},
 							{
 								type: "text",
-								left: "25%",
-								top: "50%",
+								left: "27%",
+								top: "56%",
 								style: {
 									text: "123,224",
 									textAlign: "center",
