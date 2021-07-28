@@ -314,7 +314,7 @@
 					},
 					legend: {
 						left: "67%",
-						top: "26%",
+						top: "29%",
 						right: "100%",
 						bottom: "85%",
                         orient: "vertical",
@@ -322,8 +322,8 @@
 						padding: [0, 2, 0, 0],
 						itemGap: 11.5,
 //						formatter: data,
-						itemWidth: 18,
-						itemHeight: 18,
+						itemWidth: 14,
+						itemHeight: 14,
 						icon: "circle", //左侧图形形状 类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none  也可以自定义图片'image://img/1主页.png' ,
 						formatter: function (name) {
 							return name + '  '+ '36%'+ '    '+'4,544'
