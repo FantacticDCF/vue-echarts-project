@@ -150,6 +150,6 @@ export default {
 .main {
   height: 15px;
   width: 150px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 </style>

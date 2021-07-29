@@ -1,90 +1,61 @@
 <template>
   <div>
-    <!-- <div class="info">
-      <span class="work">工单查询</span>
-      <input type="text" class="inp" placeholder="输入关键词查询" />
-      
-      <i class="el-icon-search iconSearch"></i>
-    
-    </div> -->
-     <!-- <div class="bus-bread">
-				压降目标 
-		</div>
-       <div class="bus-bread1">
-				投诉发生率考核目标 
-		</div> -->
     <div class="bus-bread">
-		<span class="empty-box"></span>
-		<span class="first-content color-black" >&nbsp;投诉压降&nbsp;&nbsp;</span>
-		<span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
-	</div>
-		<div class="aborder" :style="setBackgroundBg">
-			<span>工单查询</span>
-			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
-			<!-- <div class="iconSearch"> -->
-			<i class="el-icon-search iconSearch"></i>
-		</div>
-
-
-    <div class="formInfo">
-      <div class="box">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-
-        <div class="title">{{ titleName }}</div>
-        <div class="desc">
-          <div class="descTitle">
-            <div class="descTitleName">指标</div>
-            <div class="jinduValueNum">达标值</div>
-          </div>
-          <div class="descTitle1" v-for="(item, index) in info" :key="index">
-            <div
-              :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
-            >
-              {{ item.name }}
-            </div>
-            <div class="jinduValue">
-              <CircleProgressBar
-                :progress="item.jindu"
-                :name="item.namecolor"
-              />
-            </div>
-            <div class="titleNum">{{ item.num1 }}%</div>
-          </div>
-        </div>
-      </div>
-      <div class="box1">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-        <div class="title">{{ titleName1 }}</div>
-        <div class="desc">
-          <div class="descTitle">
-            <div class="descTitleName">指标</div>
-            <div class="jinduValueNum">达标值</div>
-          </div>
-          <div class="descTitle1" v-for="(item, index) in info1" :key="index">
-            <div
-              :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
-            >
-              {{ item.name }}
-            </div>
-            <div class="jinduValue">
-              <CircleProgressBar
-                :progress="item.jindu"
-                :name="item.namecolor"
-              />
-            </div>
-            <div class="titleNum">{{ item.num1 }}%</div>
-          </div>
-        </div>
-      </div>
+      <span class="empty-box"></span>
+      <span class="first-content color-black">&nbsp;投诉压降&nbsp;&nbsp;</span>
+      <span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
     </div>
+
+    <div class="aborder" :style="setBackgroundBg">
+      <span>工单查询</span>
+      <input
+        type="text"
+        class="input-border"
+        placeholder="输入关键词查询"
+        :style="setBackgroundBg"
+      />
+      <i class="el-icon-search iconSearch"></i>
+    </div>
+
+    <el-row>
+      <el-col :span="11">
+        <div class="title">{{ titleName }}</div>
+        <div class="descTitle">
+          <div class="left-div">指标</div>
+          <div class="middle-div">达标值</div>
+        </div>
+        <div class="fromContent" v-for="(item, index) in info" :key="index">
+          <div :class="item.classname">{{ item.name }}</div>
+          <div class="jindu">
+            <CircleProgressBar
+              :progress="item.jindu"
+              :name="item.namecolor"
+              class="jindutiao"
+            />
+            <div class="num">{{ item.num1 }}%</div>
+          </div>
+        </div>
+      </el-col>
+
+      <el-col :span="11">
+        <div class="title">{{ titleName1 }}</div>
+        <div class="descTitle">
+          <div class="left-div">指标</div>
+          <div class="middle-div">达标值</div>
+        </div>
+        <div class="fromContent" v-for="(item, index) in info1" :key="index">
+          <div :class="item.classname">{{ item.name }}</div>
+          <div class="jindu">
+            <CircleProgressBar
+              :progress="item.jindu"
+              :name="item.namecolor"
+              class="jindutiao"
+            />
+            <div class="num">{{ item.num1 }}%</div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -93,13 +64,13 @@ import CircleProgressBar from "../components/CircleProgressBar.vue";
 export default {
   data() {
     return {
-      arr: [50],
       setBackgroundBg: {
-				backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "100% 100%",
-				backgroundPosition: "center"
-			},
+        backgroundImage:
+          "url(" + require("../../../assets/images/big-border.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      },
       titleName: "年度机构目标分解",
       titleName1: "年度业务目标分解",
       info: [
@@ -138,7 +109,6 @@ export default {
           namecolor: "蓝色",
           namecolor1: "红色",
           classname: "write",
-
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
@@ -380,194 +350,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/losspressure.less");
-
-.bas-bac {
-		width: 100%;
-		height: 510px;
-		margin-top: 15px;
-	}
-	
-	.bus-top-text {
-		padding: 8px 0 0 15px;
-		color: #58dbff;
-		font-size: 12px;
-	}
-	
-	.bus-content {
-		margin-top: 10px;
-		width: 100%;
-	}
-	
-	.bus-left-content {
-		margin: 20px 0 2% 3%;
-		float: left;
-		width: 45%;
-		height: 400px;
-		padding-bottom: 13px;
-	}
-	
-	.bus-right-content {
-		margin: 20px 0 2% 3%;
-		float: left;
-		width: 45%;
-		height: 400px;
-		padding-bottom: 16px;
-		position: relative;
-	}
-	
-	.el-row {
-		margin-bottom: 0px;
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-	
-	.el-col {
-		border-radius: 4px;
-	}
-	
-	.aline-right {
-		text-align: right;
-		margin-right: 5px;
-		color: #69a8e1;
-		font-size: 12px;
-		padding-bottom: 10px;
-	}
-	
-	.aline-right-bg {
-		/*width: 116px;*/
-		height: 32px;
-		line-height: 32px;
-		text-align: center;
-		color: #69a8e1;
-		background: #1b3e69;
-		margin-left: 13%;
-		font-size: 12px;
-	}
-	.bus-content-text {
-		padding: 5px;
-	}
-	
-	.color-ff {
-		color: #ffffff;
-		font-size: 12px;
-		padding: 0 15px 20px 0;
-		
-	}
-	.color-ff-right {
-		margin-right: 8%;
-		padding-left: 8px;
-		font-size: 10px;
-		color: #ffffff;
-		font-size: 12px;
-		/*width: 240px;*/
-		height: 32px;
-		line-height: 32px;
-		background: #122d59;
-		margin-bottom: 6px;
-	}
-	#aline-ce {
-		line-height: 16px;
-		font-size: 10px;
-	}
-	.color-blue {
-		margin: 15px 0 10px 0;
-		color: #23cefd;
-		text-align: center;
-		font-size: 14px;
-		font-weight: bold;
-	}
-	.bus-content-btn {
-		position: absolute;
-		bottom: -1%;
-		right: 30%;
-		.cancle-btn {
-			width: 80px;
-			height: 22px;
-			line-height: 22px;
-			background: #23cefd;
-			border: none;
-			border-radius: 16px;
-			cursor: pointer;
-		}
-		.prin-btn {
-			margin-left: 10px;
-			width: 80px;
-			height: 22px;
-			line-height: 22px;
-			background: #69a8e1;
-			border: none;
-			border-radius: 16px;
-			cursor: pointer;
-		}
-	}
-	.bus-bread {
-		/*position: relative;*/
-		text-indent: 16px;
-		color: #69a8e1;
-		.empty-box {
-			position: relative;
-			&:before {
-				position: absolute;
-				content: "";
-				right: 0;
-				top: -6%;
-				border-bottom: 7px solid #1A83C0;
-				border-left: 9px solid transparent;
-				border-top: 9px solid transparent;
-				/*border-left和border-right换成透明色 不然是长方形*/
-			}
-		}
-		.first-content {
-			position: relative;
-			&:after {
-				position: absolute;
-				content: "";
-				right: -3%;
-				top: -6%;
-				border-bottom: 7px solid #1A83C0;
-				border-left: 9px solid transparent;
-				border-top: 9px solid transparent;
-				/*border-left和border-right换成透明色 不然是长方形*/
-			}
-		}
-		.second-content {
-			position: relative;
-			&:after {
-				position: absolute;
-				content: "";
-				right: -5%;
-				top: -6%;
-				border-bottom: 7px solid #1A83C0;
-				border-left: 9px solid transparent;
-				border-top: 9px solid transparent;
-				/*border-left和border-right换成透明色 不然是长方形*/
-			}
-		}
-	}
-.aborder {
-	text-indent: 30px;
-	color: #1A83C0;
-	margin-top: 10px;
-	width: 55%;
-	height: 32px;
-	line-height: 32px;
-	overflow: hidden;
-}
-.input-border {
-	margin-left: 30px;
-	border: none;
-	color: #1A83C0;
-	width: 63%;
-	height: 70%;
-	text-indent: 15px;
-	font-size: 10px;
-}
-input::-webkit-input-placeholder {
-      color: #59dfff;
-    }
-.color-black {
-	color: rgba(34, 82, 128, 1);
-	cursor: pointer;
-}
 </style>

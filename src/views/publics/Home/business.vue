@@ -1,101 +1,78 @@
 <template>
   <div>
-    <div class="bus-bread">
-				投诉压降
-		</div>
-		<div class="aborder" :style="setBackgroundBg">
-			<span>工单查询</span>
-			<input type="text" class="input-border"  placeholder="输入关键词查询" :style="setBackgroundBg"/>
-			<!-- <div class="iconSearch"> -->
-			<i class="el-icon-search iconSearch"></i>
-		</div>
-    <div class="formInfo">
-      <div class="box">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-
-        <div class="title">{{titleName}}</div>
-        <div class="desc">
-          <div class="descTitle">
-            <div class="left-div">机构</div>
-            <div class="middle-div">达标值</div>
-            <div class="right-div">已发生</div>
-          </div>
-          <div class="descTitle1" v-for="(item, index) in info" :key="index" >
-            <div :class="item.classname">{{ item.name }}</div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.namecolor"
-                class="jindutiao"
-              ></Jindutiao>
-              <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
-            </div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
-                class="jindutiao"
-              ></Jindutiao>
-              <div
-                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
-              >
-                <i :class="item.colorid < 1 ? '' : item.icon"></i>
-                {{ item.num2 }}
-              </div>
-            </div>
-          </div>
-
-          <div class="descTitle"></div>
-        </div>
-      </div>
-      <div class="box1">
-        <img
-          src="../../../assets/images/8714a3044d4e775a11f79e65d2afb0a.png"
-          alt=""
-          class="image"
-        />
-        <div class="title">{{titleName1}}</div>
-        <div class="desc">
-          <div class="descTitle">
-            <div class="left-div">机构</div>
-            <div class="middle-div">达标值</div>
-            <div class="right-div">已发生</div>
-          </div>
-          <div class="descTitle1" v-for="(item, index) in info1" :key="index">
-            <div :class="item.classname">{{ item.name }}</div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.namecolor"
-                class="jindutiao"
-              ></Jindutiao>
-              <div class="num"  @click="numPushHandle">{{ item.num1 }}</div>
-            </div>
-            <div class="jindu">
-              <Jindutiao
-                :progress="item.jindu"
-                :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
-                class="jindutiao"
-              ></Jindutiao>
-              <div
-                :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"  @click="numPushHandle"
-              >
-                <i :class="item.colorid < 1 ? '' : item.icon"></i>
-                {{ item.num2 }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="bus-bread">投诉压降</div>
+    <div class="aborder" :style="setBackgroundBg">
+      <span>工单查询</span>
+      <input
+        type="text"
+        class="input-border"
+        placeholder="输入关键词查询"
+        :style="setBackgroundBg"
+      />
+      <i class="el-icon-search iconSearch"></i>
     </div>
-  <!-- <el-row>
-    <el-col :span="12" ></el-col>
-    <el-col :span="12"></el-col>
-  </el-row> -->
+  
+    <el-row>
+      <el-col :span="11">
+        <div class="title">投诉管理目标分解表</div>
+        <div class="descTitle">
+          <div class="left-div">机构</div>
+          <div class="middle-div">达标值</div>
+          <div class="right-div">已发生</div>
+        </div>
+        <div class="fromContent" v-for="(item, index) in info" :key="index">
+          <div :class="item.classname">{{ item.name }}</div>
+          <div class="jindu">
+            <Jindutiao
+              :progress="item.jindu"
+              :name="item.namecolor"
+              class="jindutiao"
+            />
+            <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
+          </div>
+          <div class="jindu">
+            <Jindutiao :progress="item.jindu" :name="item.colorid < 1 ? item.namecolor : item.namecolor1" />
+            <div
+              :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
+              @click="numPushHandle"
+            >
+            <i :class="item.colorid < 1 ? '' : item.icon" ></i>
+              {{ item.num2 }}
+            </div>
+          </div>
+        </div>
+      </el-col>
+
+      <el-col :span="11">
+        <div class="title">监管投诉管理目标</div>
+        <div class="descTitle">
+          <div class="left-div">机构</div>
+          <div class="middle-div">达标值</div>
+          <div class="right-div">已发生</div>
+        </div>
+        <div class="fromContent" v-for="(item, index) in info1" :key="index">
+          <div :class="item.classname">{{ item.name }}</div>
+          <div class="jindu">
+            <Jindutiao
+              :progress="item.jindu"
+              :name="item.namecolor"
+              class="jindutiao"
+            />
+            <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
+          </div>
+          <div class="jindu">
+            <Jindutiao :progress="item.jindu" :name="item.colorid < 1 ? item.namecolor : item.namecolor1" />
+            <div
+              :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
+              @click="numPushHandle"
+            >
+            <i :class="item.colorid < 1 ? '' : item.icon"></i>
+              {{ item.num2 }}
+            </div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -104,17 +81,20 @@ import Jindutiao from "../components/jindutiao.vue";
 export default {
   data() {
     return {
-      titleName:'投诉管理目标分解表',
-      titleName1:'监管投诉管理目标',
+      arr: [50],
+      titleName: "投诉管理目标分解表",
+      titleName1: "监管投诉管理目标",
       setBackgroundBg: {
-				backgroundImage: "url(" + require("../../../assets/images/big-border.png") + ")",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "100% 100%",
-				backgroundPosition: "center"
-			},
+        backgroundImage:
+          "url(" + require("../../../assets/images/big-border.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      },
       info: [
         {
           id: 1001,
+      
           colorid: 0,
           name: "全辖投诉数量控制",
           num1: 4160,
@@ -404,65 +384,14 @@ export default {
   },
   methods: {
      numPushHandle(){
-      this.$router.push({path:'/Home/plan'})
+      this.$router.push({path:'/Home/analysis'})
     }
   },
-  mounted() {
-   
-  },
+  mounted() {},
 };
 </script>
 
 <style lang="less" scoped>
 @import url("../../../assets/less/business.less");
-.el-col {
-  height: 500px;
-  background: red;
-}
-.bus-bread {
-	position: relative;
-	text-indent: 16px;
-	color: #69a8e1;
-	&:before {
-		position: absolute;
-		content: "";
-		left: 0;
-		top:0;
-		border-bottom: 7px solid #1A83C0;
-		border-left: 9px solid transparent;
-		border-top: 9px solid transparent;
-		/*border-left和border-right换成透明色 不然是长方形*/
-	}
-	&:after {
-		position: absolute;
-		content: "";
-		right: 92.5%;
-		top:0;
-		border-bottom: 7px solid #1A83C0;
-		border-left: 9px solid transparent;
-		border-top: 9px solid transparent;
-		/*border-left和border-right换成透明色 不然是长方形*/
-	}
-}
-.aborder {
-	text-indent: 30px;
-	color: #1A83C0;
-	margin-top: 10px;
-	width: 55%;
-	height: 32px;
-	line-height: 32px;
-	overflow: hidden;
-}
-.input-border {
-	margin-left: 30px;
-	border: none;
-	color: #1A83C0;
-	width: 70%;
-	height: 70%;
-	text-indent: 15px;
-	font-size: 10px;
-}
-input::-webkit-input-placeholder {
-      color: #59dfff;
-    }
+
 </style>

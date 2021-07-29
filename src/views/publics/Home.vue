@@ -157,7 +157,7 @@ export default {
           name: "查询",
           img: require('../../assets/images/commonTitle/cx.png'),
           id: "2",
-          to: "/Home/serch",
+          to: "/Home/searchList",
         },
         {
           label: "监管报送",

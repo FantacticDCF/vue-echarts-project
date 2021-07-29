@@ -1,7 +1,7 @@
 <!--表格进度条组件-->
 <template>
   <div class="tableProcess">
-    <el-table :data="tableData" width="100%">
+    <el-table :data="tableData" width="100%" height="100%">
       <el-table-column
           prop="top"
           label="排名"
@@ -194,8 +194,11 @@ export default {
 
 
 <style >
+.tableProcess {
+  height: 90%;
+}
 .tableProcess .el-table td, .el-table th {
-  padding: 5px 0;
+  padding: 2px 0;
 }
 /*.el-table tr:hover {*/
 /*   background: transparent;*/
@@ -205,7 +208,13 @@ export default {
 }
 .tableProcess .el-table {
   background: transparent;
-  margin-top: 20px;
+  margin-top: 14px;
+}
+.tableProcess .el-table__body{
+  height: 100%;
+}
+.tableProcess .el-table--scrollable-y .el-table__body-wrapper {
+  overflow: hidden;
 }
 .tableProcess .el-table th, .el-table tr {
   background-color: transparent;
@@ -214,7 +223,7 @@ export default {
   background-color: #081b56;
 }
 .tableProcess .el-table td, .el-table th {
-  padding: 5px 0;
+  /*padding: 0.7% 0;*/
   text-align: center;
 }
 .tableProcess .el-table--border::after, .el-table--group::after, .el-table::before {

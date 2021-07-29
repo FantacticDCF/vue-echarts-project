@@ -1,96 +1,95 @@
 <template>
-  <div>
-    <section class="mainbox">
-      <div class="column">
-        <div class="panel bar">
-          <h2>全行投诉指标一览<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+  <div class="mainbox">
+    <el-row>
+    <el-col :span="7">
+      <div class="panel bar">
+        <h2>全行投诉指标一览<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
 
-          <div class="ts-index">
-            <div class="ts-bg"><h3>40%</h3></div>
-            <p>总投诉发生率</p>
-          </div>
-          <div class="ts-index">
-            <div class="ts-bg"><h3>30%</h3></div>
-            <p>对公客户投诉发生率</p>
-          </div>
-          <div class="ts-index">
-            <div class="ts-bg"><h3>20%</h3></div>
-            <p>月度投诉发生率</p>
-          </div>
-          <div class="ts-index">
-            <div class="ts-bg"><h3>10%</h3></div>
-            <p>零售客户投诉发生率</p>
-          </div>
-           <div class="chart"></div>
-          <div class="panel-footer"></div>
+        <div class="ts-index">
+          <div class="ts-bg"><h3>40%</h3></div>
+          <p>总投诉发生率</p>
         </div>
-        <div class="panel bar2">
-          <h2>全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-<!--          <div class="chart"></div>-->
-          <TableProcess></TableProcess>
-          <div class="panel-footer"></div>
+        <div class="ts-index">
+          <div class="ts-bg"><h3>30%</h3></div>
+          <p>对公客户投诉发生率</p>
+        </div>
+        <div class="ts-index">
+          <div class="ts-bg"><h3>20%</h3></div>
+          <p>月度投诉发生率</p>
+        </div>
+        <div class="ts-index">
+          <div class="ts-bg"><h3>10%</h3></div>
+          <p>零售客户投诉发生率</p>
+        </div>
+        <div class="chart"></div>
+        <div class="panel-footer"></div>
+      </div>
+      <div class="panel bar2">
+        <h2>全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <TableProcess></TableProcess>
+        <div class="panel-footer"></div>
+      </div>
+    </el-col>
+    <el-col :span="10">
+      <div class="no">
+        <div class="no-hd">
+          <ul>
+            <li>{{orgName}}<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></li>
+          </ul>
+          <p>机构名称</p>
+        </div>
+        <div class="no-hd">
+          <ul>
+            <li>{{dnAll}}</li>
+          </ul>
+          <p>当年投诉总量</p>
+        </div>
+        <div class="no-hd">
+          <ul>
+            <li>{{jgAll}}</li>
+          </ul>
+          <p>监管投诉数量</p>
+        </div>
+        <div class="no-hd">
+          <ul>
+            <li>{{hnAll}}</li>
+          </ul>
+          <p>行内投诉数量</p>
+        </div>
+        <div class="no-bd">
+          <ul>
+            <li>全国</li>
+            <li>21,283</li>
+            <li>129.6</li>
+            <li>166.8</li>
+          </ul>
         </div>
       </div>
-      <div class="column">
-        <div class="no">
-          <div class="no-hd">
-            <ul>
-              <li>{{orgName}}<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></li>
-            </ul>
-            <p>机构名称</p>
-          </div>
-          <div class="no-hd">
-            <ul>
-              <li>{{dnAll}}</li>
-            </ul>
-            <p>当年投诉总量</p>
-          </div>
-          <div class="no-hd">
-            <ul>
-              <li>{{jgAll}}</li>
-            </ul>
-            <p>监管投诉数量</p>
-          </div>
-          <div class="no-hd">
-            <ul>
-              <li>{{hnAll}}</li>
-            </ul>
-            <p>行内投诉数量</p>
-          </div>
-          <div class="no-bd">
-            <ul>
-              <li>全国</li>
-              <li>21,283</li>
-              <li>129.6</li>
-              <li>166.8</li>
-            </ul>
-          </div>
-        </div>
-        <div class="map">
-          <div class="chart"></div>
-        </div>
+      <div class="map">
+        <div class="chart"></div>
       </div>
-      <div class="column">
-        <div class="panel bar1">
-          <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <div class="chart" id="chart"></div>
-          <div class="panel-footer"></div>
-          <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <div class="chart2"></div>
-          <div class="panel-footer"></div>
-        </div>
-        <div class="panel bar1">
-          <h2 class="bg-s">投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <div class="chart3"></div>
-          <div class="panel-footer"></div>
-          <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-          <div class="chart4"></div>
-          <div class="panel-footer"></div>
-        </div>
+    </el-col>
+    <el-col :span="7">
+      <div class="panel bar1">
+        <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <div class="chart" id="chart"></div>
+        <div class="panel-footer"></div>
+        <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <div class="chart2"></div>
+        <div class="panel-footer"></div>
       </div>
-    </section>
+      <div class="panel bar1">
+        <h2 class="bg-s">投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <div class="chart3"></div>
+        <div class="panel-footer"></div>
+        <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <div class="chart4"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </el-col>
+  </el-row>
   </div>
 </template>
 <script>
@@ -732,7 +731,7 @@
                   color: "#fff"
                 }
               },
-              zoom: 1.1,
+              zoom: 1,
               roam : false, //是否可移动
               hoverable : false, //是否有鼠标滑过效果,
               itemStyle: {
@@ -766,7 +765,7 @@
               },
               roam: false,
               //   放大我们的地图
-              zoom: 1.1,
+              zoom: 1,
               itemStyle: {
                 normal: {
                   areaColor: "rgba(43, 196, 243, 0.42)",
@@ -802,22 +801,9 @@ body {
 }
 
 .mainbox {
-  /*min-width: 1024px;*/
-  /*max-width: 1920px;*/
-  height: 680px;
-  padding: 5px;
-  display: flex;
+  padding: 5px 5px 0 5px;
 }
-.mainbox .column {
-  /*flex: 3;*/
-  width:30%
-}
-.mainbox .column:nth-child(2) {
-  /*flex: 5;*/
-  width: 40%;
-  margin: 0 4px;
-  overflow: hidden;
-}
+
 .cockp_arrow {
   width: 12px;
   height: 11px;
@@ -836,12 +822,13 @@ body {
 }
 .panel {
   position: relative;
-  height: 340px;
+  /*height: 340px;*/
+  height: calc((100vh - 82px)/2);
   /* border: 1px solid rgba(25, 186, 139, 0.17); */
   background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
   padding: 21px 10px;
   background-size: 100% 100%;
-  margin-bottom: 5px;
+  /*margin-bottom: 5px;*/
 }
 .panel::before {
   position: absolute;
@@ -919,11 +906,11 @@ body {
 /*  height: 3rem;*/
 /*}*/
 .panel .sub1 {
-  margin-top: 20px;
+  margin-top: 15px;
   background: none;
 }
 .panel .sub2 {
-  margin-top: 6px;
+  margin-top: 0px;
   background: none;
 }
 .panel .bg-m {
@@ -933,10 +920,10 @@ body {
   max-width: 105px;
 }
 .bar1 .chart,.bar1 .chart2 ,.bar1 .chart3,.bar1 .chart4 {
-  height:120px
+  height:40%
 }
 .bar2 .chart{
-  height:300px;
+  height:280px;
   padding:10px;
   margin: 10px -10px;
 
@@ -1014,12 +1001,12 @@ body {
   font-size: 12px;
 }
 .no .no-hd ul li {
+  font-size: 17px;
   position: relative;
   flex: 1;
   text-align: center;
   height: 20px;
   line-height: 20px;
-  font-size: 20px;
   color: #02ade3;
   padding: 20px;
   font-family: electronicFont;
@@ -1048,7 +1035,7 @@ body {
   height: 20px;
   line-height:20px;
   text-align: center;
-  font-size: 20px;
+  font-size: 17px;
   color: rgb(1, 179, 233);
   padding-top: 14px;
   font-weight:bold;
@@ -1057,14 +1044,16 @@ body {
   position: relative;
   background: url(../../../assets/images/map_bg.png);
   background-size: 100% 100%;
-  height: 530px;
+  /*height: 530px;*/
+  height: calc(100vh - 210px);
 }
 .map .chart {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 5;
-  height: 500px;
+  /*height: 500px;*/
+  height:100%;
   width: 100%;
 }
 

@@ -15,7 +15,7 @@ module.exports = {
     port: 81,
     proxy: { //配置跨域
       '/api': {
-        target: 'xxx',
+        target: 'http://10.14.133.240:8081',
         changOrigin: true, //允许跨域
         ws: true,
         pathRewrite: {
@@ -32,7 +32,7 @@ module.exports = {
     if(process.env.NODE_ENV === 'production'){
       config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
     }
-  },
+  }
   // js、css压缩
   // chainWebpack: config => {
   //   if (process.env.NODE_ENV === 'production') {

@@ -1,0 +1,142 @@
+body,
+html {
+  height: 100%;
+}
+#app {
+  height: 100%;
+}
+ul {
+  list-style: none;
+}
+.class_succeed {
+  display: flex;
+  align-items: center;
+  color: #2b85e4;
+}
+.class_succeed .succeed_right h5 {
+  font-size: 16px;
+  line-height: 36px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.clinic_title {
+  font-size: 25px;
+}
+.clinic_btns {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 3px solid #dcdee2;
+}
+.page {
+  display: flex;
+  justify-content: center;
+}
+.pagetop {
+  margin-top: 50px;
+}
+.clinic {
+  color: #000;
+}
+.clinic .clinic_content {
+  padding: 20px 0px;
+}
+.clinic .clinic_content .minW250 {
+  min-width: 200px !important;
+}
+.clinic .clinic_content .content_left {
+  text-align: center;
+  border: 1px solid #dcdee2;
+  border-radius: 6px;
+  margin: 0px 20px;
+  padding: 10px 0px;
+  box-sizing: border-box;
+}
+.clinic .clinic_content .content_left img {
+  width: 80%;
+}
+.clinic .clinic_content .content_left .avatar {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.clinic .clinic_content .right_class {
+  margin-bottom: 16px;
+}
+.clinic .clinic_content .right_class .class_h3 {
+  display: flex;
+  justify-content: space-between;
+}
+.clinic .clinic_content .right_class .class_input .list_tab {
+  width: 200px;
+  text-align: center;
+}
+.clinic .clinic_content .right_class .class_input .list_tab img {
+  width: 200px;
+  height: 200px;
+}
+.clinic .clinic_content .right_class .class_input .list_tab div {
+  display: flex;
+  justify-content: space-between;
+}
+.clinic .clinic_content .right_class .margin {
+  margin: 16px 0px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+/* 超出隐藏 */
+/* 超出一行则省略 */
+.exceedone {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+/*超出2行则省略 */
+.exceedtwo {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+/*超出6行则省略 */
+.exceedsix {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+.ivu-spin.ivu-spin-default.ivu-spin-fix.ivu-spin-show-text.ivu-spin-fullscreen {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vertical-center-modal .ivu-modal {
+  top: 0;
+}
+.cursor {
+  cursor: pointer;
+}
+.end-button-top-20 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.margin10 {
+  margin-right: 10px;
+}
