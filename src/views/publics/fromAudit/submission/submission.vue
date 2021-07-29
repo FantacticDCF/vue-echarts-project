@@ -231,7 +231,9 @@ export default {
     background: rgba(255, 255, 255, 0.04) url(../../../../assets/images/submission/active5.png) no-repeat;
     background-size: 100% 100%;
   }
+  .deflt {
 
+  }
   .submission .item p, .submission .item2 p{
     color: #50b6fd;
     margin-top: 110px;
@@ -258,3 +260,4 @@ export default {
 
 
 </style>
+
