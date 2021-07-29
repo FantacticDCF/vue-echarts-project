@@ -90,7 +90,6 @@ export default {
                         { offset: 1, color: "#4FC8EC" },
                       ]
                     );
-                
                   } else {
                     return new that.$echarts.graphic.LinearGradient(
                       0,
@@ -105,7 +104,6 @@ export default {
                       ]
                     );
                   }
-                     
                 },
               },
             },
@@ -134,7 +132,6 @@ export default {
               barBorderRadius: 40,
             },
           },
-          
         ],
       };
 
@@ -146,7 +143,6 @@ export default {
 </script>
 
 <style>
-
 .main {
   height: 15px;
   width: 150px;
