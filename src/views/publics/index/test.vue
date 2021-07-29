@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import TableProgress from "../components/TableProgress";
+import TableProgress from "../../../components/TableProgress";
 export default {
   name: "test",
   components: {TableProgress},
   data() {
     return {
-      data:[]
+      data:{}
     }
   },
   mounted() {
