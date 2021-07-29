@@ -94,12 +94,7 @@ export default {
       formInline: {
         user: "",
       },
-      // obj: {
-      //   // label: "投诉压降工作节点3",
-      //    label:`投诉压降工作节点${this.form.countermeasures.length}`,
-      //   value: "",
-      //   type: "1",
-      // },
+     
       planSrc: {
         src1: an,
         src2: liang,
@@ -260,6 +255,7 @@ export default {
   //   background: red;
   margin: 0 24.5px 20px;
   color: #58dbff;
+  cursor:pointer;
 }
 .bas-bac {
   width: 100%;
