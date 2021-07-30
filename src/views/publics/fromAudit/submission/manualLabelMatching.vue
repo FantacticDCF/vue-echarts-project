@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="bus-bread">消保审核</div>
-        <div class="bus-bread1">报送</div>
+        <div class="bus-bread" @click="goBacktoSec">消保审核</div>
+        <div class="bus-bread1" @click="goBackto">报送</div>
         <div class="bus-bread2">手工标签匹配</div> 
         <div class="aborder" :style="setBackgroundBg">
             <span>工单查询</span>
@@ -163,6 +163,16 @@ export default {
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
       },
+      goBackto(){
+        this.$router.push({
+          path: '/Home/submission'
+        })
+      },
+      goBacktoSec(){
+        this.$router.push({
+          path: '/Home/fromAudit'
+        })
+      }
     },
 }
 </script>
@@ -173,7 +183,7 @@ export default {
   color: #176CA3;
   top: -20px;
   left: 6.5%;
-
+  cursor: pointer;
   &:after {
     position: absolute;
     content: "";
@@ -206,6 +216,7 @@ export default {
   position: relative;
   text-indent: 16px;
   color: #176CA3;
+  cursor: pointer;
   &:before {
     position: absolute;
     content: "";
@@ -265,13 +276,14 @@ input::-webkit-input-placeholder {
 }
 .sgMatch-footer{
   position: absolute;
-  left: 50%; bottom: -30px;
+  left: 50%; bottom: -28px;
   font-size: 20px;
-  width: 50%;
-  margin-left: -24%;
+  width: 48%;
+  margin-left: -23%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
   .confirm-btn{
     display: inline-block;
     color: #11071F;
