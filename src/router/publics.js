@@ -121,6 +121,11 @@ let pubics=[
                 path: '/Home/test',
                 name: 'test',
                 component: () => import("@/views/publics/index/test")
+            },
+            {
+                path: '/Home/table',
+                name: 'table',
+                component: () => import("@/components/tableCommon")
             }
        ]
     }
