@@ -12,82 +12,9 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div>
+
     <div class="searchTable">
-      <div class="table-wrapper">
-        <el-row>
-          <el-table
-            class="customer-table"
-            :data="tableData"
-            stripe
-            style="width: 100%"
-          >
-            <el-table-column
-              header-align="center"
-              align="center"
-              width="30"
-              type="expand"
-            >
-            <template slot-scope="props">
-              <el-form label-position="left" inline class="demo-table-expand">
-                <el-form-item label="详情">
-                  <span>{{ props.row.detail }}</span>
-                </el-form-item>
-              </el-form>
-            </template>
-            </el-table-column>
-            <el-table-column
-              prop="date"
-              label="时间"
-              header-align="center"
-              align="center"
-              width="150"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="bank"
-              header-align="center"
-              align="center"
-              label="涉事分行"
-              width="160"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="address"
-              align="center"
-              header-align="center"
-              label="涉事网点"
-              style="white-space: nowrap;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              word-break: break-all"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="remark"
-              header-align="center"
-              align="center"
-              label="事件记录"
-              width="220"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              header-align="center"
-              align="center"
-              label="投诉人"
-              width="120"
-            >
-            </el-table-column>
-            <el-table-column
-              prop="identify"
-              header-align="center"
-              align="center"
-              label="投诉人身份"
-            >
-            </el-table-column>
-          </el-table>
-        </el-row>
-      </div>
+      <tableCommon :tableData="tableData" :listLabel="listLabel" :detailFlag='detailFlag'/>
       <div class="searchPage">
         <el-row>
             <el-pagination
@@ -105,7 +32,11 @@
   </div>
 </template>
 <script>
+import tableCommon from '../../../../components/tableCommon.vue'
 export default {
+  components:{
+    tableCommon
+  },
   data() {
     return {
       setBackgroundBg: {
@@ -115,97 +46,107 @@ export default {
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
       },
+      detailFlag: true,
+      listLabel: [
+          {label: '时间', width: '150',prop: 'data'},
+          {label: '涉事分行',width: '160', prop: 'bank'},
+          {label: '涉事网点', prop: 'netaddress'},
+          {label: '事件记录', width: '220',prop: 'remark'},
+          {label: '投诉人', width: '120',prop: 'person'},
+          {label: '投诉人身份', prop: 'identify'}
+      ],
+      // 表格数据  (随意写的数据）
       tableData: [
-        {
-          date: "2016-05-02",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1518 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "邓伦",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-04",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1517 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "邓伦",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-01",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1519 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "王一博",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-03",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1516 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "王一博",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-04",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1517 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "邓伦",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-01",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1519 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "王一博",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-03",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1516 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "王一博",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-04",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1517 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "邓伦",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-01",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1519 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "王一博",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
-        {
-          date: "2016-05-03",
-          bank: "北京分行",
-          address: "上海市普陀区金沙江路 1516 弄",
-          remark: "xxxxxxxxxxxxxxx",
-          identify: "xxxxxxxxx",
-          name: "王一博",
-          detail: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '534454545456465',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              identify: '5344545454564654',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          }
       ],
       currentPage1: 1,
     };
