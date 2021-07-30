@@ -123,19 +123,11 @@ let pubics=[
                 component: () => import("@/views/publics/index/test")
             },
             {
-<<<<<<< HEAD
-                path: '/Home/test',
-                name: 'test',
-                component: () => import("@/views/publics/index/test"),
-                meta:{breadnav:[{path:'/Home/business',name:'投诉压降'}],name:'投诉压降'}
-            }
-=======
                 path: '/Home/manualLabelMatching',
                 name: 'manualLabelMatching',
                 component: ()=>import("@/views/publics/fromAudit/submission/manualLabelMatching"),
                 meta:{breadnav:[{path:'/Home/manualLabelMatching',name:'手工标签匹配'}],name:'手工标签匹配'}//投诉预警
             },
->>>>>>> f95a430e4e7ac62c06608d6a1b69bf8eedf98f57
        ]
     }
 ]
