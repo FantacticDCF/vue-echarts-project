@@ -3,34 +3,53 @@
     <el-progress
       :percentage="percentage"
       :type="type"
-      :stroke-width="strokewidth"
+      :stroke-width="strokeWidth"
       :text-inside="textinside"
       :status='status'
-      :color='color'
+      :color='customColor'
       :width='width'
       :show-text='showtext'
-      :stroke-linecap='strokelinecap'
-      :format='format'
+      :stroke-linecap='strokeLinecap'
+      :style="aok"
     ></el-progress>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      percentage: "",
-      type: "",
-      strokewidth: "",
-      textinside: "",
-      status:"",
-      color:"",
-      width:'',
-      showtext:'',
-      strokelinecap:'',
-      format:''
-    };
-  },
+  props: {
+    percentage: {
+      type: String
+    },
+    type: {
+      type: String
+    },
+    strokeWidth: {
+      type: String
+    },
+    textinside: {
+      type: Boolean
+    },
+    status: {
+      type: String
+    },
+    customColor: {
+      type: String
+    },
+    width: {
+      type: Number
+    },
+    showtext: {
+      type: Boolean
+    },
+    strokeLinecap: {
+      type: String
+    },
+    aok: {
+      type: Object
+    },
+    
+  }
 };
 </script>
 

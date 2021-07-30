@@ -11,7 +11,7 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div>
-  
+
     <el-row>
       <el-col :span="11">
         <div class="title">投诉管理目标分解表</div>
@@ -23,20 +23,47 @@
         <div class="fromContent" v-for="(item, index) in info" :key="index">
           <div :class="item.classname">{{ item.name }}</div>
           <div class="jindu">
-            <Jindutiao
-              :progress="item.jindu"
+            <progressCommon
+              :showxAxis="false"
+              :showaxisTick="false"
+              :showaxisLine="false"
+              :inverseyAxis="true"
+              :typeshow="false"
+              :coloraxisLabel="coloraxisLabel"
+              :typeaxisLine="false"
+              :typeyAxis="true"
               :name="item.namecolor"
-              class="jindutiao"
+              :yAxisIndexseries="yAxisIndexseries"
+              :serisetype="serisetype"
+              :progress="item.jindu"
+              :backgroundStyleseries="true"
+              :barBorderRadiusnormal="barBorderRadiusnormal"
+              :barCategoryGapseries="barCategoryGapseries"
+              :barWidthseries="barWidthseries"
+              :nameseries="nameseries"
+              :yAxisIndexseries1="yAxisIndexseries1"
+              :typeseries="typeseries"
+              :dataseries="dataseries"
+              :barCategoryGap="barCategoryGap"
+              :barWidth="barWidth"
+              :zseries="zseries"
+              :coloritemStyle="coloritemStyle"
+              :borderColoritemStyle="borderColoritemStyle"
+              :borderWidthitemStyle="borderWidthitemStyle"
+              :barBorderRadiusitemStyle="barBorderRadiusitemStyle"
             />
             <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
           </div>
           <div class="jindu">
-            <Jindutiao :progress="item.jindu" :name="item.colorid < 1 ? item.namecolor : item.namecolor1" />
+            <Jindutiao
+              :progress="item.jindu"
+              :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
+            />
             <div
               :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
               @click="numPushHandle"
             >
-            <i :class="item.colorid < 1 ? '' : item.icon" ></i>
+              <i :class="item.colorid < 1 ? '' : item.icon"></i>
               {{ item.num2 }}
             </div>
           </div>
@@ -51,7 +78,7 @@
           <div class="right-div">已发生</div>
         </div>
         <div class="fromContent" v-for="(item, index) in info1" :key="index">
-          <div :class="item.classname">{{ item.name }}</div>
+          <div :class="item.classname" id="el-progress">{{ item.name }}</div>
           <div class="jindu">
             <Jindutiao
               :progress="item.jindu"
@@ -61,12 +88,15 @@
             <div class="num" @click="numPushHandle">{{ item.num1 }}</div>
           </div>
           <div class="jindu">
-            <Jindutiao :progress="item.jindu" :name="item.colorid < 1 ? item.namecolor : item.namecolor1" />
+            <Jindutiao
+              :progress="item.jindu"
+              :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
+            />
             <div
               :class="item.colorid < 1 ? item.titleColor1 : item.titleColor2"
               @click="numPushHandle"
             >
-            <i :class="item.colorid < 1 ? '' : item.icon"></i>
+              <i :class="item.colorid < 1 ? '' : item.icon"></i>
               {{ item.num2 }}
             </div>
           </div>
@@ -78,9 +108,27 @@
 
 <script>
 import Jindutiao from "../components/jindutiao.vue";
+import progressCommon from "../../../components/progressCommon.vue";
 export default {
   data() {
     return {
+      yAxisIndexseries: 0,
+      serisetype: "bar",
+      barBorderRadiusnormal: 20,
+      barCategoryGapseries: 1,
+      barWidthseries: 19,
+      nameseries: "框",
+      yAxisIndexseries1: 1,
+      typeseries: "bar",
+      dataseries: [100],
+      barCategoryGap: 1,
+      barWidth: 19,
+      zseries: 0,
+      borderWidthitemStyle: 0,
+      barBorderRadiusitemStyle: 40,
+      borderColoritemStyle:'#142E5C',
+      coloritemStyle: "#142E5C",
+      coloraxisLabel: "#32B7E3",
       arr: [50],
       titleName: "投诉管理目标分解表",
       titleName1: "监管投诉管理目标",
@@ -94,7 +142,7 @@ export default {
       info: [
         {
           id: 1001,
-      
+
           colorid: 0,
           name: "全辖投诉数量控制",
           num1: 4160,
@@ -377,15 +425,17 @@ export default {
           icon: "el-icon-warning",
         },
       ],
+     
     };
   },
   components: {
     Jindutiao,
+    progressCommon,
   },
   methods: {
-     numPushHandle(){
-      this.$router.push({path:'/Home/analysis'})
-    }
+    numPushHandle() {
+      this.$router.push({ path: "/Home/analysis" });
+    },
   },
   mounted() {},
 };
@@ -393,5 +443,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/business.less");
-
 </style>
