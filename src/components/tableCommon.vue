@@ -40,8 +40,8 @@
 export default {
     props: {
         detailFlag :  {
-            type: String, 
-            default: ()=> false
+            type: Boolean, 
+            default: ()=> 'false'
         },
         tableData: [],
         listLabel: []
