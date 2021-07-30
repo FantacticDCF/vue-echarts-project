@@ -29,7 +29,7 @@ let pubics=[
                 path: '/Home/business',
                 name: 'publicsbusiness',
                 component: ()=>import("@/views/publics/Home/business"),
-                meta:{breadnav:[{path:'/Home/business',name:'投诉压降'}],name:'投诉压降'},//投诉压降
+                meta:{breadnav:[{path:'/Home/business',name:'投诉压降'}],name:'投诉压降'}//投诉压降
                 // children:[
                 //     {
                 //         path:"/business/plan",
@@ -109,12 +109,12 @@ let pubics=[
                 path: '/Home/eventWarning',
                 name: 'eventWarning',
                 component: () => import("@/views/publics/complaintsWarning/components/eventWarning"),
-                meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
+                meta: {breadnav: [{path: '/Home/explain', name: '产品设计说明'}],name: '产品设计说明'}
             },
             {
-                path: '/Home/searchList',
-                name: 'searchList',
-                component: () => import("@/views/publics/search/searchList"),
+                path: '/Home/explain',
+                name: 'explain',
+                component: () => import("@/views/publics/explain/explain"),
                 meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
             },
             {
