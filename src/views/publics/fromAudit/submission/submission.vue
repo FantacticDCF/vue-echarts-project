@@ -44,7 +44,7 @@
         <el-row class="margin">
           <el-col :span="4" class="arrow">&nbsp; </el-col>
           <el-col :span="8">
-            <div class="item2 icon-4" :class="fininshed[3]?'active':'deflt'">
+            <div class="item2 icon-4" :class="fininshed[3]?'active':'deflt'" @click="jumpdirect">
 <!--              <img src="../../../../assets/images/submission/item4.png">-->
               <p>手工标签匹配</p>
             </div>
@@ -84,6 +84,11 @@ export default {
     goBack(){
       this.$router.push({
         path: '/Home/fromAudit'
+      })
+    },
+    jumpdirect(){
+      this.$router.push({
+        path: '/Home/manualLabelMatching'
       })
     }
   },

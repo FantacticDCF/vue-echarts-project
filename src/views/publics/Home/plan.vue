@@ -94,11 +94,7 @@ export default {
       formInline: {
         user: "",
       },
-      obj: {
-        label: "投诉压降工作节点3",
-        value:"",
-        type: "1",
-      },
+     
       planSrc: {
         src1: an,
         src2: liang,
@@ -235,11 +231,13 @@ export default {
       });
     },
     addClickHandle() {
-      this.form.countermeasures.push(this.obj);
+      // this.form.countermeasures.push(this.obj);
+      this.form.countermeasures.push({label:`投诉压降工作节点${this.form.countermeasures.length-4}`,value:'',type:'1',});
+      //点击添加完了 滚动条自动滚到底部
       this.$nextTick(() => {
         this.$refs.chatContent.$el.scrollTop += 50;
       });
-    //   console.log(this.$refs.chatContent);
+      //   console.log(this.$refs.chatContent);
     },
   },
 };
@@ -257,6 +255,7 @@ export default {
   //   background: red;
   margin: 0 24.5px 20px;
   color: #58dbff;
+  cursor:pointer;
 }
 .bas-bac {
   width: 100%;

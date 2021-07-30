@@ -132,9 +132,10 @@
 			// this.getRoundEcharts() // 环形进度条
 		},
 		created(){
-			this.$axios.get('/api/hello').then((res)=>{
-				console.log(res.data,123)
-			})
+			// 模拟请求数据
+			// this.$axios.get('/api/hello').then((res)=>{
+			// 	console.log(res.data,123)
+			// })
 		},
 		methods: {
 			goToBack() {

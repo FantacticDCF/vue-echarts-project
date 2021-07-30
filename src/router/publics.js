@@ -121,7 +121,13 @@ let pubics=[
                 path: '/Home/test',
                 name: 'test',
                 component: () => import("@/views/publics/index/test")
-            }
+            },
+            {
+                path: '/Home/manualLabelMatching',
+                name: 'manualLabelMatching',
+                component: ()=>import("@/views/publics/fromAudit/submission/manualLabelMatching"),
+                meta:{breadnav:[{path:'/Home/manualLabelMatching',name:'手工标签匹配'}],name:'手工标签匹配'}//投诉预警
+            },
        ]
     }
 ]

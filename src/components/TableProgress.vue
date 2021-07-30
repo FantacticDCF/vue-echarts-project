@@ -4,19 +4,19 @@
     <el-col :span="data.colspan" >&nbsp;
         <div class="TableProgress" :style="tpStyleObj">
             <p class="title">{{data.title}}</p>
-            <el-table :data="tableData" width="100%" height="">
-      <el-table-column v-for="item in colData" :key="item.id"
-                       :prop="item.colNameEn" :label="item.colName" :width="item.colWidth" className="color-blue"
-      >
-        <template  slot-scope="scope">
-          <el-progress v-if="item.isProgress"
-                       :percentage="scope.row.progressData" :show-text='false' height="15"
-                       :color="scope.row.progressStatus?'blue':'red'"
-                       ></el-progress>
-          <span v-else>{{ scope.row[item.colNameEn] }}</span>
-        </template>
-      </el-table-column>
-    </el-table>
+            <el-table :data="tableData" width="100%" height="100%">
+              <el-table-column v-for="item in colData" :key="item.id"
+                               :prop="item.colNameEn" :label="item.colName" :width="item.colWidth" className="color-blue"
+              >
+                <template  slot-scope="scope">
+                  <el-progress v-if="item.isProgress"
+                               :percentage="scope.row.progressData" :show-text='false'
+                               :color="scope.row.progressStatus?'blue':'red'"
+                               ></el-progress>
+                  <span v-else>{{ scope.row[item.colNameEn] }}</span>
+                </template>
+              </el-table-column>
+            </el-table>
         </div>
     </el-col>
   </el-row>
@@ -32,27 +32,24 @@ export default {
       tableData: [],
       colData: [],
       tpStyleObj:{
-        backgroundImage:"url(" + require("../../../assets/images/components/border.png") + ")",
+        backgroundImage:"url(" + require("../assets/images/components/border.png") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-        // background: 'url(../../../assets/images/components/bg.png)',
+        backgroundPosition: "center"
       },
       // colspan: 12//表格整体比例
     }
   },
   props:{
-    data:Array
+    data:Object
   },
   mounted() {
     this.init()
   },
   methods: {
     init() {
-
       this.colData = this.data.colData
       this.tableData = this.data.tableData
-
     },
   }
 }
@@ -93,7 +90,7 @@ export default {
   background-color: transparent;
 }
 .TableProgress .el-table--enable-row-hover .el-table__body tr:hover>td {
-  /*background-color: #081b56;*/
+  background-color: transparent;
 }
 .TableProgress .el-table td, .el-table th {
   /*padding: 0.7% 0;*/
@@ -113,4 +110,12 @@ export default {
 .TableProgress .color-white {
   /*color: white;*/
 }
+.TableProgress .el-progress-bar__outer {
+   height: 15px;
+   border-radius: 75px;
+   background-color: #1a3a6b7d;
+   overflow: hidden;
+   position: relative;
+   vertical-align: middle;
+ }
 </style>
