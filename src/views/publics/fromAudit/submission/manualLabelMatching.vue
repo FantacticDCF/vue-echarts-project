@@ -265,13 +265,14 @@ input::-webkit-input-placeholder {
 }
 .sgMatch-footer{
   position: absolute;
-  left: 50%; bottom: -30px;
+  left: 50%; bottom: -28px;
   font-size: 20px;
-  width: 50%;
-  margin-left: -24%;
+  width: 48%;
+  margin-left: -23%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
   .confirm-btn{
     display: inline-block;
     color: #11071F;
