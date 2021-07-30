@@ -64,6 +64,12 @@ let pubics=[
                 meta:{breadnav:[{path:'/Home/serch',name:'查询'}],name:'查询'}//机构
             },
             {
+                path: '/Home/searchList',
+                name: 'searchList',
+                component: ()=>import("@/views/publics/search/searchList"),
+                meta:{breadnav:[{path:'/Home/serch',name:'查询'}],name:'查询'}//机构
+            },
+            {
                 path: '/Home/regulatorySubmitted',
                 name: 'regulatorySubmitted',
                 component: ()=>import("@/views/publics/regulatorySubmitted/regulatorySubmitted"),
