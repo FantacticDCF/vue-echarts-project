@@ -59,8 +59,8 @@ export default {
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
-          padding: '28px 28px 50px 30px',
-          margin: '20px 0 0 0'
+          padding: '20px 28px 30px 30px',
+          margin: '5px 0 0 0'
         },
         detailFlag: false,
         listLabel: [
@@ -230,7 +230,7 @@ export default {
 .aborder {
   text-indent: 30px;
   color: #1a83c0;
-  margin-top: -20px;
+  margin-top: -25px;
   width: 55%;
   height: 32px;
   line-height: 32px;
@@ -249,12 +249,11 @@ input::-webkit-input-placeholder {
   color: #59dfff;
 }
 .sgMatch-content-title{
-  font-size: 20px;
+  font-size: 18px;
   color: #25E2FF;
 }
 .searchTable {
   width: 98%;
-  margin-top: 20px;
   padding: 1%;
   // background: url("../../../../assets/images/commonTitle/searchbg.png");
   background-size: 100% 100%;
@@ -266,7 +265,7 @@ input::-webkit-input-placeholder {
 }
 .sgMatch-footer{
   position: absolute;
-  left: 50%; bottom: -45px;
+  left: 50%; bottom: -30px;
   font-size: 20px;
   width: 50%;
   margin-left: -24%;
@@ -333,7 +332,8 @@ input::-webkit-input-placeholder {
   cursor: default;
 }
 /deep/.el-table .cell {
-  line-height: 16px;
+  line-height: 14px;
+  font-size: 13px;
 }
 /deep/.el-table__row td div{
   white-space: nowrap;
