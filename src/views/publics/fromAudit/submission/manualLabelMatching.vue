@@ -46,134 +46,134 @@ export default {
   components:{
     TableCommon
   },
-    data(){
-      return {
-        setBackgroundBg: {
-          backgroundImage: "url(" + require("../../../../assets/images/big-border.png") + ")",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center"
-        },
-        setBackgroundBg1: {
-          backgroundImage: "url(" + require("../../../../assets/images/submission/sgbg.png") + ")",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center",
-          padding: '20px 28px 30px 30px',
-          margin: '5px 0 0 0'
-        },
-        detailFlag: false,
-        listLabel: [
-            {label: '时间', width: '200',prop: 'data'},
-            {label: '涉事分行',width: '160', prop: 'bank'},
-            {label: '涉事网点', width: '250', prop: 'netaddress'},
-            {label: '事件记录',prop: 'remark'},
-            {label: '投诉人', width: '120',prop: 'person'},
-        ],
-        // 表格数据  (随意写的数据）
-        tableData: [
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            },
-            {
-                data: '2021年1月5号',
-                bank: '北京分行',
-                netaddress: '北京市金融街道21号',
-                remark: 'xxxxxxxxxxxx',
-                person: 'z张三',
-                detail: 'xxxxxxxxxxxxxxxxxxx'
-            }
-        ],
-        currentPage1: 1,
-      }
+  data(){
+    return {
+      setBackgroundBg: {
+        backgroundImage: "url(" + require("../../../../assets/images/big-border.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center"
+      },
+      setBackgroundBg1: {
+        backgroundImage: "url(" + require("../../../../assets/images/submission/sgbg.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+        padding: '20px 28px 30px 30px',
+        margin: '5px 0 0 0'
+      },
+      detailFlag: false,
+      listLabel: [
+          {label: '时间', width: '200',prop: 'data'},
+          {label: '涉事分行',width: '160', prop: 'bank'},
+          {label: '涉事网点', width: '250', prop: 'netaddress'},
+          {label: '事件记录',prop: 'remark'},
+          {label: '投诉人', width: '120',prop: 'person'},
+      ],
+      // 表格数据  (随意写的数据）
+      tableData: [
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          },
+          {
+              data: '2021年1月5号',
+              bank: '北京分行',
+              netaddress: '北京市金融街道21号',
+              remark: 'xxxxxxxxxxxx',
+              person: 'z张三',
+              detail: 'xxxxxxxxxxxxxxxxxxx'
+          }
+      ],
+      currentPage1: 1,
+    }
+  },
+  methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
     },
-     methods: {
-      handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
-      goBackto(){
-        this.$router.push({
-          path: '/Home/submission'
-        })
-      },
-      goBacktoSec(){
-        this.$router.push({
-          path: '/Home/fromAudit'
-        })
-      }
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
     },
+    goBackto(){
+      this.$router.push({
+        path: '/Home/submission'
+      })
+    },
+    goBacktoSec(){
+      this.$router.push({
+        path: '/Home/fromAudit'
+      })
+    }
+  },
 }
 </script>
 <style lang="less" scoped>
