@@ -1,40 +1,40 @@
 <template>
-      <div class="table-wrapper">
-        <el-row>
-          <el-table
-            class="customer-table"
-            :data="tableData"
-            stripe
-            style="width: 100%"
-          >
-            <el-table-column
-              header-align="center"
-              align="center"
-              width="30"
-              type="expand"
-              v-if="detailFlag"
-            >
-                <template slot-scope="props">
-                    <el-form label-position="left" inline class="demo-table-expand">
-                        <el-form-item label="详情">
-                            <span>{{ props.row.detail }}</span>
-                        </el-form-item>
-                    </el-form>
-                </template>
-            </el-table-column>
-            <el-table-column
-              v-for="item,index in listLabel" 
-              :key="index"
-              :prop="item.prop"
-              :label="item.label"
-              header-align="center"
-              align="center"
-              :width="item.width"
-            >
-            </el-table-column>
-          </el-table>
-        </el-row>
-      </div>
+  <div class="table-wrapper">
+    <el-row>
+      <el-table
+        class="customer-table"
+        :data="tableData"
+        stripe
+        style="width: 100%"
+      >
+        <el-table-column
+          header-align="center"
+          align="center"
+          width="30"
+          type="expand"
+          v-if="detailFlag"
+        >
+            <template slot-scope="props">
+                <el-form label-position="left" inline class="demo-table-expand">
+                    <el-form-item label="详情">
+                        <span>{{ props.row.detail }}</span>
+                    </el-form-item>
+                </el-form>
+            </template>
+        </el-table-column>
+        <el-table-column
+          v-for="item,index in listLabel" 
+          :key="index"
+          :prop="item.prop"
+          :label="item.label"
+          header-align="center"
+          align="center"
+          :width="item.width"
+        >
+        </el-table-column>
+      </el-table>
+    </el-row>
+  </div>
 </template>
 <script>
 export default {
