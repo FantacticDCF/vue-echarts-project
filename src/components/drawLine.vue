@@ -1,5 +1,5 @@
 <template>
-  <div id="chartLineBox" :style="style"> 
+  <div :id="id" :style="style"> 
 </template>
 
 <script>
@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       style: {},
+      id: '',
       showAxisTick: '',
       showAxisLine: '',
       dataxAxis: '',
@@ -42,7 +43,7 @@ export default {
   },
   mounted() {
     this.chartLine = this.$echarts.init(
-      document.getElementById("chartLineBox")
+      document.getElementById(this.id)
     )
     this.getLineEcharts()
   },

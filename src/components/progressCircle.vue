@@ -1,23 +1,54 @@
 <template>
   <div>
-      <!-- 封装带圆圈得进度条 -->
+    <!-- 封装带圆圈得进度条 -->
     <!-- 显示图表容器 -->
     <div class="main1" ref="main1"></div>
   </div>
 </template>
 
 <script>
-// import echarts from "echarts";
 export default {
   data() {
     return {
-      value: [],
     };
   },
   props: {
-    id: String,
-    progress: Array,
+    showxAxis: Boolean,
+    showaxisTick: Boolean,
+    showaxisLine: Boolean,
+    inverseyAxis: Boolean,
+    typeshow: Boolean,
+    coloraxisLabel: String,
+    typeaxisLine: Boolean,
+    typeyAxis: Boolean,
     name: String,
+    yAxisIndexseries: Number,
+    serisetype: String,
+    progress: Array,
+    backgroundStyleseries: Boolean,
+    barBorderRadiusnormal: Number,
+    showlabel: Boolean,
+    positionlabel: String,
+    distancelabel: Number,
+    borderColorlabel: String,
+    borderWidthlabel: Number,
+    borderRadiuslabel: Number,
+    widthlabel: Number,
+    heightlabel: Number,
+    //   colornormal:Function,
+    barCategoryGapseries: Number,
+    barWidthseries: Number,
+    nameseries: String,
+    yAxisIndexseries1: Number,
+    typeseries: String,
+    dataseries: Array,
+    barCategoryGap: Number,
+    barWidth: Number,
+    zseries: Number,
+    coloritemStyle: String,
+    borderColoritemStyle: String,
+    borderWidthitemStyle: Number,
+    barBorderRadiusitemStyle: Number,
     conversion: {
       default: false,
     },
@@ -32,12 +63,12 @@ export default {
     draw() {
       var that = this;
       // 基于准备好的dom，初始化echarts实例
-      var myChart = this.$echarts.init(this.$refs.main1);
+      var myChart = this.$echarts.init(this.$refs.main);
       // this.charts = echarts.init(this.$refs.echarts);
       // 指定图表的配置项和数据
       var option = {
         xAxis: {
-          show: false, //不显示x轴相关信息
+          show: this.showxAxis, //不显示x轴相关信息
         },
 
         yAxis: [
@@ -45,50 +76,51 @@ export default {
             type: "category",
             // axisTick: { show: false }, //不显示刻度线
             axisTick: {
-              show: false,
+              show: this.showaxisTick,
             },
             axisLine: {
-              show: false,
+              show: this.showaxisLine,
             },
-            inverse: true,
+            inverse: this.inverseyAxis,
           },
           {
             type: "category",
-            axisTick: { show: false }, //不显示刻度线
+            axisTick: { show: this.typeshow }, //不显示刻度线
             axisLabel: {
-              color: "#32B7E3",
+              color: this.coloraxisLabel,
             },
 
             axisLine: {
-              show: false,
+              show: this.typeaxisLine,
             },
-            inverse: true,
+            inverse: this.typeyAxis,
           },
         ],
         series: [
           {
             name: this.name,
-            yAxisIndex: 0,
-            type: "bar",
+            yAxisIndex: this.yAxisIndexseries,
+            type: this.serisetype,
             data: this.progress, //控制里面的长度
             // 修改第一条柱子的圆角
-            backgroundStyle: true,
+            backgroundStyle: this.backgroundStyleseries,
             itemStyle: {
               normal: {
-                barBorderRadius: 20,
+                barBorderRadius: this.barBorderRadiusnormal,
                 label: {
-                  show: true,
-                  position: "insideRight",
+                  show: this.showlabel,
+                  position: this.positionlabel,
                   formatter: "    ",
                   // backgroundColor: "#94f6ff",
-                  distance: 0,
-                  borderColor: "#ffff",
-                  borderWidth: 3,
-                  borderRadius: 15,
+                  distance: this.distancelabel,
+                  borderColor: this.borderColorlabel,
+                  borderWidth: this.borderWidthlabel,
+                  borderRadius: this.borderRadiuslabel,
                   // color: "#94f6ff",
-                  width:10,
-                  height:9,
+                  width: this.widthlabel,
+                  height: this.heightlabel,
                 },
+                // color:this.colornormal
                 color: function (params) {
                   // console.log(params);
                   if (params.seriesName == "蓝色") {
@@ -122,28 +154,28 @@ export default {
               },
             },
             // 柱子之间的间距
-            barCategoryGap: 1,
+            barCategoryGap: this.barCategoryGapseries,
             // 柱子之间的宽度
-            barWidth: 19,
+            barWidth: this.barWidthseries,
             // 显示柱子内的文字
           },
 
           {
-            name: "框",
-            yAxisIndex: 1,
-            type: "bar",
-            data: [100],
+            name: this.nameseries,
+            yAxisIndex: this.yAxisIndexseries1,
+            type: this.typeseries,
+            data: this.dataseries,
 
             // 柱子之间的间距
-            barCategoryGap: 1,
+            barCategoryGap: this.barCategoryGap,
             // 柱子之间的宽度
-            barWidth: 19,
-            z: 0,
+            barWidth: this.barWidth,
+            z: this.zseries,
             itemStyle: {
-              color: "#142E5C", //填充色
-              borderColor: "#142E5C",
-              borderWidth: 0,
-              barBorderRadius: 40,
+              color: this.coloritemStyle, //填充色
+              borderColor: this.borderColoritemStyle,
+              borderWidth: this.borderWidthitemStyle,
+              barBorderRadius: this.barBorderRadiusitemStyle,
             },
           },
         ],
@@ -157,7 +189,6 @@ export default {
 </script>
 
 <style>
-
 .main1 {
   height: 15px;
   width: 250px;
