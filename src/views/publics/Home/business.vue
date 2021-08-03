@@ -38,6 +38,14 @@
               :progress="item.jindu"
               :backgroundStyleseries="true"
               :barBorderRadiusnormal="barBorderRadiusnormal"
+              :colornormal="colornormal"
+              :colornormal1="colornormal1"
+              :colornormal2="colornormal2"
+              :colornormal3="colornormal3"
+              :colornormal4="colornormal4"
+              :colornormal5="colornormal5"
+              :colornormal6="colornormal6"
+              :colornormal7="colornormal7"
               :barCategoryGapseries="barCategoryGapseries"
               :barWidthseries="barWidthseries"
               :nameseries="nameseries"
@@ -109,6 +117,7 @@
 <script>
 import Jindutiao from "../components/jindutiao.vue";
 import progressCommon from "../../../components/progressCommon.vue";
+
 export default {
   data() {
     return {
@@ -126,9 +135,18 @@ export default {
       zseries: 0,
       borderWidthitemStyle: 0,
       barBorderRadiusitemStyle: 40,
-      borderColoritemStyle:'#142E5C',
+      borderColoritemStyle: "#142E5C",
       coloritemStyle: "#142E5C",
       coloraxisLabel: "#32B7E3",
+      // colornormal:"#0499D4",
+      colornormal: "#0499D4",
+      colornormal1: "#1AA5DB",
+      colornormal2: "#39BBE5",
+      colornormal3: "#4FC8EC",
+      colornormal4: "#E53232",
+      colornormal5: "#E84040",
+      colornormal6: "#F06363",
+      colornormal7: "#F57B7B",
       arr: [50],
       titleName: "投诉管理目标分解表",
       titleName1: "监管投诉管理目标",
@@ -425,7 +443,6 @@ export default {
           icon: "el-icon-warning",
         },
       ],
-     
     };
   },
   components: {
