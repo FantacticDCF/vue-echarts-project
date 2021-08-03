@@ -123,16 +123,6 @@ let pubics=[
                 component: () => import("@/views/publics/explain/explain"),
                 meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
             },
-            // {
-            //     path: '/Home/test',
-            //     name: 'test',
-            //     component: () => import("@/views/publics/index/test")
-            // },
-            {
-                path: '/Home/test',
-                name: 'test',
-                component: () => import("@/views/publics/index/test")
-            },
             {
                 path: '/Home/manualLabelMatching',
                 name: 'manualLabelMatching',
