@@ -145,9 +145,9 @@ export default {
           to: "/Home/business",
         },
         {
-          label: "压降目标",
+          label: "投诉压降(考核目标)",
           // name: "压降目标",
-           name: "压降目标",
+           name: "投诉压降(考核目标)",
           img: require('../../assets/images/commonTitle/yjmb.png'),
           id: "2",
           to: "/Home/losspressure",
@@ -303,7 +303,7 @@ export default {
   text-align: left !important;
 }
 .menu-item span{
-  width: 7rem !important;
+  width: 8rem !important;
 }
 .ivu-layout-sider{
   min-width: 230px !important;

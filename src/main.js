@@ -13,18 +13,20 @@ import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
 import Base64 from './assets/utils/Base64';
+import vDialogs from 'v-dialogs'
 import './mock/mock'
 // import './views/publics/bigData/static/js/flexible'
 import Observer from "./assets/utils/observer";
 
-Vue.prototype.Observer = Observer;
-Vue.prototype.$Base64 = Base64;
-Vue.use(VueQuillEditor);
-Vue.prototype.$echarts = echarts;
-Vue.prototype.$axios = axios;
-Vue.config.productionTip = false;
-Vue.use(ViewUI);
-Vue.use(ElementUI);
+Vue.prototype.Observer = Observer
+Vue.prototype.$Base64 = Base64
+Vue.use(VueQuillEditor)
+Vue.prototype.$echarts = echarts
+Vue.prototype.$axios = axios
+Vue.config.productionTip = false
+Vue.use(ViewUI)
+Vue.use(ElementUI)
+Vue.use(vDialogs)
 
 Vue.prototype.avatar = 'this.src="' + require('@/assets/images/avatar.jpg') + '"';
 

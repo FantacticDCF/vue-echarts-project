@@ -1,5 +1,5 @@
 <template>
-  <div id="divId">
+  <div id="divId" ref="divid">
     <div class="bus-bread">投诉压降</div>
     <div class="bus-bread1">节点成果提交</div>
     <div class="aborder" :style="setBackgroundBg">
@@ -162,6 +162,7 @@ export default {
     window.onresize = function () {
       _this.screenHeight = getheight('divId') - 60 - 21 - 32 - 32 - 20 - 15
     }
+    console.log(this.$refs.divid.innerHTML)
   },
   methods: {
     projectSelectFun(e) {
