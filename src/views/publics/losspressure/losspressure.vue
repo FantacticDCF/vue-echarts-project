@@ -24,15 +24,18 @@
           <div class="left-div">指标</div>
           <div class="middle-div">达标值</div>
         </div>
-        <div class="fromContent" >
-          <div class="blue">全辖投诉数量控制</div>
+
+        <div class="fromContent" v-for="(item,index) in info" :key="index">
+          <div :class="item.classname">{{item.name}}</div>
           <div class="jindu">
             <div class="block">
-              <el-slider v-model="value" show-input :show-input-controls="false" input-size='mini'>  </el-slider>
+              <el-slider v-model="item.value" :show-tooltip="false" show-input :show-input-controls="false" input-size='mini' :max='item.maxValue' :min='item.minValue' :step='item.step' >  </el-slider>
             </div> 
           </div>
           <div class="fuhao">%</div>
-        </div>        
+        </div>  
+        
+              
       </el-col>
       
 
@@ -44,7 +47,8 @@
           <div class="left-div">指标</div>
           <div class="middle-div">达标值</div>
         </div>
-        <div class="fromContent" v-for="(item, index) in info1" :key="index">
+
+        <!-- <div class="fromContent" v-for="(item, index) in info1" :key="index">
           <div :class="item.classname">{{ item.name }}</div>
           <div class="jindu">
             <CircleProgressBar
@@ -54,18 +58,28 @@
             />
             <div class="num">{{ item.num1 }}%</div>
           </div>
-        </div>
+        </div> -->
+           <div class="fromContent" v-for="(item,index) in info1" :key="index">
+          <div :class="item.classname">{{item.name}}</div>
+          <div class="jindu">
+            <div class="block">
+              <el-slider v-model="item.value" :show-tooltip="false" show-input :show-input-controls="false" input-size='mini' :max='item.maxValue' :min='item.minValue' :step='item.step' >  </el-slider>
+            </div> 
+          </div>
+          <div class="fuhao">%</div>
+        </div>  
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import CircleProgressBar from "../components/CircleProgressBar.vue";
+// import CircleProgressBar from "../components/CircleProgressBar.vue";
 export default {
   data() {
     return {
-      value: 0,
+      value: 0.002,
+      num:0,
       setBackgroundBg: {
         backgroundImage:
           "url(" + require("../../../assets/images/big-border.png") + ")",
@@ -88,7 +102,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-          value:0
+          value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1002,
@@ -102,7 +119,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-           value:0
+             value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1003,
@@ -116,7 +136,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-           value:0
+              value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1004,
@@ -130,7 +153,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-           value:0
+              value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1005,
@@ -144,7 +170,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-           value:0
+              value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1006,
@@ -158,7 +187,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-           value:0
+              value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1007,
@@ -172,7 +204,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-          value:0
+             value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1008,
@@ -186,7 +221,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "titleNum",
           icon: "el-icon-warning",
-           value:0
+            value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1009,
@@ -200,7 +238,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-           value:0
+              value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1010,
@@ -214,7 +255,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
-          value:10
+              value:0.004,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
       ],
       info1: [
@@ -230,6 +274,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1002,
@@ -243,6 +291,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1003,
@@ -257,6 +309,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1004,
@@ -270,6 +326,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1005,
@@ -283,6 +343,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1006,
@@ -296,6 +360,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1007,
@@ -309,6 +377,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1008,
@@ -322,6 +394,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "titleNum",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1009,
@@ -335,6 +411,10 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
         {
           id: 1010,
@@ -348,14 +428,31 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0.005,
+          maxValue:0.005,
+          minValue:0,
+          step:0.001,
         },
       ],
+     
     };
   },
   components: {
-    CircleProgressBar,
+    // CircleProgressBar,
   },
-  methods: {},
+  methods: {
+    // handleChange(val) {
+    //   console.log(val)
+    //   this.value = val / 1000
+    // },
+    // formatTooltip(val){
+    //     // console.log(11,val/1000);
+    //       // this.value=val/1000
+    //      return val
+         
+    //   // this.num
+    // }
+  },
   mounted() {},
 };
 </script>
