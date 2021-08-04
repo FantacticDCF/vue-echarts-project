@@ -5,7 +5,7 @@
       <el-table-column
           prop="top"
           label="排名"
-          width="28"
+          width="32"
           className="color-blue">
       </el-table-column>
       <el-table-column

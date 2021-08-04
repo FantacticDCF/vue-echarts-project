@@ -124,11 +124,6 @@ let pubics=[
                 meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
             },
             {
-                path: '/Home/test',
-                name: 'test',
-                component: () => import("@/views/publics/index/test")
-            },
-            {
                 path: '/Home/manualLabelMatching',
                 name: 'manualLabelMatching',
                 component: ()=>import("@/views/publics/fromAudit/submission/manualLabelMatching"),
@@ -139,6 +134,11 @@ let pubics=[
                 name: 'fuzzySearch',
                 component: ()=>import("@/components/fuzzySearch"),
             },
+            {
+                path: '/Home/customerReview',
+                name: 'customerReview',
+                component: () => import("@/views/publics/search/customerReview")
+            }
        ]
     }
 ]

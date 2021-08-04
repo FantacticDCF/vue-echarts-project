@@ -2,8 +2,8 @@
   <div>
     <div class="bus-bread">
       <span class="empty-box"></span>
-      <span class="first-content color-black">&nbsp;投诉压降&nbsp;&nbsp;</span>
-      <span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
+      <span class="first-content color-black">&nbsp;投诉压降(考核目标)&nbsp;&nbsp;</span>
+      <!-- <span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span> -->
     </div>
 
     <div class="aborder" :style="setBackgroundBg">
@@ -24,18 +24,19 @@
           <div class="left-div">指标</div>
           <div class="middle-div">达标值</div>
         </div>
-        <div class="fromContent" v-for="(item, index) in info" :key="index">
-          <div :class="item.classname">{{ item.name }}</div>
+        <div class="fromContent" >
+          <div class="blue">全辖投诉数量控制</div>
           <div class="jindu">
-            <CircleProgressBar
-              :progress="item.jindu"
-              :name="item.namecolor"
-              class="jindutiao"
-            />
-            <div class="num">{{ item.num1 }}%</div>
+            <div class="block">
+              <el-slider v-model="value" show-input :show-input-controls="false" input-size='mini'>  </el-slider>
+            </div> 
           </div>
-        </div>
+          <div class="fuhao">%</div>
+        </div>        
       </el-col>
+      
+
+
 
       <el-col :span="11">
         <div class="title">{{ titleName1 }}</div>
@@ -64,6 +65,7 @@ import CircleProgressBar from "../components/CircleProgressBar.vue";
 export default {
   data() {
     return {
+      value: 0,
       setBackgroundBg: {
         backgroundImage:
           "url(" + require("../../../assets/images/big-border.png") + ")",
@@ -86,6 +88,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+          value:0
         },
         {
           id: 1002,
@@ -99,6 +102,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1003,
@@ -112,6 +116,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1004,
@@ -125,6 +130,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1005,
@@ -138,6 +144,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1006,
@@ -151,6 +158,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1007,
@@ -164,6 +172,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+          value:0
         },
         {
           id: 1008,
@@ -177,6 +186,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "titleNum",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1009,
@@ -190,6 +200,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+           value:0
         },
         {
           id: 1010,
@@ -203,6 +214,7 @@ export default {
           titleColor2: "titleNum1",
           titleColor1: "designation",
           icon: "el-icon-warning",
+          value:10
         },
       ],
       info1: [
@@ -350,4 +362,5 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/losspressure.less");
+
 </style>

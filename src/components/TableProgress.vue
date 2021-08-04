@@ -1,17 +1,19 @@
 <!--表格进度条组件-->
 <template>
-  <el-row>
     <el-col :span="data.colspan" >&nbsp;
         <div class="TableProgress" :style="tpStyleObj">
             <p class="title">{{data.title}}</p>
             <el-table :data="tableData" width="100%" height="100%">
               <el-table-column v-for="item in colData" :key="item.id"
-                               :prop="item.colNameEn" :label="item.colName" :width="item.colWidth" className="color-blue"
+                               :prop="item.colNameEn" :label="item.colName" :width="item.colWidth"
+                               :className="item.colColor"
               >
                 <template  slot-scope="scope">
                   <el-progress v-if="item.isProgress"
                                :percentage="scope.row.progressData" :show-text='false'
-                               :color="scope.row.progressStatus?'blue':'red'"
+                               :class="scope.row.progressStatus?'colorDefault':'colorDanger'"
+                               :width="20"
+                               :stroke-width="20"
                                ></el-progress>
                   <span v-else>{{ scope.row[item.colNameEn] }}</span>
                 </template>
@@ -19,7 +21,6 @@
             </el-table>
         </div>
     </el-col>
-  </el-row>
 </template>
 
 <script>
@@ -29,10 +30,12 @@ export default {
   data() {
     return {
       // data:[],
-      tableData: [],
+      tableData:[],
       colData: [],
       tpStyleObj:{
-        backgroundImage:"url(" + require("../assets/images/components/border.png") + ")",
+        backgroundImage:"",
+        // backgroundImage:"url(" + require("../assets/images/components/border.png") + ")",
+        // backgroundImage:"url(require(" + this.bgUrl + "))",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         backgroundPosition: "center"
@@ -44,29 +47,47 @@ export default {
     data:Object
   },
   mounted() {
-    this.init()
+    this.$nextTick(() => {
+      console.log(this.data,'---data---')
+      this.init()
+    });
   },
   methods: {
     init() {
       this.colData = this.data.colData
       this.tableData = this.data.tableData
+      this.tpStyleObj.backgroundImage = "url(" + require(`../assets/images/components/${this.data.bgImg}.png`) + ")"
+      // this.tpStyleObj.backgroundImage = "url(" + require(`../assets/images/components/border.png`) + ")"
+
     },
-  }
+  },
 }
 </script>
 
 
 <style >
 .TableProgress {
-  /*height: 90%;*/
-  /*min-height: 300px;*/
+  /*margin-top: 20px;*/
+  margin: 5px;
+  padding:1px;
 }
-.TableProgress .title{
-  display: inline-block;
-  margin: 10px 20px;
-  color: #55d4f8;
-  font-size: 14px;
+
+.TableProgress .title {
+  height: 22px;
+  margin-top: 10px;
+  margin-left: 14px;
+  text-align: left;
+  display: block;
+  max-width: 195px;
+  color: #02d1f4;
+  background: url(../assets/images/title_bg.png) no-repeat;
+  background-size:100% 100%;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0 8px;
+
 }
+
 .TableProgress .el-table td, .el-table th {
   padding: 10px 0;
 }
@@ -78,13 +99,15 @@ export default {
 }
 .TableProgress .el-table {
   background: transparent;
-  /*margin-top: 14px;*/
+  width: 98%;
+  margin: 10px 0 10px 15px;
 }
 .TableProgress .el-table__body{
   height: 100%;
 }
 .TableProgress .el-table--scrollable-y .el-table__body-wrapper {
   overflow: hidden;
+  height: auto!important;
 }
 .TableProgress .el-table th, .el-table tr {
   background-color: transparent;
@@ -104,14 +127,21 @@ export default {
   font-size: 10px;
   padding: 0 2px;
 }
-.TableProgress .color-blue {
-  color: #12abe2;
+.TableProgress .blue {
+  color: #55d4f8;
 }
 .TableProgress .color-white {
   /*color: white;*/
 }
-.TableProgress .el-progress-bar__outer {
-   height: 15px;
+.TableProgress .colorDefault .el-progress-bar__inner{
+  background-color: #55d4f8;
+}
+.TableProgress .colorDanger .el-progress-bar__inner{
+  background-color: rgba(251, 84, 62, 1);
+  /*background-image: -webkit-linear-gradient(bottom,rgba(251, 84, 62, 1), rgba(245, 134, 89, 1));*/
+}
+.TableProgress .el-progress-bar__outer  {
+   /*height: 15px;*/
    border-radius: 75px;
    background-color: #1a3a6b7d;
    overflow: hidden;
