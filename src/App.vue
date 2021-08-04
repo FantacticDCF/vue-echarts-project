@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view v-if="isRouterAlive" />
   </div>
 </template>
 
 <script>
 export default {
+    provide () {
+      return {
+        reload: this.reload
+      }
+    },
     data(){
         return{
             tagpx: 0,//导航标签
@@ -13,6 +18,7 @@ export default {
                 user: "",
                 password: "",
             },//账号登录
+            isRouterAlive: true,
             ruleInline: {
                 user: [
                 {
@@ -39,26 +45,32 @@ export default {
         }
     },
     methods: {
-    //导航tag标签
-    tag_go(id) {
-      let tags = document.getElementsByClassName("tges")[0];
-      switch (id) {
-        case 1:
-          if (this.tagpx == 0) return;
-          this.tagpx +=43.26;
-          tags.style.left = this.tagpx + "px";
-          break;
-        case 2:
-          if (tags.clientWidth + this.tagpx < 86.52) {
-            this.$Message.warning("已经到标签最后了");
-            return;
-          }
-          this.tagpx -= 43.26;
-          tags.style.left = this.tagpx + "px";
-          break;
+      //导航tag标签
+      tag_go(id) {
+        let tags = document.getElementsByClassName("tges")[0];
+        switch (id) {
+          case 1:
+            if (this.tagpx == 0) return;
+            this.tagpx +=43.26;
+            tags.style.left = this.tagpx + "px";
+            break;
+          case 2:
+            if (tags.clientWidth + this.tagpx < 86.52) {
+              this.$Message.warning("已经到标签最后了");
+              return;
+            }
+            this.tagpx -= 43.26;
+            tags.style.left = this.tagpx + "px";
+            break;
+        }
+      },
+      reload () {
+        this.isRouterAlive = false
+        this.$nextTick(function () {
+          this.isRouterAlive = true
+        })
       }
     },
-  },
   computed: {},
 };
 </script>
