@@ -1,3 +1,4 @@
+<script src="../../../../../DEMO/数字化投诉分析管理系统/static/js/china.js"></script>
 <template>
   <div>
     <div class="bus-bread">查询</div>
@@ -14,7 +15,8 @@
       <i class="el-icon-search iconSearch"></i>
     </div>
     <div class="customerReview">
-      <h2 class="title">分行总体评价 Top10</h2>
+      <h2 class="title" >分行总体评价 Top10</h2>
+      <label class="moreBarInfo" @click="showAll"> {{moreBarInfo}} > </label>
       <div class="bar"></div>
     </div>
     <el-row>
@@ -33,27 +35,25 @@ export default {
     return {
       setBackgroundBg: {
         backgroundImage:
-          "url(" + require("../../../assets/images/big-border.png") + ")",
+            "url(" + require("../../../assets/images/big-border.png") + ")",
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
       },
-      data:{},
-      data2:{},
-      data3: {
-        title: "",
-        cols : ["信用卡", "个贷", "手机银行"],
-        data: [66, 59, 57],
-        fontSize:12,
-        color: '#fff',
-        left: "15",
-        top: "10",
-        right: "15",
-        bottom: "10",
-      }
-    };
+      data: {},//客户资产等级维度
+      data2: {},//客户年龄维度
+      barAllData: {},//分行总体评价  完整数据
+      barData: {},//分行总体评价 Top10数据
+      colsAll: [],
+      numbersAll: [],
+      cols: [],
+      numbers: [],
+      // moreBarInfo: "显示全部",
+      status : true,  //是否显示Top10，默认显示
+    }
   },
   mounted() {
+
     this.data = {
       title:"客户资产等级维度",
       colspan: 12,
@@ -218,14 +218,81 @@ export default {
         },
       ]
     }
+    this.barAllData = [
+        {name:'北京',value:200},
+        {name:'天津',value:190},
+        {name:'上海',value:180},
+        {name:'重庆',value:170},
+        {name:'江苏',value:160},
+        {name:'青海',value:150},
+        {name:'四川',value:140},
+        {name:'海南',value:140},
+        {name:'陕西',value:130},
+        {name:'甘肃',value:120},
+        {name:'云南',value:110},
+        {name:'湖南',value:100},
+        {name:'湖北',value:100},
+        {name:'黑龙',value:100},
+        {name:'贵州',value:100},
+        {name:'山东',value:100},
+        {name:'江西',value:100},
+        {name:'河南',value:100},
+        {name:'河北',value:100},
+        {name:'山西',value:100},
+        {name:'安徽',value:100},
+        {name:'福建',value:100},
+        {name:'浙江',value:100},
+        {name:'广东',value:100},
+        {name:'吉林',value:100},
+        {name:'辽宁',value:100},
+        {name:'北京2',value:80},
+        {name:'天津2',value:80},
+        {name:'上海2',value:80},
+        {name:'重庆2',value:80},
+        {name:'江苏2',value:80},
+        {name:'青海2',value:80},
+        {name:'四川2',value:80},
+        {name:'海南2',value:80},
+        {name:'陕西2',value:80},
+        {name:'甘肃2',value:80},
+        {name:'云南2',value:80},
+        {name:'湖南2',value:80},
+        {name:'湖北2',value:80},
+        {name:'黑龙2',value:80},
+        {name:'贵州2',value:80},
+        {name:'山东2',value:80},
+        {name:'江西2',value:80},
+        {name:'河南2',value:80},
+        {name:'河北2',value:80},
+        {name:'山西2',value:80},
+        {name:'安徽2',value:80},
+        {name:'福建2',value:80},
+        {name:'浙江2',value:80},
+        {name:'广东2',value:80},
+        {name:'吉林2',value:80},
+        {name:'辽宁2',value:80}
+    ]
+
+    this.barAllData.forEach((item)=>{
+      this.colsAll.push(item.name)
+      this.numbersAll.push(item.value)
+    })
+
+    this.cols = this.colsAll.slice(0,10)
+    this.numbers = this.numbersAll.slice(0,10)
+
 
     this.init()
+  },
+  computed:{
+    moreBarInfo(){
+      return this.status?"显示全部":"返回"
+    }
   },
   methods: {
     init() {
       var that = this;
       var myChart = this.$echarts.init(document.querySelector(".bar"));
-
       var option = {
         // backgroundColor: "#034380",
         tooltip: {
@@ -246,18 +313,7 @@ export default {
             axisTick: {
               show: false,
             },
-            data: [
-              "北京",
-              "上海",
-              "深圳",
-              "大连",
-              "南京",
-              "杭州",
-              "广州",
-              "成都",
-              "郑州",
-              "重庆"
-            ],
+            data: this.cols,
             axisLine: {
               lineStyle: {
                 color: "#4f81af",
@@ -288,18 +344,27 @@ export default {
             },
           },
         ],
+        dataZoom: [//滑动条
+          {
+            show: false,//是否显示滑动条
+            type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+            zoomLock:true,
+            // start: 0,                               //数据窗口范围的起始百分比,表示30%
+            end: null,                                 //数据窗口范围的结束百分比,表示70%
+            startValue:0,                           //数据窗口范围的起始数值
+            endValue:10,                            //数据窗口范围的结束数值。
+          }
+        ],
         series: [
           {
             type: "bar",
-            data: [
-              200, 190, 180, 170, 160, 150, 140, 130, 120, 115
-            ],
+            data: this.numbers,
             barWidth: "15px",
             // barCategoryGap: 10,
             barGap: 15,
             itemStyle: {
               normal: {
-                color: new that.$echarts.graphic.LinearGradient(
+                color: new this.$echarts.graphic.LinearGradient(
                     0,
                     0.4,
                     0.7,
@@ -335,6 +400,38 @@ export default {
       myChart.setOption(option);
       window.addEventListener("resize", () => { myChart.resize();});
 
+    },
+    //显示全部信息
+    showAll() {
+        this.status = !this.status;
+        if( this.status) {
+          //Top10
+          this.cols = this.colsAll.slice(0,10)
+          this.numbers = this.numbersAll.slice(0,10)
+        }else {
+          this.cols = this.colsAll
+          this.numbers = this.numbersAll
+        }
+        console.log(this.cols,'this.cols')
+        console.log(this.numbers,'this.numbers')
+        this.refreshData()
+    },
+    //更新数据
+    refreshData(){
+      //刷新数据
+      var that = this;
+      var myChart = this.$echarts.init(document.querySelector(".bar"));
+      var option = myChart.getOption();
+      option.series[0].data = this.numbers;
+      option.xAxis[0].data = this.cols;
+      option.dataZoom[0].show = !option.dataZoom[0].show;
+      if(!this.status) {
+
+        option.dataZoom[0].end = 30
+      }else {
+        option.dataZoom[0].end = null
+      }
+      myChart.setOption(option);
     }
   },
 };
@@ -436,5 +533,13 @@ export default {
     padding:10px;
     margin: 10px -10px;
 
+  }
+  .moreBarInfo {
+    color: #02d1f4;
+    float: right;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 35px;
   }
 </style>
