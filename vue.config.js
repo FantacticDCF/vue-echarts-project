@@ -15,7 +15,7 @@ module.exports = {
     port: 81,
     proxy: { //配置跨域
       '/api': {
-        target: 'http://10.14.133.240:8081',
+        target: 'https://www.baidu.com',
         changOrigin: true, //允许跨域
         ws: true,
         pathRewrite: {

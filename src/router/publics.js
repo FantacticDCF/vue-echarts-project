@@ -134,6 +134,11 @@ let pubics=[
                 component: ()=>import("@/views/publics/fromAudit/submission/manualLabelMatching"),
                 meta:{breadnav:[{path:'/Home/manualLabelMatching',name:'手工标签匹配'}],name:'手工标签匹配'}//投诉预警
             },
+            {
+                path: '/Home/fuzzySearch',
+                name: 'fuzzySearch',
+                component: ()=>import("@/components/fuzzySearch"),
+            },
        ]
     }
 ]
