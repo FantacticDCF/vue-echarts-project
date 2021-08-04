@@ -16,17 +16,16 @@
     <div class="customerReview">
       <h2 class="title">分行总体评价 Top10</h2>
       <div class="bar"></div>
-   </div>
-<el-row>
-  <table-progress :data="data"></table-progress>
-  <table-progress :data="data2"></table-progress>
-
-</el-row>
+    </div>
+    <el-row>
+      <table-progress :data="data"></table-progress>
+      <table-progress :data="data2"></table-progress>
+    </el-row>
   </div>
-
 </template>
 <script>
 import TableProgress from "../../../components/TableProgress";
+
 export default {
   name: "customerReview",
   components: {TableProgress},
@@ -40,7 +39,18 @@ export default {
         backgroundPosition: "center",
       },
       data:{},
-      data2:{}
+      data2:{},
+      data3: {
+        title: "",
+        cols : ["信用卡", "个贷", "手机银行"],
+        data: [66, 59, 57],
+        fontSize:12,
+        color: '#fff',
+        left: "15",
+        top: "10",
+        right: "15",
+        bottom: "10",
+      }
     };
   },
   mounted() {

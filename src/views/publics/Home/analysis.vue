@@ -167,7 +167,7 @@
 			getLineEcharts() { // 折线图
 				// 指定图表的配置项和数据
 				var option = {
-					
+
 					tooltip: {
 						//---鼠标焦点放在图形上，产生的提示框
 						show: true,
@@ -270,7 +270,7 @@
 									}, {
 										offset: 1,
 										color: '#66D8E6'
-									}]), //线条渐变色  
+									}]), //线条渐变色
 									width: 4
 								}
 							}
