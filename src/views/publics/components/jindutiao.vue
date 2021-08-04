@@ -41,10 +41,10 @@ export default {
 
         yAxis: [
           {
-            type: "category",
+            type: "category", 
             // axisTick: { show: false }, //不显示刻度线
             axisTick: {
-              show: false,
+              show: false,  
             },
             axisLine: {
               show: false,
@@ -74,7 +74,7 @@ export default {
             backgroundStyle: true,
             itemStyle: {
               normal: {
-                barBorderRadius: 20,
+                barBorderRadius: 20, 
                 color: function (params) {
                   // console.log(params,'111');
                   if (params.seriesName == "蓝色") {

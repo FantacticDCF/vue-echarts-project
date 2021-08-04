@@ -124,16 +124,16 @@ let pubics=[
                 meta: {breadnav: [{path: '/Home/eventWarning', name: '事件预警'}],name: '事件预警'}
             },
             {
-                path: '/Home/test',
-                name: 'test',
-                component: () => import("@/views/publics/index/test")
-            },
-            {
                 path: '/Home/manualLabelMatching',
                 name: 'manualLabelMatching',
                 component: ()=>import("@/views/publics/fromAudit/submission/manualLabelMatching"),
                 meta:{breadnav:[{path:'/Home/manualLabelMatching',name:'手工标签匹配'}],name:'手工标签匹配'}//投诉预警
             },
+            {
+                path: '/Home/customerReview',
+                name: 'customerReview',
+                component: () => import("@/views/publics/search/customerReview")
+            }
        ]
     }
 ]
