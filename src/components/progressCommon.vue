@@ -15,34 +15,41 @@ export default {
   },
   props: {
     // id: String,
-    showxAxis:Boolean,
-    showaxisTick:Boolean,
-    showaxisLine:Boolean,
-    inverseyAxis:Boolean,
-    typeshow:Boolean,
-    coloraxisLabel:String,
-    typeaxisLine:Boolean,
-    typeyAxis:Boolean,
-     name: String,
-     yAxisIndexseries:Number,
-     serisetype:String,
-      progress: Array,
-      backgroundStyleseries:Boolean,
-      barBorderRadiusnormal:Number,
-    //   colornormal:Function,
-      barCategoryGapseries:Number,
-     barWidthseries:Number,
-     nameseries:String,
-     yAxisIndexseries1:Number,
-       typeseries:String,
-      dataseries:Array,
-     barCategoryGap:Number,
-     barWidth:Number,
-     zseries:Number,
-     coloritemStyle:String,
-    borderColoritemStyle:String,
-    borderWidthitemStyle:Number,
-    barBorderRadiusitemStyle:Number,
+    showxAxis: Boolean,
+    showaxisTick: Boolean,
+    showaxisLine: Boolean,
+    inverseyAxis: Boolean,
+    typeshow: Boolean,
+    coloraxisLabel: String,
+    typeaxisLine: Boolean,
+    typeyAxis: Boolean,
+    name: String,
+    yAxisIndexseries: Number,
+    serisetype: String,
+    progress: Array,
+    backgroundStyleseries: Boolean,
+    barBorderRadiusnormal: Number,
+    colornormal: String,
+    colornormal1: String,
+    colornormal2: String,
+    colornormal3: String,
+    colornormal4: String,
+    colornormal5: String,
+    colornormal6: String,
+    colornormal7: String,
+    barCategoryGapseries: Number,
+    barWidthseries: Number,
+    nameseries: String,
+    yAxisIndexseries1: Number,
+    typeseries: String,
+    dataseries: Array,
+    barCategoryGap: Number,
+    barWidth: Number,
+    zseries: Number,
+    coloritemStyle: String,
+    borderColoritemStyle: String,
+    borderWidthitemStyle: Number,
+    barBorderRadiusitemStyle: Number,
     conversion: {
       default: false,
     },
@@ -62,20 +69,20 @@ export default {
       // 指定图表的配置项和数据
       var option = {
         xAxis: {
-          show:this.showxAxis , //不显示x轴相关信息
+          show: this.showxAxis, //不显示x轴相关信息
         },
 
         yAxis: [
           {
-            type: "category",
+            type: "category", //Y轴是category类型
             // axisTick: { show: false }, //不显示刻度线
             axisTick: {
-              show: this.showaxisTick,
+              show: this.showaxisTick, //Y轴去掉刻度线false为不显示
             },
             axisLine: {
-              show: this.showaxisLine,
+              show: this.showaxisLine, //Y轴坐标轴显示 false为不现实
             },
-            inverse:this.inverseyAxis,
+            inverse: this.inverseyAxis, //数值倒置
           },
           {
             type: "category",
@@ -92,16 +99,17 @@ export default {
         ],
         series: [
           {
-            name: this.name,
-            yAxisIndex: this.yAxisIndexseries,
-            type: this.serisetype,
-            data: this.progress, //控制里面的长度
+            name: this.name, //填写蓝色或者红色  为了配合下面的color函数来判断进度条颜色
+            yAxisIndex: this.yAxisIndexseries, //使用的 y 轴 的 index，在单个图表实例中存在多个 y轴的时候有用。
+            type: this.serisetype, //显示echarts的类型 bar为柱状图
+            data: this.progress, //控制里面的长度 是一个数字 控制进度条内部的长度
             // 修改第一条柱子的圆角
             backgroundStyle: this.backgroundStyleseries,
             itemStyle: {
               normal: {
-                barBorderRadius: this.barBorderRadiusnormal,
+                barBorderRadius: this.barBorderRadiusnormal, //进度条圆角程度
                 // color:this.colornormal
+                //判断进度条的颜色  配合上面的this。name使用  //顔色漸變
                 color: function (params) {
                   // console.log(params);
                   if (params.seriesName == "蓝色") {
@@ -111,10 +119,10 @@ export default {
                       1,
                       0,
                       [
-                        { offset: 0, color: "#0499D4" },
-                        { offset: 0.4, color: "#1AA5DB" },
-                        { offset: 0.7, color: "#39BBE5" },
-                        { offset: 1, color: "#4FC8EC" },
+                        { offset: 0, color: that.colornormal },
+                        { offset: 0.4, color: that.colornormal1 },
+                        { offset: 0.7, color: that.colornormal2 },
+                        { offset: 1, color: that.colornormal3 },
                       ]
                     );
                   } else {
@@ -124,10 +132,10 @@ export default {
                       1,
                       0,
                       [
-                        { offset: 0, color: "#E53232" },
-                        { offset: 0.4, color: "#E84040" },
-                        { offset: 0.7, color: "#F06363" },
-                        { offset: 1, color: "#F57B7B" },
+                        { offset: 0, color: that.colornormal4 },
+                        { offset: 0.4, color: that.colornormal5 },
+                        { offset: 0.7, color: that.colornormal6 },
+                        { offset: 1, color: that.colornormal7 },
                       ]
                     );
                   }
@@ -145,7 +153,7 @@ export default {
             name: this.nameseries,
             yAxisIndex: this.yAxisIndexseries1,
             type: this.typeseries,
-            data: this.dataseries,
+            data: this.dataseries, //这个是进度条的总长度 配合 上面大括号的data使用 这个是总长度上面那个是进度条长度两者按比例显示
 
             // 柱子之间的间距
             barCategoryGap: this.barCategoryGap,
@@ -154,9 +162,9 @@ export default {
             z: this.zseries,
             itemStyle: {
               color: this.coloritemStyle, //填充色
-              borderColor: this.borderColoritemStyle,
-              borderWidth: this.borderWidthitemStyle,
-              barBorderRadius: this.barBorderRadiusitemStyle,
+              borderColor: this.borderColoritemStyle, //边框颜色
+              borderWidth: this.borderWidthitemStyle, //边框长度
+              barBorderRadius: this.barBorderRadiusitemStyle, //边框圆角程度
             },
           },
         ],
