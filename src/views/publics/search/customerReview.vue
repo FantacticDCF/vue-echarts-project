@@ -357,31 +357,18 @@ export default {
             end: null,                                 //数据窗口范围的结束百分比
             startValue:0,                           //数据窗口范围的起始数值
             endValue:10,                            //数据窗口范围的结束数值。
-            height:'5%',
-
-            bottom:'2%',
-
+            height:'10%',
+            top:'98.5%',
             borderColor:'#8FDFFE',
-
             backgroundColor:'#8fdffe99',
-
-
             handleColor:'#8FDFFE',
-
             handleSize:20,
-
             handleStyle:{
-
               borderColor:'#8FDFFE',
-
               shadowBlur:4,
-
               shadowOffsetX:1,
-
               shadowOffsetY:1,
-
               shadowColor:'#e5e5e5'
-
             },
           }
         ],

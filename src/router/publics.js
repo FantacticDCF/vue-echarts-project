@@ -135,6 +135,11 @@ let pubics=[
                 component: ()=>import("@/components/fuzzySearch"),
             },
             {
+                path: '/Home/customerReview',
+                name: 'customerReview',
+                component: () => import("@/views/publics/search/customerReview")
+            },
+            {
                 path: '/Home/check',
                 name: 'check',
                 component: () => import("@/views/publics/search/check")
