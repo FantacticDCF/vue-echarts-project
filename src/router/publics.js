@@ -130,9 +130,9 @@ let pubics=[
                 meta:{breadnav:[{path:'/Home/manualLabelMatching',name:'手工标签匹配'}],name:'手工标签匹配'}//投诉预警
             },
             {
-                path: '/Home/customerReview',
-                name: 'customerReview',
-                component: () => import("@/views/publics/search/customerReview")
+                path: '/Home/check',
+                name: 'check',
+                component: () => import("@/views/publics/search/check")
             }
        ]
     }
