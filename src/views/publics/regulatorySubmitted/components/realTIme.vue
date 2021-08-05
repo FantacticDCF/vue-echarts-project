@@ -131,6 +131,9 @@ export default {
             axisLine: {
               show: false,
             },
+            min: 0,
+            max: 200,
+            splitNumber:5,
             splitLine: {
               lineStyle: {
                 color: "#183151",
@@ -287,6 +290,9 @@ export default {
             axisLine: {
               show: false,
             },
+            min: 0,
+            max: 200,
+            splitNumber:5,
             splitLine: {
               lineStyle: {
                 color: "#183151",
