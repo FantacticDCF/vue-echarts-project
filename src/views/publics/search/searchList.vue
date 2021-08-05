@@ -83,7 +83,7 @@
       <el-col :span="11" :style="info.setBackgroundBg3">
         <div class="echarstitle">
           <div class="title">已结案投诉客户评价</div>
-          <div class="titleImage">
+          <div class="titleImage" @click="gotocus">
             <img src="../../../assets/images/searchList/pingfeng.png" alt="" />
             <div class="titleImage-span">{{ echartsAvg(this.echarsAvg) }}</div>
           </div>
@@ -93,7 +93,7 @@
       <el-col :span="11" :style="info.setBackgroundBg3">
         <div class="echarstitle">
           <div class="title">已结案工单</div>
-          <div class="titleImage">
+          <div class="titleImage" @click="gotocus">
             <img
               src="../../../assets/images/searchList/wanjiegongdan.png"
               alt=""
@@ -226,8 +226,11 @@ export default {
     this.getLineEcharts1(this.echarsSum);
   },
   methods: {
-    gotoHandle(){
-     this.$router.push({ path: "/Home/serch" });
+    gotocus() {
+      this.$router.push({ path: "/Home/customerReview" });
+    },
+    gotoHandle() {
+      this.$router.push({ path: "/Home/serch" });
     },
     echartsAvg(arr) {
       let avg = 0;
