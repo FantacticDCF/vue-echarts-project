@@ -130,6 +130,11 @@ let pubics=[
                 meta:{breadnav:[{path:'/Home/manualLabelMatching',name:'手工标签匹配'}],name:'手工标签匹配'}//投诉预警
             },
             {
+                path: '/Home/fuzzySearch',
+                name: 'fuzzySearch',
+                component: ()=>import("@/components/fuzzySearch"),
+            },
+            {
                 path: '/Home/check',
                 name: 'check',
                 component: () => import("@/views/publics/search/check")

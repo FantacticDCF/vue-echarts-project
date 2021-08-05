@@ -1,8 +1,6 @@
 <template>
   <div>
     <!-- 头部 -->
-    <div class="bus-bread">查询</div>
-   
     <div class="aborder" :style="info.setBackgroundBg">
       <span>工单查询</span>
       <input
@@ -13,6 +11,29 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div>
+
+    <!-- <div class="bus-bread">查询</div> -->
+    <el-row>
+      <el-col :span="12"><div class="bus-bread">查询</div></el-col>
+      <el-col :span="12">
+        <div class="select">
+          <span class="selectTitle">查询范围</span>
+          <el-select
+            v-model="value"
+            placeholder="全行"
+            :popper-append-to-body="false"
+          >
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select></div
+      ></el-col>
+    </el-row>
+
     <!-- 中间信息 -->
     <el-row type="flex" class="row-bg1" justify="space-between">
       <el-col :span="6" v-for="(item, index) in topSearch" :key="index">
@@ -24,20 +45,20 @@
           </div>
           <div class="titleDesc">
             <div class="numDesc">
-              <div class="desc1">
+              <div class="desc1" @click="gotoHandle">
                 <span class="desc1-num">{{ item.topTitle }}</span>
                 <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
               </div>
               <div class="desc2">{{ item.topWrithDesc }}</div>
             </div>
           </div>
-          <div class="icon">
+          <div class="icon" @click="gotoHandle">
             <i :class="item.icon"></i>
           </div>
         </div>
         <div class="col-down" :style="info.setBackgroundBg1">
           <div class="left">
-            <div class="desc1">
+            <div class="desc1" @click="gotoHandle">
               <span class="desc1-num">{{ item.downTitle1 }}</span>
               <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
               <div class="left-icon"><i :class="item.icon"></i></div>
@@ -46,7 +67,7 @@
           </div>
           <div class="left-dingwei" :style="info.setBackgroundBg2"></div>
           <div class="right">
-            <div class="desc1">
+            <div class="desc1" @click="gotoHandle">
               <span class="desc1-num">{{ item.downTitle2 }}</span>
               <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
               <div class="left-icon"><i :class="item.icon"></i></div>
@@ -62,7 +83,7 @@
       <el-col :span="11" :style="info.setBackgroundBg3">
         <div class="echarstitle">
           <div class="title">已结案投诉客户评价</div>
-          <div class="titleImage">
+          <div class="titleImage" @click="gotocus">
             <img src="../../../assets/images/searchList/pingfeng.png" alt="" />
             <div class="titleImage-span">{{ echartsAvg(this.echarsAvg) }}</div>
           </div>
@@ -72,7 +93,7 @@
       <el-col :span="11" :style="info.setBackgroundBg3">
         <div class="echarstitle">
           <div class="title">已结案工单</div>
-          <div class="titleImage">
+          <div class="titleImage" @click="gotocus">
             <img
               src="../../../assets/images/searchList/wanjiegongdan.png"
               alt=""
@@ -93,6 +114,25 @@ import search2 from "../../../assets/images/searchList/search2.png";
 export default {
   data() {
     return {
+      options: [
+        {
+          value: "选项1",
+          label: "我的板块",
+        },
+        {
+          value: "选项2",
+          label: "我的部门",
+        },
+        {
+          value: "选项3",
+          label: "我的处室",
+        },
+        {
+          value: "选项4",
+          label: "我的岗位",
+        },
+      ],
+      value: "",
       echarsAvg: [56, 76, 98, 99, 98, 100],
       echarsSum: [12, 13, 16, 21, 18, 14],
       info: {
@@ -186,6 +226,12 @@ export default {
     this.getLineEcharts1(this.echarsSum);
   },
   methods: {
+    gotocus() {
+      this.$router.push({ path: "/Home/customerReview" });
+    },
+    gotoHandle() {
+      this.$router.push({ path: "/Home/serch" });
+    },
     echartsAvg(arr) {
       let avg = 0;
       //  var sun=0
@@ -479,34 +525,94 @@ export default {
 
 <style lang="less" scoped>
 // 顶部css
+.el-col-12 {
+  height: 42px;
+  .bus-bread {
+    height: 42px;
+    line-height: 50px;
+    position: relative;
+    text-indent: 16px;
+    color: #58dbff;
 
-
-.bus-bread {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
-  margin-bottom: 1%;
-  &:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
+    // margin-bottom: 1%;
+    &:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 12px;
+      border-bottom: 7px solid #1a83c0;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+    &:after {
+      position: absolute;
+      content: "";
+      left: 8%;
+      top: 12px;
+      border-bottom: 7px solid #58dbff;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
   }
-  &:after {
-    position: absolute;
-    content: "";
-    left: 4%;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
+  .select {
+    float: right;
+    margin-right: 5%;
+    width: 400px;
+    text-align: right;
+    .selectTitle {
+      color: #58dbff;
+      margin-right: 3%;
+    }
+    /deep/.el-input__inner {
+      height: 28px;
+      border-radius: 20px;
+      background-image: url(../../../assets/images/searchList/inputSelect.png);
+      background-size: 105% 114%;
+      background-repeat: no-repeat;
+      background-position: center;
+      //  background-color: #11172F;
+      border: 1px solid #1a83c0;
+      text-indent: 8px;
+      font-weight: 700;
+      // border:1px solid red;
+      // line-height: 28px;
+      color: #58dbff;
+    }
+    /deep/.el-input__icon {
+      line-height: 16px;
+      color: #58dbff;
+    }
+  }
+  /deep/ .popper__arrow,
+  /deep/ .el-popper .popper__arrow::after {
+    display: none !important;
+  }
+  /deep/.el-input--suffix {
+    z-index: 9999;
+  }
+  /deep/.el-popper {
+    top: 3px !important;
+    text-align: left;
+    background-color: rgba(17, 24, 48, 0.9);
+    color: #ffff;
+    text-indent: 16px;
+    border: 1px solid #1a83c0;
+    // background-color: red;
+  }
+  /deep/.el-select-dropdown__item {
+    color: #ffff !important;
+    background-color: rgba(17, 24, 48, 0.9);
+    margin-top: 6px;
+  }
+  /deep/.el-select-dropdown__item:hover {
+    background-color: #58dbff;
+    color: #121f35 !important;
+    border-radius: 20px;
   }
 }
+
 .aborder {
   text-indent: 30px;
   color: #1a83c0;
@@ -525,6 +631,14 @@ export default {
   text-indent: 15px;
   font-size: 10px;
 }
+/deep/.el-input__inner::-webkit-input-placeholder {
+  color: #58dbff;
+  line-height: 28px;
+  font-weight: 700;
+  margin-top: 2px;
+  font-size: 14px;
+  // line-height:28px;
+}
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
@@ -532,7 +646,7 @@ input::-webkit-input-placeholder {
 // 中部css
 .row-bg1 {
   height: 240px;
-  margin-top: 1%;
+  margin-top: 0.2%;
   .el-col-6 {
     width: 32.8%;
     background-image: url(../../../assets/images/searchList/topList.png);
