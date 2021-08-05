@@ -9,7 +9,8 @@
                     placeholder="输入关键词查询"
                     :style="setBackgroundBg"
                     v-model="content"
-                    @keyup="get($event)" 
+                    @input="handleInput"
+                    @change="handlechange"
                     @keydown.down="changeDown()"
                     @keydown.up="changeUp()"
                     @focus="bluron()"
@@ -51,12 +52,13 @@ export default {
             myData: [],
             content: '',
             now: -1,
-            dataleval: ''
+            dataleval: '',
+            allData: ''
         }
     },
     methods:{
         get(ev) {
-            let that = this;
+            // let that = this;
             document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
             // 这里的键码只能通过事件对象$event传进来，因为输入大多数键都应该可以进行搜素，我们要排除的就是up(38)和down(40)
             if (ev.keyCode == 38 || ev.keyCode == 40) {
@@ -64,9 +66,10 @@ export default {
             }
             // 这里当按下的键是Enter时，应实现搜索跳转功能
             if(ev.keyCode == 13) {
-                that.content = '';
+                // that.content = '';
+                this.resetStyle()
             }
-            that.myData = dataList;
+            
             // this.$axios.get('/api/sugrec?wd=' + that.content, {})
             // .then(function(res) {
             //     that.myData = res.data.s;
@@ -84,13 +87,14 @@ export default {
         },
         changeUp() {
             this.now--;
+            console.log(this.now,999,this.myData)
             if (this.now == -2) {
-                this.now = this.myData.length;
+                this.now = this.myData.length-1;
             }
             this.content = this.myData[this.now].title;
         },
         bluron(){
-            console.log(111111111)
+            // console.log(111111111)
             // document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
             // this.$forceUpdate()
         },
@@ -99,29 +103,57 @@ export default {
             document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
         },
         mouseout(){
-            console.log(1234)
+            this.resetStyle()
+        },
+        // 模糊查询
+        handleInput(){
+            this.myData = [];
+            this.dataleval = ''
+            this.now = -1
+            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
+            if(this.content.length > 0){
+                this.myData = dataList.filter(item => {
+                    return item.title.search(this.content) !== -1
+                })
+            }
+        },
+        handlechange () { 
+            let self = this 
+            this.handleInput()  
+            dataList.forEach(item => {
+                if(item.title == this.content){
+                    self.dataleval = item.leval   // 判断输入内容属于哪个级别
+                }
+            });
+            this.resetStyle()
+           console.log(this.dataleval)
+        },
+        // 清空li选中样式
+        resetStyle(){
             let domselect = document.querySelector(".grey");
             if (domselect) {
                 domselect.classList.toggle("grey");  //离开清空ul里面选中的li的样式
             }
             document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
+            this.now = -1
         }
     },
     mounted() {
         
     },
-    watch:{
-        // 判断输入内容属于哪个级别
-        content(newval){
-            let that = this;
-            dataList.forEach(item => {
-                if(item.title == newval){
-                    that.dataleval = item.leval
-                }
-            });
-            console.log(that.dataleval)
-        }
-    },
+    // watch:{
+    //     // 监听input值的变化
+    //     content(newval){
+    //         let that = this;
+    //         // that.searchItem()
+    //         dataList.forEach(item => {
+    //             if(item.title == newval){
+    //                 that.dataleval = item.leval   // 判断输入内容属于哪个级别
+    //             }
+    //         });
+    //         console.log(that.dataleval)
+    //     }
+    // },
     created(){
         // this.myData = dataList;
         // console.log(dataList,123)
@@ -138,8 +170,6 @@ export default {
   // margin-top: 10px;
   width: 100%;
   height: 40px;
-
-//   overflow: hidden;
 }
 .aborder span{
     float: left;
