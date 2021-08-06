@@ -1,17 +1,9 @@
 <template>
   <div>
-    <div class="bus-bread">监管报送</div>
-    <div class="bus-bread1" style="visibility: hidden">待处理工单</div>
-    <div class="aborder" :style="setBackgroundBg">
-      <span>工单查询</span>
-      <input
-        type="text"
-        class="input-border"
-        placeholder="输入关键词查询"
-        :style="setBackgroundBg"
-      />
-      <i class="el-icon-search iconSearch"></i>
-    </div>
+    <fuzzyTable/>
+    <el-row style="margin: 2px 0">
+      <el-col :span="12"><div class="bus-bread">监管报送</div></el-col>
+    </el-row>
     <div class="center_tab">
       <ul class="center_tab_ul">
         <li
@@ -36,6 +28,7 @@ import monthTime from "./components/weekTime.vue";
 import threeTime from "./components/threeTime.vue";
 import halfyearTime from "./components/halfyearTime.vue";
 import yearsTime from "./components/yearsTime.vue";
+import fuzzyTable from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -95,6 +88,7 @@ export default {
     threeTime,
     halfyearTime,
     yearsTime,
+    fuzzyTable
   },
   mounted() {},
   methods: {
@@ -111,47 +105,37 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-.bus-bread1 {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
-  top: -20px;
-  left: 4.5%;
+.el-col-12 {
+  height: 30px;
+  margin-bottom: 0.3%;
+  .bus-bread {
+    height: 30px;
+    line-height: 40px;
+    position: relative;
+    text-indent: 16px;
+    color: #58dbff;
 
-  &:after {
-    position: absolute;
-    content: "";
-    left: 7.8%;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
-  }
-}
-.bus-bread {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
-  &:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
-  }
-  &:after {
-    position: absolute;
-    content: "";
-    left: 6.2%;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
+    // margin-bottom: 1%;
+    &:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 10px;
+      border-bottom: 7px solid #1a83c0;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+    &:after {
+      position: absolute;
+      content: "";
+      left: 13%;
+      top: 10px;
+      border-bottom: 7px solid #58dbff;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
   }
 }
 .aborder {
@@ -177,7 +161,6 @@ input::-webkit-input-placeholder {
 }
 .center_tab {
   padding-left: 0px;
-  margin-top: 20px;
   width: 58%;
   line-height: 30px;
   display: flex;

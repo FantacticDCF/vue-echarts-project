@@ -9,28 +9,30 @@
                     placeholder="输入关键词查询"
                     :style="setBackgroundBg"
                     v-model="content"
-                    @input="handleInput"
+                    @input="handleInput()"
                     @change="handlechange"
                     @keydown.down="changeDown()"
                     @keydown.up="changeUp()"
-                    @focus="bluron()"
+                    @keyup.enter="getEnter($event)"
                 />
-                <ul class="fuzzy-data-ul">
-                    <!-- 这里注意给class添加属性的时候采用的是{属性:true/false}的形式 -->
-                    <li id="fuzzy-data-ul-li" v-for="(item, index) in myData" :key="index" :class="{grey: index==now}" @click="handleChose(item)">
-                        {{item.title}}
-                    </li>
-                </ul>
             </span>
             <span>
                 <i class="el-icon-search iconSearch"></i>
             </span>
         </div>
+        <div class="fuzzy-data-fa">
+            <ul class="fuzzy-data-ul" ref="chatContent">
+                <!-- 这里注意给class添加属性的时候采用的是{属性:true/false}的形式 -->
+                <li id="fuzzy-data-ul-li" v-for="(item, index) in myData" :key="index" :class="{grey: index==now}" @click="handleChose(item)">
+                    {{item.VAL}}
+                </li>
+            </ul>
+        </div>
         
     </div>
 </template>
 <script>
-import dataList from './data.json';
+import dataList from '../assets/json/code.json';
 export default {
     data(){
         return {
@@ -57,9 +59,7 @@ export default {
         }
     },
     methods:{
-        get(ev) {
-            // let that = this;
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
+        getEnter(ev){
             // 这里的键码只能通过事件对象$event传进来，因为输入大多数键都应该可以进行搜素，我们要排除的就是up(38)和down(40)
             if (ev.keyCode == 38 || ev.keyCode == 40) {
                 return;
@@ -67,39 +67,33 @@ export default {
             // 这里当按下的键是Enter时，应实现搜索跳转功能
             if(ev.keyCode == 13) {
                 // that.content = '';
+                console.log(123)
                 this.resetStyle()
             }
-            
-            // this.$axios.get('/api/sugrec?wd=' + that.content, {})
-            // .then(function(res) {
-            //     that.myData = res.data.s;
-            // }, function() {
-            //     alert("搜索失败");
-            // })
         },
         changeDown() {
             this.now++;
-            if(this.now == this.myData.length) {
-                this.now = -1;
-            }
+            let that = this;
+            if(this.now >= this.myData.length-1) this.now = this.myData.length-1
             // 这里实现输入框中也显示同样的内容
-            this.content = this.myData[this.now].title;
+            this.content = this.myData[this.now].VAL;
+            if(this.now > 9 && this.now <= this.myData.length - 1){
+                that.$refs.chatContent.scrollTop += 30; 
+            }
         },
         changeUp() {
             this.now--;
-            console.log(this.now,999,this.myData)
-            if (this.now == -2) {
-                this.now = this.myData.length-1;
+            console.log(this.now)
+            let that = this;
+            if(this.now <=0) this.now=0
+            this.content = this.myData[this.now].VAL;
+            if(this.now > 8){
+                that.$refs.chatContent.scrollTop -= 30; 
             }
-            this.content = this.myData[this.now].title;
-        },
-        bluron(){
-            // console.log(111111111)
-            // document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
-            // this.$forceUpdate()
         },
         handleChose(item){
-            this.content = item.title;
+            console.log(item,999)
+            this.content = item.VAL;        
             document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
         },
         mouseout(){
@@ -113,7 +107,7 @@ export default {
             document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
             if(this.content.length > 0){
                 this.myData = dataList.filter(item => {
-                    return item.title.search(this.content) !== -1
+                    return item.VAL.search(this.content) !== -1
                 })
             }
         },
@@ -122,11 +116,9 @@ export default {
             this.handleInput()  
             dataList.forEach(item => {
                 if(item.title == this.content){
-                    self.dataleval = item.leval   // 判断输入内容属于哪个级别
+                    self.dataleval = item.CD_LEV   // 判断输入内容属于哪个级别
                 }
             });
-            this.resetStyle()
-           console.log(this.dataleval)
         },
         // 清空li选中样式
         resetStyle(){
@@ -139,7 +131,7 @@ export default {
         }
     },
     mounted() {
-        
+        // this.handleChose()
     },
     // watch:{
     //     // 监听input值的变化
@@ -192,20 +184,58 @@ export default {
 input::-webkit-input-placeholder {
   color: #59dfff;
 } 
+.fuzzy-data-fa{
+    position: absolute;
+    left: 343px;
+    width: 50%;
+}
 .fuzzy-data-ul{
-    width: 95%;
-    background: #fff;
+    width: 60%;
+    max-height: 300px;
+    // display: none;
+    overflow: auto;
+    color: #fff;
+    background: #11172F;
     margin-left: 25px;
     text-indent: 15px;
     border-radius: 3px;
+    background-image: url('../assets/images/commonTitle/searchbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 100;
 }
 #fuzzy-data-ul-li{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
     cursor: pointer;
 }
 #fuzzy-data-ul-li:hover{
-    background: #ccc;
+    background: #29597c;
 }
 .grey{
-    background: #ccc;
+    background: #29597c;
+}
+
+.fuzzy-data-ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+.fuzzy-data-ul::-webkit-scrollbar-track {
+    background-color:#3c6380;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+}
+
+.fuzzy-data-ul::-webkit-scrollbar-thumb {
+    background-color:white;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
 }
 </style>
