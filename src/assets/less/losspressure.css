@@ -118,7 +118,7 @@ input::-webkit-input-placeholder {
 }
 .el-row .el-col-11:nth-child(1) .fromContent .jindu .block {
   height: 100%;
-  width: 95%;
+  width: 90%;
 }
 .el-row .el-col-11:nth-child(1) .fromContent .jindu .block /deep/ .is-without-controls {
   width: 50px;
@@ -133,7 +133,7 @@ input::-webkit-input-placeholder {
 .el-row .el-col-11:nth-child(1) .fromContent .jindu .block /deep/ .el-input__inner {
   height: 20px;
   width: 70px;
-  margin-left: -39px;
+  margin-left: -22px;
   line-height: 20px;
   color: #55d4f8;
   border: 1px solid #55d4f8;
@@ -185,7 +185,7 @@ input::-webkit-input-placeholder {
 .el-row .el-col-11:nth-child(1) .fromContent .blue {
   font-size: 12px;
   height: 30px;
-  width: 200px;
+  width: 180px;
   text-align: center;
   line-height: 30px;
   color: #55d4f8;
@@ -194,7 +194,7 @@ input::-webkit-input-placeholder {
 .el-row .el-col-11:nth-child(1) .fromContent .write {
   font-size: 12px;
   height: 30px;
-  width: 200px;
+  width: 180px;
   text-align: center;
   line-height: 30px;
   color: #fff;
@@ -248,7 +248,7 @@ input::-webkit-input-placeholder {
 }
 .el-row .el-col-11:nth-child(2) .fromContent .jindu .block {
   height: 100%;
-  width: 95%;
+  width: 90%;
 }
 .el-row .el-col-11:nth-child(2) .fromContent .jindu .block /deep/ .is-without-controls {
   width: 50px;
@@ -263,7 +263,7 @@ input::-webkit-input-placeholder {
 .el-row .el-col-11:nth-child(2) .fromContent .jindu .block /deep/ .el-input__inner {
   height: 20px;
   width: 70px;
-  margin-left: -39px;
+  margin-left: -22px;
   line-height: 20px;
   color: #55d4f8;
   border: 1px solid #55d4f8;
@@ -315,7 +315,7 @@ input::-webkit-input-placeholder {
 .el-row .el-col-11:nth-child(2) .fromContent .blue {
   font-size: 12px;
   height: 30px;
-  width: 200px;
+  width: 180px;
   text-align: center;
   line-height: 30px;
   color: #55d4f8;
@@ -324,7 +324,7 @@ input::-webkit-input-placeholder {
 .el-row .el-col-11:nth-child(2) .fromContent .write {
   font-size: 12px;
   height: 30px;
-  width: 200px;
+  width: 180px;
   text-align: center;
   line-height: 30px;
   color: #fff;

@@ -1,8 +1,7 @@
-<script src="../../../../../DEMO/数字化投诉分析管理系统/static/js/china.js"></script>
 <template>
   <div>
-    <div class="bus-bread">查询</div>
-    <div class="bus-bread1">待处理工单</div>
+    <div class="bus-bread" @click="goBack">查询</div>
+    <div class="bus-bread1">客户评价</div>
     <div class="aborder" :style="setBackgroundBg">
       <span>工单查询</span>
       <input
@@ -14,6 +13,7 @@
       <!-- <div class="iconSearch"> -->
       <i class="el-icon-search iconSearch"></i>
     </div>
+    <!--    <theme></theme>-->
     <div class="customerReview">
       <h2 class="title" >分行总体评价 Top10</h2>
       <label class="moreBarInfo" @click="showAll"> {{moreBarInfo}} > </label>
@@ -27,6 +27,7 @@
 </template>
 <script>
 import TableProgress from "../../../components/TableProgress";
+// import theme from "../../../components/theme";
 
 export default {
   name: "customerReview",
@@ -50,6 +51,7 @@ export default {
       numbers: [],
       // moreBarInfo: "显示全部",
       status : true,  //是否显示Top10，默认显示
+
     }
   },
   mounted() {
@@ -281,8 +283,9 @@ export default {
     this.cols = this.colsAll.slice(0,10)
     this.numbers = this.numbersAll.slice(0,10)
 
-
-    this.init()
+    setTimeout(()=>{
+      this.init()
+    },500)
   },
   computed:{
     moreBarInfo(){
@@ -290,8 +293,9 @@ export default {
     }
   },
   methods: {
+
     init() {
-      var that = this;
+      // var that = this;
       var myChart = this.$echarts.init(document.querySelector(".bar"));
       var option = {
         // backgroundColor: "#034380",
@@ -348,11 +352,24 @@ export default {
           {
             show: false,//是否显示滑动条
             type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-            zoomLock:true,
-            // start: 0,                               //数据窗口范围的起始百分比,表示30%
-            end: null,                                 //数据窗口范围的结束百分比,表示70%
+            // zoomLock:true,
+            // start: 0,                               //数据窗口范围的起始百分比
+            end: null,                                 //数据窗口范围的结束百分比
             startValue:0,                           //数据窗口范围的起始数值
             endValue:10,                            //数据窗口范围的结束数值。
+            height:'10%',
+            top:'98.5%',
+            borderColor:'#8FDFFE',
+            backgroundColor:'#8fdffe99',
+            handleColor:'#8FDFFE',
+            handleSize:20,
+            handleStyle:{
+              borderColor:'#8FDFFE',
+              shadowBlur:4,
+              shadowOffsetX:1,
+              shadowOffsetY:1,
+              shadowColor:'#e5e5e5'
+            },
           }
         ],
         series: [
@@ -419,20 +436,23 @@ export default {
     //更新数据
     refreshData(){
       //刷新数据
-      var that = this;
       var myChart = this.$echarts.init(document.querySelector(".bar"));
       var option = myChart.getOption();
       option.series[0].data = this.numbers;
       option.xAxis[0].data = this.cols;
       option.dataZoom[0].show = !option.dataZoom[0].show;
-      if(!this.status) {
-
+      if(!this.status) {//设置滚动条
         option.dataZoom[0].end = 30
       }else {
         option.dataZoom[0].end = null
       }
       myChart.setOption(option);
-    }
+    },
+    goBack(){
+      this.$router.push({
+        path: '/Home/searchList'
+      })
+    },
   },
 };
 </script>
@@ -447,7 +467,7 @@ export default {
     &:after {
       position: absolute;
       content: "";
-      left: 7.8%;
+      left: 6.5%;
       top: 0;
       border-bottom: 7px solid #1a83c0;
       border-left: 9px solid transparent;
@@ -472,7 +492,7 @@ export default {
     &:after {
       position: absolute;
       content: "";
-      left: 6.2%;
+      left: 4.2%;
       top: 0;
       border-bottom: 7px solid #1a83c0;
       border-left: 9px solid transparent;
