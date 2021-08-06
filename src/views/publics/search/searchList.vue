@@ -93,7 +93,7 @@
       <el-col :span="11" :style="info.setBackgroundBg3">
         <div class="echarstitle">
           <div class="title">已结案工单</div>
-          <div class="titleImage" @click="gotocus">
+          <div class="titleImage" @click="goCheck">
             <img
               src="../../../assets/images/searchList/wanjiegongdan.png"
               alt=""
@@ -228,6 +228,9 @@ export default {
   methods: {
     gotocus() {
       this.$router.push({ path: "/Home/customerReview" });
+    },
+    goCheck(){
+this.$router.push({ path: "/Home/check" });
     },
     gotoHandle() {
       this.$router.push({ path: "/Home/serch" });
