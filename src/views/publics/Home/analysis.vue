@@ -111,7 +111,7 @@
         </linearGradient>
       </defs>
     </svg>
-    <show-dialog v-if="showk" @litenContent="litenContent" showT="true"></show-dialog>
+    <show-dialog v-if="showk" @litenContent="litenContent" showT="true" ref="showch"></show-dialog>
   </div>
 </template>
 <script>
@@ -358,6 +358,12 @@ export default {
       this.chartLine.on("click", function (param) {
         if(param.data) {
           self.showk = true
+          self.$nextTick(() => {
+            self.$refs.showch.asd(-1)
+          })
+          // if(self.$refs.showch) {
+          //   self.$refs.showch.asd(-1)
+          // }
         }
       })
       let chartBox = this.$refs.chartLine
