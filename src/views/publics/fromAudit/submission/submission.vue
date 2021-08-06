@@ -15,13 +15,13 @@
       <div class="box">
         <el-row class="margin">
           <el-col :span="8">
-            <div class="item icon-1" :class="fininshed[0]?'active':'deflt'">
+            <div class="item icon-1" :class="fininshed[0]?'active':'deflt'" @click="jumpproduct">
 <!--              <img src="../../../../assets/images/submission/item1.png">-->
               <p>产品设计说明</p>
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="item icon-2" :class="fininshed[1]?'active':'deflt'">
+            <div class="item icon-2" :class="fininshed[1]?'active':'deflt'" @click="junptsd">
 <!--              <img src="../../../../assets/images/submission/item2.png">-->
               <p>投诉点匹配</p>
             </div>
@@ -90,6 +90,16 @@ export default {
       this.$router.push({
         path: '/Home/manualLabelMatching'
       })
+    },
+    jumpproduct(){
+      this.$router.push({
+        name: 'productDesignDescription',params:{'shows':1}
+      })
+    },
+    junptsd(){
+      this.$router.push({
+        name: 'complaintPointsmatch',params:{'shows':2}
+      },)
     }
   },
   mounted() {
