@@ -11,7 +11,6 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div>
-    <!-- <div class="bus-bread">查询</div> -->
     <el-row>
       <el-col :span="12"><div class="bus-bread">投诉预警</div></el-col>
       <el-col :span="12"> </el-col>
@@ -101,17 +100,76 @@
       </div>
       <div class="Layout" :style="info.setBackgroundBg3">
         <div class="title">事件预警</div>
-
+        <div class="tableDesc">
+          <tableCommon
+            :tableData="tableData"
+            :listLabel="listLabel"
+            :detailFlag="detailFlag"
+            @click.native="goto"
+          ></tableCommon>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import jindutiao from "../components/jindutiao.vue";
+import tableCommon from "../../../components/tableCommon.vue";
 export default {
   data() {
     return {
-      // arr: [50],
+      listLabel: [
+        { label: "时间", prop: "data" },
+        { label: "涉事分行", prop: "bank" },
+        { label: "涉事网点", prop: "netaddress" },
+        { label: "事件记录", prop: "remark" },
+        { label: "投诉人", prop: "person" },
+        { label: "投诉人身份", prop: "identify" },
+      ],
+      tableData: [
+         {
+          data: "2021.7.30",
+          bank: "上海分行",
+          netaddress: "虹口支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+        {
+          data: "2021.5.20",
+          bank: "北京分行",
+          netaddress: "天桥支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+       
+        {
+          data: "2021.4.16",
+          bank: "广州分行",
+          netaddress: "花城支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+        {
+          data: "2021.3.23",
+          bank: "深圳分行",
+          netaddress: "景田支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+         {
+          data: "2021.2.23",
+          bank: "深圳分行",
+          netaddress: "景田支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+      ],
+      detailFlag: false,
       info: {
         setBackgroundBg: {
           //上方搜索
@@ -322,9 +380,14 @@ export default {
     };
   },
   components: {
-    // EventWarning:eventWarning
     jindutiao,
+    tableCommon,
   },
+  methods:{
+    goto(){
+      this.$router.push({path:"/Home/eventWarning"})
+    }
+  }
 };
 </script>
 <style lang='less' scoped>
@@ -362,7 +425,6 @@ export default {
     }
   }
 }
-
 .aborder {
   text-indent: 30px;
   color: #1a83c0;
@@ -672,7 +734,85 @@ input::-webkit-input-placeholder {
       font-weight: 700;
       letter-spacing: 1.5px;
     }
-    
+    .tableDesc {
+      height: 80%;
+      width: 90%;
+      margin: 10px auto;
+      /deep/ .el-table,
+      /deep/ .el-table__expanded-cell {
+        background: transparent;
+      }
+      /deep/.table-wrapper
+        .el-table--enable-row-hover
+        .el-table__body
+        tr:hover
+        > td {
+        background-color: #29597c;
+      }
+      /deep/.el-pagination__total {
+        color: #ebebed;
+      }
+      /deep/.el-pager .number,
+      /deep/.el-icon,
+      /deep/.el-pagination .btn-next,
+      /deep/ .el-pagination .btn-prev,
+      /deep/ .has-gutter tr th,
+      /deep/ .el-table tr {
+        background: transparent;
+        color: #ebebed;
+      }
+      /deep/th,
+      /deep/td,
+      /deep/.el-table td,
+      /deep/.el-table th.is-leaf {
+        border: none;
+      }
+      /deep/.el-table td, .el-table th{
+        padding:9px 0 !important;
+      }
+      /deep/.el-table--border::after,
+      /deep/.el-table--group::after {
+        width: 0;
+      }
+      /deep/.el-table--striped .el-table__body tr.el-table__row--striped td {
+        background: #182a56;
+      }
+      /deep/.el-pager li.btn-quicknext,
+      /deep/.el-pager li.btn-quickprev {
+        color: #ebebed;
+      }
+     /deep/.el-table thead{
+       background-color: #193F80;
+     }
+     /deep/.el-table_1_column_2  is-center   is-leaf{
+       padding: 6px 0 !important;
+     }
+      .customer-table .el-table__fixed-right::before,
+      .el-table__fixed::before,
+      .customer-table::before {
+        width: 0;
+      }
+      /deep/.el-pager li.active {
+        color: #409eff;
+        cursor: default;
+      }
+      /deep/.el-table .cell {
+        line-height: 16px;
+      }
+      /deep/.el-table__row td div {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+      /deep/.el-form-item__label {
+        color: #fff;
+      }
+      /deep/.el-table__expanded-cell[class*="cell"] {
+        padding: 0 50px;
+      }
+      //  background-color: red;
+    }
   }
 }
 </style>

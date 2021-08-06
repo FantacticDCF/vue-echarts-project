@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bus-bread">投诉预警</div>
+    <div class="bus-bread" @click="goback">投诉预警</div>
     <div class="bus-bread1">事件预警</div>
     <div class="aborder" :style="setBackgroundBg">
       <span>工单查询</span>
@@ -158,6 +158,9 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    goback(){
+      this.$router.push({path:"/Home/complaintsWarning"})
+    }
   },
 };
 </script>
