@@ -15,16 +15,18 @@
                     @keydown.up="changeUp()"
                     @keyup.enter="getEnter($event)"
                 />
-                <ul class="fuzzy-data-ul" ref="chatContent">
-                    <!-- 这里注意给class添加属性的时候采用的是{属性:true/false}的形式 -->
-                    <li id="fuzzy-data-ul-li" v-for="(item, index) in myData" :key="index" :class="{grey: index==now}" @click="handleChose(item)">
-                        {{item.VAL}}
-                    </li>
-                </ul>
             </span>
             <span>
                 <i class="el-icon-search iconSearch"></i>
             </span>
+        </div>
+        <div class="fuzzy-data-fa">
+            <ul class="fuzzy-data-ul" ref="chatContent">
+                <!-- 这里注意给class添加属性的时候采用的是{属性:true/false}的形式 -->
+                <li id="fuzzy-data-ul-li" v-for="(item, index) in myData" :key="index" :class="{grey: index==now}" @click="handleChose(item)">
+                    {{item.VAL}}
+                </li>
+            </ul>
         </div>
         
     </div>
@@ -182,19 +184,25 @@ export default {
 input::-webkit-input-placeholder {
   color: #59dfff;
 } 
+.fuzzy-data-fa{
+    position: absolute;
+    left: 343px;
+    width: 50%;
+}
 .fuzzy-data-ul{
-    width: 95%;
+    width: 60%;
     max-height: 300px;
     // display: none;
     overflow: auto;
     color: #fff;
+    background: #11172F;
     margin-left: 25px;
     text-indent: 15px;
     border-radius: 3px;
     background-image: url('../assets/images/commonTitle/searchbg.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    // background: #343f6d;
+    z-index: 100;
 }
 #fuzzy-data-ul-li{
     width: 100%;
