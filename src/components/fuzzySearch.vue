@@ -1,5 +1,5 @@
 <template>
-    <div class="fuzzySearch" @mouseleave="mouseout()">
+    <div class="fuzzySearch">
         <div class="aborder" :style="setBackgroundBg">
             <span>工单查询</span>
             <span class="searchbox">
@@ -14,6 +14,7 @@
                     @keydown.down="changeDown()"
                     @keydown.up="changeUp()"
                     @keyup.enter="getEnter($event)"
+                    @blur="loseBlur()"
                 />
             </span>
             <span>
@@ -28,7 +29,7 @@
                 </li>
             </ul>
         </div>
-        
+        <div id="mask" @click="clickout"></div>
     </div>
 </template>
 <script>
@@ -94,9 +95,12 @@ export default {
         handleChose(item){
             console.log(item,999)
             this.content = item.VAL;        
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
+            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
         },
-        mouseout(){
+        clickout(){
+            this.resetStyle()
+        },
+        loseBlur(){
             this.resetStyle()
         },
         // 模糊查询
@@ -104,7 +108,7 @@ export default {
             this.myData = [];
             this.dataleval = ''
             this.now = -1
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
+            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'block'
             if(this.content.length > 0){
                 this.myData = dataList.filter(item => {
                     return item.VAL.search(this.content) !== -1
@@ -126,12 +130,13 @@ export default {
             if (domselect) {
                 domselect.classList.toggle("grey");  //离开清空ul里面选中的li的样式
             }
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
+            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
             this.now = -1
         }
     },
     mounted() {
         // this.handleChose()
+        window.addEventListener('scroll', this.resetStyle, true);
     },
     // watch:{
     //     // 监听input值的变化
@@ -147,8 +152,7 @@ export default {
     //     }
     // },
     created(){
-        // this.myData = dataList;
-        // console.log(dataList,123)
+        
     }
 }
 </script>
@@ -238,4 +242,5 @@ input::-webkit-input-placeholder {
     -moz-border-radius: 2em;
     border-radius:2em;
 }
+
 </style>
