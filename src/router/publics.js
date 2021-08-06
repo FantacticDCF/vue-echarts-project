@@ -143,7 +143,18 @@ let pubics=[
                 path: '/Home/check',
                 name: 'check',
                 component: () => import("@/views/publics/search/check")
-            }
+            },
+            {
+                path: '/Home/productDesignDescription',     //产品设计说明
+                name: 'productDesignDescription',
+                component: () => import("@/views/publics/fromAudit/submission/productDesignDescription")
+            },
+            {
+                path: '/Home/complaintPointsmatch',
+                name: 'complaintPointsmatch',
+                component: ()=>import("@/views/publics/fromAudit/submission/complaintPointsmatch"),
+                meta:{breadnav:[{path:'/Home/complaintPointsmatch',name:'投诉点匹配'}],name:'投诉点匹配'}//投诉预警
+            },
        ]
     }
 ]
