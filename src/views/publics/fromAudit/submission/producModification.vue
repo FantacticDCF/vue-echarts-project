@@ -4,10 +4,10 @@
     <el-row style="margin: 2px 0;cursor: pointer">
       <el-col :span="2"><div class="bus-bread" @click="gobackFir">消保审核</div></el-col>
       <el-col :span="2"><div class="bus-bread1" @click='goBackto'>报送</div></el-col>
-      <el-col :span="2"><div class="bus-bread2">产品设计说明</div></el-col>
+      <el-col :span="2"><div class="bus-bread2">产品修正</div></el-col>
     </el-row>
     <div class="sgMatch-content" :style="setBackgroundBg1">
-        <div>
+        <!-- <div>
             <span class="sgMatch-content-title">产品设计说明文件</span>
             <div class="uploadFile">
                 <img :style='setBackgroundBg' src="../../../../assets/images/businessUpload/file.png" />
@@ -20,7 +20,7 @@
                     <el-button size="small" type="primary">导入文件</el-button>
                 </el-upload>
             </div>
-        </div>
+        </div> -->
         <div class="searchTable">
             <el-row>
                 <el-input
@@ -31,7 +31,7 @@
                     </el-input>
             </el-row>
             <div class="sgMatch-footer">
-                <span class="confirm-btn">上传</span>
+                <span class="confirm-btn">提交审核</span>
                 <span class="reset-btn">取消</span>
             </div>
         </div>
@@ -60,7 +60,7 @@ export default {
           float: 'left'
       },
       textarea2: '',
-      fileList: [],
+    //   fileList: [],
     };
   },
   components: {
@@ -68,9 +68,9 @@ export default {
   },
   mounted() {},
   methods: {
-    handleChange(file, fileList) {
-        this.fileList = fileList.slice(-3);
-    },
+    // handleChange(file, fileList) {
+    //     this.fileList = fileList.slice(-3);
+    // },
     gobackFir(){
       this.$router.push({
         path: '/Home/fromAudit'
@@ -144,7 +144,7 @@ export default {
     &:after {
       position: absolute;
       content: "";
-      left: 64%;
+      left: 46%;
       top: 10px;
       border-bottom: 7px solid #58dbff;
       border-left: 9px solid transparent;

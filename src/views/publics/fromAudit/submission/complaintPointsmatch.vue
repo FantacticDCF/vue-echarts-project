@@ -4,7 +4,7 @@
         <el-row style="margin: 2px 0 0 0;cursor: pointer">
           <el-col :span="2"><div class="bus-bread" @click='goBacktoSec'>消保审核</div></el-col>
           <el-col :span="2"><div class="bus-bread1" @click='goBackto'>报送</div></el-col>
-          <el-col :span="2"><div class="bus-bread2">手工标签匹配</div></el-col>
+          <el-col :span="2"><div class="bus-bread2">投诉点匹配</div></el-col>
         </el-row>
         <div class="sgMatch-content" :style="setBackgroundBg1">
             <el-row>
@@ -25,8 +25,8 @@
                       </el-row>
                     </div>
                     <div class="sgMatch-footer">
-                      <span class="confirm-btn">确定</span>
-                      <span class="reset-btn">取消</span>
+                      <span class="confirm-btn">产品修正</span>
+                      <span class="reset-btn">文件下载</span>
                     </div>
                 </div>
             </el-row>
@@ -58,11 +58,10 @@ export default {
       },
       detailFlag: false,
       listLabel: [
-          {label: '时间', width: '200',prop: 'data'},
-          {label: '涉事分行',width: '160', prop: 'bank'},
-          {label: '涉事网点', width: '250', prop: 'netaddress'},
-          {label: '事件记录',prop: 'remark'},
-          {label: '投诉人', width: '120',prop: 'person'},
+          {label: '客户流程', width: '200',prop: 'data'},
+          {label: '行内流程',width: '200', prop: 'bank'},
+          {label: '定岗定责', width: '250', prop: 'netaddress'},
+          {label: '近五年投诉量',prop: 'remark'},
       ],
       // 表格数据  (随意写的数据）
       tableData: [
@@ -71,7 +70,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -79,7 +77,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -87,7 +84,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -95,7 +91,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -103,7 +98,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -111,7 +105,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -119,7 +112,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -127,7 +119,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -135,7 +126,6 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
@@ -143,16 +133,12 @@ export default {
               bank: '北京分行',
               netaddress: '北京市金融街道21号',
               remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           }
       ],
       currentPage1: 1,
       shows:''
     }
-  },
-  created(){
-    this.shows = this.$route.params.shows
   },
   methods: {
     handleSizeChange(val) {
@@ -172,6 +158,9 @@ export default {
       })
     }
   },
+  created(){
+      this.shows = this.$route.params.shows
+  }
 }
 </script>
 <style lang="less" scoped>

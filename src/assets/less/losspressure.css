@@ -144,6 +144,7 @@ input::-webkit-input-placeholder {
 }
 .el-row .el-col-11:nth-child(1) .fromContent .jindu .block /deep/ .el-slider__bar {
   border-radius: 12px;
+  background: -webkit-linear-gradient(left, #0499D4 25%, #1AA5DB 50%, #39BBE5 75%, #4FC8EC 100%) !important;
   width: 70%;
   height: 19px;
 }
@@ -274,6 +275,7 @@ input::-webkit-input-placeholder {
 }
 .el-row .el-col-11:nth-child(2) .fromContent .jindu .block /deep/ .el-slider__bar {
   border-radius: 12px;
+  background: -webkit-linear-gradient(left, #0499D4 25%, #1AA5DB 50%, #39BBE5 75%, #4FC8EC 100%) !important;
   width: 70%;
   height: 19px;
 }

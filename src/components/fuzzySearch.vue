@@ -1,7 +1,8 @@
 <template>
     <div class="fuzzySearch">
         <div class="aborder" :style="setBackgroundBg">
-            <span>工单查询</span>
+            <span v-show="shows == 1">工单查询</span>
+            <span v-show="shows == 2">投诉案例查询</span>
             <span class="searchbox">
                  <input
                     type="text"
@@ -35,6 +36,12 @@
 <script>
 import dataList from '../assets/json/code.json';
 export default {
+    props:{
+        shows:{
+            type: Number,
+            default:()=>1
+        }
+    },
     data(){
         return {
             setBackgroundBg: {
@@ -136,7 +143,7 @@ export default {
     },
     mounted() {
         // this.handleChose()
-        window.addEventListener('scroll', this.resetStyle, true);
+        // window.addEventListener('scroll', this.resetStyle, true);
     },
     // watch:{
     //     // 监听input值的变化
@@ -191,6 +198,7 @@ input::-webkit-input-placeholder {
 .fuzzy-data-fa{
     position: absolute;
     left: 343px;
+    z-index: 9999;
     width: 50%;
 }
 .fuzzy-data-ul{
@@ -206,7 +214,6 @@ input::-webkit-input-placeholder {
     background-image: url('../assets/images/commonTitle/searchbg.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    z-index: 100;
 }
 #fuzzy-data-ul-li{
     width: 100%;

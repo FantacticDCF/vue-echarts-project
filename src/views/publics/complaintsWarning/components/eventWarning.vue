@@ -1,18 +1,10 @@
 <template>
   <div>
-    <div class="bus-bread" @click="goback">投诉预警</div>
-    <div class="bus-bread1">事件预警</div>
-    <div class="aborder" :style="setBackgroundBg">
-      <span>工单查询</span>
-      <input
-        type="text"
-        class="input-border"
-        placeholder="输入关键词查询"
-        :style="setBackgroundBg"
-      />
-      <i class="el-icon-search iconSearch"></i>
-    </div>
-
+    <fuzzyTable/>
+    <el-row style="margin: 2px 0;cursor: pointer">
+      <el-col :span="2"><div class="bus-bread"  @click="goback">投诉预警</div></el-col>
+      <el-col :span="2"><div class="bus-bread1" @click='goBackto'>事件预警</div></el-col>
+    </el-row>
     <div class="searchTable">
       <tableCommon :tableData="tableData" :listLabel="listLabel" :detailFlag='detailFlag'/>
       <div class="searchPage">
@@ -33,19 +25,14 @@
 </template>
 <script>
 import tableCommon from '../../../../components/tableCommon.vue'
+import fuzzyTable from '../../../../components/fuzzySearch.vue'
 export default {
   components:{
-    tableCommon
+    tableCommon,
+    fuzzyTable
   },
   data() {
     return {
-      setBackgroundBg: {
-        backgroundImage:
-          "url(" + require("../../../../assets/images/big-border.png") + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-      },
       detailFlag: true,
       listLabel: [
           {label: '时间', width: '150',prop: 'data'},
@@ -165,69 +152,55 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.bus-bread1 {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
-  top: -20px;
-  left: 6.5%;
+.el-col-2 {
+  height: 30px;
+  margin-bottom: 0.3%;
+  .bus-bread {
+    height: 30px;
+    line-height: 40px;
+    position: relative;
+    text-indent: 16px;
+    color: #176CA3;
 
-  &:after {
-    position: absolute;
-    content: "";
-    left: 6.5%;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
+    // margin-bottom: 1%;
+    &:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 10px;
+      border-bottom: 7px solid #176CA3;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+    &:after {
+      position: absolute;
+      content: "";
+      left: 78%;
+      top: 10px;
+      border-bottom: 7px solid #176CA3;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
   }
-}
-.bus-bread {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
-  &:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
+  .bus-bread1 {
+    height: 30px;
+    line-height: 40px;
+    position: relative;
+    // text-indent: 16px;
+    color: #58dbff;
+    &:after {
+      position: absolute;
+      content: "";
+      left: 60%;
+      top: 10px;
+      border-bottom: 7px solid #58dbff;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
   }
-  &:after {
-    position: absolute;
-    content: "";
-    left: 6.4%;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
-  }
-}
-.aborder {
-  text-indent: 30px;
-  color: #1a83c0;
-  // margin-top: 10px;
-  width: 55%;
-  height: 32px;
-  line-height: 32px;
-  overflow: hidden;
-}
-.input-border {
-  margin-left: 30px;
-  border: none;
-  color: #1a83c0;
-  width: 70%;
-  height: 70%;
-  text-indent: 15px;
-  font-size: 10px;
-}
-input::-webkit-input-placeholder {
-  color: #59dfff;
 }
 .searchTable {
   width: 98%;
