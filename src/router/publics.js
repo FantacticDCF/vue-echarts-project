@@ -172,6 +172,12 @@ let pubics=[
                 name: 'consumerInsuranceReview',
                 component: ()=>import("@/views/publics/fromAudit/submission/consumerInsuranceReview"),
                 meta:{breadnav:[{path:'/Home/consumerInsuranceReview',name:'消保审核修正'}],name:'消保审核修正'}
+            },
+            {
+                path: '/Home/complainWarningEmergency',
+                name: 'complainWarningEmergency',
+                component: ()=>import("@/views/publics/complaintsWarning/components/complainWarningEmergency"),
+                meta:{breadnav:[{path:'/Home/complainWarningEmergency',name:'投诉预警应急事件结案'}],name:'投诉预警应急事件结案'}
             }
        ]
     }
