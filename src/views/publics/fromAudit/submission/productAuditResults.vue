@@ -23,7 +23,7 @@
                                     style="display: block"
                                     :on-change="handleChange"
                                     :file-list="fileList">
-                                    <el-button size="small" type="primary">导入文件</el-button>
+                                    <el-button size="small" type="primary">上传附件</el-button>
                                 </el-upload>
                             </div>
                         </div>

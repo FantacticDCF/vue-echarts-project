@@ -31,8 +31,8 @@
                     </el-input>
             </el-row>
             <div class="sgMatch-footer">
-                <span class="confirm-btn">确定</span>
-                <span class="reset-btn">取消</span>
+                <span class="confirm-btn">保存</span>
+                <span class="reset-btn">提交</span>
             </div>
         </div>
     </div>

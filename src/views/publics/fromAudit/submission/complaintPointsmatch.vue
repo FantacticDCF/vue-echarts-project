@@ -25,8 +25,8 @@
                       </el-row>
                     </div>
                     <div class="sgMatch-footer">
-                      <span class="confirm-btn">确定</span>
-                      <span class="reset-btn">取消</span>
+                      <span class="confirm-btn">产品修正</span>
+                      <span class="reset-btn">文件下载</span>
                     </div>
                 </div>
             </el-row>
