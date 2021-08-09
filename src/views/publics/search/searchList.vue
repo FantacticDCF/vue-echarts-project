@@ -222,6 +222,7 @@ export default {
     this.chartLine1 = this.$echarts.init(
       document.getElementById("chartLineBox1")
     );
+
     this.getLineEcharts(this.echarsAvg); // 折线图
     this.getLineEcharts1(this.echarsSum);
   },
@@ -229,8 +230,8 @@ export default {
     gotocus() {
       this.$router.push({ path: "/Home/customerReview" });
     },
-    goCheck(){
-this.$router.push({ path: "/Home/check" });
+    goCheck() {
+      this.$router.push({ path: "/Home/check" });
     },
     gotoHandle() {
       this.$router.push({ path: "/Home/serch" });
