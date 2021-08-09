@@ -27,7 +27,7 @@
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="item icon-3" :class="fininshed[2]?'active':'deflt'">
+            <div class="item icon-3" :class="fininshed[2]?'active':'deflt'" @click='jumpProductResult'>
 <!--              <img src="../../../../assets/images/submission/item3.png">-->
               <p>产品审核结果</p>
             </div>
@@ -50,7 +50,7 @@
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="item2 icon-5" :class="fininshed[4]?'active':'deflt'">
+            <div class="item2 icon-5" :class="fininshed[4]?'active':'deflt'" @click="jumpProductmModify">
 <!--              <img src="../../../../assets/images/submission/item5.png">-->
               <p>产品修正/文件下载</p>
             </div>
@@ -99,6 +99,16 @@ export default {
     junptsd(){
       this.$router.push({
         name: 'complaintPointsmatch',params:{'shows':2}
+      },)
+    },
+    jumpProductmModify(){
+      this.$router.push({
+        path: '/Home/producModification'
+      },)
+    },
+    jumpProductResult(){
+      this.$router.push({
+        path: '/Home/productAuditResults'
       },)
     }
   },

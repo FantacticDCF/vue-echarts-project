@@ -153,8 +153,26 @@ let pubics=[
                 path: '/Home/complaintPointsmatch',
                 name: 'complaintPointsmatch',
                 component: ()=>import("@/views/publics/fromAudit/submission/complaintPointsmatch"),
-                meta:{breadnav:[{path:'/Home/complaintPointsmatch',name:'投诉点匹配'}],name:'投诉点匹配'}//投诉预警
+                meta:{breadnav:[{path:'/Home/complaintPointsmatch',name:'投诉点匹配'}],name:'投诉点匹配'}
             },
+            {
+                path: '/Home/producModification',
+                name: 'producModification',
+                component: ()=>import("@/views/publics/fromAudit/submission/producModification"),
+                meta:{breadnav:[{path:'/Home/producModification',name:'产品修正'}],name:'产品修正'}
+            },
+            {
+                path: '/Home/productAuditResults',
+                name: 'productAuditResults',
+                component: ()=>import("@/views/publics/fromAudit/submission/productAuditResults"),
+                meta:{breadnav:[{path:'/Home/productAuditResults',name:'产品审核结果'}],name:'产品审核结果'}
+            },
+            {
+                path: '/Home/consumerInsuranceReview',
+                name: 'consumerInsuranceReview',
+                component: ()=>import("@/views/publics/fromAudit/submission/consumerInsuranceReview"),
+                meta:{breadnav:[{path:'/Home/consumerInsuranceReview',name:'消保审核修正'}],name:'消保审核修正'}
+            }
        ]
     }
 ]
