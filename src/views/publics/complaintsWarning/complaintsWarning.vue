@@ -603,6 +603,9 @@ input::-webkit-input-placeholder {
       /deep/.el-table--striped .el-table__body tr.el-table__row--striped td {
         background: #182a56;
       }
+      /deep/.el-table th>.cell{
+            padding: 8px 0 !important;
+      } 
       /deep/.el-pager li.btn-quicknext,
       /deep/.el-pager li.btn-quickprev {
         color: #ebebed;
