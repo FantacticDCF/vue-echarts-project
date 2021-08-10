@@ -13,7 +13,7 @@
                 <el-progress class="pr1 " :percentage="item.rate" :show-text='false'
                              :width="12" :stroke-width="12">
                 </el-progress>
-                <label class="font22 color-blue">{{item.year}}</label>
+                <label class="font35 color-blue">{{item.year}}</label>
                 <label class="font16 color-blue mgl-12">{{format(item.name)}}</label>
                 <img class="arrow-right" src="../../../assets/images/searchList/you.png">
               </div>
@@ -22,7 +22,7 @@
                 <el-progress class="pr2 " :percentage="item.rate2" :show-text='false'
                              :width="12" :stroke-width="12">
                 </el-progress>
-                <label class="font22 color-orange">{{item.year}}</label>
+                <label class="font35 color-orange">{{item.year}}</label>
                 <label class="font16 color-orange mgl-12">{{format(item.name)}}</label>
                 <img class="arrow-right" src="../../../assets/images/searchList/you.png">
               </div>
@@ -328,10 +328,8 @@ export default {
   }
 .check .subPanel label {
     display: inline-block;
-    /*line-height: 25px;*/
-    /*height: 30px;*/
-    margin: 0 15px;
-    font-size: 12px;
+    margin: -20px 12px 0 8px;
+    font-family: electronicFont;
   }
 .check .subPanel {
     width: 50%;
@@ -355,21 +353,16 @@ export default {
   .color-orange {
     color: orange;
   }
-  .font16 {
-    font-size: 16px!important;
-  }
-  .font22 {
-    font-size: 22px!important;
-  }
+
   .mgl-12 {
     margin-left: -12px!important;
   }
 
   .pr1 .el-progress-bar__inner{
-    //background-image: -webkit-linear-gradient( left, #ed4014, #f90 );
+    background-image: -webkit-linear-gradient( left, #3A9ACF, #6BC7E8 );
   }
   .pr2 .el-progress-bar__inner{
-    background-image: -webkit-linear-gradient( left, #ed4014, #f90 );
+    background-image: -webkit-linear-gradient( left,#EE665B,#F4C550);
   }
   .el-progress-bar__outer{
     background-color:#171f38;
@@ -379,7 +372,7 @@ export default {
     cursor: pointer;
     float: right;
     margin-right: 15px;
-    margin-top: 7px;
+    margin-top: 0px;
   }
 
 .check-index {
@@ -398,10 +391,8 @@ export default {
   background-size: 60%;
 }
 .check-index h3{
-  //position: absolute; */
-  /* top: 30%; */
-  //color: white;
-  font-size: 30px;
+  font-size: 40px;
+  font-family: electronicFont;
   text-align: center;
   width: 100%;
   margin: 22px auto 0 auto;
@@ -423,7 +414,7 @@ export default {
 .claims_box .data{
   display: inline-block;
   position: absolute;
-  top: 35px;
+  top: 30px;
   width: 50%;
   margin-left: 20px;
 }
@@ -432,13 +423,13 @@ export default {
   display: inline-block;
 }
 .claims_box h3{
-  //color: white;
-  font-size: 30px;
-  margin: 0 auto;
+  font-size: 40px;
+  font-family: electronicFont;
 }
 .claims_box p{
   color: white;
   font-size: 12px;
+  margin-left: 3px;
 }
 .check-index label,.claims_box label{
   font-size: 16px!important;
