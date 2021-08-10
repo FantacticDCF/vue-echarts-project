@@ -607,7 +607,7 @@ input::-webkit-input-placeholder {
         background: #182a56;
       }
       /deep/.el-table th>.cell{
-            padding: 8px 0 !important;
+            padding: 3px 0 !important;
       } 
       /deep/.el-pager li.btn-quicknext,
       /deep/.el-pager li.btn-quickprev {

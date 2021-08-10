@@ -51,6 +51,12 @@ let pubics=[
                 meta:{breadnav:[{path:'/Home/analysis',name:'投诉数据分析'}],name:'投诉数据分析'}//投诉数据分析
             },
             {
+                path: '/Home/complaint',
+                name: 'complaint',
+                component: ()=>import("@/views/publics/Home/complaint"),
+                meta:{breadnav:[{path:'/Home/complaint',name:'投诉数据分析'}],name:'投诉数据分析'}//具体情况
+            },
+            {
                 path: '/Home/losspressure',
                 name: 'losspressure',
                 component: ()=>import("@/views/publics/losspressure/losspressure"),
