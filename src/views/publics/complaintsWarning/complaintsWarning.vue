@@ -11,6 +11,7 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div>
+    <!-- <fuzzySearch/> -->
     <el-row>
       <el-col :span="12"><div class="bus-bread">投诉预警</div></el-col>
       <el-col :span="12"> </el-col>
@@ -115,6 +116,7 @@
 <script>
 import jindutiao from "../components/jindutiao.vue";
 import tableCommon from "../../../components/tableCommon.vue";
+// import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -383,6 +385,7 @@ export default {
   components: {
     jindutiao,
     tableCommon,
+    // fuzzySearch
   },
   methods: {
     goto() {
@@ -604,7 +607,7 @@ input::-webkit-input-placeholder {
         background: #182a56;
       }
       /deep/.el-table th>.cell{
-            padding: 8px 0 !important;
+            padding: 3px 0 !important;
       } 
       /deep/.el-pager li.btn-quicknext,
       /deep/.el-pager li.btn-quickprev {

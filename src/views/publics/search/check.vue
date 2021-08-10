@@ -14,7 +14,7 @@
                              :width="12" :stroke-width="12">
                 </el-progress>
                 <label class="font22 color-blue">{{item.year}}</label>
-                <label class="font18 color-blue mgl-12">{{format(item.name)}}</label>
+                <label class="font16 color-blue mgl-12">{{format(item.name)}}</label>
                 <img class="arrow-right" src="../../../assets/images/searchList/you.png">
               </div>
               <div>
@@ -23,7 +23,7 @@
                              :width="12" :stroke-width="12">
                 </el-progress>
                 <label class="font22 color-orange">{{item.year}}</label>
-                <label class="font18 color-orange mgl-12">{{format(item.name)}}</label>
+                <label class="font16 color-orange mgl-12">{{format(item.name)}}</label>
                 <img class="arrow-right" src="../../../assets/images/searchList/you.png">
               </div>
 
@@ -33,7 +33,40 @@
       <el-col :span="8">
         <div class="panel">
           <h2 class="title" >本月考核</h2>
+          <div class="check-index" v-for="(item,index) in yearCheckData" :key="index">
+            <div class="check-bg">
+              <h3 class="color-blue">{{item.data}}<label>{{format(item.name)}}</label></h3>
+              <p>{{item.title}}</p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="12">
+        <div class="panel">
+          <h2 class="title" >投诉赔付</h2>
+          <div class="claims_box" v-for="(item,index) in claims" :key="index">
+<!--            <img :src="require('../../../assets/images/searchList/'+item.name+'.png')">-->
+            <img :src="require('../../../assets/images/searchList/year.png')">
+            <div class="data">
+              <h3 class="color-blue">{{item.data}}<label>{{format(item.name)}}</label></h3>
+              <p>{{item.title}}</p>
+            </div>
 
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="panel">
+          <h2 class="title" >投诉压降</h2>
+          <el-table :data="tableData" width="100%" height="100%" :row-class-name="tableRowClassName">
+            <el-table-column v-for="item in colData" :key="item.id" stripe
+                             :prop="item.colNameEn" :label="item.colName"
+
+                             >
+            </el-table-column>
+          </el-table>
         </div>
       </el-col>
     </el-row>
@@ -46,47 +79,145 @@ export default {
   name: "check",
   data(){
     return {
-      // color1:'#00CDFF',
-      // color2:'orange',
-      annualObjectives : [//年度目标
-         {//投诉发生率
-          'name':'complaintRate',
-          'title':'投诉发生率',
-           'rate':90,//百分比
-           'rate2':95,//百分比
-          'year':0.005,
-          'finish':0.007
+      //年度目标
+      annualObjectives: [
+        {//投诉发生率
+          'name': 'complaintRate',
+          'title': '投诉发生率',
+          'rate': 90,//百分比
+          'rate2': 95,//百分比
+          'year': 0.005,
+          'finish': 0.007
         },
         {//投诉数量
-           'name':'complaintNums',
-          'title':'投诉数量',
-          'rate':80,//百分比
-          'rate2':90,//百分比
-          'year':1000,
-          'finish':700
+          'name': 'complaintNums',
+          'title': '投诉数量',
+          'rate': 80,//百分比
+          'rate2': 90,//百分比
+          'year': 1000,
+          'finish': 700
         },
         {//处理时效
-          'name':'aging',
-          'title':'处理时效',
-          'rate':70,//百分比
-          'rate2':80,//百分比
-          'year':48,
-          'finish':50
+          'name': 'aging',
+          'title': '处理时效',
+          'rate': 70,//百分比
+          'rate2': 80,//百分比
+          'year': 48,
+          'finish': 50
         },
         {//监督投诉量
-          'name':'MonitoComplaints',
-          'title':'监督投诉量',
-          'rate':60,//百分比
-          'rate2':70,//百分比
-          'year':100,
-          'finish':60
+          'name': 'MonitoComplaints',
+          'title': '监督投诉量',
+          'rate': 60,//百分比
+          'rate2': 70,//百分比
+          'year': 100,
+          'finish': 60
         },
-      ]
+      ],
+      //本月考核
+      yearCheckData: [
+        {//投诉发生率
+          'name': 'complaintRate',
+          'title': '投诉发生率',
+          'data': 0.003,
+        },
+        {//投诉数量
+          'name': 'complaintNums',
+          'title': '投诉数量',
+          'data': 80,
+        },
+        {//处理时效
+          'name': 'aging',
+          'title': '处理时效',
+          'data': 40,
+        },
+        {//监督投诉量
+          'name': 'MonitoComplaints',
+          'title': '监督投诉量',
+          'data': 10,
+        }
+      ],
+      //投诉赔付
+      claims: [
+        {//投诉发生率
+          'name': 'year',
+          'title': '年累计赔付',
+          'data': 1000,
+        },
+        {//投诉数量
+          'name': 'season',
+          'title': '季度平均赔付',
+          'data': 1100,
+        },
+        {//处理时效
+          'name': 'month',
+          'title': '本月平均赔付',
+          'data': 870,
+        },
+        {//监督投诉量
+          'name': 'average',
+          'title': '比均赔付',
+          'data':1152,
+        }
+      ],
+      colData: [],
+      tableData:[]
 
     }
   },
   mounted(){
-
+    this.colData= [
+      {
+        id:1,
+        colName: '业务',
+        colNameEn: 'col1',
+        colColor: 'blue',
+      },
+      {
+        id:2,
+        colName: '目标',
+        colNameEn: 'col2',
+        colColor: 'blue',
+      },
+      {
+        id:3,
+        colName: '实际发生',
+        colNameEn: 'col3',
+        colColor: 'blue',
+      }
+    ],
+    this.tableData= [
+      {
+        id: '1',
+        col1:"个人住房贷款",
+        col2:"<100笔",
+        col3:87,
+      },
+      {
+        id: '2',
+        col1:"开户业务",
+        col2:"<100笔",
+        col3:67,
+      },
+      {
+        id: '3',
+        col1:"保险",
+        col2:"<100笔",
+        col3:30,
+      },
+      {
+        id: '4',
+        col1:"短信",
+        col2:"<100笔",
+        col3:27,
+      },
+      {
+        id: '5',
+        col1:"转账支付",
+        col2:"<100笔",
+        col3:15,
+      },
+    ]
   },
   methods :{
     format(type){
@@ -96,6 +227,10 @@ export default {
         case 'complaintNums': return '笔';
         case 'aging': return '小时';
         case 'MonitoComplaints': return '笔';
+        case 'year' : return '万';
+        case 'season': return '万';
+        case 'month' : return '元';
+        case 'average': return '元';
       }
     },
     goBack(){
@@ -103,11 +238,21 @@ export default {
         path: '/Home/searchList'
       })
     },
+    tableRowClassName({row, rowIndex}) {
+      console.log(row,rowIndex)
+      if (rowIndex % 2 === 1)
+      {
+        return 'stripe';
+      }
+      else {
+        return 'transparent'
+      }
+    }
   }
 }
 </script>
 
-<style lang='less' scoped>
+<style lang='less' >
 .bus-bread1 {
   position: relative;
   text-indent: 16px;
@@ -155,9 +300,10 @@ export default {
 .check .panel {
     position: relative;
     background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
-    padding: 20px 25px;
+    padding: 23px 25px;
     background-size: 100% 100%;
     margin-top: 20px;
+    height:300px
   }
   .check .panel h2 {
     height: 22px;
@@ -174,20 +320,20 @@ export default {
     padding: 0 8px;
   
   }
-  .panel .el-progress {
+.check .panel .el-progress {
     width: 38%;
     display: inline-block;
     margin-top: -3px;
     vertical-align: middle;
   }
-  .panel label {
+.check .subPanel label {
     display: inline-block;
     /*line-height: 25px;*/
     /*height: 30px;*/
     margin: 0 15px;
     font-size: 12px;
   }
-  .subPanel {
+.check .subPanel {
     width: 50%;
     height: 120px;
     display: inline-block;
@@ -197,7 +343,7 @@ export default {
     margin-top: 8px;
     padding-left: 5px;
   }
-  .subPanel p{
+  .check .subPanel p{
     margin: 12px 10px;
   }
   .color-white {
@@ -209,8 +355,8 @@ export default {
   .color-orange {
     color: orange;
   }
-  .font18 {
-    font-size: 18px!important;
+  .font16 {
+    font-size: 16px!important;
   }
   .font22 {
     font-size: 22px!important;
@@ -219,11 +365,14 @@ export default {
     margin-left: -12px!important;
   }
 
-  .el-progress-bar__inner{
+  .pr1 .el-progress-bar__inner{
+    //background-image: -webkit-linear-gradient( left, #ed4014, #f90 );
+  }
+  .pr2 .el-progress-bar__inner{
     background-image: -webkit-linear-gradient( left, #ed4014, #f90 );
   }
   .el-progress-bar__outer{
-    background-color:transparent;
+    background-color:#171f38;
   }
   .arrow-right {
     width: 20px;
@@ -232,4 +381,121 @@ export default {
     margin-right: 15px;
     margin-top: 7px;
   }
+
+.check-index {
+  width: 49%;
+  height: 40%;
+  display: inline-block;
+  position: relative;
+}
+
+.check-bg {
+  width:100%;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  background: url("../../../assets/images/ts-bg.png") no-repeat center center;
+  background-size: 60%;
+}
+.check-index h3{
+  //position: absolute; */
+  /* top: 30%; */
+  //color: white;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  margin: 22px auto 0 auto;
+
+}
+.check-index p{
+  color: white;
+  text-align: center;
+  font-size: 12px;
+}
+
+
+.claims_box {
+  width: 49%;
+  height: 40%;
+  display: inline-block;
+  position: relative;
+}
+.claims_box .data{
+  display: inline-block;
+  position: absolute;
+  top: 35px;
+  width: 50%;
+  margin-left: 20px;
+}
+.claims_box img{
+  width: 49%;
+  display: inline-block;
+}
+.claims_box h3{
+  //color: white;
+  font-size: 30px;
+  margin: 0 auto;
+}
+.claims_box p{
+  color: white;
+  font-size: 12px;
+}
+.check-index label,.claims_box label{
+  font-size: 16px!important;
+}
+
+.check .el-table td, .el-table th {
+  padding: 5px 0;
+}
+/*.el-table tr:hover {*/
+/*   background: transparent;*/
+/*}*/
+.check .el-table thead th.is-leaf {
+  border-bottom: 0;
+  background: #223e94;
+}
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 0;
+}
+.check .el-table {
+  background: transparent;
+  width: 98%;
+  margin: 10px 0 10px 15px;
+}
+.check .el-table__body{
+  height: 100%;
+}
+.check .el-table--scrollable-y .el-table__body-wrapper {
+  overflow: hidden;
+  height: auto!important;
+}
+.check .el-table th, .el-table tr {
+  background-color: transparent;
+}
+.check .el-table--enable-row-hover .el-table__body tr:hover>td {
+  background-color: transparent;
+}
+.check .el-table td, .el-table th {
+  /*padding: 0.7% 0;*/
+  text-align: center;
+}
+.check .el-table--border::after, .el-table--group::after, .el-table::before {
+  background-color: transparent;
+}
+.check .el-table .cell{
+  color: white;
+  font-size: 10px;
+  padding: 0 2px;
+  text-align: center;
+}
+.check .el-table thead .cell{
+  color: #00cdff
+}
+.stripe{
+  background-color:#16274c!important; /*隔行变色*/
+ }
+.transparent{
+  background-color: transparent!important;
+}
+
 </style>
