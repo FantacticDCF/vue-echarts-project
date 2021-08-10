@@ -8,7 +8,7 @@
           <div
             :id="'chartLine' + index"
             ref="chartLine"
-            style="width: 97%; height: calc(100vh - 400px)"
+            style="width: 30%; height: calc(100vh - 400px)"
           ></div>
         </div>
       </div>
