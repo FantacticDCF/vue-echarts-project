@@ -32,15 +32,21 @@
             width="90"
             :class="menuitemClasses"
           >
-            <MenuItem
-              :name="item.name"
-              v-for="(item, index) in leftlist"
-              :key="index"
-              @click.native="leftclick(item)"
-            >
-              <img class="iconimg" :src="item.img"/>
-              <span>{{ item.label }}</span>
-            </MenuItem>
+            <Submenu  v-for="(item, index) in leftlist" :key="index" :name="item.id">
+              <template slot="title">
+                <img class="iconimg" :src="item.img"/>
+                {{item.label}}
+              </template>
+              <MenuItem
+                :name="its.name"
+                v-for="(its, ins) in item.children"
+                :key="ins"
+                @click.native="leftclick(its)"
+              >
+                <div class="circle"></div>
+                <span class="labelItem">{{ its.label }}</span>
+              </MenuItem>
+            </Submenu>
           </Menu>
         </Sider>
         <Layout>
@@ -143,6 +149,15 @@ export default {
           img: require('../../assets/images/commonTitle/tsjy.png'),
           id: "1",
           to: "/Home/business",
+          children:[
+            {
+              label: "投诉压降",
+              name: "投诉压降",
+              img: require('../../assets/images/commonTitle/tsjy.png'),
+              id: "1",
+              to: "/Home/business",
+            }
+          ]
         },
         {
           label: "投诉压降(考核目标)",
@@ -151,48 +166,112 @@ export default {
           img: require('../../assets/images/commonTitle/yjmb.png'),
           id: "2",
           to: "/Home/losspressure",
+          children:[
+            {
+              label: "投诉压降(考核目标)",
+              // name: "压降目标",
+              name: "投诉压降(考核目标)",
+              img: require('../../assets/images/commonTitle/yjmb.png'),
+              id: "2",
+              to: "/Home/losspressure",
+            }
+          ]
         },
         {
           label: "查询",
           name: "查询",
           img: require('../../assets/images/commonTitle/cx.png'),
-          id: "2",
+          id: "3",
           to: "/Home/searchList",
+          children:[
+            {
+              label: "查询",
+              name: "查询",
+              img: require('../../assets/images/commonTitle/cx.png'),
+              id: "3",
+              to: "/Home/searchList",
+            }
+          ]
         },
         {
           label: "监管报送",
           name: "监管报送",
           img: require('../../assets/images/commonTitle/jgbs.png'),
-          id: "2",
+          id: "4",
           to: "/Home/regulatorySubmitted",
+          children:[
+            {
+               label: "监管报送",
+                name: "监管报送",
+                img: require('../../assets/images/commonTitle/jgbs.png'),
+                id: "4",
+                to: "/Home/regulatorySubmitted",
+            }
+          ]
         },
         {
           label: "投诉分析报告模版",
           name: "投诉分析报告模版",
           img: require('../../assets/images/commonTitle/tsfx.png'),
-          id: "2",
+          id: "5",
           to: "/Home/complaintAnalysis",
+          children:[
+            {
+               label: "投诉分析报告模版",
+                name: "投诉分析报告模版",
+                img: require('../../assets/images/commonTitle/tsfx.png'),
+                id: "5",
+                to: "/Home/complaintAnalysis",
+            }
+          ]
         },
         {
           label: "消保审核",
           name: "消保审核",
           img: require('../../assets/images/commonTitle/xbsh.png'),
-          id: "2",
+          id: "6",
           to: "/Home/fromAudit",
+          children:[
+            {
+              label: "消保审核",
+              name: "消保审核",
+              img: require('../../assets/images/commonTitle/xbsh.png'),
+              id: "6",
+              to: "/Home/fromAudit",
+            }
+          ]
         },
         {
           label: "投诉预警",
           name: "投诉预警",
           img: require('../../assets/images/commonTitle/tsyj.png'),
-          id: "2",
+          id: "7",
           to: "/Home/complaintsWarning",
+          children:[
+            {
+              label: "投诉预警",
+              name: "投诉预警",
+              img: require('../../assets/images/commonTitle/tsyj.png'),
+              id: "7",
+              to: "/Home/complaintsWarning",
+            }
+          ]
         },
         {
           label: "投诉管理驾驶舱",
           name: "投诉管理驾驶舱",
           img: require('../../assets/images/commonTitle/tsgl.png'),
-          id: "2",
+          id: "8",
           to: "/Home/complaintCockpit",
+          children:[
+            {
+              label: "投诉管理驾驶舱",
+              name: "投诉管理驾驶舱",
+              img: require('../../assets/images/commonTitle/tsgl.png'),
+              id: "8",
+              to: "/Home/complaintCockpit",
+            }
+          ]
         },
       ],
       breadnav: [],
@@ -310,12 +389,28 @@ export default {
   max-width: 230px !important;
   margin: 10px !important;
 }
-
+.ivu-menu-item{
+  color: #639FD6;
+}
+.ivu-menu-item:hover{
+  color: #58dbff;
+}
 .iconimg{
   display: inline-block;
   width: 16px;
   height: 16px;
   margin-right: 8px;
+}
+.circle{
+  width: 5px;
+  height: 5px;
+  background-color: #639FD6;
+  border-radius: 50%; 
+  display: inline-block;
+  margin-right: 10px;
+}
+.circle:hover{
+  background-color: #58dbff;
 }
 .header{
     background: none;

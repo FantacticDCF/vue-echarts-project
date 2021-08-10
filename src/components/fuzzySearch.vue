@@ -30,7 +30,6 @@
                 </li>
             </ul>
         </div>
-        <div id="mask" @click="clickout"></div>
     </div>
 </template>
 <script>
@@ -103,9 +102,6 @@ export default {
             console.log(item,999)
             this.content = item.VAL;        
             document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
-        },
-        clickout(){
-            this.resetStyle()
         },
         loseBlur(){
             this.resetStyle()
