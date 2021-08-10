@@ -28,7 +28,7 @@
 
         <div
           class="LayoutTitle info"
-          v-for="(item, index) in infoDesc"
+          v-for="(item, index) in desc.infoDesc"
           :key="index"
         >
           <div class="ranking1">{{ index + 1 }}</div>
@@ -47,12 +47,61 @@
       </div>
       <div class="Layout" :style="info.setBackgroundBg3">
         <div class="title">业务预警</div>
+        <div class="LayoutTitle">
+          <div class="ranking">排名</div>
+          <div class="ranking property">客户资产</div>
+          <div class="evaluate">客户评价</div>
+        </div>
+
+        <div
+          class="LayoutTitle info"
+          v-for="(item, index) in desc.infoDesc1"
+          :key="index"
+        >
+          <div class="ranking1">{{ index + 1 }}</div>
+          <div class="ranking1 property white hidden">{{ item.scope }}</div>
+          <div class="progress">
+            <jindutiao
+              :progress="item.jindu"
+              :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
+            />
+          </div>
+          <div :class="item.colorid < 1 ? item.classname : item.classname1">
+            <i :class="item.colorid < 1 ? '' : item.icon" class="icon"></i
+            >{{ item.jindu[0] }}
+          </div>
+        </div>
       </div>
       <div class="Layout" :style="info.setBackgroundBg3">
         <div class="title">岗位预警</div>
+        <div class="LayoutTitle">
+          <div class="ranking">排名</div>
+          <div class="ranking property">客户资产</div>
+          <div class="evaluate">客户评价</div>
+        </div>
+
+        <div
+          class="LayoutTitle info"
+          v-for="(item, index) in desc.infoDesc2"
+          :key="index"
+        >
+          <div class="ranking1">{{ index + 1 }}</div>
+          <div class="ranking1 property white hidden">{{ item.scope }}</div>
+          <div class="progress">
+            <jindutiao
+              :progress="item.jindu"
+              :name="item.colorid < 1 ? item.namecolor : item.namecolor1"
+            />
+          </div>
+          <div :class="item.colorid < 1 ? item.classname : item.classname1">
+            <i :class="item.colorid < 1 ? '' : item.icon" class="icon"></i
+            >{{ item.jindu[0] }}
+          </div>
+        </div>
       </div>
       <div class="Layout" :style="info.setBackgroundBg3">
         <div class="title">事件预警</div>
+
       </div>
     </div>
   </div>
@@ -82,68 +131,194 @@ export default {
           //   backgroundPosition:"2% 0",
         },
       },
-      infoDesc: [
-        {
-          id: 1001,
-          scope: "0-1万",
-          jindu: [88],
-          namecolor: "蓝色",
-          //  namecolor1: "红色",
-          classname: "progressDesc",
-          classname1: "red",
-          colorid: 0, //0 的时候时蓝色  1的时候时红色
-          namecolor1: "红色",
-          icon: "el-icon-warning",
-        },
-         {
-          id: 1002,
-          scope: "1-50万",
-          jindu: [80],
-          namecolor: "蓝色",
-          //  namecolor1: "红色",
-          classname: "progressDesc",
-          classname1: "red",
-          colorid: 0, //0 的时候时蓝色  1的时候时红色
-          namecolor1: "红色",
-          icon: "el-icon-warning",
-        },
-         {
-          id: 1003,
-          scope: "50-300万",
-          jindu: [70],
-          namecolor: "蓝色",
-          //  namecolor1: "红色",
-          classname: "progressDesc",
-          classname1: "red",
-          colorid: 0, //0 的时候时蓝色  1的时候时红色
-          namecolor1: "红色",
-          icon: "el-icon-warning",
-        },
-         {
-          id: 1004,
-          scope: "300-500万",
-          jindu: [68],
-          namecolor: "蓝色",
-          //  namecolor1: "红色",
-          classname: "progressDesc",
-          classname1: "red",
-          colorid: 1, //0 的时候时蓝色  1的时候时红色
-          namecolor1: "红色",
-          icon: "el-icon-warning",
-        },
-         {
-          id: 1005,
-          scope: "600万以上",
-          jindu: [50],
-          namecolor: "蓝色",
-          //  namecolor1: "红色",
-          classname: "progressDesc",
-          classname1: "red",
-          colorid:0, //0 的时候时蓝色  1的时候时红色
-          namecolor1: "红色",
-          icon: "el-icon-warning",
-        },
-      ],
+      desc: {
+        infoDesc: [
+          {
+            id: 1001,
+            scope: "0-1万",
+            jindu: [88],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1002,
+            scope: "1-50万",
+            jindu: [80],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1003,
+            scope: "50-300万",
+            jindu: [70],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1004,
+            scope: "300-500万",
+            jindu: [68],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 1, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1005,
+            scope: "600万以上",
+            jindu: [50],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+        ],
+        infoDesc1: [
+          {
+            id: 1001,
+            scope: "0-1万",
+            jindu: [88],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1002,
+            scope: "1-50万",
+            jindu: [80],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1003,
+            scope: "50-300万",
+            jindu: [70],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1004,
+            scope: "300-500万",
+            jindu: [68],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 1, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1005,
+            scope: "600万以上",
+            jindu: [50],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+        ],
+        infoDesc2: [
+          {
+            id: 1001,
+            scope: "0-1万",
+            jindu: [88],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1002,
+            scope: "1-50万",
+            jindu: [80],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1003,
+            scope: "50-300万",
+            jindu: [70],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1004,
+            scope: "300-500万",
+            jindu: [68],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 1, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+          {
+            id: 1005,
+            scope: "600万以上",
+            jindu: [50],
+            namecolor: "蓝色",
+            //  namecolor1: "红色",
+            classname: "progressDesc",
+            classname1: "red",
+            colorid: 0, //0 的时候时蓝色  1的时候时红色
+            namecolor1: "红色",
+            icon: "el-icon-warning",
+          },
+        ],
+      },
     };
   },
   components: {
@@ -232,9 +407,9 @@ input::-webkit-input-placeholder {
     }
     .LayoutTitle {
       display: flex;
-       margin-top: 10px;
+      margin-top: 10px;
       .ranking {
-         text-indent: 15px;
+        text-indent: 15px;
         height: 20px;
         width: 18%;
         text-align: right;
@@ -243,7 +418,7 @@ input::-webkit-input-placeholder {
       }
       .property {
         text-align: right;
-        width:15% !important;
+        width: 15% !important;
       }
       .evaluate {
         flex-grow: 1;
@@ -253,7 +428,7 @@ input::-webkit-input-placeholder {
       }
     }
     .ranking1 {
-       text-indent: 8px;
+      text-indent: 8px;
       width: 18%;
       height: 40px;
       // padding-right: 5px;
@@ -273,29 +448,22 @@ input::-webkit-input-placeholder {
       font-size: 12px;
       // text-align: center !important;
     }
-    .hidden{
+    .hidden {
       padding-right: 0;
     }
     .red {
       flex-grow: 1;
-     text-indent: 16px;
+      text-indent: 16px;
       color: #f16a6a;
       font-size: 12px;
-position: relative;
-padding-top: 3px;
-      //  flex-grow: 1;
-      // text-indent: 16px;
-      // color: #f16a6a;
-      // font-size: 12px;
-      // padding-top: 3px;
+      position: relative;
+      padding-top: 3px;
+
       .icon {
-        // margin-right: 5px;
         position: absolute;
         top: 15px;
-    left: -40px;
-
+        left: -40px;
       }
-      // text-align: center !important;
     }
     .progress {
       height: 40px;
@@ -326,6 +494,83 @@ padding-top: 3px;
       font-weight: 700;
       letter-spacing: 1.5px;
     }
+    .LayoutTitle {
+      display: flex;
+      margin-top: 10px;
+      .ranking {
+        text-indent: 15px;
+        height: 20px;
+        width: 18%;
+        text-align: right;
+        // padding-right: 9px;
+        color: #55d4f8;
+      }
+      .property {
+        text-align: right;
+        width: 15% !important;
+      }
+      .evaluate {
+        flex-grow: 1;
+        text-align: left;
+        color: #55d4f8;
+        text-indent: 121px;
+      }
+    }
+    .ranking1 {
+      text-indent: 8px;
+      width: 18%;
+      height: 40px;
+      // padding-right: 5px;
+      text-align: right;
+      color: #55d4f8;
+      line-height: 40px;
+      padding-right: 9px;
+    }
+    .info {
+      width: 100%;
+      height: 35px;
+      line-height: 35px;
+      margin-top: 3px;
+    }
+    .white {
+      color: #ffff !important;
+      font-size: 12px;
+      // text-align: center !important;
+    }
+    .hidden {
+      padding-right: 0;
+    }
+    .red {
+      flex-grow: 1;
+      text-indent: 16px;
+      color: #f16a6a;
+      font-size: 12px;
+      position: relative;
+      padding-top: 3px;
+
+      .icon {
+        position: absolute;
+        top: 15px;
+        left: -40px;
+      }
+    }
+    .progress {
+      height: 40px;
+      width: 300px;
+      padding-top: 12px;
+      /deep/ .main {
+        height: 15px;
+        width: 300px !important;
+        /* margin-left: 10px; */
+      }
+    }
+    .progressDesc {
+      flex-grow: 1;
+      text-indent: 16px;
+      color: #55d4f8;
+      font-size: 12px;
+      padding-top: 3px;
+    }
   }
   .Layout:nth-child(3) {
     height: 49%;
@@ -337,6 +582,83 @@ padding-top: 3px;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 1.5px;
+    }
+    .LayoutTitle {
+      display: flex;
+      margin-top: 10px;
+      .ranking {
+        text-indent: 15px;
+        height: 20px;
+        width: 18%;
+        text-align: right;
+        // padding-right: 9px;
+        color: #55d4f8;
+      }
+      .property {
+        text-align: right;
+        width: 15% !important;
+      }
+      .evaluate {
+        flex-grow: 1;
+        text-align: left;
+        color: #55d4f8;
+        text-indent: 121px;
+      }
+    }
+    .ranking1 {
+      text-indent: 8px;
+      width: 18%;
+      height: 40px;
+      // padding-right: 5px;
+      text-align: right;
+      color: #55d4f8;
+      line-height: 40px;
+      padding-right: 9px;
+    }
+    .info {
+      width: 100%;
+      height: 35px;
+      line-height: 35px;
+      margin-top: 3px;
+    }
+    .white {
+      color: #ffff !important;
+      font-size: 12px;
+      // text-align: center !important;
+    }
+    .hidden {
+      padding-right: 0;
+    }
+    .red {
+      flex-grow: 1;
+      text-indent: 16px;
+      color: #f16a6a;
+      font-size: 12px;
+      position: relative;
+      padding-top: 3px;
+
+      .icon {
+        position: absolute;
+        top: 15px;
+        left: -40px;
+      }
+    }
+    .progress {
+      height: 40px;
+      width: 300px;
+      padding-top: 12px;
+      /deep/ .main {
+        height: 15px;
+        width: 300px !important;
+        /* margin-left: 10px; */
+      }
+    }
+    .progressDesc {
+      flex-grow: 1;
+      text-indent: 16px;
+      color: #55d4f8;
+      font-size: 12px;
+      padding-top: 3px;
     }
   }
   .Layout:nth-child(4) {
@@ -350,6 +672,7 @@ padding-top: 3px;
       font-weight: 700;
       letter-spacing: 1.5px;
     }
+    
   }
 }
 </style>
