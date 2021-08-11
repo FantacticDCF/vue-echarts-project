@@ -193,7 +193,7 @@ input::-webkit-input-placeholder {
 } 
 .fuzzy-data-fa{
     position: absolute;
-    left: 343px;
+    left: 350px;
     z-index: 9999;
     width: 50%;
 }
