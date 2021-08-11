@@ -385,8 +385,8 @@ export default {
   width: 8rem !important;
 }
 .ivu-layout-sider{
-  min-width: 230px !important;
-  max-width: 230px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
   margin: 10px !important;
 }
 .ivu-menu-item{
@@ -394,6 +394,9 @@ export default {
 }
 .ivu-menu-item:hover{
   color: #58dbff;
+}
+/deep/.ivu-layout-sider-children{
+  overflow: auto;
 }
 .iconimg{
   display: inline-block;
