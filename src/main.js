@@ -12,6 +12,7 @@ import VueQuillEditor from 'vue-quill-editor';
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
+import './assets/less/base.less';
 import Base64 from './assets/utils/Base64';
 import vDialogs from 'v-dialogs'
 import './mock/mock'
