@@ -101,7 +101,7 @@
          <el-button
           type="checkbox"
           class="checkboxchart"
-          name="checkboxchart1"
+          name="checkboxchart"
           :checked="checked1"
           @click="clHandle1"
           ref="checked"
@@ -234,20 +234,20 @@ export default {
     clHandle1() {
       
       this.count++;
-       var checkboxs1 = document.getElementsByName("checkboxchart");
-      //  console.log( '1111',checkboxs[5]);
+       var checkboxs = document.getElementsByName("checkboxchart");
+       console.log( '1111',checkboxs[5]);
       if (this.count % 2 == 0) {
         // this.$refs.checked.$attrs.checked = false;
-        checkboxs1[5].checked= false;
+        checkboxs[5].checked= false;
         // console.log("false", this.$refs.checked.$attrs);
       } else {
         // this.$refs.checked.$attrs.checked = true;
-                checkboxs1[5].checked = true;
+                checkboxs[5].checked = true;
 
         // console.log("true", this.$refs.checked.$attrs);
       }
      
-      console.log(checkboxs1[5])
+      console.log(checkboxs[5])
   
     },
     getLineEcharts1(selected) {
