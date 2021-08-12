@@ -146,15 +146,15 @@ export default {
         backgroundPosition: "center",
       },
       selected: {
-       ' 95598投诉': true,
-        '人行投诉': true,
-        '银保监投诉': true,
-        '信访': true,
-        '同比': true,
-        '环比': false,
+        "95598投诉": true,
+        人行投诉: true,
+        银保监投诉: true,
+        信访: true,
+        同比: true,
+        环比: true,
       },
       count: 1,
- count1: 1,
+      count1: 1,
       checked: true,
       checked1: false,
       select: [
@@ -288,16 +288,75 @@ export default {
           containLabel: true,
         },
         legend: {
+          // data: [
+          //   "95558投诉",
+          //   "人行投诉",
+          //   "银保监投诉",
+          //   "信访",
+          //   "同比",
+          //   "环比",
+          // ],
           data: [
-            "95558投诉",
-            "人行投诉",
-            "银保监投诉",
-            "信访",
-            "同比",
-            "环比",
+            // "95558投诉",
+            {
+              name: "95558投诉",
+              textStyle: {
+                fontSize: 12,
+                fontWeight: "bolder",
+                color: "#cccccc",
+              },
+              icon: "circle",
+            },
+            {
+              name: "人行投诉",
+              textStyle: {
+                fontSize: 12,
+                fontWeight: "bolder",
+                color: "#cccccc",
+              },
+              icon: "circle",
+            },
+            {
+              name: "银保监投诉",
+              textStyle: {
+                fontSize: 12,
+                fontWeight: "bolder",
+                color: "#cccccc",
+              },
+              icon: "circle",
+            },
+            {
+              name: "信访",
+              textStyle: {
+                fontSize: 12,
+                fontWeight: "bolder",
+                color: "#cccccc",
+              },
+              icon: "circle",
+            },
+            {
+              name: "同比",
+              textStyle: {
+                fontSize: 12,
+                fontWeight: "bolder",
+                color: "#cccccc",
+              },
+              // icon: "circle",
+            },
+            {
+              name: "环比",
+              textStyle: {
+                fontSize: 12,
+                fontWeight: "bolder",
+                color: "#cccccc",
+              },
+              // icon: "circle",
+            },
+            // "同比",
+            // "环比",
           ],
           orient: "horizontal",
-          right:350,
+          right: 350,
           top: 0,
           bottom: 0,
           show: true,
@@ -359,17 +418,17 @@ export default {
             show: true,
             min: 0,
             max: 1400,
-             axisTick: {
-            //隐藏刻度标记
-            show: false,
-          },
+            axisTick: {
+              //隐藏刻度标记
+              show: false,
+            },
             // 改变y轴颜色
             axisLine: {
               lineStyle: {
                 color: "#1f78af",
                 width: 1, // 这里是为了突出显示加上的
               },
-               show: false,
+              show: false,
             },
           },
           {
@@ -455,9 +514,7 @@ export default {
             barWidth: 20, //柱图宽度
             barGap: "1%",
             name: "95558投诉",
-            data: [
-             1072,713,703,698,622,607,556,552,474,470
-            ],
+            data: [1072, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
@@ -475,9 +532,7 @@ export default {
             barWidth: 20, //柱图宽度
             name: "人行投诉",
             barGap: "20%",
-            data: [
-             65,40,55,17,76,31,59,101,22,9
-            ],
+            data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
             itemStyle: {
               normal: {
                 label: {
@@ -490,14 +545,12 @@ export default {
               },
             },
           },
-           {
+          {
             type: "bar",
             barWidth: 20, //柱图宽度
             name: "银保监投诉",
             barGap: "20%",
-            data: [
-             65,40,55,17,76,31,59,101,22,9
-            ],
+            data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
             itemStyle: {
               normal: {
                 label: {
@@ -510,14 +563,12 @@ export default {
               },
             },
           },
-           {
+          {
             type: "bar",
             barWidth: 20, //柱图宽度
             name: "信访",
             barGap: "20%",
-            data: [
-             65,40,55,17,76,31,59,101,22,9
-            ],
+            data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
             itemStyle: {
               normal: {
                 label: {
@@ -530,38 +581,7 @@ export default {
               },
             },
           },
-          // {
-          //   type: "line",
-          //   name: "银保监投诉",
-          //   data: [
-          //     78.49, 76.01, 72.55, 70.03, 31.77, 53.2, 90.63, 34.26, 22.64,
-          //     17.76,
-          //   ],
-          //   yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-          //   symbol: "circle", // 折线点设置为实心点
-          //   symbolSize: 10, // 折线点的大小
-          //   itemStyle: {
-          //     normal: {
-          //       color: "#e09216", //设置折线颜色
-          //     },
-          //   },
-          // },
-          // {
-          //   type: "line",
-          //   name: "信访",
-          //   data: [
-          //     78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
-          //     17.76,
-          //   ],
-          //   yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-          //   symbol: "circle", // 折线点设置为实心点
-          //   symbolSize: 10, // 折线点的大小
-          //   itemStyle: {
-          //     normal: {
-          //       color: "#e09216", //设置折线颜色
-          //     },
-          //   },
-          // },
+
           {
             type: "line",
             name: "同比",
@@ -602,7 +622,16 @@ export default {
       // 使用刚指定的配置项和数据显示图表。
       this.chartLine.setOption(option);
       // 使用刚指定的选择项数据显示图表。
-      var selectArr = this.chartLine.getOption().legend[0].data; //legend所有值
+      var s = this.chartLine.getOption().legend[0].data; //legend所有值
+       var names=[]
+      for (let i = 0; i < s.length; i++) {
+       
+        // console.log(s[i]);
+        names.push(s[i].name)
+        
+        // names.push(s[i].name)
+      }
+      console.log(names);
       // console.log(selectArr);
       var checkboxs = document.getElementsByName("checkboxchart");
       // console.log(document.getElementsByClassName('checkboxchart')[0]);
@@ -611,42 +640,30 @@ export default {
       for (let i = 0; i < arr.length; i++) {
         arr[i].onclick = function () {
           // console.log(i);
-          let obj = {};
+          // let obj = {};
           // let count=0
-          for (let j = 0; j < checkboxs.length; j++) {
-            //  console.log(option);
-            // console.log(option.legend.selectedMode);
-            // console.log(count+=1);
-            if (checkboxs[j].checked) {
-              obj[selectArr[j]] = true;
-            } else {
-              obj[selectArr[j]] = false;
-            }
-            // obj[selectArr[j]]=!obj[selectArr[j]]
-            // checkboxs[j].checked=obj[selectArr[j]]? obj[selectArr[j]]:!obj[selectArr[j]]
+          // for (let j = 0; j < checkboxs.length; j++) {
+          //  console.log(option);
+          // console.log(option.legend.selectedMode);
+          // console.log(count+=1);
+          if (checkboxs[i].checked) {
+            // obj[selectArr[j]] = true;
+            option.legend.selected[names[i]]=true
+            console.log(option.legend.selected);
+          } else {
+            // obj[selectArr[j]] = false;
+            option.legend.selected[names[i]]=false
           }
+          // obj[selectArr[j]]=!obj[selectArr[j]]
+          // checkboxs[j].checked=obj[selectArr[j]]? obj[selectArr[j]]:!obj[selectArr[j]]
+          // }
           // console.log(option.legend.selected);
           // var op = chartLine2.getOption();
-          option.legend.selected = obj;
+          // option.legend.selected = obj;
           // console.log(op,'----');
           chartLine2.setOption(option);
         };
       }
-      //   document.getElementsByClassName('checkboxchart').onclick=function(){
-      //       console.log(111);
-      //         var obj = {};
-      //         for(var i=0; i<checkboxs.length; i++){
-      //              console.log( checkboxs[i]);
-      //             if(checkboxs[i].checked){
-      //                 obj[selectArr[i]] = true;
-
-      //             }else{
-      //                 obj[selectArr[i]] = false;
-      //             }
-      //         }
-      //         option.legend.selected = obj;
-      //         this.chartLine.setOption(option);
-      //     };
     },
   },
 };
@@ -817,7 +834,7 @@ input::-webkit-input-placeholder {
   }
   #chartLineBox {
     width: 1100px;
-    margin: 3.5% auto 0;
+    margin: 2.5% auto 0;
     height: 300px;
     //  background: red;
     margin-top: 3.5%;
@@ -828,7 +845,6 @@ input::-webkit-input-placeholder {
     display: flex;
     div {
       margin-right: 20px;
-      
     }
   }
 }
