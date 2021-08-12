@@ -288,16 +288,8 @@ export default {
           containLabel: true,
         },
         legend: {
-          // data: [
-          //   "95558投诉",
-          //   "人行投诉",
-          //   "银保监投诉",
-          //   "信访",
-          //   "同比",
-          //   "环比",
-          // ],
+         
           data: [
-            // "95558投诉",
             {
               name: "95558投诉",
               textStyle: {
@@ -341,7 +333,7 @@ export default {
                 fontWeight: "bolder",
                 color: "#cccccc",
               },
-              // icon: "circle",
+              icon: "roundRect",
             },
             {
               name: "环比",
@@ -350,10 +342,9 @@ export default {
                 fontWeight: "bolder",
                 color: "#cccccc",
               },
-              // icon: "circle",
+              icon: "rect",
             },
-            // "同比",
-            // "环比",
+            
           ],
           orient: "horizontal",
           right: 350,
@@ -625,42 +616,22 @@ export default {
       var s = this.chartLine.getOption().legend[0].data; //legend所有值
        var names=[]
       for (let i = 0; i < s.length; i++) {
-       
-        // console.log(s[i]);
         names.push(s[i].name)
-        
-        // names.push(s[i].name)
       }
       console.log(names);
-      // console.log(selectArr);
       var checkboxs = document.getElementsByName("checkboxchart");
-      // console.log(document.getElementsByClassName('checkboxchart')[0]);
       var arr = document.getElementsByClassName("checkboxchart");
       //  var count=0
       for (let i = 0; i < arr.length; i++) {
         arr[i].onclick = function () {
-          // console.log(i);
-          // let obj = {};
-          // let count=0
-          // for (let j = 0; j < checkboxs.length; j++) {
-          //  console.log(option);
-          // console.log(option.legend.selectedMode);
-          // console.log(count+=1);
+      
           if (checkboxs[i].checked) {
-            // obj[selectArr[j]] = true;
             option.legend.selected[names[i]]=true
             console.log(option.legend.selected);
           } else {
-            // obj[selectArr[j]] = false;
             option.legend.selected[names[i]]=false
           }
-          // obj[selectArr[j]]=!obj[selectArr[j]]
-          // checkboxs[j].checked=obj[selectArr[j]]? obj[selectArr[j]]:!obj[selectArr[j]]
-          // }
-          // console.log(option.legend.selected);
-          // var op = chartLine2.getOption();
-          // option.legend.selected = obj;
-          // console.log(op,'----');
+       
           chartLine2.setOption(option);
         };
       }
@@ -838,6 +809,7 @@ input::-webkit-input-placeholder {
     height: 300px;
     //  background: red;
     margin-top: 3.5%;
+    left: -26px !important;
   }
   .kongzhi {
     width: 50%;
