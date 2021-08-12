@@ -421,6 +421,9 @@ export default {
 .circle:hover{
   background-color: #58dbff;
 }
+.labelItem{
+  font-size: 13px;
+}
 .header{
     background: none;
     padding: 0rem;
