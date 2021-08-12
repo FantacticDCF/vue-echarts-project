@@ -4,8 +4,11 @@
       <div v-for='(item, index) in show' :key="index">
         <div v-if="item" :style="style[index]" class="asd">
           <div class="closeit" @click="closeIt(index)">x</div>
-          <!-- <img class="imgbg" src="../assets/images/demo1.png" alt=""> -->
-          <button @click="asd(index)">asdasd</button>
+            <div class="bg">
+              <button class="but" @click="asd(index)"></button>
+              <img class="imgbg" src="../assets/images/demo1.png" alt="">
+            </div>
+            <!-- <img class="imgbg" src="../assets/images/demo1.png" alt=""> -->
         </div>
       </div>
     </div>
@@ -25,7 +28,7 @@ export default {
           height: '400px',
           background: '#fff',
           position: 'absolute',
-          right: '5%',
+          left: '45%',
           top: '10%',
           zIndex: 30000,
           display: 'flex',
@@ -83,8 +86,30 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    // background: rgba(82, 143, 194, 0.3) url(../assets/images/demo1.png) no-repeat center;
-    // background-size: 100% 100%;
+    div {
+      padding: 15px;
+    }
+  }
+  .bg {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    .but {
+      position: absolute;
+      left: 5%;
+      top: 10%;
+      padding: 80px 250px 0 0;
+      z-index: 99999999999;
+      border: none;
+      background: none;
+    }
+    .imgbg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
   .asd{
     animation: mymove 1s infinite;
@@ -100,14 +125,15 @@ export default {
     }
   }
   .closeit{
-    width: 100%;
+    position: absolute;
+    top: -6%;
+    right: 0;
+    width: 30px;
+    height: 30px;
     text-align: right;
-    padding-top: 5px;
-    padding-right: 10px;
     font-size: 20px;
     font-weight: bold;
-  }
-  button{
-    margin-top: 150px;
+    z-index: 99999999999;
+    //color: #fff;
   }
 </style>
