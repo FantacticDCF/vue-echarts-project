@@ -452,7 +452,7 @@ export default {
         series: [
           {
             type: "bar",
-            barWidth: 30, //柱图宽度
+            barWidth: 20, //柱图宽度
             barGap: "1%",
             name: "95558投诉",
             data: [
@@ -465,14 +465,14 @@ export default {
                   position: "inside", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#1f78af", //设置柱子的颜色
+                color: "#18936e", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
           {
             type: "bar",
-            barWidth: 30, //柱图宽度
+            barWidth: 20, //柱图宽度
             name: "人行投诉",
             barGap: "20%",
             data: [
@@ -485,43 +485,83 @@ export default {
                   position: "inside", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#1f78af", //设置柱子的颜色
+                color: "#0a69f8", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
-          {
-            type: "line",
+           {
+            type: "bar",
+            barWidth: 20, //柱图宽度
             name: "银保监投诉",
+            barGap: "20%",
             data: [
-              78.49, 76.01, 72.55, 70.03, 31.77, 53.2, 90.63, 34.26, 22.64,
-              17.76,
+             65,40,55,17,76,31,59,101,22,9
             ],
-            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-            symbol: "circle", // 折线点设置为实心点
-            symbolSize: 10, // 折线点的大小
             itemStyle: {
               normal: {
-                color: "#e09216", //设置折线颜色
+                label: {
+                  show: true,
+                  position: "inside", //数据在中间显示
+                  formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
+                },
+                color: "#aea38d", //设置柱子的颜色
+                barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
-          {
-            type: "line",
+           {
+            type: "bar",
+            barWidth: 20, //柱图宽度
             name: "信访",
+            barGap: "20%",
             data: [
-              78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
-              17.76,
+             65,40,55,17,76,31,59,101,22,9
             ],
-            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-            symbol: "circle", // 折线点设置为实心点
-            symbolSize: 10, // 折线点的大小
             itemStyle: {
               normal: {
-                color: "#e09216", //设置折线颜色
+                label: {
+                  show: true,
+                  position: "inside", //数据在中间显示
+                  formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
+                },
+                color: "#ff544f", //设置柱子的颜色
+                barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
+          // {
+          //   type: "line",
+          //   name: "银保监投诉",
+          //   data: [
+          //     78.49, 76.01, 72.55, 70.03, 31.77, 53.2, 90.63, 34.26, 22.64,
+          //     17.76,
+          //   ],
+          //   yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
+          //   symbol: "circle", // 折线点设置为实心点
+          //   symbolSize: 10, // 折线点的大小
+          //   itemStyle: {
+          //     normal: {
+          //       color: "#e09216", //设置折线颜色
+          //     },
+          //   },
+          // },
+          // {
+          //   type: "line",
+          //   name: "信访",
+          //   data: [
+          //     78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
+          //     17.76,
+          //   ],
+          //   yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
+          //   symbol: "circle", // 折线点设置为实心点
+          //   symbolSize: 10, // 折线点的大小
+          //   itemStyle: {
+          //     normal: {
+          //       color: "#e09216", //设置折线颜色
+          //     },
+          //   },
+          // },
           {
             type: "line",
             name: "同比",
@@ -534,7 +574,7 @@ export default {
             symbolSize: 10, // 折线点的大小
             itemStyle: {
               normal: {
-                color: "#e09216", //设置折线颜色
+                color: "#6fc36f", //设置折线颜色
               },
             },
           },
@@ -550,7 +590,7 @@ export default {
             symbolSize: 10, // 折线点的大小
             itemStyle: {
               normal: {
-                color: "#e09216", //设置折线颜色
+                color: "#fd5a78", //设置折线颜色
               },
             },
           },
@@ -776,8 +816,8 @@ input::-webkit-input-placeholder {
     letter-spacing: 1.5px;
   }
   #chartLineBox {
-    width: 1200px;
-    // margin: 0 auto;
+    width: 1100px;
+    margin: 3.5% auto 0;
     height: 300px;
     //  background: red;
     margin-top: 3.5%;
