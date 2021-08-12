@@ -187,8 +187,8 @@ export default {
               detail: '高投诉点本月投诉量排名前20的投诉点，连续6个月的投诉列表'
           },
       ],
-      echarsAvg: [12, 13, 16, 21, 18, 14],
-      echarsSum: [12, 13, 16, 21, 18, 14],
+      echarsAvg: [11, 7, 10, 9, 7, 22],
+      echarsSum: [11, 7, 10, 9, 7, 22],
       info: {
         setBackgroundBg: {
           //上方搜索
@@ -426,19 +426,23 @@ export default {
             itemStyle: {
               normal: {
                 borderColor: "#fff", //折点颜色
-                color: new this.$echarts.graphic.LinearGradient(
-                  data.forEach(item => {
-                    if(item >= 20){
-                        return '#c33'
-                    }else{
-                        return 'ccc'
-                    }
-                  })
-                ),
+                color: function(params){
+                  if(params.value > 20){
+                    return '#c33'
+                  }else{
+                    return '#58DBFF'
+                  }
+                },
                 borderWidth: 2.5,
                 label: {
                   show: true,
-                  color: "#639FD6",
+                  color: function(params){
+                    if(params.value > 20){
+                      return '#c33'
+                    }else{
+                      return '#58DBFF'
+                    }
+                  },
                 }, // 折点位置显示数值
                 areaStyle: {
                   type: "default",
@@ -553,6 +557,7 @@ export default {
             lineStyle: {
               color: ["#151F3A"],
               width: 1,
+              // heigh
               type: "solid",
             },
           },
@@ -564,16 +569,28 @@ export default {
             smooth: true, //折点是圆弧状的
             showSymbol: true,
             symbol: "circle", //折点设定为实心点
-            symbolSize: 8, //设定实心点的大小
+            symbolSize: 10, //设定实心点的大小
             //                      hoverAnimation: false,
             itemStyle: {
               normal: {
-                borderColor: "#ffffff", //折点颜色
-                color: "#c33",
+                borderColor: "#fff", //折点颜色
+                color: function(params){
+                  if(params.value > 20){
+                    return '#c33'
+                  }else{
+                    return '#58DBFF'
+                  }
+                },
                 borderWidth: 2.5,
                 label: {
                   show: true,
-                  color: "#639FD6",
+                  color: function(params){
+                    if(params.value > 20){
+                      return '#c33'
+                    }else{
+                      return '#58DBFF'
+                    }
+                  },
                 }, // 折点位置显示数值
                 areaStyle: {
                   type: "default",
