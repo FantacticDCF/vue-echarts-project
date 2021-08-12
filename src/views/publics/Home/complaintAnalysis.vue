@@ -1,19 +1,19 @@
 <template>
   <div>
     <!-- 头部 -->
-    <fuzzyTable />
+    <fuzzyTable/>
     <!-- <div class="bus-bread">查询</div> -->
-    <el-row>
-      <el-col :span="5" class="titleList">
-        <div class="bus-bread">投诉管理</div>
-        <div class="bus-bread1">投诉分析</div>
-      </el-col>
+    <el-row style="margin: 2px 0">
+      <el-col :span="5" class="titleList"
+        ><div class="bus-bread">投诉管理</div>
+        <div class="bus-bread1">投诉分析</div></el-col
+      >
       <el-col :span="18">
         <div class="select">
           <span class="selectTitle">投诉来源</span>
           <el-select
             v-model="value"
-            placeholder=""
+            placeholder="机构维度"
             :popper-append-to-body="false"
           >
             <el-option
@@ -643,6 +643,7 @@ export default {
 // 顶部css
 .titleList {
   display: flex;
+  cursor: pointer;
 }
 .el-col {
   height: 42px;
@@ -652,7 +653,7 @@ export default {
     line-height: 50px;
     position: relative;
     text-indent: 16px;
-    color: #58dbff;
+    color: #176CA3;
 
     // margin-bottom: 1%;
     &:before {
@@ -660,7 +661,7 @@ export default {
       content: "";
       left: 0;
       top: 14px;
-      border-bottom: 7px solid #1a83c0;
+      border-bottom: 7px solid #176CA3;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
@@ -668,9 +669,9 @@ export default {
     &:after {
       position: absolute;
       content: "";
-      left: 107%;
+      left: 104%;
       top: 14px;
-      border-bottom: 7px solid #58dbff;
+      border-bottom: 7px solid #176CA3;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
@@ -828,32 +829,7 @@ export default {
     background-color: #193F80;
  }
 
-/deep/ .popper__arrow,
-/deep/ .el-popper .popper__arrow::after {
-  display: none !important;
-}
-/deep/.el-input--suffix {
-  z-index: 9999;
-}
-/deep/.el-popper {
-  top: 3px !important;
-  text-align: left;
-  background-color: rgba(17, 24, 48, 0.9);
-  color: #ffff;
-  text-indent: 16px;
-  border: 1px solid #1a83c0;
-  // background-color: red;
-}
-/deep/.el-select-dropdown__item {
-  color: #ffff !important;
-  background-color: rgba(17, 24, 48, 0.9);
-  margin-top: 6px;
-}
-/deep/.el-select-dropdown__item:hover {
-  background-color: #58dbff;
-  color: #121f35 !important;
-  border-radius: 20px;
-}
+
 
 /deep/.el-input__inner::-webkit-input-placeholder {
   color: #58dbff;
