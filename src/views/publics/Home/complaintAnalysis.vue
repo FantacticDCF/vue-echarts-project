@@ -844,16 +844,18 @@ input::-webkit-input-placeholder {
 }
 //底部echars css
 .row-echarts {
-  margin: 1%;
+  margin-top: 1%;
   height: 279px;
   // background: red;
   .el-col-11:nth-child(1) {
     width: 49.5%;
     height: 100%;
+    background-image: url('../../../assets/images/commonTitle/redbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     position: relative;
     .echarstitle {
       width: 100%;
-
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
@@ -894,11 +896,13 @@ input::-webkit-input-placeholder {
   .el-col-11:nth-child(2) {
     width: 49.5%;
     height: 100%;
+    background-image: url('../../../assets/images/commonTitle/redbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     margin-left: 1%;
     position: relative;
     .echarstitle {
       width: 100%;
-
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
