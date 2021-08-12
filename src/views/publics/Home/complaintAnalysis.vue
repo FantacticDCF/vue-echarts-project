@@ -13,7 +13,7 @@
           <span class="selectTitle">投诉来源</span>
           <el-select
             v-model="value"
-            placeholder="机构维度"
+            placeholder=""
             :popper-append-to-body="false"
           >
             <el-option
