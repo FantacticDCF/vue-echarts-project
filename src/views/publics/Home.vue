@@ -151,11 +151,18 @@ export default {
           to: "/Home/business",
           children:[
             {
-              label: "投诉情况",
-              name: "投诉情况",
+              label: "总体情况",
+              name: "总体情况",
               img: require('../../assets/images/commonTitle/tsjy.png'),
               id: "1",
               to: "/Home/complaint",
+            },
+            {
+              label: "投诉分析",
+              name: "投诉分析",
+              img: require('../../assets/images/commonTitle/tsjy.png'),
+              id: "1",
+              to: "/Home/complaintsAnalysis",
             }
           ]
         },
@@ -414,6 +421,9 @@ export default {
 }
 .circle:hover{
   background-color: #58dbff;
+}
+.labelItem{
+  font-size: 13px;
 }
 .header{
     background: none;

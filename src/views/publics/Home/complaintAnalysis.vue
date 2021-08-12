@@ -4,26 +4,12 @@
     <fuzzyTable />
     <!-- <div class="bus-bread">查询</div> -->
     <el-row>
-      <el-col :span="2"><div class="bus-bread">投诉管理</div></el-col>
-      <el-col :span="2"><div class="bus-bread1">投诉分析</div></el-col>
-      <div class="selectFath">
-        <div class="select select-fir">
-          <span class="selectTitle">时间</span>
-          <el-select
-            v-model="value1"
-            placeholder="天"
-            :popper-append-to-body="false"
-          >
-            <el-option
-              v-for="item in daysShow"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
-        </div>
-        <div class="select select-sec">
+      <el-col :span="5" class="titleList">
+        <div class="bus-bread">投诉管理</div>
+        <div class="bus-bread1">投诉分析</div>
+      </el-col>
+      <el-col :span="18">
+        <div class="select">
           <span class="selectTitle">投诉来源</span>
           <el-select
             v-model="value"
@@ -39,7 +25,24 @@
             </el-option>
           </el-select>
         </div>
-      </div>
+
+        <div class="select">
+          <span class="selectTitle">时间</span>
+          <el-select
+            v-model="value1"
+            placeholder="半年"
+            :popper-append-to-body="false"
+          >
+            <el-option
+              v-for="item in daysShow"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+      </el-col>
     </el-row>
 
     <div class="center-content">
@@ -49,7 +52,7 @@
             <ul class="box-ul">
                 <li class="box-li" v-for="item,index in centerTab" :key="index">
                     {{item.title}}
-                    <span>{{item.detail}}</span>
+                    <span class="box-li-detail">{{item.detail}}</span>
                 </li>
             </ul>
         </div>
@@ -418,12 +421,20 @@ export default {
             smooth: true, //折点是圆弧状的
             showSymbol: true,
             symbol: "circle", //折点设定为实心点
-            symbolSize: 8, //设定实心点的大小
+            symbolSize: 10, //设定实心点的大小
             //                      hoverAnimation: false,
             itemStyle: {
               normal: {
-                borderColor: "#ffffff", //折点颜色
-                color: "#639FD6",
+                borderColor: "#fff", //折点颜色
+                color: new this.$echarts.graphic.LinearGradient(
+                  data.forEach(item => {
+                    if(item >= 20){
+                        return '#c33'
+                    }else{
+                        return 'ccc'
+                    }
+                  })
+                ),
                 borderWidth: 2.5,
                 label: {
                   show: true,
@@ -558,7 +569,7 @@ export default {
             itemStyle: {
               normal: {
                 borderColor: "#ffffff", //折点颜色
-                color: "#639FD6",
+                color: "#c33",
                 borderWidth: 2.5,
                 label: {
                   show: true,
@@ -613,23 +624,26 @@ export default {
 
 <style lang="less" scoped>
 // 顶部css
-.el-col-2 {
-  height: 30px;
-  margin-bottom: 0.3%;
+.titleList {
+  display: flex;
+}
+.el-col {
+  height: 42px;
+
   .bus-bread {
-    height: 30px;
-    line-height: 40px;
+    height: 42px;
+    line-height: 50px;
     position: relative;
     text-indent: 16px;
-    color: #176ca3;
+    color: #58dbff;
 
     // margin-bottom: 1%;
     &:before {
       position: absolute;
       content: "";
       left: 0;
-      top: 10px;
-      border-bottom: 7px solid #176ca3;
+      top: 14px;
+      border-bottom: 7px solid #1a83c0;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
@@ -637,30 +651,89 @@ export default {
     &:after {
       position: absolute;
       content: "";
-      left: 78%;
-      top: 10px;
-      border-bottom: 7px solid #176ca3;
+      left: 107%;
+      top: 14px;
+      border-bottom: 7px solid #58dbff;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
     }
   }
   .bus-bread1 {
-    height: 30px;
-    line-height: 40px;
+    height: 42px;
+    line-height: 50px;
     position: relative;
-    // text-indent: 16px;
+    text-indent: 16px;
     color: #58dbff;
+
+    // margin-bottom: 1%;
+
     &:after {
       position: absolute;
       content: "";
-      left: 60%;
-      top: 10px;
+      left: 107%;
+      top: 13px;
       border-bottom: 7px solid #58dbff;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
     }
+  }
+  .select {
+    float: right;
+    margin-right: -5%;
+    margin-top: 10px;
+    width: 400px;
+    text-align: right;
+    .selectTitle {
+      color: #58dbff;
+      margin-right: 3%;
+    }
+    /deep/.el-input__inner {
+      height: 28px;
+      border-radius: 20px;
+      background-image: url(../../../assets/images/searchList/inputSelect.png);
+      background-size: 105% 114%;
+      background-repeat: no-repeat;
+      background-position: center;
+      //  background-color: #11172F;
+      border: 1px solid #1a83c0;
+      text-indent: 8px;
+      font-weight: 700;
+      // border:1px solid red;
+      // line-height: 28px;
+      color: #58dbff;
+    }
+    /deep/.el-input__icon {
+      line-height: 16px;
+      color: #58dbff;
+    }
+  }
+  /deep/ .popper__arrow,
+  /deep/ .el-popper .popper__arrow::after {
+    display: none !important;
+  }
+  /deep/.el-input--suffix {
+    z-index: 9999;
+  }
+  /deep/.el-popper {
+    top: 3px !important;
+    text-align: left;
+    background-color: rgba(17, 24, 48, 0.9);
+    color: #ffff;
+    text-indent: 16px;
+    border: 1px solid #1a83c0;
+    // background-color: red;
+  }
+  /deep/.el-select-dropdown__item {
+    color: #ffff !important;
+    background-color: rgba(17, 24, 48, 0.9);
+    margin-top: 6px;
+  }
+  /deep/.el-select-dropdown__item:hover {
+    background-color: #58dbff;
+    color: #121f35 !important;
+    border-radius: 20px;
   }
 }
 .center-content{
@@ -677,41 +750,8 @@ export default {
     color: #59dfff;
     font-size: 18px;
 }
-.select {
-  // float: right;
-  margin-right: 5%;
-  width: 350px;
-  text-align: right;
-  .selectTitle {
-    color: #58dbff;
-    margin-right: 3%;
-  }
-  /deep/.el-input__inner {
-    height: 28px;
-    border-radius: 20px;
-    background-image: url(../../../assets/images/searchList/inputSelect.png);
-    background-size: 105% 114%;
-    background-repeat: no-repeat;
-    background-position: center;
-    //  background-color: #11172F;
-    border: 1px solid #1a83c0;
-    text-indent: 8px;
-    font-weight: 700;
-    // border:1px solid red;
-    // line-height: 28px;
-    color: #58dbff;
-  }
-  /deep/.el-input__icon {
-    line-height: 16px;
-    color: #58dbff;
-  }
-}
-.selectFath {
-  width: 60%;
-  margin: 5px 0;
-  float: right;
-  display: flex;
-  justify-content: space-around;
+.box-li-detail{
+  line-height: 20px;
 }
 .box{
     width: 100%;
