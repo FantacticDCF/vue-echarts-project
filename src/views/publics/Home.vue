@@ -151,11 +151,11 @@ export default {
           to: "/Home/business",
           children:[
             {
-              label: "投诉压降",
-              name: "投诉压降",
+              label: "投诉情况",
+              name: "投诉情况",
               img: require('../../assets/images/commonTitle/tsjy.png'),
               id: "1",
-              to: "/Home/business",
+              to: "/Home/complaint",
             }
           ]
         },

@@ -88,12 +88,26 @@
           checked="checked"
           value="直接访问"
         />直接访问
-         <el-button  type="checkbox"
+        <el-button
+          type="checkbox"
           class="checkboxchart"
           name="checkboxchart"
           :checked="checked"
           @click="clHandle"
-          value="搜索引擎">默认按钮</el-button>
+          ref="checked"
+          value="搜索引擎"
+          >默认按钮</el-button
+        >
+         <el-button
+          type="checkbox"
+          class="checkboxchart"
+          name="checkboxchart1"
+          :checked="checked1"
+          @click="clHandle1"
+          ref="checked"
+          value="搜索引擎11"
+          >默认按钮1</el-button
+        >
         <!-- <input
           type="checkbox"
           class="checkboxchart"
@@ -102,8 +116,6 @@
           value="搜索引擎"
         />搜索引擎 -->
       </div>
-
-      
     </div>
   </div>
 </template>
@@ -113,14 +125,16 @@ export default {
   data() {
     return {
       selected: {
-            邮件营销: true,
-            联盟广告: true,
-            视频广告: true,
-            直接访问: true,
-            搜索引擎: true,
-          },
-      count:1,
-      checked:true,
+        邮件营销: true,
+        联盟广告: true,
+        视频广告: true,
+        直接访问: true,
+        搜索引擎: true,
+        搜索引擎1: true,
+      },
+      count: 1,
+      checked: true,
+       checked1: true,
       select: [
         {
           value: "选项1",
@@ -199,25 +213,42 @@ export default {
     this.getLineEcharts1(this.selected);
   },
   methods: {
-    clHandle(){
-      // console.log( Object.values(this.selected)[4]);
-      // Object.values(this.selected)
-      // Object.keys(this.selected)[4]=false
+    clHandle() {
       
-      // console.log('重新',Object.values(this.selected)[4]);
-      // if(Object.keys(this.selected)[4]==true || this.count++ %2==0){
-      //   this.checked=false
-      // }else{
-      //   this.checked=true
-      // }
-      // // this.count++
-      // console.log( this.count++);
-      // // console.log(this.option);
-      // if(this.count % 2==0){
-      //     this.checked=false
-      // }else{
-      //    this.checked=true
-      // }
+      this.count++;
+       var checkboxs = document.getElementsByName("checkboxchart");
+      if (this.count % 2 == 0) {
+        // this.$refs.checked.$attrs.checked = false;
+        checkboxs[4].checked = false;
+        // console.log("false", this.$refs.checked.$attrs);
+      } else {
+        // this.$refs.checked.$attrs.checked = true;
+                checkboxs[4].checked = true;
+
+        // console.log("true", this.$refs.checked.$attrs);
+      }
+     
+      console.log(checkboxs[4])
+    
+    },
+    clHandle1() {
+      
+      this.count++;
+       var checkboxs1 = document.getElementsByName("checkboxchart");
+      //  console.log( '1111',checkboxs[5]);
+      if (this.count % 2 == 0) {
+        // this.$refs.checked.$attrs.checked = false;
+        checkboxs1[5].checked= false;
+        // console.log("false", this.$refs.checked.$attrs);
+      } else {
+        // this.$refs.checked.$attrs.checked = true;
+                checkboxs1[5].checked = true;
+
+        // console.log("true", this.$refs.checked.$attrs);
+      }
+     
+      console.log(checkboxs1[5])
+  
     },
     getLineEcharts1(selected) {
       // 折线图
@@ -230,14 +261,14 @@ export default {
             type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
           },
         },
-     grid: {  
-     left: '8%',  
-     right: '0',  
-    bottom: '1%',  
-    containLabel: true  
-}  ,
+        grid: {
+          left: "8%",
+          right: "0",
+          bottom: "1%",
+          containLabel: true,
+        },
         legend: {
-          data: ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"],
+          data: ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎","搜索引擎11"],
           orient: "horizontal",
           right: 450,
           top: 0,
@@ -251,8 +282,19 @@ export default {
           {
             type: "category",
             boundaryGap: true,
-            data: ["广州", "郑州", "南京", "武汉", "北京", "上海", "青岛",'深圳','石家庄','成都'],
-             axisTick: {
+            data: [
+              "广州",
+              "郑州",
+              "南京",
+              "武汉",
+              "北京",
+              "上海",
+              "青岛",
+              "深圳",
+              "石家庄",
+              "成都",
+            ],
+            axisTick: {
               show: true,
             },
             axisLine: {
@@ -294,7 +336,7 @@ export default {
             axisLine: {
               lineStyle: {
                 color: "#1f78af",
-                width:1, // 这里是为了突出显示加上的
+                width: 1, // 这里是为了突出显示加上的
               },
             },
           },
@@ -359,12 +401,27 @@ export default {
               },
             },
           },
+            {
+            splitLine: { show: false },
+            type: "value",
+            name: "",
+            // interval: 10,
+            // min:0,
+            // max:2,
+            // 改变y轴颜色
+            axisLine: {
+              lineStyle: {
+                color: "#1f78af",
+                // width: 1, //y轴宽度，这里是为了突出显示加上的
+              },
+            },
+          },
         ],
         series: [
           {
             type: "bar",
-              barWidth : 30,//柱图宽度
-              barGap:'1%',
+            barWidth: 30, //柱图宽度
+            barGap: "1%",
             name: "邮件营销",
             data: [
               78.49, 76.01, 70.55, 70.03, 65.77, 53.2, 51.63, 34.26, 22.64,
@@ -378,15 +435,15 @@ export default {
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
                 color: "#1f78af", //设置柱子的颜色
-                 barBorderRadius: [20, 20, 0, 0],
+                barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
           {
             type: "bar",
-              barWidth : 30,//柱图宽度
+            barWidth: 30, //柱图宽度
             name: "联盟广告",
-            barGap:'20%',
+            barGap: "20%",
             data: [
               78.49, 76.01, 70.55, 70.03, 65.77, 53.2, 51.63, 34.26, 22.64,
               17.76,
@@ -399,7 +456,7 @@ export default {
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
                 color: "#1f78af", //设置柱子的颜色
-                 barBorderRadius: [20, 20, 0, 0],
+                barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
@@ -423,7 +480,7 @@ export default {
             type: "line",
             name: "直接访问",
             data: [
-               78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
+              78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
               17.76,
             ],
             yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
@@ -440,6 +497,22 @@ export default {
             name: "搜索引擎",
             data: [
               78.49, 76.01, 70.55, 33.03, 65.77, 53.2, 32.63, 34.26, 323.64,
+              17.76,
+            ],
+            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
+            symbol: "circle", // 折线点设置为实心点
+            symbolSize: 10, // 折线点的大小
+            itemStyle: {
+              normal: {
+                color: "#e09216", //设置折线颜色
+              },
+            },
+          },
+           {
+            type: "line",
+            name: "搜索引擎11",
+            data: [
+              78.49, 76.01, 55.55, 33.03, 35.77, 53.2, 32.63, 64.26, 323.64,
               17.76,
             ],
             yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
