@@ -34,31 +34,31 @@
       <div class="no">
         <div class="no-hd">
           <ul>
-            <li>{{orgName}}<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></li>
+            <li class="">{{orgName}}<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></li>
           </ul>
           <p>机构名称</p>
         </div>
         <div class="no-hd">
           <ul>
-            <li>{{dnAll}}</li>
+            <li class="font35">{{dnAll}}</li>
           </ul>
           <p>当年投诉总量</p>
         </div>
         <div class="no-hd">
           <ul>
-            <li>{{jgAll}}</li>
+            <li class="font35">{{jgAll}}</li>
           </ul>
           <p>监管投诉数量</p>
         </div>
         <div class="no-hd">
           <ul>
-            <li>{{hnAll}}</li>
+            <li class="font35">{{hnAll}}</li>
           </ul>
           <p>行内投诉数量</p>
         </div>
         <div class="no-bd">
           <ul>
-            <li>全国</li>
+            <li class="font20">全国</li>
             <li>21,283</li>
             <li>129.6</li>
             <li>166.8</li>
@@ -217,11 +217,11 @@
                   color: function (params) {
                     //   console.log(params);
                     var colorList = [
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
                     ];
                     var colorItem = colorList[params.dataIndex];
                     return new that.$echarts.graphic.LinearGradient(
@@ -345,11 +345,11 @@
                   color: function (params) {
                     //   console.log(params);
                     var colorList = [
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
                     ];
                     var colorItem = colorList[params.dataIndex];
                     return new that.$echarts.graphic.LinearGradient(
@@ -473,11 +473,11 @@
                   color: function (params) {
                     //   console.log(params);
                     var colorList = [
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
                     ];
                     var colorItem = colorList[params.dataIndex];
                     return new that.$echarts.graphic.LinearGradient(
@@ -600,12 +600,12 @@
                   //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
                   color: function (params) {
                     //   console.log(params);
-                    var colorList = [
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
-                      ["#02f0fe", "#02B8EC"],
+                    var colorList = [  
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
                     ];
                     var colorItem = colorList[params.dataIndex];
                     return new that.$echarts.graphic.LinearGradient(
@@ -944,10 +944,11 @@ body {
 }
 .ts-index h3{
   position: absolute;
-  top: 30%;
+  top: 20%;
   color: white;
   /* line-height: 50%; */
-  font-size: 25px;
+  font-size: 35px;
+  font-family: electronicFont;
   width: 100%;
   text-align: center;
   margin: 0 auto;
@@ -1035,7 +1036,9 @@ body {
   height: 20px;
   line-height:20px;
   text-align: center;
-  font-size: 17px;
+  font-size: 25px;
+  font-family: electronicFont;
+
   color: rgb(1, 179, 233);
   padding-top: 14px;
   font-weight:bold;

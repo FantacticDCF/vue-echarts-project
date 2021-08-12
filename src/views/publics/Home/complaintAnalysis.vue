@@ -1,26 +1,33 @@
 <template>
   <div>
     <!-- 头部 -->
-    <div class="aborder" :style="info.setBackgroundBg">
-      <span>工单查询</span>
-      <input
-        type="text"
-        class="input-border"
-        placeholder="输入关键词查询"
-        :style="info.setBackgroundBg"
-      />
-      <i class="el-icon-search iconSearch"></i>
-    </div>
-
+    <fuzzyTable />
     <!-- <div class="bus-bread">查询</div> -->
     <el-row>
-      <el-col :span="12"><div class="bus-bread">查询</div></el-col>
-      <el-col :span="12">
-        <div class="select">
-          <span class="selectTitle">查询范围</span>
+      <el-col :span="2"><div class="bus-bread">投诉管理</div></el-col>
+      <el-col :span="2"><div class="bus-bread1">投诉分析</div></el-col>
+      <div class="selectFath">
+        <div class="select select-fir">
+          <span class="selectTitle">时间</span>
+          <el-select
+            v-model="value1"
+            placeholder="天"
+            :popper-append-to-body="false"
+          >
+            <el-option
+              v-for="item in daysShow"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <div class="select select-sec">
+          <span class="selectTitle">投诉来源</span>
           <el-select
             v-model="value"
-            placeholder="全行"
+            placeholder=""
             :popper-append-to-body="false"
           >
             <el-option
@@ -30,80 +37,54 @@
               :value="item.value"
             >
             </el-option>
-          </el-select></div
-      ></el-col>
+          </el-select>
+        </div>
+      </div>
     </el-row>
 
-    <!-- 中间信息 -->
-    <el-row type="flex" class="row-bg1" justify="space-between">
-      <el-col :span="6" v-for="(item, index) in topSearch" :key="index">
-        <div class="title">{{ item.title }}</div>
-        <div class="col-top" :style="info.setBackgroundBg1">
-          <div class="img">
-            <img :src="item.topImages" alt="" />
-            <!-- <div class="div-img" :style="info.setBackgroundBg2"></div> -->
-          </div>
-          <div class="titleDesc">
-            <div class="numDesc">
-              <div class="desc1" @click="gotoHandle">
-                <span class="desc1-num">{{ item.topTitle }}</span>
-                <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
-              </div>
-              <div class="desc2">{{ item.topWrithDesc }}</div>
-            </div>
-          </div>
-          <div class="icon" @click="gotoHandle">
-            <i :class="item.icon"></i>
-          </div>
+    <div class="center-content">
+        <div class='content-title'>投诉分析</div>
+        <!-- 头部信息 -->
+        <div class="box">
+            <ul class="box-ul">
+                <li class="box-li" v-for="item,index in centerTab" :key="index">
+                    {{item.title}}
+                    <span>{{item.detail}}</span>
+                </li>
+            </ul>
         </div>
-        <div class="col-down" :style="info.setBackgroundBg1">
-          <div class="left">
-            <div class="desc1" @click="gotoHandle">
-              <span class="desc1-num">{{ item.downTitle1 }}</span>
-              <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
-              <div class="left-icon"><i :class="item.icon"></i></div>
+        <!-- 中间信息 -->
+        <div class="tableboxp">
+            <div class="tablebox">
+                <tableCommon 
+                :tableData="tableData"
+                :listLabel="listLabel"
+                :detailFlag="detailFlag"/>
             </div>
-            <div class="desc2">{{ item.downTitle1DEsc }}</div>
-          </div>
-          <div class="left-dingwei" :style="info.setBackgroundBg2"></div>
-          <div class="right">
-            <div class="desc1" @click="gotoHandle">
-              <span class="desc1-num">{{ item.downTitle2 }}</span>
-              <span class="desc1-bi">{{ item.topTilteDescribe }}</span>
-              <div class="left-icon"><i :class="item.icon"></i></div>
-            </div>
-            <div class="desc2">{{ item.downTitle1DEsc }}</div>
-          </div>
+            <div class="tablebox"><tableCommon :tableData="tableData"
+                :listLabel="listLabel"
+                :detailFlag="detailFlag"/></div>
+            <div class="tablebox"><tableCommon :tableData="tableData"
+                :listLabel="listLabel"
+                :detailFlag="detailFlag"/></div>
         </div>
-      </el-col>
-    </el-row>
-    <!-- 底部echars -->
+      <!-- 底部echars -->
 
-    <el-row class="row-echarts">
-      <el-col :span="11" :style="info.setBackgroundBg3">
-        <div class="echarstitle">
-          <div class="title">已结案投诉客户评价</div>
-          <div class="titleImage" @click="gotocus">
-            <img src="../../../assets/images/searchList/pingfeng.png" alt="" />
-            <div class="titleImage-span">{{ echartsAvg(this.echarsAvg) }}</div>
+      <el-row class="row-echarts">
+        <el-col :span="11">
+          <div class="echarstitle">
+            <div class="title">销户规定问题导致</div>
           </div>
-        </div>
-        <div class="echartsDesc" id="chartLineBox"></div>
-      </el-col>
-      <el-col :span="11" :style="info.setBackgroundBg3">
-        <div class="echarstitle">
-          <div class="title">已结案工单</div>
-          <div class="titleImage" @click="goCheck">
-            <img
-              src="../../../assets/images/searchList/wanjiegongdan.png"
-              alt=""
-            />
-            <div class="titleImage-span">{{ echartsSum(this.echarsSum) }}</div>
+          <div class="echartsDesc" id="chartLineBox"></div>
+        </el-col>
+        <el-col :span="11">
+          <div class="echarstitle">
+            <div class="title">销户规定问题导致</div>
           </div>
-        </div>
-        <div class="echartsDesc" id="chartLineBox1"></div>
-      </el-col>
-    </el-row>
+          <div class="echartsDesc" id="chartLineBox1"></div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -111,29 +92,99 @@
 import search from "../../../assets/images/searchList/search.png";
 import search1 from "../../../assets/images/searchList/search1.png";
 import search2 from "../../../assets/images/searchList/search2.png";
+import fuzzyTable from "../../../components/fuzzySearch.vue";
+import tableCommon from "../../../components/tableCommon.vue";
 export default {
+  components: {
+    fuzzyTable,
+    tableCommon
+  },
   data() {
     return {
-      options: [
+      daysShow: [
         {
           value: "选项1",
-          label: "我的板块",
+          label: "天",
         },
         {
           value: "选项2",
-          label: "我的部门",
+          label: "周",
         },
         {
           value: "选项3",
-          label: "我的处室",
+          label: "月",
         },
         {
           value: "选项4",
-          label: "我的岗位",
+          label: "季度",
+        },
+        {
+          value: "选项5",
+          label: "半年",
+        },
+        {
+          value: "选项6",
+          label: "年度",
+        },
+      ],
+      options: [
+        {
+          value: "选项1",
+          label: "95558投诉",
+        },
+        {
+          value: "选项2",
+          label: "人行投诉",
+        },
+        {
+          value: "选项3",
+          label: "银保监投诉",
+        },
+        {
+          value: "选项4",
+          label: "信访投诉",
         },
       ],
       value: "",
-      echarsAvg: [56, 76, 98, 99, 98, 100],
+      value1: "",
+      centerTab:[
+          {
+              title: '新异常投诉',
+              id: 1,
+              detail: '新异常投诉提示是指上月与上上月投诉数量的增加量的排名前5，增长比例'
+          },
+          {
+              title: '连续性异常投诉',
+              id: 1,
+              detail: '连续性异常投诉提示是指连续三个月投诉数量持续增加的业务、机构和投诉点'
+          },
+          {
+              title: '多发性投诉',
+              id: 1,
+              detail: '多发性投诉指连续月均（6个月平均数量）投诉量排名前20的业务、机构和投诉点'
+          },
+          {
+              title: '高占比投诉',
+              id: 1,
+              detail: '高占比投诉按各分行投诉数量与客户数比值的排名前20，按业务、机构和投诉点制表'
+          },
+          {
+              title: '高机构投诉',
+              id: 1,
+              detail: '高投诉机构指本月投诉量排名前20的机构，连续6个月的投诉列表'
+          },
+          {
+              title: '高投诉产品',
+              id: 1,
+              detail: '高投诉产品指本月投诉量排名前20的产品，连续6个月的投诉列表'
+          },
+          {
+              title: '高发投诉点',
+              id: 1,
+              detail: '高投诉点本月投诉量排名前20的投诉点，连续6个月的投诉列表'
+          },
+      ],
+      echarsAvg: [12, 13, 16, 21, 18, 14],
       echarsSum: [12, 13, 16, 21, 18, 14],
       info: {
         setBackgroundBg: {
@@ -213,6 +264,45 @@ export default {
           icon: "el-icon-arrow-right",
         },
       ],
+      detailFlag: false,
+      listLabel: [
+        { label: "被投诉",  prop: "data" },
+        { label: "被投诉量", width: "60", prop: "bank" },
+        { label: "投诉增加率",width: "90", prop: "netaddress" },
+        { label: "投诉增加量", width: "90", prop: "remark" }
+      ],
+      tableData:[
+        {
+            data: "柜面人员",
+            bank: "599",
+            netaddress: "20.94",
+            remark: "102",
+        },
+        {
+            data: "大堂经理",
+            bank: "534",
+            netaddress: "15.58",
+            remark: "72",
+        },
+        {
+            data: "理财经理",
+            bank: "534",
+            netaddress: "15.58",
+            remark: "72",
+        },
+        {
+            data: "个贷客户经理",
+            bank: "534",
+            netaddress: "15.58",
+            remark: "72",
+        },
+        {
+            data: "95558客服人员",
+            bank: "534",
+            netaddress: "15.58",
+            remark: "72",
+        }
+      ]
     };
   },
   mounted() {
@@ -229,12 +319,6 @@ export default {
   methods: {
     gotocus() {
       this.$router.push({ path: "/Home/customerReview" });
-    },
-    goCheck() {
-      this.$router.push({ path: "/Home/check" });
-    },
-    gotoHandle() {
-      this.$router.push({ path: "/Home/serch" });
     },
     echartsAvg(arr) {
       let avg = 0;
@@ -529,22 +613,23 @@ export default {
 
 <style lang="less" scoped>
 // 顶部css
-.el-col-12 {
-  height: 42px;
+.el-col-2 {
+  height: 30px;
+  margin-bottom: 0.3%;
   .bus-bread {
-    height: 42px;
-    line-height: 50px;
+    height: 30px;
+    line-height: 40px;
     position: relative;
     text-indent: 16px;
-    color: #58dbff;
+    color: #176ca3;
 
     // margin-bottom: 1%;
     &:before {
       position: absolute;
       content: "";
       left: 0;
-      top: 12px;
-      border-bottom: 7px solid #1a83c0;
+      top: 10px;
+      border-bottom: 7px solid #176ca3;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
@@ -552,89 +637,167 @@ export default {
     &:after {
       position: absolute;
       content: "";
-      left: 8%;
-      top: 12px;
+      left: 78%;
+      top: 10px;
+      border-bottom: 7px solid #176ca3;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+  }
+  .bus-bread1 {
+    height: 30px;
+    line-height: 40px;
+    position: relative;
+    // text-indent: 16px;
+    color: #58dbff;
+    &:after {
+      position: absolute;
+      content: "";
+      left: 60%;
+      top: 10px;
       border-bottom: 7px solid #58dbff;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
     }
   }
-  .select {
-    float: right;
-    margin-right: 5%;
-    width: 400px;
-    text-align: right;
-    .selectTitle {
-      color: #58dbff;
-      margin-right: 3%;
-    }
-    /deep/.el-input__inner {
-      height: 28px;
-      border-radius: 20px;
-      background-image: url(../../../assets/images/searchList/inputSelect.png);
-      background-size: 105% 114%;
-      background-repeat: no-repeat;
-      background-position: center;
-      //  background-color: #11172F;
-      border: 1px solid #1a83c0;
-      text-indent: 8px;
-      font-weight: 700;
-      // border:1px solid red;
-      // line-height: 28px;
-      color: #58dbff;
-    }
-    /deep/.el-input__icon {
-      line-height: 16px;
-      color: #58dbff;
-    }
+}
+.center-content{
+    background-image: url('../../../assets/images/commonTitle/tsglbg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 3%;
+}
+.content-title{
+    position: absolute;
+    left: 40px;
+    top: 8px;
+    color: #59dfff;
+    font-size: 18px;
+}
+.select {
+  // float: right;
+  margin-right: 5%;
+  width: 350px;
+  text-align: right;
+  .selectTitle {
+    color: #58dbff;
+    margin-right: 3%;
   }
-  /deep/ .popper__arrow,
-  /deep/ .el-popper .popper__arrow::after {
-    display: none !important;
-  }
-  /deep/.el-input--suffix {
-    z-index: 9999;
-  }
-  /deep/.el-popper {
-    top: 3px !important;
-    text-align: left;
-    background-color: rgba(17, 24, 48, 0.9);
-    color: #ffff;
-    text-indent: 16px;
-    border: 1px solid #1a83c0;
-    // background-color: red;
-  }
-  /deep/.el-select-dropdown__item {
-    color: #ffff !important;
-    background-color: rgba(17, 24, 48, 0.9);
-    margin-top: 6px;
-  }
-  /deep/.el-select-dropdown__item:hover {
-    background-color: #58dbff;
-    color: #121f35 !important;
+  /deep/.el-input__inner {
+    height: 28px;
     border-radius: 20px;
+    background-image: url(../../../assets/images/searchList/inputSelect.png);
+    background-size: 105% 114%;
+    background-repeat: no-repeat;
+    background-position: center;
+    //  background-color: #11172F;
+    border: 1px solid #1a83c0;
+    text-indent: 8px;
+    font-weight: 700;
+    // border:1px solid red;
+    // line-height: 28px;
+    color: #58dbff;
   }
+  /deep/.el-input__icon {
+    line-height: 16px;
+    color: #58dbff;
+  }
+}
+.selectFath {
+  width: 60%;
+  margin: 5px 0;
+  float: right;
+  display: flex;
+  justify-content: space-around;
+}
+.box{
+    width: 100%;
+    margin-top: 10px;
+    z-index: 9999;
+    .box-ul{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .box-li{
+            background: #0E2351;
+            color: #58DCF5;
+            width: 140px;
+            height: 28px;
+            line-height: 28px;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid #1A7A9F;
+            border-radius: 15px;
+            span{
+                display: none;
+            }
+        }
+        .box-li:hover{
+            background: #45F8F8;
+            color: #131B35;
+            z-index: 9999;
+            span{
+                width: 200px;
+                background: #ECF5F9;
+                display: block;
+                color: black;
+            }
+        }
+    }
+}
+.tableboxp{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 100;
+}
+.tablebox{
+    border: 1px solid #1EA1DA;
+    width: 100%;
+    overflow: auto;
+    margin: 10px 2px;
+}
+/deep/.table-wrapper .el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: #29597c;
+}
+/deep/.el-table td,/deep/ .el-table th{
+    padding: 8px 0;
+}
+/deep/.el-table thead {
+    background-color: #193F80;
+ }
+
+/deep/ .popper__arrow,
+/deep/ .el-popper .popper__arrow::after {
+  display: none !important;
+}
+/deep/.el-input--suffix {
+  z-index: 9999;
+}
+/deep/.el-popper {
+  top: 3px !important;
+  text-align: left;
+  background-color: rgba(17, 24, 48, 0.9);
+  color: #ffff;
+  text-indent: 16px;
+  border: 1px solid #1a83c0;
+  // background-color: red;
+}
+/deep/.el-select-dropdown__item {
+  color: #ffff !important;
+  background-color: rgba(17, 24, 48, 0.9);
+  margin-top: 6px;
+}
+/deep/.el-select-dropdown__item:hover {
+  background-color: #58dbff;
+  color: #121f35 !important;
+  border-radius: 20px;
 }
 
-.aborder {
-  text-indent: 30px;
-  color: #1a83c0;
-  // margin-top: 10px;
-  width: 55%;
-  height: 32px;
-  line-height: 32px;
-  overflow: hidden;
-}
-.input-border {
-  margin-left: 30px;
-  border: none;
-  color: #1a83c0;
-  width: 70%;
-  height: 70%;
-  text-indent: 15px;
-  font-size: 10px;
-}
 /deep/.el-input__inner::-webkit-input-placeholder {
   color: #58dbff;
   line-height: 28px;
@@ -646,160 +809,9 @@ export default {
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
-
-// 中部css
-.row-bg1 {
-  height: 240px;
-  margin-top: 0.2%;
-  .el-col-6 {
-    width: 32.8%;
-    background-image: url(../../../assets/images/searchList/topList.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    .title {
-      margin-left: 3%;
-      margin-top: 2.5%;
-      color: #55d4f8;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-    }
-    .col-top {
-      width: 94%;
-      margin: 2% auto;
-      height: 37%;
-      display: flex;
-      .img {
-        width: 40%;
-        height: 100%;
-
-        img {
-          width: 52%;
-          height: 82%;
-          margin: 5% 29%;
-        }
-      }
-      .titleDesc {
-        width: 40%;
-        height: 100%;
-        text-align: center;
-        .numDesc {
-          width: 100%;
-          height: 100%;
-          .desc1 {
-            width: 100%;
-            height: 65%;
-            text-align: center;
-            line-height: 452%;
-            .desc1-num {
-              font-size: 250%;
-              color: #55d4f8;
-            }
-            .desc1-bi {
-              font-size: 130%;
-              color: #55d4f8;
-            }
-          }
-          .desc2 {
-            width: 100%;
-            height: 35%;
-            text-align: center;
-            color: #fff;
-            font-size: 100%;
-          }
-        }
-      }
-      .icon {
-        flex-grow: 1;
-        font-size: 400%;
-        text-align: center;
-        line-height: 1.7;
-        color: #55d4f8;
-      }
-    }
-    .col-down {
-      width: 94%;
-      margin: 2% auto;
-      height: 38%;
-      display: flex;
-      .left {
-        width: 50%;
-        height: 100%;
-        .desc1 {
-          width: 100%;
-          height: 65%;
-          text-align: center;
-          line-height: 452%;
-          position: relative;
-          .desc1-num {
-            font-size: 250%;
-            color: #55d4f8;
-          }
-          .desc1-bi {
-            font-size: 130%;
-            color: #55d4f8;
-          }
-          .left-icon {
-            font-size: 130%;
-            position: absolute;
-            bottom: -11px;
-            right: 29px;
-            color: #55d4f8;
-          }
-        }
-        .desc2 {
-          width: 100%;
-          height: 35%;
-          text-align: center;
-          color: #fff;
-          font-size: 80%;
-        }
-      }
-      .left-dingwei {
-        width: 1px;
-        height: 100%;
-      }
-      .right {
-        width: 50%;
-        height: 100%;
-        .desc1 {
-          width: 100%;
-          height: 65%;
-          text-align: center;
-          line-height: 452%;
-          position: relative;
-          .desc1-num {
-            font-size: 250%;
-            color: #55d4f8;
-          }
-          .desc1-bi {
-            font-size: 130%;
-            color: #55d4f8;
-          }
-          .left-icon {
-            font-size: 130%;
-            position: absolute;
-            bottom: -16%;
-            right: 16%;
-            color: #55d4f8;
-          }
-        }
-        .desc2 {
-          width: 100%;
-          height: 35%;
-          text-align: center;
-          color: #fff;
-          font-size: 80%;
-        }
-      }
-    }
-  }
-}
-
 //底部echars css
 .row-echarts {
-  margin-top: 1%;
+  margin: 1%;
   height: 279px;
   // background: red;
   .el-col-11:nth-child(1) {

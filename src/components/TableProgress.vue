@@ -134,11 +134,12 @@ export default {
   /*color: white;*/
 }
 .TableProgress .colorDefault .el-progress-bar__inner{
-  background-color: #55d4f8;
+  /*background-color: #55d4f8;*/
+  background-image: -webkit-linear-gradient( left, #3A9ACF, #6BC7E8 );
 }
 .TableProgress .colorDanger .el-progress-bar__inner{
-  background-color: rgba(251, 84, 62, 1);
-  /*background-image: -webkit-linear-gradient(bottom,rgba(251, 84, 62, 1), rgba(245, 134, 89, 1));*/
+  /*background-color: rgba(251, 84, 62, 1);*/
+  background-image: -webkit-linear-gradient( left,#EE665B,#F4C550);
 }
 .TableProgress .el-progress-bar__outer  {
    /*height: 15px;*/

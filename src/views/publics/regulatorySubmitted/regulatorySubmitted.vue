@@ -32,13 +32,6 @@ import fuzzyTable from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
-      setBackgroundBg: {
-        backgroundImage:
-          "url(" + require("../../../assets/images/big-border.png") + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-      },
       centertablist: [
         {
           name: "实时",

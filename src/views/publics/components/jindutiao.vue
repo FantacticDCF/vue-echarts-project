@@ -77,6 +77,8 @@ export default {
                 barBorderRadius: 20, 
                 color: function (params) {
                   // console.log(params,'111');
+                  // console.log(option);
+                  // console.log(option.series[0].data/option.series[1].data*100+'%');
                   if (params.seriesName == "蓝色") {
                     return new that.$echarts.graphic.LinearGradient(
                       0,

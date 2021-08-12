@@ -156,10 +156,10 @@ export default {
                     barBorderRadius:10,
                     color: new that.$echarts.graphic.LinearGradient(0, 0, 1, 0, [{
                       offset: 0,
-                      color: '#22b6ed'
+                      color: '#3A9ACF'
                     }, {
                       offset: 1,
-                      color: '#3fE279'
+                      color: '#6BC7E8'
                     }]),
                   }
                 },

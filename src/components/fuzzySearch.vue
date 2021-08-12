@@ -1,7 +1,8 @@
 <template>
-    <div class="fuzzySearch" @mouseleave="mouseout()">
+    <div class="fuzzySearch">
         <div class="aborder" :style="setBackgroundBg">
-            <span>工单查询</span>
+            <span v-show="shows == 1">工单查询</span>
+            <span v-show="shows == 2">投诉案例查询</span>
             <span class="searchbox">
                  <input
                     type="text"
@@ -14,6 +15,7 @@
                     @keydown.down="changeDown()"
                     @keydown.up="changeUp()"
                     @keyup.enter="getEnter($event)"
+                    @blur="loseBlur()"
                 />
             </span>
             <span>
@@ -28,12 +30,17 @@
                 </li>
             </ul>
         </div>
-        
     </div>
 </template>
 <script>
 import dataList from '../assets/json/code.json';
 export default {
+    props:{
+        shows:{
+            type: Number,
+            default:()=>1
+        }
+    },
     data(){
         return {
             setBackgroundBg: {
@@ -67,7 +74,6 @@ export default {
             // 这里当按下的键是Enter时，应实现搜索跳转功能
             if(ev.keyCode == 13) {
                 // that.content = '';
-                console.log(123)
                 this.resetStyle()
             }
         },
@@ -94,9 +100,9 @@ export default {
         handleChose(item){
             console.log(item,999)
             this.content = item.VAL;        
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
+            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
         },
-        mouseout(){
+        loseBlur(){
             this.resetStyle()
         },
         // 模糊查询
@@ -104,7 +110,7 @@ export default {
             this.myData = [];
             this.dataleval = ''
             this.now = -1
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'block'
+            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'block'
             if(this.content.length > 0){
                 this.myData = dataList.filter(item => {
                     return item.VAL.search(this.content) !== -1
@@ -126,12 +132,13 @@ export default {
             if (domselect) {
                 domselect.classList.toggle("grey");  //离开清空ul里面选中的li的样式
             }
-            document.getElementsByClassName('fuzzy-data-ul')[0].style.display = 'none'
+            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
             this.now = -1
         }
     },
     mounted() {
         // this.handleChose()
+        // window.addEventListener('scroll', this.resetStyle, true);
     },
     // watch:{
     //     // 监听input值的变化
@@ -147,8 +154,7 @@ export default {
     //     }
     // },
     created(){
-        // this.myData = dataList;
-        // console.log(dataList,123)
+        
     }
 }
 </script>
@@ -186,7 +192,8 @@ input::-webkit-input-placeholder {
 } 
 .fuzzy-data-fa{
     position: absolute;
-    left: 343px;
+    left: 350px;
+    z-index: 9999;
     width: 50%;
 }
 .fuzzy-data-ul{
@@ -202,7 +209,6 @@ input::-webkit-input-placeholder {
     background-image: url('../assets/images/commonTitle/searchbg.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    z-index: 100;
 }
 #fuzzy-data-ul-li{
     width: 100%;
@@ -238,4 +244,5 @@ input::-webkit-input-placeholder {
     -moz-border-radius: 2em;
     border-radius:2em;
 }
+
 </style>

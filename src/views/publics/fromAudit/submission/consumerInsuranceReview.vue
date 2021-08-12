@@ -4,7 +4,8 @@
         <el-row style="margin: 2px 0 0 0;cursor: pointer">
           <el-col :span="2"><div class="bus-bread" @click='goBacktoSec'>消保审核</div></el-col>
           <el-col :span="2"><div class="bus-bread1" @click='goBackto'>报送</div></el-col>
-          <el-col :span="2"><div class="bus-bread2">手工标签匹配</div></el-col>
+          <el-col :span="2"><div class="bus-bread2">产品审核结果</div></el-col>
+          <el-col :span="2"><div class="bus-bread3">消保审核修正</div></el-col>
         </el-row>
         <div class="sgMatch-content" :style="setBackgroundBg1">
             <el-row>
@@ -25,8 +26,8 @@
                       </el-row>
                     </div>
                     <div class="sgMatch-footer">
-                      <span class="confirm-btn">确定</span>
-                      <span class="reset-btn">取消</span>
+                      <span class="confirm-btn">产品修正</span>
+                      <span class="reset-btn">文件下载</span>
                     </div>
                 </div>
             </el-row>
@@ -58,94 +59,95 @@ export default {
       },
       detailFlag: false,
       listLabel: [
-          {label: '时间', width: '200',prop: 'data'},
-          {label: '涉事分行',width: '160', prop: 'bank'},
-          {label: '涉事网点', width: '250', prop: 'netaddress'},
-          {label: '事件记录',prop: 'remark'},
-          {label: '投诉人', width: '120',prop: 'person'},
+          {label: '客户流程', width: '200',prop: 'data'},
+          {label: '行业流程',width: '160', prop: 'bank'},
+          {label: '定岗定责', width: '250', prop: 'netaddress'},
+          {label: '近五年投诉量',prop: 'remark'},
+          {label: '修正项', width: '200',prop: 'person'},
       ],
       // 表格数据  (随意写的数据）
       tableData: [
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '登录手机银行',
+              bank: '手机银行注册',
+              netaddress: '总行数字金融部',
+              remark: '200',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '进入保险产品页面',
+              bank: '在销售页面展示',
+              netaddress: '总行数字金融部',
+              remark: '150',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '预约客户经理',
+              bank: '客户经理接待',
+              netaddress: '私人银行部',
+              remark: '120',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
+              data: '选择保险销售地区',
               bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              netaddress: '私人银行部',
+              remark: '80',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '登录手机银行',
+              bank: '手机银行注册',
+              netaddress: '总行数字金融部',
+              remark: '200',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '进入保险产品页面',
+              bank: '在售产品界面展示',
+              netaddress: '总行数字金融部',
+              remark: '150',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '预约客户经理',
+              bank: '客户经理接待',
+              netaddress: '私人银行部',
+              remark: '120',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '登录手机银行',
+              bank: '手机银行注册',
+              netaddress: '总行数字金融部',
+              remark: '200',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '进入保险产品页面',
+              bank: '在售产业页面展示',
+              netaddress: '总行数字金融部',
+              remark: '150',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
           },
           {
-              data: '2021年1月5号',
-              bank: '北京分行',
-              netaddress: '北京市金融街道21号',
-              remark: 'xxxxxxxxxxxx',
-              person: 'z张三',
+              data: '预约客户经理',
+              bank: '客户经理接待',
+              netaddress: '私人银行部',
+              remark: '120',
+              person: '制定投诉预案',
               detail: 'xxxxxxxxxxxxxxxxxxx'
-          }
+          },
+         
       ],
       currentPage1: 1,
       shows:''
@@ -229,6 +231,24 @@ export default {
     line-height: 40px;
     position: relative;
     // text-indent: 16px;
+    color: #176CA3;
+    margin-left: -42px;
+    &:after {
+      position: absolute;
+      content: "";
+      left: 64%;
+      top: 10px;
+      border-bottom: 7px solid #176CA3;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+  }
+  .bus-bread3 {
+    height: 30px;
+    line-height: 40px;
+    position: relative;
+    text-indent: 5px;
     color: #58dbff;
     margin-left: -42px;
     &:after {

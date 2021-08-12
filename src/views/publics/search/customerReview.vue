@@ -309,7 +309,7 @@ export default {
           top: "15%",
           right: "3%",
           left: "5%",
-          bottom: "12%",
+          bottom: "20%",
         },
         xAxis: [
           {
@@ -352,24 +352,17 @@ export default {
           {
             show: false,//是否显示滑动条
             type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-            // zoomLock:true,
+            zoomLock:true,
             // start: 0,                               //数据窗口范围的起始百分比
             end: null,                                 //数据窗口范围的结束百分比
             startValue:0,                           //数据窗口范围的起始数值
             endValue:10,                            //数据窗口范围的结束数值。
-            height:'10%',
-            top:'98.5%',
-            borderColor:'#8FDFFE',
-            backgroundColor:'#8fdffe99',
-            handleColor:'#8FDFFE',
-            handleSize:20,
-            handleStyle:{
-              borderColor:'#8FDFFE',
-              shadowBlur:4,
-              shadowOffsetX:1,
-              shadowOffsetY:1,
-              shadowColor:'#e5e5e5'
-            },
+            height:'100%',
+            top:'97%',
+            borderColor:'#00CDFF',
+            backgroundColor:'#00CDFF',
+            handleColor:'#00CDFF',
+            handleSize:10,
           }
         ],
         series: [

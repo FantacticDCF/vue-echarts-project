@@ -11,7 +11,7 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div>
-    <!-- <div class="bus-bread">查询</div> -->
+    <!-- <fuzzySearch/> -->
     <el-row>
       <el-col :span="12"><div class="bus-bread">投诉预警</div></el-col>
       <el-col :span="12"> </el-col>
@@ -101,17 +101,77 @@
       </div>
       <div class="Layout" :style="info.setBackgroundBg3">
         <div class="title">事件预警</div>
-
+        <div class="tableDesc">
+          <tableCommon
+            :tableData="tableData"
+            :listLabel="listLabel"
+            :detailFlag="detailFlag"
+            @click.native="goto"
+          ></tableCommon>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import jindutiao from "../components/jindutiao.vue";
+import tableCommon from "../../../components/tableCommon.vue";
+// import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
-      // arr: [50],
+      listLabel: [
+        { label: "时间", prop: "data" },
+        { label: "涉事分行", prop: "bank" },
+        { label: "涉事网点", prop: "netaddress" },
+        { label: "事件记录", prop: "remark" },
+        { label: "投诉人", prop: "person" },
+        { label: "投诉人身份", prop: "identify" },
+      ], //表头数据
+      tableData: [
+        {
+          data: "2021.7.30",
+          bank: "上海分行",
+          netaddress: "虹口支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+        {
+          data: "2021.5.20",
+          bank: "北京分行",
+          netaddress: "天桥支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+
+        {
+          data: "2021.4.16",
+          bank: "广州分行",
+          netaddress: "花城支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+        {
+          data: "2021.3.23",
+          bank: "深圳分行",
+          netaddress: "景田支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+        {
+          data: "2021.2.23",
+          bank: "深圳分行",
+          netaddress: "景田支行",
+          remark: "xxxxxxxxxxxx",
+          person: "z张三",
+          identify: "xxxxxxxxxxxx",
+        },
+      ], //表单数据
+      detailFlag: false, //控制表单尖角号
       info: {
         setBackgroundBg: {
           //上方搜索
@@ -132,6 +192,7 @@ export default {
         },
       },
       desc: {
+        //三个进度条数据
         infoDesc: [
           {
             id: 1001,
@@ -322,8 +383,14 @@ export default {
     };
   },
   components: {
-    // EventWarning:eventWarning
     jindutiao,
+    tableCommon,
+    // fuzzySearch
+  },
+  methods: {
+    goto() {
+      this.$router.push({ path: "/Home/eventWarning" });
+    },
   },
 };
 </script>
@@ -362,7 +429,6 @@ export default {
     }
   }
 }
-
 .aborder {
   text-indent: 30px;
   color: #1a83c0;
@@ -394,184 +460,8 @@ input::-webkit-input-placeholder {
   justify-content: space-between;
   flex-direction: column;
   margin-top: 0.1%;
-  .Layout:nth-child(1) {
-    height: 49%;
-    width: 49%;
-    .title {
-      margin-left: 3%;
-      margin-top: 2%;
-      color: #55d4f8;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-    }
-    .LayoutTitle {
-      display: flex;
-      margin-top: 10px;
-      .ranking {
-        text-indent: 15px;
-        height: 20px;
-        width: 18%;
-        text-align: right;
-        // padding-right: 9px;
-        color: #55d4f8;
-      }
-      .property {
-        text-align: right;
-        width: 15% !important;
-      }
-      .evaluate {
-        flex-grow: 1;
-        text-align: left;
-        color: #55d4f8;
-        text-indent: 121px;
-      }
-    }
-    .ranking1 {
-      text-indent: 8px;
-      width: 18%;
-      height: 40px;
-      // padding-right: 5px;
-      text-align: right;
-      color: #55d4f8;
-      line-height: 40px;
-      padding-right: 9px;
-    }
-    .info {
-      width: 100%;
-      height: 35px;
-      line-height: 35px;
-      margin-top: 3px;
-    }
-    .white {
-      color: #ffff !important;
-      font-size: 12px;
-      // text-align: center !important;
-    }
-    .hidden {
-      padding-right: 0;
-    }
-    .red {
-      flex-grow: 1;
-      text-indent: 16px;
-      color: #f16a6a;
-      font-size: 12px;
-      position: relative;
-      padding-top: 3px;
-
-      .icon {
-        position: absolute;
-        top: 15px;
-        left: -40px;
-      }
-    }
-    .progress {
-      height: 40px;
-      width: 300px;
-      padding-top: 12px;
-      /deep/ .main {
-        height: 15px;
-        width: 300px !important;
-        /* margin-left: 10px; */
-      }
-    }
-    .progressDesc {
-      flex-grow: 1;
-      text-indent: 16px;
-      color: #55d4f8;
-      font-size: 12px;
-      padding-top: 3px;
-    }
-  }
-  .Layout:nth-child(2) {
-    height: 49%;
-    width: 49%;
-    .title {
-      margin-left: 3%;
-      margin-top: 2%;
-      color: #55d4f8;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-    }
-    .LayoutTitle {
-      display: flex;
-      margin-top: 10px;
-      .ranking {
-        text-indent: 15px;
-        height: 20px;
-        width: 18%;
-        text-align: right;
-        // padding-right: 9px;
-        color: #55d4f8;
-      }
-      .property {
-        text-align: right;
-        width: 15% !important;
-      }
-      .evaluate {
-        flex-grow: 1;
-        text-align: left;
-        color: #55d4f8;
-        text-indent: 121px;
-      }
-    }
-    .ranking1 {
-      text-indent: 8px;
-      width: 18%;
-      height: 40px;
-      // padding-right: 5px;
-      text-align: right;
-      color: #55d4f8;
-      line-height: 40px;
-      padding-right: 9px;
-    }
-    .info {
-      width: 100%;
-      height: 35px;
-      line-height: 35px;
-      margin-top: 3px;
-    }
-    .white {
-      color: #ffff !important;
-      font-size: 12px;
-      // text-align: center !important;
-    }
-    .hidden {
-      padding-right: 0;
-    }
-    .red {
-      flex-grow: 1;
-      text-indent: 16px;
-      color: #f16a6a;
-      font-size: 12px;
-      position: relative;
-      padding-top: 3px;
-
-      .icon {
-        position: absolute;
-        top: 15px;
-        left: -40px;
-      }
-    }
-    .progress {
-      height: 40px;
-      width: 300px;
-      padding-top: 12px;
-      /deep/ .main {
-        height: 15px;
-        width: 300px !important;
-        /* margin-left: 10px; */
-      }
-    }
-    .progressDesc {
-      flex-grow: 1;
-      text-indent: 16px;
-      color: #55d4f8;
-      font-size: 12px;
-      padding-top: 3px;
-    }
-  }
+  .Layout:nth-child(1),
+  .Layout:nth-child(2),
   .Layout:nth-child(3) {
     height: 49%;
     width: 49%;
@@ -672,7 +562,86 @@ input::-webkit-input-placeholder {
       font-weight: 700;
       letter-spacing: 1.5px;
     }
-    
+    .tableDesc {
+      height: 80%;
+      width: 90%;
+      margin: 10px auto;
+      /deep/ .el-table,
+      /deep/ .el-table__expanded-cell {
+        background: transparent;
+      }
+      /deep/.table-wrapper
+        .el-table--enable-row-hover
+        .el-table__body
+        tr:hover
+        > td {
+        background-color: #29597c;
+      }
+      /deep/.el-pagination__total {
+        color: #ebebed;
+      }
+      /deep/.el-pager .number,
+      /deep/.el-icon,
+      /deep/.el-pagination .btn-next,
+      /deep/ .el-pagination .btn-prev,
+      /deep/ .has-gutter tr th,
+      /deep/ .el-table tr {
+        background: transparent;
+        color: #ebebed;
+      }
+      /deep/th,
+      /deep/td,
+      /deep/.el-table td,
+      /deep/.el-table th.is-leaf {
+        border: none;
+      }
+      /deep/.el-table td,
+      .el-table th {
+        padding: 9px 0 !important;
+      }
+      /deep/.el-table--border::after,
+      /deep/.el-table--group::after {
+        width: 0;
+      }
+      /deep/.el-table--striped .el-table__body tr.el-table__row--striped td {
+        background: #182a56;
+      }
+      /deep/.el-table th>.cell{
+            padding: 3px 0 !important;
+      } 
+      /deep/.el-pager li.btn-quicknext,
+      /deep/.el-pager li.btn-quickprev {
+        color: #ebebed;
+      }
+      /deep/.el-table thead {
+        background-color: #193f80;
+      }
+      .customer-table .el-table__fixed-right::before,
+      .el-table__fixed::before,
+      .customer-table::before {
+        width: 0;
+      }
+      /deep/.el-pager li.active {
+        color: #409eff;
+        cursor: default;
+      }
+      /deep/.el-table .cell {
+        line-height: 16px;
+      }
+      /deep/.el-table__row td div {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+      }
+      /deep/.el-form-item__label {
+        color: #fff;
+      }
+      /deep/.el-table__expanded-cell[class*="cell"] {
+        padding: 0 50px;
+      }
+      //  background-color: red;
+    }
   }
 }
 </style>
