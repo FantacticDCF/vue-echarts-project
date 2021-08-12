@@ -56,58 +56,71 @@
     </el-row>
 
     <!-- 下面echats -->
-    <div class="shuju">
-      <div>11111111111</div>
+    <div class="shuju" :style="setBackgroundBg">
+      <div class="title">总体情况</div>
       <div id="chartLineBox"></div>
-      <div>
-        <input
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          checked="checked"
-          value="邮件营销"
-        />邮件营销
-        <input
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          checked="checked"
-          value="联盟广告"
-        />联盟广告
-        <input
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          checked="checked"
-          value="视频广告"
-        />视频广告
-        <input
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          checked="checked"
-          value="直接访问"
-        />直接访问
-        <el-button
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          :checked="checked"
-          @click="clHandle"
-          ref="checked"
-          value="搜索引擎"
-          >默认按钮</el-button
-        >
-         <el-button
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          :checked="checked1"
-          @click="clHandle1"
-          ref="checked"
-          value="搜索引擎11"
-          >默认按钮1</el-button
-        >
+      <div class="kongzhi">
+        <div>
+          <input
+            type="checkbox"
+            class="checkboxchart"
+            name="checkboxchart"
+            checked="checked"
+            value="邮件营销"
+          />95558投诉
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            class="checkboxchart"
+            name="checkboxchart"
+            checked="checked"
+            value="联盟广告"
+          />人行投诉
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            class="checkboxchart"
+            name="checkboxchart"
+            checked="checked"
+            value="视频广告"
+          />银保监投诉
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            class="checkboxchart"
+            name="checkboxchart"
+            checked="checked"
+            value="直接访问"
+          />信访
+        </div>
+        <div>
+          <el-button
+            type="checkbox"
+            class="checkboxchart"
+            name="checkboxchart"
+            :checked="checked"
+            @click="clHandle"
+            ref="checked"
+            value="搜索引擎"
+            >同比</el-button
+          >
+        </div>
+        <div>
+          <el-button
+            type="checkbox"
+            class="checkboxchart"
+            name="checkboxchart"
+            :checked="checked1"
+            @click="clHandle1"
+            ref="checked"
+            value="搜索引擎11"
+            >环比</el-button
+          >
+        </div>
+
         <!-- <input
           type="checkbox"
           class="checkboxchart"
@@ -124,17 +137,26 @@
 export default {
   data() {
     return {
+      setBackgroundBg: {
+        //上方搜索
+        backgroundImage:
+          "url(" + require("../../../assets/images/complaint/shitu.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      },
       selected: {
-        邮件营销: true,
-        联盟广告: true,
-        视频广告: true,
-        直接访问: true,
-        搜索引擎: true,
-        搜索引擎1: true,
+       ' 95598投诉': true,
+        '人行投诉': true,
+        '银保监投诉': true,
+        '信访': true,
+        '同比': true,
+        '环比': false,
       },
       count: 1,
+ count1: 1,
       checked: true,
-       checked1: true,
+      checked1: false,
       select: [
         {
           value: "选项1",
@@ -214,41 +236,39 @@ export default {
   },
   methods: {
     clHandle() {
-      
-      this.count++;
-       var checkboxs = document.getElementsByName("checkboxchart");
-      if (this.count % 2 == 0) {
-        // this.$refs.checked.$attrs.checked = false;
-        checkboxs[4].checked = false;
-        // console.log("false", this.$refs.checked.$attrs);
-      } else {
-        // this.$refs.checked.$attrs.checked = true;
-                checkboxs[4].checked = true;
+      this.$nextTick(() => {
+        this.count++;
+        var checkboxs = document.getElementsByName("checkboxchart");
+        if (this.count % 2 == 0) {
+          // this.$refs.checked.$attrs.checked = false;
+          checkboxs[4].checked = true;
+          // console.log("false", this.$refs.checked.$attrs);
+        } else {
+          // this.$refs.checked.$attrs.checked = true;
+          checkboxs[4].checked = false;
 
-        // console.log("true", this.$refs.checked.$attrs);
-      }
-     
-      console.log(checkboxs[4])
-    
+          // console.log("true", this.$refs.checked.$attrs);
+        }
+      });
+
+      // console.log(checkboxs[4])
     },
     clHandle1() {
-      
-      this.count++;
-       var checkboxs = document.getElementsByName("checkboxchart");
-       console.log( '1111',checkboxs[5]);
-      if (this.count % 2 == 0) {
+      this.count1++;
+      var checkboxs = document.getElementsByName("checkboxchart");
+      console.log("1111", checkboxs[5]);
+      if (this.count1 % 2 == 0) {
         // this.$refs.checked.$attrs.checked = false;
-        checkboxs[5].checked= false;
+        checkboxs[5].checked = true;
         // console.log("false", this.$refs.checked.$attrs);
       } else {
         // this.$refs.checked.$attrs.checked = true;
-                checkboxs[5].checked = true;
+        checkboxs[5].checked = false;
 
         // console.log("true", this.$refs.checked.$attrs);
       }
-     
-      console.log(checkboxs[5])
-  
+
+      console.log(checkboxs[5]);
     },
     getLineEcharts1(selected) {
       // 折线图
@@ -268,9 +288,16 @@ export default {
           containLabel: true,
         },
         legend: {
-          data: ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎","搜索引擎11"],
+          data: [
+            "95558投诉",
+            "人行投诉",
+            "银保监投诉",
+            "信访",
+            "同比",
+            "环比",
+          ],
           orient: "horizontal",
-          right: 450,
+          right:350,
           top: 0,
           bottom: 0,
           show: true,
@@ -330,14 +357,19 @@ export default {
             barWidth: "2%",
             barGap: "2%", //柱状间距
             show: true,
-            min: 15,
-            max: 100,
+            min: 0,
+            max: 1400,
+             axisTick: {
+            //隐藏刻度标记
+            show: false,
+          },
             // 改变y轴颜色
             axisLine: {
               lineStyle: {
                 color: "#1f78af",
                 width: 1, // 这里是为了突出显示加上的
               },
+               show: false,
             },
           },
           {
@@ -401,7 +433,7 @@ export default {
               },
             },
           },
-            {
+          {
             splitLine: { show: false },
             type: "value",
             name: "",
@@ -420,12 +452,11 @@ export default {
         series: [
           {
             type: "bar",
-            barWidth: 30, //柱图宽度
+            barWidth: 20, //柱图宽度
             barGap: "1%",
-            name: "邮件营销",
+            name: "95558投诉",
             data: [
-              78.49, 76.01, 70.55, 70.03, 65.77, 53.2, 51.63, 34.26, 22.64,
-              17.76,
+             1072,713,703,698,622,607,556,552,474,470
             ],
             itemStyle: {
               normal: {
@@ -434,19 +465,18 @@ export default {
                   position: "inside", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#1f78af", //设置柱子的颜色
+                color: "#18936e", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
           {
             type: "bar",
-            barWidth: 30, //柱图宽度
-            name: "联盟广告",
+            barWidth: 20, //柱图宽度
+            name: "人行投诉",
             barGap: "20%",
             data: [
-              78.49, 76.01, 70.55, 70.03, 65.77, 53.2, 51.63, 34.26, 22.64,
-              17.76,
+             65,40,55,17,76,31,59,101,22,9
             ],
             itemStyle: {
               normal: {
@@ -455,64 +485,88 @@ export default {
                   position: "inside", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#1f78af", //设置柱子的颜色
+                color: "#0a69f8", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
-          {
-            type: "line",
-            name: "视频广告",
+           {
+            type: "bar",
+            barWidth: 20, //柱图宽度
+            name: "银保监投诉",
+            barGap: "20%",
             data: [
-              78.49, 76.01, 72.55, 70.03, 31.77, 53.2, 90.63, 34.26, 22.64,
-              17.76,
+             65,40,55,17,76,31,59,101,22,9
             ],
-            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-            symbol: "circle", // 折线点设置为实心点
-            symbolSize: 10, // 折线点的大小
             itemStyle: {
               normal: {
-                color: "#e09216", //设置折线颜色
-              },
-            },
-          },
-          {
-            type: "line",
-            name: "直接访问",
-            data: [
-              78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
-              17.76,
-            ],
-            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-            symbol: "circle", // 折线点设置为实心点
-            symbolSize: 10, // 折线点的大小
-            itemStyle: {
-              normal: {
-                color: "#e09216", //设置折线颜色
-              },
-            },
-          },
-          {
-            type: "line",
-            name: "搜索引擎",
-            data: [
-              78.49, 76.01, 70.55, 33.03, 65.77, 53.2, 32.63, 34.26, 323.64,
-              17.76,
-            ],
-            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-            symbol: "circle", // 折线点设置为实心点
-            symbolSize: 10, // 折线点的大小
-            itemStyle: {
-              normal: {
-                color: "#e09216", //设置折线颜色
+                label: {
+                  show: true,
+                  position: "inside", //数据在中间显示
+                  formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
+                },
+                color: "#aea38d", //设置柱子的颜色
+                barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
            {
-            type: "line",
-            name: "搜索引擎11",
+            type: "bar",
+            barWidth: 20, //柱图宽度
+            name: "信访",
+            barGap: "20%",
             data: [
-              78.49, 76.01, 55.55, 33.03, 35.77, 53.2, 32.63, 64.26, 323.64,
+             65,40,55,17,76,31,59,101,22,9
+            ],
+            itemStyle: {
+              normal: {
+                label: {
+                  show: true,
+                  position: "inside", //数据在中间显示
+                  formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
+                },
+                color: "#ff544f", //设置柱子的颜色
+                barBorderRadius: [20, 20, 0, 0],
+              },
+            },
+          },
+          // {
+          //   type: "line",
+          //   name: "银保监投诉",
+          //   data: [
+          //     78.49, 76.01, 72.55, 70.03, 31.77, 53.2, 90.63, 34.26, 22.64,
+          //     17.76,
+          //   ],
+          //   yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
+          //   symbol: "circle", // 折线点设置为实心点
+          //   symbolSize: 10, // 折线点的大小
+          //   itemStyle: {
+          //     normal: {
+          //       color: "#e09216", //设置折线颜色
+          //     },
+          //   },
+          // },
+          // {
+          //   type: "line",
+          //   name: "信访",
+          //   data: [
+          //     78.49, 76.01, 70.55, 23.03, 65.77, 53.2, 43.63, 34.26, 22.64,
+          //     17.76,
+          //   ],
+          //   yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
+          //   symbol: "circle", // 折线点设置为实心点
+          //   symbolSize: 10, // 折线点的大小
+          //   itemStyle: {
+          //     normal: {
+          //       color: "#e09216", //设置折线颜色
+          //     },
+          //   },
+          // },
+          {
+            type: "line",
+            name: "同比",
+            data: [
+              78.49, 76.01, 70.55, 33.03, 65.77, 53.2, 32.63, 34.26, 32.64,
               17.76,
             ],
             yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
@@ -520,7 +574,23 @@ export default {
             symbolSize: 10, // 折线点的大小
             itemStyle: {
               normal: {
-                color: "#e09216", //设置折线颜色
+                color: "#6fc36f", //设置折线颜色
+              },
+            },
+          },
+          {
+            type: "line",
+            name: "环比",
+            data: [
+              78.49, 76.01, 55.55, 33.03, 35.77, 53.2, 32.63, 64.26, 23.64,
+              17.76,
+            ],
+            yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
+            symbol: "circle", // 折线点设置为实心点
+            symbolSize: 10, // 折线点的大小
+            itemStyle: {
+              normal: {
+                color: "#fd5a78", //设置折线颜色
               },
             },
           },
@@ -734,14 +804,35 @@ input::-webkit-input-placeholder {
   height: 520px;
   //  background: red;
   margin-top: 1%;
+  .title {
+    // margin-left: 3%;
+    // margin-top: 2.5%;
+    position: relative;
+    top: 2%;
+    left: 3%;
+    color: #55d4f8;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+  #chartLineBox {
+    width: 1100px;
+    margin: 3.5% auto 0;
+    height: 300px;
+    //  background: red;
+    margin-top: 3.5%;
+  }
+  .kongzhi {
+    width: 50%;
+    margin: 40px auto;
+    display: flex;
+    div {
+      margin-right: 20px;
+      
+    }
+  }
 }
-#chartLineBox {
-  width: 1200px;
-  // margin: 0 auto;
-  height: 400px;
-  //  background: red;
-  margin-top: 1%;
-}
+
 // #chartLineBox {
 //   // margin-top: 2%;
 //   width: 579px;
