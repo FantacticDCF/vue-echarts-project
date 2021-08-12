@@ -3,7 +3,7 @@
     <!-- 头部 -->
     <fuzzyTable/>
     <!-- <div class="bus-bread">查询</div> -->
-    <el-row style="margin: 2px 0">
+    <el-row style="margin: 2px 0 5px">
       <el-col :span="5" class="titleList"
         ><div class="bus-bread">投诉管理</div>
         <div class="bus-bread1">投诉分析</div></el-col
@@ -764,9 +764,9 @@ export default {
 .content-title{
     position: absolute;
     left: 40px;
-    top: 8px;
+    top: 10px;
     color: #59dfff;
-    font-size: 18px;
+    font-size: 17px;
 }
 .box-li-detail{
   line-height: 20px;
