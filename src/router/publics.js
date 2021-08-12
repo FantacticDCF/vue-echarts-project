@@ -184,7 +184,13 @@ let pubics=[
                 name: 'complainWarningEmergency',
                 component: ()=>import("@/views/publics/complaintsWarning/components/complainWarningEmergency"),
                 meta:{breadnav:[{path:'/Home/complainWarningEmergency',name:'投诉预警应急事件结案'}],name:'投诉预警应急事件结案'}
-            }
+            },
+            {
+                path: '/Home/complaintsAnalysis',
+                name: 'complaintsAnalysis',
+                component: ()=>import("@/views/publics/Home/complaintAnalysis"),
+                meta:{breadnav:[{path:'/Home/complaintsAnalysis',name:'投诉分析'}],name:'投诉分析'}
+            },
        ]
     }
 ]
