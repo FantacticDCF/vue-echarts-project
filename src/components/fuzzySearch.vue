@@ -74,7 +74,6 @@ export default {
             // 这里当按下的键是Enter时，应实现搜索跳转功能
             if(ev.keyCode == 13) {
                 // that.content = '';
-                console.log(123)
                 this.resetStyle()
             }
         },
