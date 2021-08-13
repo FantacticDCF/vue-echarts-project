@@ -458,12 +458,12 @@ export default {
               [
                 {
                   offset: 0,
-                  color: "#0B6EF6",
+                  color: "#3AB590",
                 },
                 
                 {
                   offset: 1,
-                  color: "#64E9F5",
+                  color: "#64DFBB",
                 },
               ]
             ),
@@ -474,7 +474,7 @@ export default {
                   show: true,
                  color:"#18936e",
                   position: "top", //数据在中间显示
-                   distance: 3,
+                   distance: 2,
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
                 textStyle:{
@@ -530,15 +530,35 @@ export default {
             barWidth: 15, //柱图宽度
             name: "银保监投诉",
             // barGap: "20%",
-            data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
+              color: new this.$echarts.graphic.LinearGradient(
+              1,
+              1,
+              0,
+              0,
+              //三种由深及浅的颜色
+              [
+                {
+                  offset: 0,
+                  color: "#D6BC4E",
+                },
+                
+                {
+                  offset: 1,
+                  color: "#C9CD49",
+                },
+              ]
+            ),
+            data: [1072, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
                   show: true,
-                  position: "inside", //数据在中间显示
+                  position: "top", //数据在中间显示
+                  color: "#FCC22B",
+                    distance: 2,
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#aea38d", //设置柱子的颜色
+                // color: "#aea38d", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
@@ -548,15 +568,36 @@ export default {
             barWidth: 15, //柱图宽度
             name: "信访",
             // barGap: "20%",
-            data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
+              color: new this.$echarts.graphic.LinearGradient(
+              1,
+              1,
+              0,
+              0,
+              //三种由深及浅的颜色
+              [
+                {
+                  offset: 0,
+                  color: "#FF654B",
+                },
+                
+                {
+                  offset: 1,
+                  color: "#FCC22B",
+                },
+              ]
+            ),
+            data:  [1072, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
                   show: true,
-                  position: "inside", //数据在中间显示
+                  distance: 13,
+                  //  fontSize: 12,
+                  position: "top", //数据在中间显示
+                  color: "#FCC22B",
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#ff544f", //设置柱子的颜色
+                // color: "#ff544f", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
@@ -623,7 +664,7 @@ export default {
                 color: "#ffffff",
                 borderWidth: 2.5,
                 label: {
-                  show: true,
+                  show: false,
                   color: "#639FD6",
                 }, // 折点位置显示数值
              
@@ -844,11 +885,11 @@ input::-webkit-input-placeholder {
   }
   #chartLineBox {
     width: 1200px;
-    margin: 2.5% auto 0;
+    // margin: 2.5% auto 0;
     height: 300px;
     //  background: red;
     margin-top: 3.5%;
-    left: -90px !important;
+    margin-left: -3%;
   }
   .kongzhi {
     width: 50%;
