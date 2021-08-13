@@ -270,6 +270,11 @@ export default {
           bottom: "1%",
           containLabel: true,
         },
+        //  tooltip: {
+        //         trigger: 'item',
+        //         formatter: "{a} <br/>{b}: {c} ({d}%)"
+        //     },
+            
         legend: {
           data: [
             {
@@ -468,9 +473,12 @@ export default {
                 label: {
                   show: true,
                  color:"#18936e",
-                  //  fontSize: 12,
                   position: "top", //数据在中间显示
+                   distance: 3,
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
+                },
+                textStyle:{
+                  fontSize: 10,
                 },
                 // color: "#18936e", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
@@ -507,6 +515,7 @@ export default {
                 label: {
                   show: true,
                   color:"0a69f8",
+                  distance: 13,
                   //  fontSize: 12,
                   position: "top", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
@@ -834,12 +843,12 @@ input::-webkit-input-placeholder {
     letter-spacing: 1.5px;
   }
   #chartLineBox {
-    width: 1100px;
+    width: 1200px;
     margin: 2.5% auto 0;
     height: 300px;
     //  background: red;
     margin-top: 3.5%;
-    left: -26px !important;
+    left: -90px !important;
   }
   .kongzhi {
     width: 50%;
