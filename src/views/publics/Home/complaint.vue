@@ -120,20 +120,14 @@
             >环比</el-button
           >
         </div>
-
-        <!-- <input
-          type="checkbox"
-          class="checkboxchart"
-          name="checkboxchart"
-          checked="checked"
-          value="搜索引擎"
-        />搜索引擎 -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import green from '../../../assets/images/complaint/green.png'
+import red from '../../../assets/images/complaint/red.png'
 export default {
   data() {
     return {
@@ -150,13 +144,13 @@ export default {
         人行投诉: true,
         银保监投诉: true,
         信访: true,
-        同比: true,
-        环比: true,
+        同比: false,
+        环比: false,
       },
       count: 1,
       count1: 1,
       checked: true,
-      checked1: false,
+      checked1: true,
       select: [
         {
           value: "选项1",
@@ -219,6 +213,7 @@ export default {
         setBackgroundBg: {
           //上方搜索
           backgroundImage:
+          // "url(" + require("../../../assets/images/complaint/green.png") + ")",
             "url(" + require("../../../assets/images/big-border.png") + ")",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
@@ -240,32 +235,20 @@ export default {
         this.count++;
         var checkboxs = document.getElementsByName("checkboxchart");
         if (this.count % 2 == 0) {
-          // this.$refs.checked.$attrs.checked = false;
           checkboxs[4].checked = true;
-          // console.log("false", this.$refs.checked.$attrs);
         } else {
-          // this.$refs.checked.$attrs.checked = true;
           checkboxs[4].checked = false;
-
-          // console.log("true", this.$refs.checked.$attrs);
         }
       });
-
-      // console.log(checkboxs[4])
     },
     clHandle1() {
       this.count1++;
       var checkboxs = document.getElementsByName("checkboxchart");
       console.log("1111", checkboxs[5]);
       if (this.count1 % 2 == 0) {
-        // this.$refs.checked.$attrs.checked = false;
         checkboxs[5].checked = true;
-        // console.log("false", this.$refs.checked.$attrs);
       } else {
-        // this.$refs.checked.$attrs.checked = true;
         checkboxs[5].checked = false;
-
-        // console.log("true", this.$refs.checked.$attrs);
       }
 
       console.log(checkboxs[5]);
@@ -274,13 +257,13 @@ export default {
       // 折线图
       // 指定图表的配置项和数据
       var option = {
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
-          },
-        },
+        // tooltip: {
+        //   trigger: "axis",
+        //   // axisPointer: {
+        //   //   // 坐标轴指示器，坐标轴触发有效
+        //   //   // type: "line", // 默认为直线，可选为：'line' | 'shadow'
+        //   // },
+        // },
         grid: {
           left: "8%",
           right: "0",
@@ -288,14 +271,13 @@ export default {
           containLabel: true,
         },
         legend: {
-         
           data: [
             {
               name: "95558投诉",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#cccccc",
+                color: "#91939D",
               },
               icon: "circle",
             },
@@ -304,7 +286,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#cccccc",
+                color: "#91939D",
               },
               icon: "circle",
             },
@@ -313,7 +295,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#cccccc",
+                color: "#91939D",
               },
               icon: "circle",
             },
@@ -322,29 +304,30 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#cccccc",
+                color: "#91939D",
               },
               icon: "circle",
             },
-            {
+            { 
               name: "同比",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#cccccc",
+                color: "#91939D",
               },
-              icon: "roundRect",
+              //  icon:'image//./images/icon1.png'
+              icon:`image://${green}`
+              
             },
             {
               name: "环比",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#cccccc",
+                color: "#91939D",
               },
-              icon: "rect",
+              icon:`image://${red}`
             },
-            
           ],
           orient: "horizontal",
           right: 350,
@@ -404,11 +387,12 @@ export default {
             splitLine: { show: false },
             type: "value",
             // name: '数量',
-            barWidth: "2%",
-            barGap: "2%", //柱状间距
+            barWidth: "10%",
+            barGap: "20%", //柱状间距
             show: true,
             min: 0,
             max: 1400,
+            splitNumber: 8,
             axisTick: {
               //隐藏刻度标记
               show: false,
@@ -428,119 +412,115 @@ export default {
             barWidth: "2%",
             barGap: "2%", //柱状间距
             show: true,
-            min: 15,
-            max: 100,
+            min: 0,
+            max: 140,
+            splitNumber: 8,
+             axisTick: {
+              //隐藏刻度标记
+              show: false,
+            },
+            axisLabel: {
+              show: true,
+              interval: "auto", //居中显示
+              formatter: "{value} %", //以百分比显示
+            },
+            
             // 改变y轴颜色
             axisLine: {
               lineStyle: {
                 color: "#1f78af",
                 width: 1, // 这里是为了突出显示加上的
               },
+              show: false,
             },
           },
-          {
-            splitLine: { show: false },
-            type: "value",
-            name: "",
-            // interval: 10,
-            // min:0,
-            // max:2,
-            // 改变y轴颜色
-            axisLine: {
-              lineStyle: {
-                color: "#1f78af",
-                // width: 1, //y轴宽度，这里是为了突出显示加上的
-              },
-            },
-          },
-          {
-            splitLine: { show: false },
-            type: "value",
-            name: "",
-            // interval: 10,
-            // min:0,
-            // max:2,
-            // 改变y轴颜色
-            axisLine: {
-              lineStyle: {
-                color: "#1f78af",
-                // width: 1, //y轴宽度，这里是为了突出显示加上的
-              },
-            },
-          },
-          {
-            splitLine: { show: false },
-            type: "value",
-            name: "",
-            // interval: 10,
-            // min:0,
-            // max:2,
-            // 改变y轴颜色
-            axisLine: {
-              lineStyle: {
-                color: "#1f78af",
-                // width: 1, //y轴宽度，这里是为了突出显示加上的
-              },
-            },
-          },
-          {
-            splitLine: { show: false },
-            type: "value",
-            name: "",
-            // interval: 10,
-            // min:0,
-            // max:2,
-            // 改变y轴颜色
-            axisLine: {
-              lineStyle: {
-                color: "#1f78af",
-                // width: 1, //y轴宽度，这里是为了突出显示加上的
-              },
-            },
-          },
+        
         ],
         series: [
           {
             type: "bar",
-            barWidth: 20, //柱图宽度
-            barGap: "1%",
+            barWidth: 15, //柱图宽度
+            // barGap: "1%",
+            
             name: "95558投诉",
+              //渐变色实现===
+            color: new this.$echarts.graphic.LinearGradient(
+              1,
+              1,
+              0,
+              0,
+              //三种由深及浅的颜色
+              [
+                {
+                  offset: 0,
+                  color: "#0B6EF6",
+                },
+                
+                {
+                  offset: 1,
+                  color: "#64E9F5",
+                },
+              ]
+            ),
             data: [1072, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
                   show: true,
-                  position: "inside", //数据在中间显示
+                 color:"#18936e",
+                  //  fontSize: 12,
+                  position: "top", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#18936e", //设置柱子的颜色
+                // color: "#18936e", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
+          
           },
           {
             type: "bar",
-            barWidth: 20, //柱图宽度
+            barWidth: 15, //柱图宽度
             name: "人行投诉",
-            barGap: "20%",
-            data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
+            // barGap: "20%",
+             color: new this.$echarts.graphic.LinearGradient(
+              1,
+              1,
+              0,
+              0,
+              //三种由深及浅的颜色
+              [
+                {
+                  offset: 0,
+                  color: "#0B6EF6",
+                },
+                
+                {
+                  offset: 1,
+                  color: "#64E9F5",
+                },
+              ]
+            ),
+            data:[1072, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
                   show: true,
-                  position: "inside", //数据在中间显示
+                  color:"0a69f8",
+                  //  fontSize: 12,
+                  position: "top", //数据在中间显示
                   formatter: "{c}", //百分比显示，模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数
                 },
-                color: "#0a69f8", //设置柱子的颜色
+                // color: "#0a69f8", //设置柱子的颜色
                 barBorderRadius: [20, 20, 0, 0],
               },
             },
           },
           {
             type: "bar",
-            barWidth: 20, //柱图宽度
+            barWidth: 15, //柱图宽度
             name: "银保监投诉",
-            barGap: "20%",
+            // barGap: "20%",
             data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
             itemStyle: {
               normal: {
@@ -556,9 +536,9 @@ export default {
           },
           {
             type: "bar",
-            barWidth: 20, //柱图宽度
+            barWidth: 15, //柱图宽度
             name: "信访",
-            barGap: "20%",
+            // barGap: "20%",
             data: [65, 40, 55, 17, 76, 31, 59, 101, 22, 9],
             itemStyle: {
               normal: {
@@ -576,22 +556,51 @@ export default {
           {
             type: "line",
             name: "同比",
+            //    showSymbol: true,
+            // // symbol: "circle", //折点设定为实心点
+            // // symbolSize: 8, //设定实心点的大小
             data: [
               78.49, 76.01, 70.55, 33.03, 65.77, 53.2, 32.63, 34.26, 32.64,
               17.76,
             ],
             yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
-            symbol: "circle", // 折线点设置为实心点
+            symbol: "", // 折线点设置为实心点
             symbolSize: 10, // 折线点的大小
-            itemStyle: {
+             itemStyle: {
+                // color: "#55945F", //设置柱子的颜色
               normal: {
-                color: "#6fc36f", //设置折线颜色
+                borderColor: "#56955F", //折点颜色
+                color: "#ffffff",
+                borderWidth: 2.5,
+                label: {
+                  show: false,
+                  color: "#56955F",
+                }, // 折点位置显示数值
+              
+                lineStyle: {
+                  //线的颜色
+                  color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                      offset: 0,
+                      color: "#56955F",
+                    },
+                    {
+                      offset: 1,
+                      color: "#87D086",
+                    },
+                  ]), //线条渐变色
+                  width: 4,
+                },
               },
             },
+         
           },
           {
             type: "line",
             name: "环比",
+              showSymbol: true,
+            symbol: "circle", //折点设定为实心点
+            symbolSize: 8, //设定实心点的大小
             data: [
               78.49, 76.01, 55.55, 33.03, 35.77, 53.2, 32.63, 64.26, 23.64,
               17.76,
@@ -599,9 +608,31 @@ export default {
             yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
             symbol: "circle", // 折线点设置为实心点
             symbolSize: 10, // 折线点的大小
-            itemStyle: {
+              itemStyle: {
               normal: {
-                color: "#fd5a78", //设置折线颜色
+                borderColor: "#FF5D7B", //折点颜色
+                color: "#ffffff",
+                borderWidth: 2.5,
+                label: {
+                  show: true,
+                  color: "#639FD6",
+                }, // 折点位置显示数值
+             
+                lineStyle: {
+                  // 线的颜色
+                  // color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  //   {
+                  //     offset: 0,
+                  //     color: "#6184F7",
+                  //   },
+                  //   {
+                  //     offset: 1,
+                  //     color: "#66D8E6",
+                  //   },
+                  // ]), //线条渐变色
+                  color:"#FF5D7B",
+                  width: 4,
+                },
               },
             },
           },
@@ -614,9 +645,9 @@ export default {
       this.chartLine.setOption(option);
       // 使用刚指定的选择项数据显示图表。
       var s = this.chartLine.getOption().legend[0].data; //legend所有值
-       var names=[]
+      var names = [];
       for (let i = 0; i < s.length; i++) {
-        names.push(s[i].name)
+        names.push(s[i].name);
       }
       console.log(names);
       var checkboxs = document.getElementsByName("checkboxchart");
@@ -624,14 +655,13 @@ export default {
       //  var count=0
       for (let i = 0; i < arr.length; i++) {
         arr[i].onclick = function () {
-      
           if (checkboxs[i].checked) {
-            option.legend.selected[names[i]]=true
+            option.legend.selected[names[i]] = true;
             console.log(option.legend.selected);
           } else {
-            option.legend.selected[names[i]]=false
+            option.legend.selected[names[i]] = false;
           }
-       
+
           chartLine2.setOption(option);
         };
       }
