@@ -13,7 +13,7 @@
           <span class="selectTitle">投诉来源</span>
           <el-select
             v-model="value"
-            placeholder=""
+            placeholder="95558投诉"
             :popper-append-to-body="false"
           >
             <el-option
@@ -270,7 +270,7 @@ export default {
       detailFlag: false,
       listLabel: [
         { label: "被投诉",  prop: "data" },
-        { label: "被投诉量", width: "60", prop: "bank" },
+        { label: "被投诉量", width: "90", prop: "bank" },
         { label: "投诉增加率",width: "90", prop: "netaddress" },
         { label: "投诉增加量", width: "90", prop: "remark" }
       ],
@@ -859,7 +859,7 @@ input::-webkit-input-placeholder {
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
-        color: #55d4f8;
+        color: #fff;
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 1.5px;
@@ -906,7 +906,7 @@ input::-webkit-input-placeholder {
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
-        color: #55d4f8;
+        color: #fff;
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 1.5px;
