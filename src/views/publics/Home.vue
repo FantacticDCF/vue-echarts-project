@@ -28,6 +28,7 @@
         >
           <Menu
             :active-name="leftactive"
+            :open-names="['1']"
             theme="light"
             width="90"
             :class="menuitemClasses"
@@ -119,21 +120,21 @@ export default {
       isCollapsed: false,
       count: [{ name: "投诉压降", path: "/Home/business" }],
       activeid: 1,
-      toplist: [
-        {
-          label: "HOME1",
-          name: "HOME1",
-          id: "1",
-          to: "/Home/index",
-        },
-        {
-          label: "HOME2",
-          name: "HOME2",
-          id: "2",
-          to: "/Home/cliniclist",
-        },
-      ],
-      topactive: "总体情况",
+      // toplist: [
+      //   {
+      //     label: "HOME1",
+      //     name: "HOME1",
+      //     id: "1",
+      //     to: "/Home/index",
+      //   },
+      //   {
+      //     label: "HOME2",
+      //     name: "HOME2",
+      //     id: "2",
+      //     to: "/Home/cliniclist",
+      //   },
+      // ],
+      // topactive: "总体情况",
       leftactive: "总体情况",
       leftlist: [
         // {
@@ -294,7 +295,7 @@ export default {
 //  this.breadnav = this.$route.meta.breadnav;
     if (JSON.parse(sessionStorage.getItem("count")) == null) return false;
     else this.count = JSON.parse(sessionStorage.getItem("count"));
-    this.topactive = JSON.parse(sessionStorage.getItem("routername")).topactive;
+    // this.topactive = JSON.parse(sessionStorage.getItem("routername")).topactive;
     this.leftactive = "总体情况"
     // this.leftactive = JSON.parse(
     //   sessionStorage.getItem("routername")
@@ -309,6 +310,12 @@ export default {
       return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
     menuitemClasses() {
+      // this.activeName = '1-1',
+      // this.openNames = ['1'],
+      this.$nextTick(() => {
+        // this.$refs.side_menu.updateOpened();
+        // this.$refs.side_menu.updateActiveName();
+      })
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     },
   },
@@ -322,7 +329,7 @@ export default {
       sessionStorage.setItem(
         "routername",
         JSON.stringify({
-          topactive: item.label,
+          // topactive: item.label,
           leftactive: item.name,
           activeid: item.id,
         })
@@ -336,20 +343,20 @@ export default {
       this.count.splice(index, 1);
     },
     //顶部导航
-    topclick(item) {
-      this.activeid = item.id;
-      this.leftactive = item.name;
-      this.topactive = item.label;
-      this.$router.push({ path: item.to });
-      sessionStorage.setItem(
-        "routername",
-        JSON.stringify({
-          topactive: item.label,
-          leftactive: item.name,
-          activeid: item.id,
-        })
-      );
-    },
+    // topclick(item) {
+    //   this.activeid = item.id;
+    //   this.leftactive = item.name;
+    //   this.topactive = item.label;
+    //   this.$router.push({ path: item.to });
+    //   sessionStorage.setItem(
+    //     "routername",
+    //     JSON.stringify({
+    //       topactive: item.label,
+    //       leftactive: item.name,
+    //       activeid: item.id,
+    //     })
+    //   );
+    // },
     //退出登录
     quit(name) {
       if (name == 1) {
