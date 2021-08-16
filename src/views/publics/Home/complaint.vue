@@ -146,8 +146,8 @@ export default {
         backgroundPosition: "center",
       },
       selected: {
-        "95598投诉": true,
-        人行投诉: true,
+        "95598投诉": false,
+        人行投诉: false,
         银保监投诉: true,
         信访: true,
         同比: true,

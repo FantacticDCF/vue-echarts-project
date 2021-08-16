@@ -28,6 +28,7 @@
         >
           <Menu
             :active-name="leftactive"
+            :open-names="['1']"
             theme="light"
             width="90"
             :class="menuitemClasses"
@@ -309,6 +310,12 @@ export default {
       return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
     menuitemClasses() {
+      // this.activeName = '1-1',
+      // this.openNames = ['1'],
+      this.$nextTick(() => {
+        this.$refs.side_menu.updateOpened();
+        this.$refs.side_menu.updateActiveName();
+      })
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     },
   },
