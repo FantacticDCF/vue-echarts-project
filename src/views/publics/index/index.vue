@@ -3,23 +3,23 @@
     <el-row>
     <el-col :span="7">
       <div class="panel bar">
-        <h2>全行投诉指标一览<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <h2 class="bg-s">昨日投诉量<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
 
         <div class="ts-index">
           <div class="ts-bg"><h3>40%</h3></div>
-          <p>总投诉发生率</p>
+          <p>95558</p>
         </div>
         <div class="ts-index">
           <div class="ts-bg"><h3>30%</h3></div>
-          <p>对公客户投诉发生率</p>
+          <p>人行</p>
         </div>
         <div class="ts-index">
           <div class="ts-bg"><h3>20%</h3></div>
-          <p>月度投诉发生率</p>
+          <p>银保监</p>
         </div>
         <div class="ts-index">
           <div class="ts-bg"><h3>10%</h3></div>
-          <p>零售客户投诉发生率</p>
+          <p>其他</p>
         </div>
         <div class="chart"></div>
         <div class="panel-footer"></div>
@@ -70,30 +70,24 @@
       </div>
     </el-col>
     <el-col :span="7">
-      <div class="panel bar1">
-        <h2>各维度投诉数据表<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-        <h2 class="sub1">客群投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+      <div class="panel bar1-1">
+        <h2>行内5大热点投诉<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
         <div class="chart" id="chart"></div>
-        <div class="panel-footer"></div>
-        <h2 class="sub2">全行实时投诉排名<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-        <div class="chart2"></div>
-        <div class="panel-footer"></div>
       </div>
       <div class="panel bar1">
-        <h2 class="bg-s">投诉预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-        <h2 class="sub1">区域预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"><img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-        <div class="chart3"></div>
-        <div class="panel-footer"></div>
-        <h2 class="sub2"> 产品预警<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
-        <div class="chart4"></div>
-        <div class="panel-footer"></div>
+        <h2>监管投诉总量<img class="cockp_arrow" v-show="isShow" src="../../../assets/images/cockp_arrow.png"></h2>
+        <div class="chart3" id="chart3"></div>
       </div>
     </el-col>
   </el-row>
+
+    <show-dialog v-if="showDialog" @litenContent="litenContent" showT="true"></show-dialog>
+
   </div>
 </template>
 <script>
   import TableProcess from "./TableProcess.vue";
+  import showDialog from '../../../components/showDialog.vue';
   import '@/assets/utils/china';
   import axios from 'axios';
   export default {
@@ -105,27 +99,23 @@
         loading: false,
         dnAll:550,
         jgAll:137,
-        hnAll:32
+        hnAll:32,
+        showDialog:false
       };
     },
     components:{
-        TableProcess
+        TableProcess,showDialog
     },
     props: {
       isShow:Boolean
     },
     mounted() {
 
-      //this.getData();
-      // this.tousupm();//全行实时投诉排名
-      this.kqtousu();//客群投诉排名
-      this.beitousu();//被投诉业务排名
+      this.right1();//客群投诉
       this.quyuyujing();//区域预警
-      this.chanpinyujing();//产品预警
       this.chinamap()//中国地图
     },
     methods: {
-
       //获取数据
       getData(url) {
         axios
@@ -139,13 +129,12 @@
             })
             .finally(() => this.loading = false)
       },
-
       //右1
-      kqtousu() {
+      right1() {
         var that = this;
-        this.myChart = this.$echarts.init(document.getElementById("chart"));
-        var data = [66, 59, 57];
-        var titlename = ["普通客户", "贵宾客户", "私行客户"];
+        var myChart = this.$echarts.init(document.getElementById("chart"));
+        var data = [66, 59, 57, 50, 47, 35, 28, 22, 17, 10];
+        var titlename = ["投诉问题", "投诉问题", "投诉问题", "投诉问题", "投诉问题", "投诉问题", "投诉问题", "投诉问题", "投诉问题", "投诉问题"];
 
         var option = {
           // backgroundColor:"#17326b",
@@ -217,6 +206,11 @@
                   color: function (params) {
                     //   console.log(params);
                     var colorList = [
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
+                      ["#3A9ACF", "#6BC7E8"],
                       ["#3A9ACF", "#6BC7E8"],
                       ["#3A9ACF", "#6BC7E8"],
                       ["#3A9ACF", "#6BC7E8"],
@@ -252,135 +246,7 @@
               barGap: "-100%",
               barWidth:16,
               symbolOffset: [5, 0],//柱子的位置
-              data: [100, 100, 100],
-              color: "#2e5384",
-              itemStyle: {
-                normal: {
-                  barBorderRadius:8,
-                },
-              },
-            },
-          ],
-        };
-        this.myChart.setOption(option);
-        window.addEventListener("resize", () => { this.myChart.resize();});
-
-      },
-
-      //右2
-      beitousu() {
-        var that = this;
-        var myChart = this.$echarts.init(document.querySelector(".bar1 .chart2"));
-
-        var data = [66, 59, 57];
-        var titlename = ["信用卡", "个贷", "手机银行"];
-
-        var option = {
-          // backgroundColor:"#17326b",
-          grid: {
-            left: "15",
-            top: "10",
-            right: "15",
-            bottom: "10",
-            containLabel: true,
-          },
-          xAxis: {
-            type: "value",
-            splitLine: { show: false },
-            axisLabel: { show: false },
-            axisTick: { show: false },
-            axisLine: { show: false },
-          },
-          yAxis: [
-            {
-              type: "category",
-              axisTick: { show: false },
-              axisLine: { show: false },
-              axisLabel: {
-                color: "black",
-                fontSize: 12,
-                textStyle: {
-                  color: "#fff",
-                },
-              },
-              data: titlename,
-              // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-              inverse: true,
-            },
-            {
-              type: "category",
-              axisTick: { show: false },
-              axisLine: { show: false },
-              axisLabel: {
-                color: "black",
-                fontSize: 12,
-                textStyle: {
-                  color: "#fff",
-                },
-              },
-              data: data,
-              // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-              inverse: true,
-            },
-          ],
-          series: [
-            {
-              name: "条",
-              type: "pictorialBar",
-              symbolRepeat: "fixed",
-              symbolMargin: 1,
-              symbol: "rect",
-              symbolClip: true,
-              symbolSize: [6, 8],
-              symbolOffset: [5,0],//柱子的位置
-              data: data,
-              z: 2,
-              // barCategoryGap:0,
-
-              itemStyle: {
-                normal: {
-                  barBorderRadius: 7,
-                  //柱体的颜色
-                  //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
-                  color: function (params) {
-                    //   console.log(params);
-                    var colorList = [
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                    ];
-                    var colorItem = colorList[params.dataIndex];
-                    return new that.$echarts.graphic.LinearGradient(
-                      1,
-                      0,
-                      0,
-                      0,
-                      [
-                        {
-                          offset: 0,
-                          color: colorItem[0],
-                        },
-                        {
-                          offset: 1,
-                          color: colorItem[1],
-                        },
-                      ],
-                      false
-                    );
-                  },
-                },
-              },
-              zlevel: 1,
-            },
-            {
-              name: "进度条背景",
-              type: "bar",
-              barGap: "-100%",
-        barWidth:16,
-        symbolOffset: [5, 0],//柱子的位置
-              data: [100, 100, 100],
+              data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
               color: "#2e5384",
               itemStyle: {
                 normal: {
@@ -391,17 +257,20 @@
           ],
         };
         myChart.setOption(option);
-        window.addEventListener("resize", () => { myChart.resize();});
+        window.addEventListener("resize", () => { this.myChart.resize();});
+        myChart.on('click',  (params) =>{
+          console.log(params);
+          this.showDialog = true;
+        });
 
       },
-
       //右3
       quyuyujing() {
           var that = this;
         var myChart = that.$echarts.init(document.querySelector(".bar1 .chart3"));
 
         var data = [66, 59, 57];
-        var titlename = ["福州分行", "南昌分行", "贵阳分行"];
+        var titlename = ["人行", "银保监", "其他"];
 
         var option = {
           // backgroundColor:"#17326b",
@@ -522,135 +391,6 @@
         window.addEventListener("resize", () => { myChart.resize();});
 
       },
-
-      //右4
-      chanpinyujing() {
-          var that = this;
-        var myChart = that.$echarts.init(document.querySelector(".bar1 .chart4"));
-
-        var data = [66, 59, 57];
-        var titlename = ["个人开户", "场景贷", "中信安全险"];
-
-        var option = {
-          // backgroundColor:"#17326b",
-          grid: {
-            left: "5",
-            top: "10",
-            right: "15",
-            bottom: "10",
-            containLabel: true,
-          },
-          xAxis: {
-            type: "value",
-            splitLine: { show: false },
-            axisLabel: { show: false },
-            axisTick: { show: false },
-            axisLine: { show: false },
-          },
-          yAxis: [
-            {
-              type: "category",
-              axisTick: { show: false },
-              axisLine: { show: false },
-              axisLabel: {
-                color: "black",
-                fontSize: 12,
-                textStyle: {
-                  color: "#fff",
-                },
-              },
-              data: titlename,
-              // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-              inverse: true,
-            },
-            {
-              type: "category",
-              axisTick: { show: false },
-              axisLine: { show: false },
-              axisLabel: {
-                color: "black",
-                fontSize: 12,
-                textStyle: {
-                  color: "#fff",
-                },
-              },
-              data: data,
-              // max:10, // 关键：设置y刻度最大值，相当于设置总体行高
-              inverse: true,
-            },
-          ],
-          series: [
-            {
-              name: "条",
-              type: "pictorialBar",
-              symbolRepeat: "fixed",
-              symbolMargin: 1,
-              symbol: "rect",
-              symbolClip: true,
-              symbolSize: [6, 8],
-              symbolOffset: [5,0],//柱子的位置
-              data: data,
-              z: 2,
-              // barCategoryGap:0,
-
-              itemStyle: {
-                normal: {
-                  barBorderRadius: 7,
-                  //柱体的颜色
-                  //右，下，左，上（1，0，0，0）表示从正右开始向左渐变
-                  color: function (params) {
-                    //   console.log(params);
-                    var colorList = [  
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                      ["#3A9ACF", "#6BC7E8"],
-                    ];
-                    var colorItem = colorList[params.dataIndex];
-                    return new that.$echarts.graphic.LinearGradient(
-                      1,
-                      0,
-                      0,
-                      0,
-                      [
-                        {
-                          offset: 0,
-                          color: colorItem[0],
-                        },
-                        {
-                          offset: 1,
-                          color: colorItem[1],
-                        },
-                      ],
-                      false
-                    );
-                  },
-                },
-              },
-              zlevel: 1,
-            },
-            {
-              name: "进度条背景",
-              type: "bar",
-              barGap: "-100%",
-        barWidth:16,
-        symbolOffset: [5, 0],//柱子的位置
-              data: [100, 100, 100],
-              color: "#2e5384",
-              itemStyle: {
-                normal: {
-                  barBorderRadius:8,
-                },
-              },
-            },
-          ],
-        };
-        myChart.setOption(option);
-        window.addEventListener("resize", () => { myChart.resize();});
-
-      },
-
       //地图
       chinamap(){
           var that = this;
@@ -787,8 +527,11 @@
                 this.hnAll = params.data.hnAll;
           });
           window.addEventListener("resize", () => { myChart.resize();});
-    }
-
+    },
+      //弹窗
+      litenContent (data) {
+        this.showk = data
+      },
     },
   };
 </script>
@@ -828,7 +571,7 @@ body {
   background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
   padding: 21px 10px;
   background-size: 100% 100%;
-  /*margin-bottom: 5px;*/
+  margin-bottom: 5px;
 }
 .panel::before {
   position: absolute;
@@ -917,10 +660,19 @@ body {
   max-width: 130px;
 }
 .panel .bg-s {
-  max-width: 105px;
+  max-width: 120px;
 }
-.bar1 .chart,.bar1 .chart2 ,.bar1 .chart3,.bar1 .chart4 {
-  height:40%
+.bar1  {
+  height: 174px;
+}
+.bar1-1  {
+  height:calc(100vh - 257px)
+}
+.bar1 .chart,.bar1 .chart3{
+  height:100%
+}
+.bar1-1 .chart {
+  height:100%
 }
 .bar2 .chart{
   height:280px;
