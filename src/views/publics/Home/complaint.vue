@@ -64,7 +64,7 @@
           <input
             type="checkbox"
             class="checkboxchart"
-            
+            @click="fontColor($event)"
             name="checkboxchart"
             :checked="checked"
             value="95558投诉"
@@ -75,7 +75,6 @@
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
-            :checked="checked"
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
@@ -125,7 +124,7 @@
             ref="checked1"
             value="搜索引擎11"
           >
-            &nbsp;&nbsp;环比上期 
+            &nbsp;&nbsp;环比上期
           </button>
         </div>
       </div>
@@ -148,18 +147,18 @@ export default {
         backgroundPosition: "center",
       },
       selected: {
-        "95598投诉": false,
-        人行投诉: true,
+        "95598投诉": true,
+        人行投诉: false,
         银保监投诉: false,
         信访: true,
         同比: false,
-        环比上期: true,//
+        环比上期: true, //
       },
       count: 1,
       count1: 1,
       checked: true,
       checked2: false,
-      checked1: true,//环比上期
+      checked1: true, //环比上期
       select: [
         {
           value: "选项1",
@@ -239,19 +238,18 @@ export default {
     this.getLineEcharts1(this.selected);
   },
   methods: {
+    fontColor() {
+      // console.log(1);
+      //   if(this.checked==true){
+      //      e.target.style.color = "#45f8f8";
+      //   }else{
+      //      e.target.style.color = "#FFFFFF";
+      //   }
+    },
     clHandle(e) {
       this.$nextTick(() => {
-        // console.log(e.target.style[0]);
-        // this.count++;
-        // console.log(this.getLineEcharts1(this.selected));
-        // var checkboxs = document.getElementsByName("checkboxchart");
-        // console.log(checkboxs[4].checked);
         var s1 = this.chartLine.getOption();
         console.log(s1.legend[0].selected);
-        // var ins=s1.legend[0].selected
-        // for(var key in ins){
-        //   console.log(key,ins[key]);
-        // }
         this.checked2 = !this.checked2;
         // checkboxs[4].checked = !checkboxs[4].checked;
         if (this.checked2 == true) {
@@ -263,19 +261,9 @@ export default {
           e.target.style.color = "#41a4c9";
           e.target.style.borderColor = "#41a4c9";
         }
-        // if (this.count % 2 == 0 || checkboxs[4].checked===false) {
-        //   checkboxs[4].checked = true;
-        //
-        //   // console.log(this.$refs.checked);
-        // } else {
-        //   checkboxs[4].checked = false;
-
-        // }
       });
     },
     clHandle1(e) {
-      // var checkboxs = document.getElementsByName("checkboxchart");
-      // checkboxs[5].checked = !checkboxs[5].checked;
       this.checked1 = !this.checked1;
       if (this.checked1 == true) {
         e.target.style.backgroundColor = "#45F8F8";
@@ -286,20 +274,6 @@ export default {
         e.target.style.color = "#41a4c9";
         e.target.style.borderColor = "#41a4c9";
       }
-      // console.log("1111", checkboxs[5]);
-      // if (this.count1 % 2 == 0 ||checkboxs[5].checked==false) {
-      //   checkboxs[5].checked = true;
-      //    e.target.style.backgroundColor='#45F8F8'
-      //     e.target.style.color='#205669'
-      //      e.target.style.borderColor='#45F8F8'
-      // } else {
-      //   checkboxs[5].checked = false;
-      //     e.target.style.backgroundColor='#0e2351'
-      //     e.target.style.color='#41a4c9'
-      //      e.target.style.borderColor='#41a4c9'
-      // }
-
-      // console.log(checkboxs[5]);
     },
     getLineEcharts1(selected) {
       // 折线图
@@ -315,7 +289,6 @@ export default {
           trigger: "item",
           formatter: "{a} <br/>{b}: {c} ",
         },
-
         legend: {
           data: [
             {
@@ -382,7 +355,6 @@ export default {
           show: true,
           selected,
         },
-
         // calculable: true,
         xAxis: [
           {
@@ -415,7 +387,7 @@ export default {
             },
             splitLine: {
               //网格样式
-              show: true,
+              show: false,
               axisLine: {
                 //x轴刻度线
                 show: false, //这里的show用于设置是否显示x轴那一条线 默认为true
@@ -430,7 +402,12 @@ export default {
         ],
         yAxis: [
           {
-            splitLine: { show: false },
+            splitLine: { 
+              show: true,
+              lineStyle: {
+                         color: '#141F3B'
+                  }  
+             },
             type: "value",
             // name: '数量',
             barWidth: "10%",
@@ -507,7 +484,7 @@ export default {
                 },
               ]
             ),
-            data: [1072, 713, 703, 698, 622, 607, 556, 552, 474, 470],
+            data: [1302, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
@@ -548,7 +525,7 @@ export default {
                 },
               ]
             ),
-            data: [1057, 456, 789, 323, 408, 1024, 148, 1048, 732, 659],
+            data: [1057, 456, 789, 323, 865, 1024, 148, 1048, 732, 659],
             itemStyle: {
               normal: {
                 label: {
@@ -587,7 +564,7 @@ export default {
                 },
               ]
             ),
-            data: [1024, 256, 512, 748, 369, 1089, 1300, 1256, 876, 765],
+            data: [1214, 256, 512, 748, 369, 1089, 1300, 1256, 876, 991],
             itemStyle: {
               normal: {
                 label: {
@@ -639,7 +616,6 @@ export default {
               },
             },
           },
-
           {
             type: "line",
             name: "同比",
@@ -685,8 +661,8 @@ export default {
             symbol: "circle", //折点设定为实心点
             symbolSize: 8, //设定实心点的大小
             data: [
-              78.49, 76.01, 55.55, 33.03, 35.77, 53.2, 32.63, 64.26, 23.64,
-              17.76,
+              86.49, 62.01, 64.55, 25.03, 58.77, 72.2, 64.63, 28.26, 80.64,
+              50.76,
             ],
             yAxisIndex: 1, // 这里要设置哪个y轴，默认是最左边的是0，然后1，2顺序来
             symbol: "circle", // 折线点设置为实心点
@@ -715,6 +691,7 @@ export default {
       );
       // 使用刚指定的配置项和数据显示图表。
       this.chartLine.setOption(option);
+
       // 使用刚指定的选择项数据显示图表。
       var s = this.chartLine.getOption().legend[0].data; //legend所有值
       var names = [];
@@ -733,15 +710,10 @@ export default {
             console.log(checkboxs[i].checked);
             if (checkboxs[i].checked) {
               option.legend.selected[names[i]] = true;
-
-              //  console.log();
-              // console.log(option.legend.selected);
-              // e.target.style.color='#45F8F8'
             } else if (checkboxs[i].getAttribute("checked")) {
               option.legend.selected[names[i]] = true;
             } else {
               option.legend.selected[names[i]] = false;
-              // e.target.style.color='#fffff'
             }
 
             chartLine2.setOption(option);
@@ -909,10 +881,10 @@ input::-webkit-input-placeholder {
     // margin-left: 3%;
     // margin-top: 2.5%;
     position: relative;
-    top: 2%;
+    top: 1.8%;
     left: 3%;
     color: #55d4f8;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 1.5px;
   }
@@ -930,7 +902,7 @@ input::-webkit-input-placeholder {
     display: flex;
     justify-content: space-around;
     // .size-color-wirte{
-       
+
     // }
     // .size-color-blue{
     //   color:#45f8f8;
@@ -938,7 +910,7 @@ input::-webkit-input-placeholder {
     .input-yangshi {
       padding-top: 2px;
       color: #ffff;
-      font-size:12px;
+      font-size: 12px;
       // .checkboxchart{
       //     background-color:#0e2351;
       // }
