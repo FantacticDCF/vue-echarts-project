@@ -92,9 +92,6 @@
 </template>
 
 <script>
-import search from "../../../assets/images/searchList/search.png";
-import search1 from "../../../assets/images/searchList/search1.png";
-import search2 from "../../../assets/images/searchList/search2.png";
 import fuzzyTable from "../../../components/fuzzySearch.vue";
 import tableCommon from "../../../components/tableCommon.vue";
 export default {
@@ -229,44 +226,6 @@ export default {
           //   backgroundPosition:"2% 0",
         },
       },
-      topSearch: [
-        {
-          title: "待处理订单",
-          topImages: search,
-          topTitle: "29",
-          topTilteDescribe: "笔",
-          topWrithDesc: "待处理工单",
-          downTitle1: "12",
-          downTitle1DEsc: "据结案时间12小时工单",
-          downTitle2: "17",
-          downTitle1DEsc: "据结案时间24小时工单",
-          icon: "el-icon-arrow-right",
-        },
-        {
-          title: "已处理订单",
-          topImages: search2,
-          topTitle: "15",
-          topTilteDescribe: "笔",
-          topWrithDesc: "本月以处理",
-          downTitle1: "6",
-          downTitle1DEsc: "流转工单",
-          downTitle2: "9",
-          downTitle1DEsc: "流转工单",
-          icon: "el-icon-arrow-right",
-        },
-        {
-          title: "督办查询",
-          topImages: search1,
-          topTitle: "27",
-          topTilteDescribe: "笔",
-          topWrithDesc: "监管督办",
-          downTitle1: "14",
-          downTitle1DEsc: "总行督办",
-          downTitle2: "13",
-          downTitle1DEsc: "本级督办",
-          icon: "el-icon-arrow-right",
-        },
-      ],
       detailFlag: false,
       listLabel: [
         { label: "被投诉",  prop: "data" },
