@@ -30,7 +30,6 @@
                 </li>
             </ul>
         </div>
-        <div class="mask" @click="maskclick()"></div>
     </div>
 </template>
 <script>
@@ -105,9 +104,6 @@ export default {
         loseBlur(){
             this.resetStyle()
         },
-        maskclick(){
-            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
-        },
         // 模糊查询
         handleInput(){
             this.myData = [];
@@ -160,14 +156,7 @@ export default {
 }
 </script>
 <style lang="less">
-.mask{
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-}
+
 .fuzzySearch{
     width: 55%;
 }
