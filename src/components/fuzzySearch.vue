@@ -11,7 +11,7 @@
                     :style="setBackgroundBg"
                     v-model="content"
                     @input="handleInput()"
-                    @change="handlechange"
+                    @change="handlechange()"
                     @keydown.down="changeDown()"
                     @keydown.up="changeUp()"
                     @keyup.enter="getEnter($event)"
@@ -25,7 +25,7 @@
         <div class="fuzzy-data-fa">
             <ul class="fuzzy-data-ul" ref="chatContent">
                 <!-- 这里注意给class添加属性的时候采用的是{属性:true/false}的形式 -->
-                <li id="fuzzy-data-ul-li" v-for="(item, index) in myData" :key="index" :class="{grey: index==now}" @click="handleChose(item)">
+                <li id="fuzzy-data-ul-li" class="fuzzy-data-ul-li" v-for="(item, index) in myData" :key="index" :class="{grey: index==now}" @click="handleChose(item)">
                     {{item.VAL}}
                 </li>
             </ul>
@@ -62,7 +62,7 @@ export default {
             content: '',
             now: -1,
             dataleval: '',
-            allData: ''
+            allData: '',
         }
     },
     methods:{
@@ -75,6 +75,7 @@ export default {
             if(ev.keyCode == 13) {
                 // that.content = '';
                 this.resetStyle()
+                document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
             }
         },
         changeDown() {
@@ -89,7 +90,6 @@ export default {
         },
         changeUp() {
             this.now--;
-            console.log(this.now)
             let that = this;
             if(this.now <=0) this.now=0
             this.content = this.myData[this.now].VAL;
@@ -98,8 +98,7 @@ export default {
             }
         },
         handleChose(item){
-            console.log(item,999)
-            this.content = item.VAL;        
+            this.content = item.VAL; 
             document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
         },
         loseBlur(){
@@ -132,12 +131,10 @@ export default {
             if (domselect) {
                 domselect.classList.toggle("grey");  //离开清空ul里面选中的li的样式
             }
-            document.getElementsByClassName('fuzzy-data-fa')[0].style.display = 'none'
             this.now = -1
         }
     },
     mounted() {
-        // this.handleChose()
         // window.addEventListener('scroll', this.resetStyle, true);
     },
     // watch:{
@@ -159,6 +156,7 @@ export default {
 }
 </script>
 <style lang="less">
+
 .fuzzySearch{
     width: 55%;
 }
@@ -168,6 +166,8 @@ export default {
   // margin-top: 10px;
   width: 100%;
   height: 40px;
+  position: relative;
+  z-index: 1000;
 }
 .aborder span{
     float: left;
@@ -175,6 +175,7 @@ export default {
 }
 .searchbox{
     width: 70%;
+    z-index: 1000;
 }
 .input-border {
   border: none;

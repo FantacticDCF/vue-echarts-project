@@ -13,7 +13,7 @@
           <span class="selectTitle">投诉来源</span>
           <el-select
             v-model="value"
-            placeholder=""
+            placeholder="95558投诉"
             :popper-append-to-body="false"
           >
             <el-option
@@ -92,9 +92,6 @@
 </template>
 
 <script>
-import search from "../../../assets/images/searchList/search.png";
-import search1 from "../../../assets/images/searchList/search1.png";
-import search2 from "../../../assets/images/searchList/search2.png";
 import fuzzyTable from "../../../components/fuzzySearch.vue";
 import tableCommon from "../../../components/tableCommon.vue";
 export default {
@@ -229,48 +226,10 @@ export default {
           //   backgroundPosition:"2% 0",
         },
       },
-      topSearch: [
-        {
-          title: "待处理订单",
-          topImages: search,
-          topTitle: "29",
-          topTilteDescribe: "笔",
-          topWrithDesc: "待处理工单",
-          downTitle1: "12",
-          downTitle1DEsc: "据结案时间12小时工单",
-          downTitle2: "17",
-          downTitle1DEsc: "据结案时间24小时工单",
-          icon: "el-icon-arrow-right",
-        },
-        {
-          title: "已处理订单",
-          topImages: search2,
-          topTitle: "15",
-          topTilteDescribe: "笔",
-          topWrithDesc: "本月以处理",
-          downTitle1: "6",
-          downTitle1DEsc: "流转工单",
-          downTitle2: "9",
-          downTitle1DEsc: "流转工单",
-          icon: "el-icon-arrow-right",
-        },
-        {
-          title: "督办查询",
-          topImages: search1,
-          topTitle: "27",
-          topTilteDescribe: "笔",
-          topWrithDesc: "监管督办",
-          downTitle1: "14",
-          downTitle1DEsc: "总行督办",
-          downTitle2: "13",
-          downTitle1DEsc: "本级督办",
-          icon: "el-icon-arrow-right",
-        },
-      ],
       detailFlag: false,
       listLabel: [
         { label: "被投诉",  prop: "data" },
-        { label: "被投诉量", width: "60", prop: "bank" },
+        { label: "被投诉量", width: "90", prop: "bank" },
         { label: "投诉增加率",width: "90", prop: "netaddress" },
         { label: "投诉增加量", width: "90", prop: "remark" }
       ],
@@ -859,7 +818,7 @@ input::-webkit-input-placeholder {
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
-        color: #55d4f8;
+        color: #fff;
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 1.5px;
@@ -906,7 +865,7 @@ input::-webkit-input-placeholder {
       .title {
         margin-left: 3%;
         margin-top: 2.5%;
-        color: #55d4f8;
+        color: #fff;
         font-size: 14px;
         font-weight: 700;
         letter-spacing: 1.5px;
