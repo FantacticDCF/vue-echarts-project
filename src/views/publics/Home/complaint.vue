@@ -65,7 +65,7 @@
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
-            checked="checked"
+            :checked="checked"
             value="95558投诉"
           />&nbsp;&nbsp;95558投诉
         </div>
@@ -74,7 +74,7 @@
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
-            checked="checked"
+            :checked="checked"
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
@@ -83,7 +83,7 @@
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
-            checked="checked"
+            :checked="checked"
             value="视频广告"
           />&nbsp;&nbsp;银保监投诉
         </div>
@@ -92,7 +92,7 @@
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
-            checked="checked"
+            :checked="checked"
             value="直接访问"
           />&nbsp;&nbsp;信访
         </div>
@@ -102,9 +102,9 @@
             size="mini"
             type="checkbox"
             class="checkboxchart"
-            :class="checked == true ? 'color11' : 'color1'"
+            :class="checked2 == true ? 'color11' : 'color1'"
             name="checkboxchart"
-            :checked="checked"
+            :checked="checked2"
             @click="clHandle($event)"
             ref="checked"
             value="搜索引擎"
@@ -156,6 +156,7 @@ export default {
       count: 1,
       count1: 1,
       checked: true,
+      checked2: true,
       checked1: false,
       select: [
         {
@@ -249,9 +250,9 @@ export default {
         // for(var key in ins){
         //   console.log(key,ins[key]);
         // }
-       this.checked=!this.checked
+       this.checked2=!this.checked2
         // checkboxs[4].checked = !checkboxs[4].checked;
-        if (this.checked == true) {
+        if (this.checked2 == true) {
           e.target.style.backgroundColor = "#45F8F8";
           e.target.style.color = "#205669";
           e.target.style.borderColor = "#45F8F8";
@@ -726,10 +727,12 @@ export default {
         for (let i = 0; i < arr.length; i++) {
           arr[i].onclick = function () {
             console.log(checkboxs[i].checked);
-            if (checkboxs[i].checked && checkboxs[i].getAttribute('checked')) {
+            if (checkboxs[i].checked) {
               option.legend.selected[names[i]] = true;
               // console.log(option.legend.selected);
-            } else {
+            }else if(checkboxs[i].getAttribute('checked')){
+              option.legend.selected[names[i]] = true;    
+            }else {
               option.legend.selected[names[i]] = false;
             }
 
