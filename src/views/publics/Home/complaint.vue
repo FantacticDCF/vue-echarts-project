@@ -66,7 +66,7 @@
             class="checkboxchart"
             name="checkboxchart"
             checked="checked"
-            value="邮件营销"
+            value="95558投诉"
           />&nbsp;&nbsp;95558投诉
         </div>
         <div>
@@ -97,7 +97,7 @@
           />&nbsp;&nbsp;信访
         </div>
         <div>
-          <el-button
+          <button
             round
             size="mini"
             type="checkbox"
@@ -105,14 +105,14 @@
             :class="checked == true ? 'color11' : 'color1'"
             name="checkboxchart"
             :checked="checked"
-            @click.self="clHandle($event)"
+            @click="clHandle($event)"
             ref="checked"
             value="搜索引擎"
-            >&nbsp;&nbsp;同比</el-button
+            >&nbsp;&nbsp;同比</button
           >
         </div>
         <div>
-          <el-button
+          <button
             round
             size="mini"
             type="checkbox"
@@ -120,10 +120,10 @@
             name="checkboxchart"
             :class="checked1 == true ? 'color11' : 'color1'"
             :checked="checked1"
-            @click.self="clHandle1($event)"
+            @click="clHandle1($event)"
             ref="checked1"
             value="搜索引擎11"
-            >&nbsp;&nbsp;环比</el-button
+            >&nbsp;&nbsp;环比</button
           >
         </div>
       </div>
@@ -145,14 +145,14 @@ export default {
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
       },
-      selected: {
-        "95598投诉": true,
-        人行投诉: true,
-        银保监投诉: true,
-        信访: true,
-        同比: true,
-        环比: false,
-      },
+ selected: {
+            '95598投诉': 'false',
+            人行投诉: true,
+            银保监投诉: true,
+            信访: true,
+            同比: true,
+            环比: false,
+          },
       count: 1,
       count1: 1,
       checked: true,
@@ -240,10 +240,18 @@ export default {
       this.$nextTick(() => {
         // console.log(e.target.style[0]);
         // this.count++;
-        var checkboxs = document.getElementsByName("checkboxchart");
+        // console.log(this.getLineEcharts1(this.selected));
+        // var checkboxs = document.getElementsByName("checkboxchart");
         // console.log(checkboxs[4].checked);
-        checkboxs[4].checked = !checkboxs[4].checked;
-        if (checkboxs[4].checked == true) {
+        var s1 = this.chartLine.getOption()
+        console.log(s1.legend[0].selected);
+        // var ins=s1.legend[0].selected
+        // for(var key in ins){
+        //   console.log(key,ins[key]);
+        // }
+       this.checked=!this.checked
+        // checkboxs[4].checked = !checkboxs[4].checked;
+        if (this.checked == true) {
           e.target.style.backgroundColor = "#45F8F8";
           e.target.style.color = "#205669";
           e.target.style.borderColor = "#45F8F8";
@@ -263,9 +271,10 @@ export default {
       });
     },
     clHandle1(e) {
-      var checkboxs = document.getElementsByName("checkboxchart");
-      checkboxs[5].checked = !checkboxs[5].checked;
-      if (checkboxs[5].checked == true) {
+      // var checkboxs = document.getElementsByName("checkboxchart");
+      // checkboxs[5].checked = !checkboxs[5].checked;
+       this.checked1=!this.checked1
+      if (this.checked1 == true) {
         e.target.style.backgroundColor = "#45F8F8";
         e.target.style.color = "#205669";
         e.target.style.borderColor = "#45F8F8";
@@ -370,7 +379,7 @@ export default {
           selected,
         },
 
-        calculable: true,
+        // calculable: true,
         xAxis: [
           {
             type: "category",
@@ -709,21 +718,25 @@ export default {
         names.push(s[i].name);
       }
       // console.log(names);
-      var checkboxs = document.getElementsByName("checkboxchart");
-      var arr = document.getElementsByClassName("checkboxchart");
-      //  var count=0
-      for (let i = 0; i < arr.length; i++) {
-        arr[i].onclick = function () {
-          if (checkboxs[i].checked) {
-            option.legend.selected[names[i]] = true;
-            // console.log(option.legend.selected);
-          } else {
-            option.legend.selected[names[i]] = false;
-          }
+      this.$nextTick(() => {
+        var checkboxs = document.getElementsByName("checkboxchart");
+        
+        var arr = document.getElementsByClassName("checkboxchart");
+        //  var count=0
+        for (let i = 0; i < arr.length; i++) {
+          arr[i].onclick = function () {
+            console.log(checkboxs[i].checked);
+            if (checkboxs[i].checked && checkboxs[i].getAttribute('checked')) {
+              option.legend.selected[names[i]] = true;
+              // console.log(option.legend.selected);
+            } else {
+              option.legend.selected[names[i]] = false;
+            }
 
-          chartLine2.setOption(option);
-        };
-      }
+            chartLine2.setOption(option);
+          };
+        }
+      });
     },
   },
 };
@@ -919,15 +932,25 @@ input::-webkit-input-placeholder {
         color: #41a4c9;
         border: 1px solid #41a4c9;
         background-color: #0e2351;
+        height: 25px;
+        width: 90px;
+        border-radius: 20px;
+        font-size: 12px;
+        line-height: 25px;
+        text-align: center;
       }
       .color11 {
         color: #205669;
         border: 1px solid #45f8f8;
         background-color: #45f8f8;
+         height: 25px;
+        width: 90px;
+        border-radius: 20px;
+        font-size: 12px;
+        line-height: 25px;
+         text-align: center;
       }
     }
   }
 }
-
-
 </style>
