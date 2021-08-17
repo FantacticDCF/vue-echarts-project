@@ -56,7 +56,7 @@
     </el-row>
 
     <!-- 下面echats -->
-    <div class="shuju" :style="setBackgroundBg">
+    <div class="shuju" :style="info.setBackgroundBg1">
       <div class="title">总体情况</div>
       <div id="chartLineBox"></div>
       <div class="kongzhi">
@@ -66,7 +66,7 @@
             class="checkboxchart"
             @click="fontColor($event)"
             name="checkboxchart"
-            :checked="checked"
+            
             value="联盟广告"
           />&nbsp;&nbsp;95558投诉
         </div>
@@ -74,7 +74,9 @@
           <input
             type="checkbox"
             class="checkboxchart"
+            @click="fontColor($event)"
             name="checkboxchart"
+            :checked="checked"
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
@@ -82,8 +84,8 @@
           <input
             type="checkbox"
             class="checkboxchart"
+            @click="fontColor($event)"
             name="checkboxchart"
-            
             value="视频广告"
           />&nbsp;&nbsp;银保监投诉
         </div>
@@ -91,6 +93,7 @@
           <input
             type="checkbox"
             class="checkboxchart"
+            @click="fontColor($event)"
             name="checkboxchart"
             :checked="checked"
             value="直接访问"
@@ -106,12 +109,12 @@
             @click="clHandle($event)"
             ref="checked"
             value="搜索引擎"
-            >&nbsp;&nbsp;同比</button
           >
+            &nbsp;&nbsp;同比
+          </button>
         </div>
         <div>
           <button
-
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
@@ -135,28 +138,17 @@ import red from "../../../assets/images/complaint/red.png";
 export default {
   data() {
     return {
-      setBackgroundBg: {
-        //上方搜索
-        backgroundImage:
-          "url(" + require("../../../assets/images/complaint/shitu.png") + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-      },
-      selected: {
-        "95598投诉": false,
-        人行投诉: false,
-        银保监投诉: false,
-        信访: true,
-        同比: false,
-        环比上期: true, //
-      },
-      panduan:'',
-      count: 1,
-      count1: 1,
       checked: true,
       checked2: false,
       checked1: true, //环比上期
+      selected: {
+            '\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9': false,
+            人行投诉: true,
+            银保监投诉: false,
+            信访: true,
+            同比: false,
+            环比上期: true,
+          },
       select: [
         {
           value: "选项1",
@@ -225,6 +217,14 @@ export default {
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
+         setBackgroundBg1: {
+        //上方搜索
+        backgroundImage:
+          "url(" + require("../../../assets/images/complaint/shitu.png") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+      },
       },
     };
   },
@@ -232,28 +232,48 @@ export default {
     this.chartLine = this.$echarts.init(
       document.getElementById("chartLineBox")
     );
-
-    this.getLineEcharts1(this.selected);
+    this.$nextTick(() => {
+      this.getLineEcharts1(this.selected);
+      this.initialize();
+    });
   },
   methods: {
-    fontColor(e) {
-      var dom =document.getElementsByClassName('input-yangshi')
-      console.log(e);
-      console.log(dom);
-      // console.log(e.target.style);
-      // // console.log(1);
-      //   if(this.panduan==true){
-      //      e.target.style.color = "#45f8f8";
-      //   }else{
-      //      e.target.style.color = "#FFFFFF";
-      //   }
+    //初始化 颜色
+    initialize() {
+      // var sele=
+      var checkboxs = document.getElementsByName("checkboxchart");
+      var dom = document.getElementsByClassName("input-yangshi");
+      for (var i = 0; i < dom.length; i++) {
+        // console.log(dom[i].style);
+        if (checkboxs[i].checked === true) {
+          dom[i].style.color = "#45f8f8";
+        } else {
+          dom[i].style.color = "#ffff";
+        }
+      }
     },
+    //点击更改颜色
+    fontColor() {
+      var checkboxs = document.getElementsByName("checkboxchart");
+      var dom = document.getElementsByClassName("input-yangshi");
+      // console.log(e);
+      // console.log(dom);
+      // console.log(checkboxs);
+      for (var i = 0; i < dom.length; i++) {
+        console.log(dom[i].style);
+        if (checkboxs[i].checked == true) {
+          dom[i].style.color = "#45f8f8";
+        } else {
+          dom[i].style.color = "#ffff";
+        }
+      }
+    },
+    //点击事件
     clHandle(e) {
       this.$nextTick(() => {
-        var s1 = this.chartLine.getOption();
-        console.log(s1.legend[0].selected);
+        // var s1 = this.chartLine.getOption();
+        // console.log(s1.legend[0].selected);
         this.checked2 = !this.checked2;
-        // checkboxs[4].checked = !checkboxs[4].checked;
         if (this.checked2 == true) {
           e.target.style.backgroundColor = "#45F8F8";
           e.target.style.color = "#205669";
@@ -299,8 +319,10 @@ export default {
                 fontSize: 12,
                 fontWeight: "bolder",
                 color: "#91939D",
+                
               },
               icon: "circle",
+              // inactiveColor:"#91939D"
             },
             {
               name: "人行投诉",
@@ -349,6 +371,7 @@ export default {
               icon: `image://${red}`,
             },
           ],
+          selectedMode: "multiple",
           orient: "horizontal",
           right: 350,
           top: 0,
@@ -403,12 +426,12 @@ export default {
         ],
         yAxis: [
           {
-            splitLine: { 
+            splitLine: {
               show: true,
               lineStyle: {
-                         color: '#141F3B'
-                  }  
-             },
+                color: "#141F3B",
+              },
+            },
             type: "value",
             // name: '数量',
             barWidth: "10%",
@@ -702,14 +725,13 @@ export default {
       // console.log(names);
       this.$nextTick(() => {
         var checkboxs = document.getElementsByName("checkboxchart");
-        
+
         var arr = document.getElementsByClassName("checkboxchart");
-        //  var count=0
         for (let i = 0; i < arr.length; i++) {
           arr[i].onclick = function () {
-            console.log(checkboxs[i].checked);
-            this.panduan=checkboxs[i].checked
+            // console.log(checkboxs[i].checked);
             if (checkboxs[i].checked) {
+              
               option.legend.selected[names[i]] = true;
             } else if (checkboxs[i].getAttribute("checked")) {
               option.legend.selected[names[i]] = true;
@@ -840,7 +862,6 @@ export default {
     border-radius: 20px;
   }
 }
-
 .aborder {
   text-indent: 30px;
   color: #58dbff;
@@ -871,7 +892,6 @@ export default {
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
-
 //底部echars css
 .shuju {
   width: 100%;
@@ -902,12 +922,7 @@ input::-webkit-input-placeholder {
     margin: 40px auto;
     display: flex;
     justify-content: space-around;
-    // .size-color-wirte{
 
-    // }
-    // .size-color-blue{
-    //   color:#45f8f8;
-    // }
     .input-yangshi {
       padding-top: 2px;
       color: #ffff;
@@ -954,52 +969,7 @@ input::-webkit-input-placeholder {
         // text-emphasis-color: #45f8f8;
       }
     }
-    .input-yangshi1 {
-      padding-top: 2px;
-      color: #45f8f8;
-      font-size: 12px;
-      // .checkboxchart{
-      //     background-color:#0e2351;
-      // }
-      input[type="checkbox"] {
-        width: 12.22px;
-        height: 12.22px;
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle;
-        line-height: 18px;
-        position: relative;
-        -webkit-appearance: none; //去掉原有样式
-      }
 
-      input[type="checkbox"]::before {
-        content: "";
-        position: absolute;
-        top: -2px;
-        left: 0;
-        background: #131b35;
-        width: 100%;
-        height: 100%;
-        border: 1px solid #305484;
-      }
-
-      input[type="checkbox"]:checked::before {
-        content: "\2713";
-        background-color: #45f8f8;
-        position: absolute;
-        top: -2px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 1px solid #45f8f8;
-        color: #121c34;
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 94%;
-        // text-emphasis-color: #45f8f8;
-      }
-    }
     div {
       margin-right: 20px;
       /deep/ .el-button.is-round {
@@ -1025,12 +995,12 @@ input::-webkit-input-placeholder {
         color: #205669;
         border: 1px solid #45f8f8;
         background-color: #45f8f8;
-         height: 25px;
+        height: 25px;
         width: 90px;
         border-radius: 20px;
         font-size: 12px;
         line-height: 25px;
-         text-align: center;
+        text-align: center;
       }
     }
   }
