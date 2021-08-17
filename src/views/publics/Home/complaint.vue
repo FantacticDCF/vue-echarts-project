@@ -66,7 +66,6 @@
             class="checkboxchart"
             @click="fontColor($event)"
             name="checkboxchart"
-            
             value="联盟广告"
           />&nbsp;&nbsp;95558投诉
         </div>
@@ -142,13 +141,13 @@ export default {
       checked2: false,
       checked1: true, //环比上期
       selected: {
-            '\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9': false,
-            人行投诉: true,
-            银保监投诉: false,
-            信访: true,
-            同比: false,
-            环比上期: true,
-          },
+        "\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9": false,
+        人行投诉: true,
+        银保监投诉: false,
+        信访: true,
+        同比: false,
+        环比上期: true,
+      },
       select: [
         {
           value: "选项1",
@@ -217,14 +216,16 @@ export default {
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
-         setBackgroundBg1: {
-        //上方搜索
-        backgroundImage:
-          "url(" + require("../../../assets/images/complaint/shitu.png") + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-      },
+        setBackgroundBg1: {
+          //上方搜索
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/complaint/shitu.png") +
+            ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+        },
       },
     };
   },
@@ -260,7 +261,7 @@ export default {
       // console.log(dom);
       // console.log(checkboxs);
       for (var i = 0; i < dom.length; i++) {
-        console.log(dom[i].style);
+        // console.log(dom[i].style);
         if (checkboxs[i].checked == true) {
           dom[i].style.color = "#45f8f8";
         } else {
@@ -318,18 +319,16 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
-                
+                color: "#9597A0",
               },
               icon: "circle",
-              // inactiveColor:"#91939D"
             },
             {
               name: "人行投诉",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -338,7 +337,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -347,7 +346,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -356,9 +355,8 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
-              //  icon:'image//./images/icon1.png'
               icon: `image://${green}`,
             },
             {
@@ -366,18 +364,19 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: `image://${red}`,
             },
           ],
-          selectedMode: "multiple",
+          selectedMode: false, //legend图标禁止点击
           orient: "horizontal",
           right: 350,
           top: 0,
           bottom: 0,
           show: true,
           selected,
+          inactiveColor: "#9597A0", //没选中时候得字体颜色
         },
         // calculable: true,
         xAxis: [
@@ -429,7 +428,7 @@ export default {
             splitLine: {
               show: true,
               lineStyle: {
-                color: "#141F3B",
+                color: "#15233F",
               },
             },
             type: "value",
@@ -469,7 +468,15 @@ export default {
             axisLabel: {
               show: true,
               interval: "auto", //居中显示
-              formatter: "{value} %", //以百分比显示
+              // formatter: "{value} %", //以百分比显示
+              //右侧Y轴百分比显示 0得位置不显示百分比
+              formatter: function (val) {
+                if (val == 0) {
+                  return (val = 0);
+                } else {
+                  return val + "%";
+                }
+              },
             },
 
             // 改变y轴颜色
@@ -731,7 +738,6 @@ export default {
           arr[i].onclick = function () {
             // console.log(checkboxs[i].checked);
             if (checkboxs[i].checked) {
-              
               option.legend.selected[names[i]] = true;
             } else if (checkboxs[i].getAttribute("checked")) {
               option.legend.selected[names[i]] = true;
