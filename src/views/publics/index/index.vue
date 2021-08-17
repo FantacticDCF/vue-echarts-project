@@ -530,7 +530,7 @@
     },
       //弹窗
       litenContent (data) {
-        this.showk = data
+        this.showDialog = data
       },
     },
   };
@@ -542,7 +542,9 @@ body {
   background-color: #131B35;
   background-size: cover;
 }
-
+.content {
+  padding: 10px;
+}
 .mainbox {
   padding: 5px 5px 0 5px;
 }
@@ -571,7 +573,7 @@ body {
   background: rgba(255, 255, 255, 0.04) url(../../../assets/images/line.png) no-repeat;
   padding: 21px 10px;
   background-size: 100% 100%;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 .panel::before {
   position: absolute;
