@@ -67,7 +67,7 @@
             @click="fontColor($event)"
             name="checkboxchart"
             :checked="checked"
-            value="95558投诉"
+            value="联盟广告"
           />&nbsp;&nbsp;95558投诉
         </div>
         <div class="input-yangshi">
@@ -97,8 +97,6 @@
         </div>
         <div>
           <button
-            round
-            size="mini"
             type="checkbox"
             class="checkboxchart"
             :class="checked2 == true ? 'color11' : 'color1'"
@@ -113,8 +111,7 @@
         </div>
         <div>
           <button
-            round
-            size="mini"
+
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
@@ -147,13 +144,14 @@ export default {
         backgroundPosition: "center",
       },
       selected: {
-        "95598投诉": true,
+        "95598投诉": false,
         人行投诉: false,
         银保监投诉: false,
         信访: true,
         同比: false,
         环比上期: true, //
       },
+      panduan:'',
       count: 1,
       count1: 1,
       checked: true,
@@ -238,9 +236,13 @@ export default {
     this.getLineEcharts1(this.selected);
   },
   methods: {
-    fontColor() {
-      // console.log(1);
-      //   if(this.checked==true){
+    fontColor(e) {
+      var dom =document.getElementsByClassName('input-yangshi')[0]
+      console.log(e);
+      console.log(dom);
+      // console.log(e.target.style);
+      // // console.log(1);
+      //   if(this.panduan==true){
       //      e.target.style.color = "#45f8f8";
       //   }else{
       //      e.target.style.color = "#FFFFFF";
@@ -708,6 +710,7 @@ export default {
           arr[i].onclick = function () {
             // console.log('1111eee',e.target.style.backgroundColor = "#45F8F8");
             console.log(checkboxs[i].checked);
+            this.panduan=checkboxs[i].checked
             if (checkboxs[i].checked) {
               option.legend.selected[names[i]] = true;
             } else if (checkboxs[i].getAttribute("checked")) {
@@ -910,6 +913,52 @@ input::-webkit-input-placeholder {
     .input-yangshi {
       padding-top: 2px;
       color: #ffff;
+      font-size: 12px;
+      // .checkboxchart{
+      //     background-color:#0e2351;
+      // }
+      input[type="checkbox"] {
+        width: 12.22px;
+        height: 12.22px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 18px;
+        position: relative;
+        -webkit-appearance: none; //去掉原有样式
+      }
+
+      input[type="checkbox"]::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: 0;
+        background: #131b35;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #305484;
+      }
+
+      input[type="checkbox"]:checked::before {
+        content: "\2713";
+        background-color: #45f8f8;
+        position: absolute;
+        top: -2px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #45f8f8;
+        color: #121c34;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 94%;
+        // text-emphasis-color: #45f8f8;
+      }
+    }
+    .input-yangshi1 {
+      padding-top: 2px;
+      color: #45f8f8;
       font-size: 12px;
       // .checkboxchart{
       //     background-color:#0e2351;
