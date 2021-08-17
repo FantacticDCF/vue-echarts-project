@@ -60,17 +60,16 @@
       <div class="title">总体情况</div>
       <div id="chartLineBox"></div>
       <div class="kongzhi">
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
-            
             name="checkboxchart"
             :checked="checked"
             value="95558投诉"
           />&nbsp;&nbsp;95558投诉
         </div>
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
@@ -79,15 +78,16 @@
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
+            :checked="checked"
             value="视频广告"
           />&nbsp;&nbsp;银保监投诉
         </div>
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
@@ -108,9 +108,8 @@
             @click="clHandle($event)"
             ref="checked"
             value="搜索引擎"
+            >&nbsp;&nbsp;同比</button
           >
-            &nbsp;&nbsp;同比
-          </button>
         </div>
         <div>
           <button
@@ -124,9 +123,8 @@
             @click="clHandle1($event)"
             ref="checked1"
             value="搜索引擎11"
+            >&nbsp;&nbsp;环比</button
           >
-            &nbsp;&nbsp;环比上期 
-          </button>
         </div>
       </div>
     </div>
@@ -147,19 +145,19 @@ export default {
         backgroundSize: "100% 100%",
         backgroundPosition: "center",
       },
-      selected: {
-        "95598投诉": false,
-        人行投诉: true,
-        银保监投诉: false,
-        信访: true,
-        同比: false,
-        环比上期: true,//
-      },
+ selected: {
+            '95598投诉': 'false',
+            人行投诉: true,
+            银保监投诉: true,
+            信访: true,
+            同比: true,
+            环比: false,
+          },
       count: 1,
       count1: 1,
       checked: true,
-      checked2: false,
-      checked1: true,//环比上期
+      checked2: true,
+      checked1: false,
       select: [
         {
           value: "选项1",
@@ -246,13 +244,13 @@ export default {
         // console.log(this.getLineEcharts1(this.selected));
         // var checkboxs = document.getElementsByName("checkboxchart");
         // console.log(checkboxs[4].checked);
-        var s1 = this.chartLine.getOption();
+        var s1 = this.chartLine.getOption()
         console.log(s1.legend[0].selected);
         // var ins=s1.legend[0].selected
         // for(var key in ins){
         //   console.log(key,ins[key]);
         // }
-        this.checked2 = !this.checked2;
+       this.checked2=!this.checked2
         // checkboxs[4].checked = !checkboxs[4].checked;
         if (this.checked2 == true) {
           e.target.style.backgroundColor = "#45F8F8";
@@ -276,7 +274,7 @@ export default {
     clHandle1(e) {
       // var checkboxs = document.getElementsByName("checkboxchart");
       // checkboxs[5].checked = !checkboxs[5].checked;
-      this.checked1 = !this.checked1;
+       this.checked1=!this.checked1
       if (this.checked1 == true) {
         e.target.style.backgroundColor = "#45F8F8";
         e.target.style.color = "#205669";
@@ -365,7 +363,7 @@ export default {
               icon: `image://${green}`,
             },
             {
-              name: "环比上期",
+              name: "环比",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
@@ -374,7 +372,6 @@ export default {
               icon: `image://${red}`,
             },
           ],
-          selectedMode: false,
           orient: "horizontal",
           right: 350,
           top: 0,
@@ -680,7 +677,7 @@ export default {
           },
           {
             type: "line",
-            name: "环比上期",
+            name: "环比",
             showSymbol: true,
             symbol: "circle", //折点设定为实心点
             symbolSize: 8, //设定实心点的大小
@@ -724,24 +721,19 @@ export default {
       // console.log(names);
       this.$nextTick(() => {
         var checkboxs = document.getElementsByName("checkboxchart");
-
+        
         var arr = document.getElementsByClassName("checkboxchart");
         //  var count=0
         for (let i = 0; i < arr.length; i++) {
           arr[i].onclick = function () {
-            // console.log('1111eee',e.target.style.backgroundColor = "#45F8F8");
             console.log(checkboxs[i].checked);
             if (checkboxs[i].checked) {
               option.legend.selected[names[i]] = true;
-
-              //  console.log();
               // console.log(option.legend.selected);
-              // e.target.style.color='#45F8F8'
-            } else if (checkboxs[i].getAttribute("checked")) {
-              option.legend.selected[names[i]] = true;
-            } else {
+            }else if(checkboxs[i].getAttribute('checked')){
+              option.legend.selected[names[i]] = true;    
+            }else {
               option.legend.selected[names[i]] = false;
-              // e.target.style.color='#fffff'
             }
 
             chartLine2.setOption(option);
@@ -929,58 +921,6 @@ input::-webkit-input-placeholder {
     margin: 40px auto;
     display: flex;
     justify-content: space-around;
-    // .size-color-wirte{
-       
-    // }
-    // .size-color-blue{
-    //   color:#45f8f8;
-    // }
-    .input-yangshi {
-      padding-top: 2px;
-      color: #ffff;
-      font-size:12px;
-      // .checkboxchart{
-      //     background-color:#0e2351;
-      // }
-      input[type="checkbox"] {
-        width: 12.22px;
-        height: 12.22px;
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle;
-        line-height: 18px;
-        position: relative;
-        -webkit-appearance: none; //去掉原有样式
-      }
-
-      input[type="checkbox"]::before {
-        content: "";
-        position: absolute;
-        top: -2px;
-        left: 0;
-        background: #131b35;
-        width: 100%;
-        height: 100%;
-        border: 1px solid #305484;
-      }
-
-      input[type="checkbox"]:checked::before {
-        content: "\2713";
-        background-color: #45f8f8;
-        position: absolute;
-        top: -2px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 1px solid #45f8f8;
-        color: #121c34;
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 94%;
-        // text-emphasis-color: #45f8f8;
-      }
-    }
     div {
       margin-right: 20px;
       /deep/ .el-button.is-round {
@@ -1006,12 +946,12 @@ input::-webkit-input-placeholder {
         color: #205669;
         border: 1px solid #45f8f8;
         background-color: #45f8f8;
-        height: 25px;
+         height: 25px;
         width: 90px;
         border-radius: 20px;
         font-size: 12px;
         line-height: 25px;
-        text-align: center;
+         text-align: center;
       }
     }
   }
