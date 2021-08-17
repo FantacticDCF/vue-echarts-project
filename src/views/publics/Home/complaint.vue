@@ -141,7 +141,7 @@ export default {
       checked2: false,
       checked1: true, //环比上期
       selected: {
-        "\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9": false,
+        "\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9": false,  //95558投诉 数字开头不能直接用
         人行投诉: true,
         银保监投诉: false,
         信访: true,
@@ -767,7 +767,7 @@ export default {
     line-height: 50px;
     position: relative;
     text-indent: 16px;
-    color: #58dbff;
+    color: #166091;
 
     // margin-bottom: 1%;
     &:before {
@@ -785,7 +785,7 @@ export default {
       content: "";
       left: 104%;
       top: 14px;
-      border-bottom: 7px solid #58dbff;
+      border-bottom: 7px solid #166091;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
