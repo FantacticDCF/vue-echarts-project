@@ -56,7 +56,7 @@
     </el-row>
 
     <!-- 下面echats -->
-    <div class="shuju" :style="setBackgroundBg">
+    <div class="shuju" :style="info.setBackgroundBg1">
       <div class="title">总体情况</div>
       <div id="chartLineBox"></div>
       <div class="kongzhi">
@@ -66,15 +66,16 @@
             class="checkboxchart"
             @click="fontColor($event)"
             name="checkboxchart"
-            :checked="checked"
-            value="95558投诉"
+            value="联盟广告"
           />&nbsp;&nbsp;95558投诉
         </div>
         <div class="input-yangshi">
           <input
             type="checkbox"
             class="checkboxchart"
+            @click="fontColor($event)"
             name="checkboxchart"
+            :checked="checked"
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
@@ -82,6 +83,7 @@
           <input
             type="checkbox"
             class="checkboxchart"
+            @click="fontColor($event)"
             name="checkboxchart"
             value="视频广告"
           />&nbsp;&nbsp;银保监投诉
@@ -90,6 +92,7 @@
           <input
             type="checkbox"
             class="checkboxchart"
+            @click="fontColor($event)"
             name="checkboxchart"
             :checked="checked"
             value="直接访问"
@@ -97,8 +100,6 @@
         </div>
         <div>
           <button
-            round
-            size="mini"
             type="checkbox"
             class="checkboxchart"
             :class="checked2 == true ? 'color11' : 'color1'"
@@ -113,8 +114,6 @@
         </div>
         <div>
           <button
-            round
-            size="mini"
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
@@ -138,27 +137,17 @@ import red from "../../../assets/images/complaint/red.png";
 export default {
   data() {
     return {
-      setBackgroundBg: {
-        //上方搜索
-        backgroundImage:
-          "url(" + require("../../../assets/images/complaint/shitu.png") + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-      },
-      selected: {
-        "95598投诉": true,
-        人行投诉: false,
-        银保监投诉: false,
-        信访: true,
-        同比: false,
-        环比上期: true, //
-      },
-      count: 1,
-      count1: 1,
       checked: true,
       checked2: false,
       checked1: true, //环比上期
+      selected: {
+        "\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9": false,  //95558投诉 数字开头不能直接用
+        人行投诉: true,
+        银保监投诉: false,
+        信访: true,
+        同比: false,
+        环比上期: true,
+      },
       select: [
         {
           value: "选项1",
@@ -227,6 +216,16 @@ export default {
           backgroundSize: "100% 100%",
           backgroundPosition: "center",
         },
+        setBackgroundBg1: {
+          //上方搜索
+          backgroundImage:
+            "url(" +
+            require("../../../assets/images/complaint/shitu.png") +
+            ")",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+        },
       },
     };
   },
@@ -234,24 +233,48 @@ export default {
     this.chartLine = this.$echarts.init(
       document.getElementById("chartLineBox")
     );
-
-    this.getLineEcharts1(this.selected);
+    this.$nextTick(() => {
+      this.getLineEcharts1(this.selected);
+      this.initialize();
+    });
   },
   methods: {
-    fontColor() {
-      // console.log(1);
-      //   if(this.checked==true){
-      //      e.target.style.color = "#45f8f8";
-      //   }else{
-      //      e.target.style.color = "#FFFFFF";
-      //   }
+    //初始化 颜色
+    initialize() {
+      // var sele=
+      var checkboxs = document.getElementsByName("checkboxchart");
+      var dom = document.getElementsByClassName("input-yangshi");
+      for (var i = 0; i < dom.length; i++) {
+        // console.log(dom[i].style);
+        if (checkboxs[i].checked === true) {
+          dom[i].style.color = "#45f8f8";
+        } else {
+          dom[i].style.color = "#ffff";
+        }
+      }
     },
+    //点击更改颜色
+    fontColor() {
+      var checkboxs = document.getElementsByName("checkboxchart");
+      var dom = document.getElementsByClassName("input-yangshi");
+      // console.log(e);
+      // console.log(dom);
+      // console.log(checkboxs);
+      for (var i = 0; i < dom.length; i++) {
+        // console.log(dom[i].style);
+        if (checkboxs[i].checked == true) {
+          dom[i].style.color = "#45f8f8";
+        } else {
+          dom[i].style.color = "#ffff";
+        }
+      }
+    },
+    //点击事件
     clHandle(e) {
       this.$nextTick(() => {
-        var s1 = this.chartLine.getOption();
-        console.log(s1.legend[0].selected);
+        // var s1 = this.chartLine.getOption();
+        // console.log(s1.legend[0].selected);
         this.checked2 = !this.checked2;
-        // checkboxs[4].checked = !checkboxs[4].checked;
         if (this.checked2 == true) {
           e.target.style.backgroundColor = "#45F8F8";
           e.target.style.color = "#205669";
@@ -296,7 +319,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -305,7 +328,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -314,7 +337,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -323,7 +346,7 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: "circle",
             },
@@ -332,28 +355,28 @@ export default {
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
-              //  icon:'image//./images/icon1.png'
               icon: `image://${green}`,
             },
             {
-              name: "环比上期",
+              name: "环比",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
-                color: "#91939D",
+                color: "#9597A0",
               },
               icon: `image://${red}`,
             },
           ],
-          selectedMode: false,
+          selectedMode: false, //legend图标禁止点击
           orient: "horizontal",
           right: 350,
           top: 0,
           bottom: 0,
           show: true,
           selected,
+          inactiveColor: "#9597A0", //没选中时候得字体颜色
         },
         // calculable: true,
         xAxis: [
@@ -402,12 +425,12 @@ export default {
         ],
         yAxis: [
           {
-            splitLine: { 
+            splitLine: {
               show: true,
               lineStyle: {
-                         color: '#141F3B'
-                  }  
-             },
+                color: "#15233F",
+              },
+            },
             type: "value",
             // name: '数量',
             barWidth: "10%",
@@ -445,7 +468,15 @@ export default {
             axisLabel: {
               show: true,
               interval: "auto", //居中显示
-              formatter: "{value} %", //以百分比显示
+              // formatter: "{value} %", //以百分比显示
+              //右侧Y轴百分比显示 0得位置不显示百分比
+              formatter: function (val) {
+                if (val == 0) {
+                  return (val = 0);
+                } else {
+                  return val + "%";
+                }
+              },
             },
 
             // 改变y轴颜色
@@ -484,7 +515,7 @@ export default {
                 },
               ]
             ),
-            data: [1302, 713, 703, 698, 622, 607, 556, 552, 474, 470],
+            data: [1352, 713, 703, 698, 622, 607, 556, 552, 474, 470],
             itemStyle: {
               normal: {
                 label: {
@@ -656,7 +687,7 @@ export default {
           },
           {
             type: "line",
-            name: "环比上期",
+            name: "环比",
             showSymbol: true,
             symbol: "circle", //折点设定为实心点
             symbolSize: 8, //设定实心点的大小
@@ -703,11 +734,9 @@ export default {
         var checkboxs = document.getElementsByName("checkboxchart");
 
         var arr = document.getElementsByClassName("checkboxchart");
-        //  var count=0
         for (let i = 0; i < arr.length; i++) {
           arr[i].onclick = function () {
-            // console.log('1111eee',e.target.style.backgroundColor = "#45F8F8");
-            console.log(checkboxs[i].checked);
+            // console.log(checkboxs[i].checked);
             if (checkboxs[i].checked) {
               option.legend.selected[names[i]] = true;
             } else if (checkboxs[i].getAttribute("checked")) {
@@ -738,7 +767,7 @@ export default {
     line-height: 50px;
     position: relative;
     text-indent: 16px;
-    color: #58dbff;
+    color: #166091;
 
     // margin-bottom: 1%;
     &:before {
@@ -756,7 +785,7 @@ export default {
       content: "";
       left: 104%;
       top: 14px;
-      border-bottom: 7px solid #58dbff;
+      border-bottom: 7px solid #166091;
       border-left: 9px solid transparent;
       border-top: 9px solid transparent;
       /*border-left和border-right换成透明色 不然是长方形*/
@@ -839,7 +868,6 @@ export default {
     border-radius: 20px;
   }
 }
-
 .aborder {
   text-indent: 30px;
   color: #58dbff;
@@ -870,7 +898,6 @@ export default {
 input::-webkit-input-placeholder {
   color: #59dfff;
 }
-
 //底部echars css
 .shuju {
   width: 100%;
@@ -901,12 +928,7 @@ input::-webkit-input-placeholder {
     margin: 40px auto;
     display: flex;
     justify-content: space-around;
-    // .size-color-wirte{
 
-    // }
-    // .size-color-blue{
-    //   color:#45f8f8;
-    // }
     .input-yangshi {
       padding-top: 2px;
       color: #ffff;
@@ -953,6 +975,7 @@ input::-webkit-input-placeholder {
         // text-emphasis-color: #45f8f8;
       }
     }
+
     div {
       margin-right: 20px;
       /deep/ .el-button.is-round {
