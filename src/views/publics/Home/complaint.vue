@@ -60,7 +60,7 @@
       <div class="title">总体情况</div>
       <div id="chartLineBox"></div>
       <div class="kongzhi">
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
@@ -70,7 +70,7 @@
             value="95558投诉"
           />&nbsp;&nbsp;95558投诉
         </div>
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
@@ -78,15 +78,16 @@
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
+            :checked="checked"
             value="视频广告"
           />&nbsp;&nbsp;银保监投诉
         </div>
-        <div class="input-yangshi">
+        <div>
           <input
             type="checkbox"
             class="checkboxchart"
@@ -107,9 +108,8 @@
             @click="clHandle($event)"
             ref="checked"
             value="搜索引擎"
+            >&nbsp;&nbsp;同比</button
           >
-            &nbsp;&nbsp;同比
-          </button>
         </div>
         <div>
           <button
@@ -338,7 +338,7 @@ export default {
               icon: `image://${green}`,
             },
             {
-              name: "环比上期",
+              name: "环比",
               textStyle: {
                 fontSize: 12,
                 fontWeight: "bolder",
@@ -347,7 +347,6 @@ export default {
               icon: `image://${red}`,
             },
           ],
-          selectedMode: false,
           orient: "horizontal",
           right: 350,
           top: 0,
@@ -656,7 +655,7 @@ export default {
           },
           {
             type: "line",
-            name: "环比上期",
+            name: "环比",
             showSymbol: true,
             symbol: "circle", //折点设定为实心点
             symbolSize: 8, //设定实心点的大小
@@ -701,12 +700,11 @@ export default {
       // console.log(names);
       this.$nextTick(() => {
         var checkboxs = document.getElementsByName("checkboxchart");
-
+        
         var arr = document.getElementsByClassName("checkboxchart");
         //  var count=0
         for (let i = 0; i < arr.length; i++) {
           arr[i].onclick = function () {
-            // console.log('1111eee',e.target.style.backgroundColor = "#45F8F8");
             console.log(checkboxs[i].checked);
             if (checkboxs[i].checked) {
               option.legend.selected[names[i]] = true;
@@ -978,12 +976,12 @@ input::-webkit-input-placeholder {
         color: #205669;
         border: 1px solid #45f8f8;
         background-color: #45f8f8;
-        height: 25px;
+         height: 25px;
         width: 90px;
         border-radius: 20px;
         font-size: 12px;
         line-height: 25px;
-        text-align: center;
+         text-align: center;
       }
     }
   }
