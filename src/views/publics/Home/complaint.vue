@@ -60,7 +60,7 @@
       <div class="title">总体情况</div>
       <div id="chartLineBox"></div>
       <div class="kongzhi">
-        <div>
+        <div class="input-yangshi">
           <input
             type="checkbox"
             class="checkboxchart"
@@ -70,7 +70,7 @@
             value="联盟广告"
           />&nbsp;&nbsp;95558投诉
         </div>
-        <div>
+        <div class="input-yangshi">
           <input
             type="checkbox"
             class="checkboxchart"
@@ -78,16 +78,16 @@
             value="联盟广告"
           />&nbsp;&nbsp;人行投诉
         </div>
-        <div>
+        <div class="input-yangshi">
           <input
             type="checkbox"
             class="checkboxchart"
             name="checkboxchart"
-            :checked="checked"
+            
             value="视频广告"
           />&nbsp;&nbsp;银保监投诉
         </div>
-        <div>
+        <div class="input-yangshi">
           <input
             type="checkbox"
             class="checkboxchart"
@@ -237,7 +237,7 @@ export default {
   },
   methods: {
     fontColor(e) {
-      var dom =document.getElementsByClassName('input-yangshi')[0]
+      var dom =document.getElementsByClassName('input-yangshi')
       console.log(e);
       console.log(dom);
       // console.log(e.target.style);
