@@ -19,38 +19,39 @@
         <div class="bus-bread1">总体情况</div></el-col
       >
       <el-col :span="18">
-        <div class="select">
-          <span class="selectTitle">维度选择</span>
-          <el-select
-            v-model="value"
-            placeholder="机构维度"
-            :popper-append-to-body="false"
-          >
-            <el-option
-              v-for="item in select"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+        <div class="top-select">
+          <div class="select">
+            <span class="selectTitle">时间</span>
+            <el-select
+              v-model="value1"
+              placeholder="半年"
+              :popper-append-to-body="false"
             >
-            </el-option>
-          </el-select>
-        </div>
-
-        <div class="select">
-          <span class="selectTitle">时间</span>
-          <el-select
-            v-model="value1"
-            placeholder="半年"
-            :popper-append-to-body="false"
-          >
-            <el-option
-              v-for="item in timer"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              <el-option
+                v-for="item in timer"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div class="select">
+            <span class="selectTitle">维度选择</span>
+            <el-select
+              v-model="value"
+              placeholder="机构维度"
+              :popper-append-to-body="false"
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in select"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>  
         </div>
       </el-col>
     </el-row>
@@ -141,7 +142,7 @@ export default {
       checked2: false,
       checked1: true, //环比上期
       selected: {
-        "\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9": false,  //95558投诉 数字开头不能直接用
+        "\u0039\u0035\u0035\u0035\u0038\u6295\u8bc9": false, //95558投诉 数字开头不能直接用
         人行投诉: true,
         银保监投诉: false,
         信访: true,
@@ -732,7 +733,6 @@ export default {
       // console.log(names);
       this.$nextTick(() => {
         var checkboxs = document.getElementsByName("checkboxchart");
-
         var arr = document.getElementsByClassName("checkboxchart");
         for (let i = 0; i < arr.length; i++) {
           arr[i].onclick = function () {
@@ -811,36 +811,46 @@ export default {
       /*border-left和border-right换成透明色 不然是长方形*/
     }
   }
-  .select {
-    float: right;
-    margin-right: -5%;
-    margin-top: 10px;
-    width: 400px;
-    text-align: right;
-    .selectTitle {
-      color: #58dbff;
-      margin-right: 3%;
+  .top-select {
+    display: flex;
+    .select:nth-child(2) {
+      width: 300px !important;
     }
-    /deep/.el-input__inner {
-      height: 28px;
-      border-radius: 20px;
-      background-image: url(../../../assets/images/searchList/inputSelect.png);
-      background-size: 105% 114%;
-      background-repeat: no-repeat;
-      background-position: center;
-      //  background-color: #11172F;
-      border: 1px solid #1a83c0;
-      text-indent: 8px;
-      font-weight: 700;
-      // border:1px solid red;
-      // line-height: 28px;
-      color: #58dbff;
+    .select:nth-child(1) {
+      flex-grow: 1;
     }
-    /deep/.el-input__icon {
-      line-height: 16px;
-      color: #58dbff;
+    .select {
+      margin-left: 7%;
+      margin-top: 10px;
+      width: 400px;
+      text-align: right;
+
+      .selectTitle {
+        color: #58dbff;
+        margin-right: 3%;
+      }
+      /deep/.el-input__inner {
+        height: 28px;
+        border-radius: 20px;
+        background-image: url(../../../assets/images/searchList/inputSelect.png);
+        background-size: 105% 114%;
+        background-repeat: no-repeat;
+        background-position: center;
+        //  background-color: #11172F;
+        border: 1px solid #1a83c0;
+        text-indent: 8px;
+        font-weight: 700;
+        // border:1px solid red;
+        // line-height: 28px;
+        color: #58dbff;
+      }
+      /deep/.el-input__icon {
+        line-height: 16px;
+        color: #58dbff;
+      }
     }
   }
+
   /deep/ .popper__arrow,
   /deep/ .el-popper .popper__arrow::after {
     display: none !important;
