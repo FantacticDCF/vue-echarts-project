@@ -2,7 +2,7 @@
     <div class="fuzzySearch">
         <div class="aborder" :style="setBackgroundBg">
             <span v-show="shows == 1">工单查询</span>
-            <span v-show="shows == 2">投诉案例查询</span>
+            <span v-show="shows == 2" style="font-size: 13px">投诉案例查询</span>
             <span class="searchbox">
                  <input
                     type="text"

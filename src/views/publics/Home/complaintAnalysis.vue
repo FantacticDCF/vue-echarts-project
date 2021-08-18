@@ -702,7 +702,7 @@ export default {
     display: none !important;
   }
   /deep/.el-input--suffix {
-    z-index: 9999;
+    z-index: 8000;
   }
   /deep/.el-popper {
     top: 3px !important;
