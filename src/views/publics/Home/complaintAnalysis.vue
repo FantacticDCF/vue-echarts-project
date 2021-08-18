@@ -80,6 +80,7 @@
             <div class="title">销户规定问题导致</div>
           </div>
           <div class="echartsDesc" id="chartLineBox"></div>
+          <!-- <div></div> -->
         </el-col>
         <el-col :span="11">
           <div class="echarstitle">
@@ -739,6 +740,7 @@ export default {
 }
 .box-li-detail{
   line-height: 20px;
+  text-align: left;
 }
 .box{
     width: 100%;
