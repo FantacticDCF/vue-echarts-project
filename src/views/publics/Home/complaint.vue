@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <div class="aborder" :style="info.setBackgroundBg">
+    <!-- <div class="aborder" :style="info.setBackgroundBg">
       <span>投诉案例查询</span>
       <input
         type="text"
@@ -10,8 +10,8 @@
         :style="info.setBackgroundBg"
       />
       <i class="el-icon-search iconSearch"></i>
-    </div>
-
+    </div> -->
+   <fuzzySearch shows=2></fuzzySearch>
     <!-- <div class="bus-bread">查询</div> -->
     <el-row>
       <el-col :span="5" class="titleList"
@@ -135,6 +135,7 @@
 <script>
 import green from "../../../assets/images/complaint/green.png";
 import red from "../../../assets/images/complaint/red.png";
+import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -229,6 +230,9 @@ export default {
         },
       },
     };
+  },
+  components:{
+    fuzzySearch
   },
   mounted() {
     this.chartLine = this.$echarts.init(
@@ -814,7 +818,7 @@ export default {
   .top-select {
     display: flex;
     .select:nth-child(2) {
-      width: 320px !important;
+      width: 300px !important;
     }
     .select:nth-child(1) {
       flex-grow: 1;
