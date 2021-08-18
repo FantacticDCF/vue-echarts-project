@@ -9,38 +9,39 @@
         <div class="bus-bread1">投诉分析</div></el-col
       >
       <el-col :span="18">
-        <div class="select">
-          <span class="selectTitle">投诉来源</span>
-          <el-select
-            v-model="value"
-            placeholder="95558投诉"
-            :popper-append-to-body="false"
-          >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+        <div class="top-select">
+          <div class="select">
+            <span class="selectTitle">时间</span>
+            <el-select
+              v-model="value1"
+              placeholder="半年"
+              :popper-append-to-body="false"
             >
-            </el-option>
-          </el-select>
-        </div>
-
-        <div class="select">
-          <span class="selectTitle">时间</span>
-          <el-select
-            v-model="value1"
-            placeholder="半年"
-            :popper-append-to-body="false"
-          >
-            <el-option
-              v-for="item in daysShow"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              <el-option
+                v-for="item in daysShow"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div class="select">
+            <span class="selectTitle">投诉来源</span>
+            <el-select
+              v-model="value"
+              placeholder="95558投诉"
+              :popper-append-to-body="false"
             >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>  
         </div>
       </el-col>
     </el-row>
@@ -656,34 +657,43 @@ export default {
       /*border-left和border-right换成透明色 不然是长方形*/
     }
   }
-  .select {
-    float: right;
-    margin-right: -5%;
-    margin-top: 10px;
-    width: 400px;
-    text-align: right;
-    .selectTitle {
-      color: #58dbff;
-      margin-right: 3%;
+  .top-select {
+    display: flex;
+    .select:nth-child(2) {
+      width: 320px !important;
     }
-    /deep/.el-input__inner {
-      height: 28px;
-      border-radius: 20px;
-      background-image: url(../../../assets/images/searchList/inputSelect.png);
-      background-size: 105% 114%;
-      background-repeat: no-repeat;
-      background-position: center;
-      //  background-color: #11172F;
-      border: 1px solid #1a83c0;
-      text-indent: 8px;
-      font-weight: 700;
-      // border:1px solid red;
-      // line-height: 28px;
-      color: #58dbff;
+    .select:nth-child(1) {
+      flex-grow: 1;
     }
-    /deep/.el-input__icon {
-      line-height: 16px;
-      color: #58dbff;
+    .select {
+      margin-left: 7%;
+      margin-top: 10px;
+      width: 400px;
+      text-align: right;
+
+      .selectTitle {
+        color: #58dbff;
+        margin-right: 3%;
+      }
+      /deep/.el-input__inner {
+        height: 28px;
+        border-radius: 20px;
+        background-image: url(../../../assets/images/searchList/inputSelect.png);
+        background-size: 105% 114%;
+        background-repeat: no-repeat;
+        background-position: center;
+        //  background-color: #11172F;
+        border: 1px solid #1a83c0;
+        text-indent: 8px;
+        font-weight: 700;
+        // border:1px solid red;
+        // line-height: 28px;
+        color: #58dbff;
+      }
+      /deep/.el-input__icon {
+        line-height: 16px;
+        color: #58dbff;
+      }
     }
   }
   /deep/ .popper__arrow,
