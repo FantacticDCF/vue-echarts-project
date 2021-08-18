@@ -13,7 +13,7 @@
     </div> -->
    <fuzzySearch shows=2></fuzzySearch>
     <!-- <div class="bus-bread">查询</div> -->
-    <el-row>
+    <el-row style="margin: 2px 0 5p">
       <el-col :span="5" class="titleList"
         ><div class="bus-bread">投诉管理</div>
         <div class="bus-bread1">总体情况</div></el-col
@@ -860,7 +860,7 @@ export default {
     display: none !important;
   }
   /deep/.el-input--suffix {
-    z-index: 9999;
+    z-index: 8000;
   }
   /deep/.el-popper {
     top: 3px !important;
