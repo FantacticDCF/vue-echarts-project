@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <fuzzyTable/>
+    <fuzzySearch/>
     <!-- <div class="bus-bread">查询</div> -->
     <el-row style="margin: 2px 0 5px">
       <el-col :span="5" class="titleList"
@@ -94,11 +94,11 @@
 </template>
 
 <script>
-import fuzzyTable from "../../../components/fuzzySearch.vue";
+import fuzzySearch from "../../../components/fuzzySearch.vue";
 import tableCommon from "../../../components/tableCommon.vue";
 export default {
   components: {
-    fuzzyTable,
+    fuzzySearch,
     tableCommon
   },
   data() {
