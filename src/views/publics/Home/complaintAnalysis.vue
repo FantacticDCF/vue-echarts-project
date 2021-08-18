@@ -911,4 +911,9 @@ input::-webkit-input-placeholder {
     }
   }
 }
+/deep/.fuzzy-data-ul {
+  
+    margin-left: 52px !important;
+    
+}
 </style>
