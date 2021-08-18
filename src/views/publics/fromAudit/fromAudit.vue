@@ -1,17 +1,13 @@
 <template>
   <div>
     <div>
-      <div class="bus-bread">{{ title }}</div>
-      <div class="aborder" :style="info.setBackgroundBg">
-        <span>工单查询</span>
-        <input
-          type="text"
-          class="input-border"
-          placeholder="输入关键词查询"
-          :style="info.setBackgroundBg"
-        />
-        <i class="el-icon-search iconSearch"></i>
-      </div>
+       <fuzzySearch/>
+      <el-row class="el-row-input" style="margin: 2px 0 5px">
+      <el-col :span="23" class="titleList"
+        ><div class="bus-bread">消保审核</div>
+        </el-col
+      >
+    </el-row>
     </div>
     <el-row>
       <el-col :span="24">
@@ -47,11 +43,10 @@ import audit5 from "../../../assets/images/audit/audit1.png";
 import audit6 from "../../../assets/images/audit/audit2.png";
 import audit7 from "../../../assets/images/audit/audit3.png";
 import audit8 from "../../../assets/images/audit/audit4.png";
-
+import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
-      title: "消保审核",
       shuju: [
         {
           id: "001",
@@ -97,6 +92,9 @@ export default {
         },
       },
     };
+  },
+  components:{
+    fuzzySearch
   },
   mounted() {},
   methods: {
@@ -157,50 +155,37 @@ export default {
   }
 }
 
-.bus-bread {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
-  &:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
-  }
-  &:after {
-    position: absolute;
-    content: "";
-    right: 92.5%;
-    top: 0;
-    border-bottom: 7px solid #1a83c0;
-    border-left: 9px solid transparent;
-    border-top: 9px solid transparent;
-    /*border-left和border-right换成透明色 不然是长方形*/
-  }
-}
-.aborder {
-  text-indent: 30px;
-  color: #1a83c0;
-  margin-top: 10px;
-  width: 55%;
-  height: 32px;
-  line-height: 32px;
-  overflow: hidden;
-}
-.input-border {
-  margin-left: 30px;
-  border: none;
-  color: #1a83c0;
-  width: 70%;
-  height: 70%;
-  text-indent: 15px;
-  font-size: 10px;
-}
-input::-webkit-input-placeholder {
-  color: #59dfff;
+.el-row-input {
+  height: 30px;
+
+  .bus-bread {
+    height: 30px;
+    line-height: 50px;
+    position: relative;
+    text-indent:19px;
+    color: #59DEFF;
+
+    // margin-bottom: 1%;
+    &:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 14px;
+      border-bottom: 7px solid #1A85C2;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+    &:after {
+      position: absolute;
+      content: "";
+      left: 7%;
+      top: 14px;
+      border-bottom: 7px solid #59DEFF;
+      border-left: 9px solid transparent;
+      border-top: 9px solid transparent;
+      /*border-left和border-right换成透明色 不然是长方形*/
+    }
+  }  
 }
 </style>

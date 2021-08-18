@@ -1,13 +1,22 @@
 <template>
   <div>
-    <div class="bus-bread">
+
+    <fuzzySearch></fuzzySearch>
+     <el-row class="el-row-input" style="margin: 2px 0 5px">
+      <el-col :span="24" class="titleList"
+        ><div class="bus-bread">投诉压降(考核目标)</div>
+        </el-col
+      >
+     
+    </el-row>
+    <!-- <div class="bus-bread">
       <span class="empty-box"></span>
       <span class="first-content color-black"
         >&nbsp;投诉压降(考核目标)&nbsp;&nbsp;</span
       >
-      <!-- <span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span> -->
-    </div>
-
+      <span class="second-content">&nbsp;&nbsp;投诉发生率考核目标&nbsp;</span>
+    </div> -->
+<!-- 
     <div class="aborder" :style="setBackgroundBg">
       <span>工单查询</span>
       <input
@@ -17,7 +26,7 @@
         :style="setBackgroundBg"
       />
       <i class="el-icon-search iconSearch"></i>
-    </div>
+    </div> -->
 
     <el-row>
       <el-col :span="11">
@@ -80,6 +89,7 @@
 </template>
 
 <script>
+import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -110,7 +120,7 @@ export default {
           value: 0.005,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1002,
@@ -127,7 +137,7 @@ export default {
           value: 0.004,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1003,
@@ -144,7 +154,7 @@ export default {
           value: 0.003,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+         step: 0.0001,
         },
         {
           id: 1004,
@@ -161,7 +171,7 @@ export default {
           value: 0.002,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1005,
@@ -178,7 +188,7 @@ export default {
           value: 0.001,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1006,
@@ -195,7 +205,7 @@ export default {
           value: 0.005,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1007,
@@ -212,7 +222,7 @@ export default {
           value: 0.004,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1008,
@@ -229,7 +239,7 @@ export default {
           value: 0.003,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+         step: 0.0001,
         },
         {
           id: 1009,
@@ -246,7 +256,7 @@ export default {
           value: 0.002,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1010,
@@ -263,7 +273,7 @@ export default {
           value: 0.003,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+        step: 0.0001,
         },
       ],
       info1: [
@@ -282,7 +292,7 @@ export default {
           value: 0.005,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+         step: 0.0001,
         },
         {
           id: 1002,
@@ -299,7 +309,7 @@ export default {
           value: 0.004,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1003,
@@ -317,7 +327,7 @@ export default {
           value: 0.002,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1004,
@@ -334,7 +344,7 @@ export default {
           value: 0.003,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1005,
@@ -351,7 +361,7 @@ export default {
           value: 0.004,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+         step: 0.0001,
         },
         {
           id: 1006,
@@ -368,7 +378,7 @@ export default {
           value: 0.002,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1007,
@@ -385,7 +395,7 @@ export default {
           value: 0.004,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1008,
@@ -402,7 +412,7 @@ export default {
           value: 0.001,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1009,
@@ -419,7 +429,7 @@ export default {
           value: 0.002,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+          step: 0.0001,
         },
         {
           id: 1010,
@@ -436,12 +446,13 @@ export default {
           value: 0.003,
           maxValue: 0.005,
           minValue: 0,
-          step: 0.001,
+         step: 0.0001,
         },
       ],
     };
   },
   components: {
+    fuzzySearch
   },
   methods: {
     
@@ -452,4 +463,5 @@ export default {
 
 <style lang="less" scoped>
 @import url("../../../assets/less/losspressure.less");
+
 </style>

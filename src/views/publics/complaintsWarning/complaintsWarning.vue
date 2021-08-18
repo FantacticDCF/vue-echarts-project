@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 顶部搜索 -->
-    <div class="aborder" :style="info.setBackgroundBg">
+    <!-- <div class="aborder" :style="info.setBackgroundBg">
       <span>工单查询</span>
       <input
         type="text"
@@ -10,9 +10,9 @@
         :style="info.setBackgroundBg"
       />
       <i class="el-icon-search iconSearch"></i>
-    </div>
-    <!-- <fuzzySearch/> -->
-    <el-row>
+    </div> -->
+    <fuzzySearch/>
+    <el-row style="margin: 2px 0 5px">
       <el-col :span="12"><div class="bus-bread">投诉预警</div></el-col>
       <el-col :span="12"> </el-col>
     </el-row>
@@ -116,7 +116,7 @@
 <script>
 import jindutiao from "../components/jindutiao.vue";
 import tableCommon from "../../../components/tableCommon.vue";
-// import fuzzySearch from '../../../components/fuzzySearch.vue'
+import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -385,7 +385,7 @@ export default {
   components: {
     jindutiao,
     tableCommon,
-    // fuzzySearch
+    fuzzySearch
   },
   methods: {
     goto() {

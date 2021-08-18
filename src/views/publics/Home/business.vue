@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div class="bus-bread">投诉压降</div>
-    <div class="aborder" :style="setBackgroundBg">
+    <fuzzySearch/>
+      <el-row class="el-row-input" style="margin: 2px 0 5px">
+      <el-col :span="24" class="titleList"
+        ><div class="bus-bread">投诉管理</div>
+        </el-col
+      >
+    </el-row>
+    <!-- <div class="aborder" :style="setBackgroundBg">
       <span>工单查询</span>
       <input
         type="text"
@@ -10,7 +16,7 @@
         :style="setBackgroundBg"
       />
       <i class="el-icon-search iconSearch"></i>
-    </div>
+    </div> -->
 
     <el-row>
       <el-col :span="11">
@@ -117,7 +123,7 @@
 <script>
 import Jindutiao from "../components/jindutiao.vue";
 import progressCommon from "../../../components/progressCommon.vue";
-
+import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -448,6 +454,7 @@ export default {
   components: {
     Jindutiao,
     progressCommon,
+    fuzzySearch
   },
   methods: {
     numPushHandle() {

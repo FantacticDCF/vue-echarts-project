@@ -168,49 +168,33 @@
   color: #fff;
   margin-left: 10px;
 }
-.bus-bread {
-  position: relative;
-  text-indent: 16px;
-  color: #69a8e1;
+.el-row-input {
+  height: 30px;
 }
-.bus-bread:before {
+.el-row-input .bus-bread {
+  height: 30px;
+  line-height: 50px;
+  position: relative;
+  text-indent: 19px;
+  color: #59DEFF;
+}
+.el-row-input .bus-bread:before {
   position: absolute;
   content: "";
   left: 0;
-  top: 0;
-  border-bottom: 7px solid #1a83c0;
+  top: 14px;
+  border-bottom: 7px solid #59DEFF;
   border-left: 9px solid transparent;
   border-top: 9px solid transparent;
   /*border-left和border-right换成透明色 不然是长方形*/
 }
-.bus-bread:after {
+.el-row-input .bus-bread:after {
   position: absolute;
   content: "";
-  right: 92.5%;
-  top: 0;
-  border-bottom: 7px solid #1a83c0;
+  left: 7%;
+  top: 14px;
+  border-bottom: 7px solid #59DEFF;
   border-left: 9px solid transparent;
   border-top: 9px solid transparent;
   /*border-left和border-right换成透明色 不然是长方形*/
-}
-.aborder {
-  text-indent: 30px;
-  color: #1a83c0;
-  margin-top: 10px;
-  width: 55%;
-  height: 32px;
-  line-height: 32px;
-  overflow: hidden;
-}
-.input-border {
-  margin-left: 30px;
-  border: none;
-  color: #1a83c0;
-  width: 70%;
-  height: 70%;
-  text-indent: 15px;
-  font-size: 10px;
-}
-input::-webkit-input-placeholder {
-  color: #59dfff;
 }

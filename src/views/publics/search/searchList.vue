@@ -1,19 +1,8 @@
 <template>
   <div>
     <!-- 头部 -->
-    <div class="aborder" :style="info.setBackgroundBg">
-      <span>工单查询</span>
-      <input
-        type="text"
-        class="input-border"
-        placeholder="输入关键词查询"
-        :style="info.setBackgroundBg"
-      />
-      <i class="el-icon-search iconSearch"></i>
-    </div>
-
-    <!-- <div class="bus-bread">查询</div> -->
-    <el-row>
+    <fuzzySearch></fuzzySearch>
+    <el-row style="margin: 2px 0 5px">
       <el-col :span="12"><div class="bus-bread">查询</div></el-col>
       <el-col :span="12">
         <div class="select">
@@ -111,6 +100,7 @@
 import search from "../../../assets/images/searchList/search.png";
 import search1 from "../../../assets/images/searchList/search1.png";
 import search2 from "../../../assets/images/searchList/search2.png";
+import fuzzySearch from '../../../components/fuzzySearch.vue'
 export default {
   data() {
     return {
@@ -524,6 +514,9 @@ export default {
       this.chartLine1.setOption(option);
     },
   },
+  components:{
+    fuzzySearch
+  }
 };
 </script>
 

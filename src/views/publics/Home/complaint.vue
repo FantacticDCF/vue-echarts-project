@@ -11,7 +11,7 @@
       />
       <i class="el-icon-search iconSearch"></i>
     </div> -->
-   <fuzzySearch shows=2></fuzzySearch>
+   <fuzzySearch :shows='2'></fuzzySearch>
     <!-- <div class="bus-bread">查询</div> -->
     <el-row style="margin: 2px 0 5px">
       <el-col :span="5" class="titleList"
