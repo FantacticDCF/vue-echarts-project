@@ -814,7 +814,7 @@ export default {
   .top-select {
     display: flex;
     .select:nth-child(2) {
-      width: 300px !important;
+      width: 320px !important;
     }
     .select:nth-child(1) {
       flex-grow: 1;
