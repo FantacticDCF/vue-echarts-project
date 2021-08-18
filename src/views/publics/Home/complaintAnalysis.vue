@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <fuzzyTable/>
+    <fuzzySearch/>
     <!-- <div class="bus-bread">查询</div> -->
     <el-row style="margin: 2px 0 5px">
       <el-col :span="5" class="titleList"
@@ -80,6 +80,7 @@
             <div class="title">销户规定问题导致</div>
           </div>
           <div class="echartsDesc" id="chartLineBox"></div>
+          <!-- <div></div> -->
         </el-col>
         <el-col :span="11">
           <div class="echarstitle">
@@ -93,11 +94,11 @@
 </template>
 
 <script>
-import fuzzyTable from "../../../components/fuzzySearch.vue";
+import fuzzySearch from "../../../components/fuzzySearch.vue";
 import tableCommon from "../../../components/tableCommon.vue";
 export default {
   components: {
-    fuzzyTable,
+    fuzzySearch,
     tableCommon
   },
   data() {
@@ -701,7 +702,7 @@ export default {
     display: none !important;
   }
   /deep/.el-input--suffix {
-    z-index: 9999;
+    z-index: 8000;
   }
   /deep/.el-popper {
     top: 3px !important;
@@ -739,6 +740,7 @@ export default {
 }
 .box-li-detail{
   line-height: 20px;
+  text-align: left;
 }
 .box{
     width: 100%;
